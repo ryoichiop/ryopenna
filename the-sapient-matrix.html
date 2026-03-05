@@ -6,7 +6,7 @@
 <title>The Sapient Matrix — Ryo Penna</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=DM+Sans:wght@300;400;500&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -173,10 +173,11 @@ body.lang-pt .pt { display: contents; }
   background: linear-gradient(to bottom, var(--bg) 60%, transparent);
 }
 .tb-brand {
-  font-family: var(--sans); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--muted); text-decoration: none;
+  font-family: 'Sora', var(--sans); font-size: 16px; font-weight: 600;
+  letter-spacing: -0.03em; text-transform: none;
+  color: var(--fg); text-decoration: none; transition: opacity .2s;
 }
+.tb-brand:hover { opacity: 0.7; }
 
 /* Language switch */
 #lang-switch {
@@ -426,7 +427,7 @@ body.on-light .tb-brand { color: #999; }
 <div id="prog-bar"><div id="prog-fill"></div></div>
 
 <div id="topbar">
-  <span class="tb-brand">Ryo Penna</span>
+  <a class="tb-brand" href="https://ryopenna.com">Ryo Penna</a>
   <div style="display:flex;align-items:center;gap:10px;">
   <button id="theme-btn" onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;cursor:pointer;padding:6px;display:flex;align-items:center;-webkit-tap-highlight-color:transparent;">
     <svg id="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
