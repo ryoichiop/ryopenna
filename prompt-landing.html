@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#0e0e0e" media="(prefers-color-scheme: dark)">
 <title>A Arte do Prompt | Ryo Penna</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@300;400&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -20,7 +20,9 @@ html{scroll-behavior:smooth}
 body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font-smoothing:antialiased}
 
 /* LANG */
-.lang-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:flex-end;padding:16px 24px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px)}
+.lang-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 24px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px)}
+.tb-brand{font-family:'Sora',var(--sans);font-size:16px;font-weight:600;letter-spacing:-0.03em;color:var(--dark);text-decoration:none;transition:opacity .2s}
+.tb-brand:hover{opacity:0.7}
 .lang-toggle{display:flex;gap:2px;border:1px solid var(--faint);border-radius:6px;overflow:hidden}
 .lang-toggle button{background:transparent;border:none;padding:8px 16px;font-family:var(--mono);font-size:11px;letter-spacing:2px;cursor:pointer;color:var(--light);transition:all .3s}
 .lang-toggle button.active{background:var(--dark);color:#fff}
@@ -225,6 +227,7 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
   
   /* Lang bar */
   .lang-bar{background:rgba(14,14,14,.92)}
+  .tb-brand{color:#e8e8e8}
   .lang-toggle{border-color:#333}
   .lang-toggle button{color:#777}
   .lang-toggle button.active{background:#e8e8e8;color:#0e0e0e}
@@ -289,6 +292,7 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
 <body>
 
 <div class="lang-bar">
+<a class="tb-brand" href="https://ryopenna.com">Ryo Penna</a>
 <div class="lang-toggle">
 <button class="active" data-lang="pt" onclick="setLang('pt')">PT</button>
 <button data-lang="en" onclick="setLang('en')">EN</button>
