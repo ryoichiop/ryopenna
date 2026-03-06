@@ -407,9 +407,8 @@ body.on-light.lang-pt #lang-switch #ls-pt { color: #333; }
 /* Share button */
 #btn-share {
   background: none; border: none; color: var(--muted); cursor: pointer;
-  padding: 10px; display: flex; align-items: center; transition: color 0.2s;
-  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
-  position: absolute; right: 20px; bottom: 14px;
+  padding: 6px; display: flex; align-items: center; transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 #btn-share:hover { color: var(--fg); }
 body.on-light #btn-share { color: #999; }
@@ -430,6 +429,12 @@ body.on-light .tb-brand { color: #999; }
 <div id="topbar">
   <a class="tb-brand" href="https://ryopenna.com">Ryo Penna</a>
   <div style="display:flex;align-items:center;gap:10px;">
+  <button id="btn-share" title="Share" onclick="shareArticle()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+    </svg>
+  </button>
   <button id="theme-btn" onclick="toggleTheme()" title="Toggle theme" style="background:none;border:none;cursor:pointer;padding:6px;display:flex;align-items:center;-webkit-tap-highlight-color:transparent;">
     <svg id="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     <svg id="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -531,7 +536,79 @@ body.on-light .tb-brand { color: #999; }
     </div>
   </div>
 
-  <!-- 6. NI -->
+  <!-- 5b. MATRIX 2x2 VISUAL -->
+  <div class="slide" style="justify-content:center;align-items:center;padding:68px 20px 80px;">
+    <div class="en">
+      <div style="display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:0;width:100%;max-width:340px;margin:0 auto;">
+        <!-- Column headers -->
+        <div style="grid-column:1;grid-row:1;"></div>
+        <div style="grid-column:2;grid-row:1;text-align:center;padding-bottom:10px;">
+          <span style="font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);">Intelligence</span>
+        </div>
+        <div style="grid-column:3;grid-row:1;text-align:center;padding-bottom:10px;">
+          <span style="font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);">Stupidity</span>
+        </div>
+        <!-- Row label: Natural -->
+        <div style="grid-column:1;grid-row:2;display:flex;align-items:center;justify-content:center;padding-right:10px;">
+          <span style="font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-lr;transform:rotate(180deg);">Natural</span>
+        </div>
+        <!-- Row 1 cells -->
+        <div style="grid-column:2;grid-row:2;background:rgba(58,140,110,0.15);border:1px solid var(--ni);border-radius:12px 0 0 0;padding:20px 12px;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-family:var(--serif);font-size:clamp(18px,5vw,24px);font-weight:600;color:var(--fg);line-height:1.15;">Natural<br>Intelligence</div>
+        </div>
+        <div style="grid-column:3;grid-row:2;background:rgba(196,90,58,0.15);border:1px solid var(--ns);border-radius:0 12px 0 0;padding:20px 12px;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-family:var(--serif);font-size:clamp(18px,5vw,24px);font-weight:600;color:var(--fg);line-height:1.15;">Natural<br>Stupidity</div>
+        </div>
+        <!-- Row label: Artificial -->
+        <div style="grid-column:1;grid-row:3;display:flex;align-items:center;justify-content:center;padding-right:10px;">
+          <span style="font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-lr;transform:rotate(180deg);">Artificial</span>
+        </div>
+        <!-- Row 2 cells -->
+        <div style="grid-column:2;grid-row:3;background:rgba(58,110,196,0.15);border:1px solid var(--ai);border-radius:0 0 0 12px;padding:20px 12px;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-family:var(--serif);font-size:clamp(18px,5vw,24px);font-weight:600;color:var(--fg);line-height:1.15;">Artificial<br>Intelligence</div>
+        </div>
+        <div style="grid-column:3;grid-row:3;background:rgba(160,138,16,0.15);border:1px solid var(--as);border-radius:0 0 12px 0;padding:20px 12px;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-family:var(--serif);font-size:clamp(18px,5vw,24px);font-weight:600;color:var(--fg);line-height:1.15;">Artificial<br>Stupidity</div>
+        </div>
+      </div>
+    </div>
+    <div class="pt">
+      <div style="display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:0;width:100%;max-width:340px;margin:0 auto;">
+        <!-- Column headers -->
+        <div style="grid-column:1;grid-row:1;"></div>
+        <div style="grid-column:2;grid-row:1;text-align:center;padding-bottom:10px;">
+          <span style="font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);">Inteligência</span>
+        </div>
+        <div style="grid-column:3;grid-row:1;text-align:center;padding-bottom:10px;">
+          <span style="font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);">Estupidez</span>
+        </div>
+        <!-- Row label: Natural -->
+        <div style="grid-column:1;grid-row:2;display:flex;align-items:center;justify-content:center;padding-right:10px;">
+          <span style="font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-lr;transform:rotate(180deg);">Natural</span>
+        </div>
+        <!-- Row 1 cells -->
+        <div style="grid-column:2;grid-row:2;background:rgba(58,140,110,0.15);border:1px solid var(--ni);border-radius:12px 0 0 0;padding:20px 12px;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-family:var(--serif);font-size:clamp(18px,5vw,24px);font-weight:600;color:var(--fg);line-height:1.15;">Inteligência<br>Natural</div>
+        </div>
+        <div style="grid-column:3;grid-row:2;background:rgba(196,90,58,0.15);border:1px solid var(--ns);border-radius:0 12px 0 0;padding:20px 12px;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-family:var(--serif);font-size:clamp(18px,5vw,24px);font-weight:600;color:var(--fg);line-height:1.15;">Estupidez<br>Natural</div>
+        </div>
+        <!-- Row label: Artificial -->
+        <div style="grid-column:1;grid-row:3;display:flex;align-items:center;justify-content:center;padding-right:10px;">
+          <span style="font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-lr;transform:rotate(180deg);">Artificial</span>
+        </div>
+        <!-- Row 2 cells -->
+        <div style="grid-column:2;grid-row:3;background:rgba(58,110,196,0.15);border:1px solid var(--ai);border-radius:0 0 0 12px;padding:20px 12px;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-family:var(--serif);font-size:clamp(18px,5vw,24px);font-weight:600;color:var(--fg);line-height:1.15;">Inteligência<br>Artificial</div>
+        </div>
+        <div style="grid-column:3;grid-row:3;background:rgba(160,138,16,0.15);border:1px solid var(--as);border-radius:0 0 12px 0;padding:20px 12px;display:flex;align-items:center;justify-content:center;text-align:center;">
+          <div style="font-family:var(--serif);font-size:clamp(18px,5vw,24px);font-weight:600;color:var(--fg);line-height:1.15;">Estupidez<br>Artificial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. NI (Definition + Vibe) -->
   <div class="slide slide-quad">
     <div class="quad-accent-bar" style="background:var(--ni)"></div>
     <div class="en">
@@ -545,10 +622,6 @@ body.on-light .tb-brand { color: #999; }
         <div class="label-text">The Vibe</div>
         <p class="sans-body">A savvy detective piecing together clues nobody else notices, an entrepreneur spotting trends that spreadsheets miss, or a teacher intuitively knowing which student is struggling emotionally.</p>
       </div>
-      <div class="quad-block">
-        <div class="label-text">Core Power</div>
-        <p class="sans-body">Humans excel at reading subtle social cues, reframing complex problems, and using empathy to navigate ambiguity, things AI still struggles to match.</p>
-      </div>
     </div>
     <div class="pt">
       <div class="quad-tag" style="color:var(--ni)">Quadrante 1</div>
@@ -561,6 +634,21 @@ body.on-light .tb-brand { color: #999; }
         <div class="label-text">Como é</div>
         <p class="sans-body">Um detetive que consegue ligar pistas que ninguém mais vê, um empreendedor que enxerga tendências além das planilhas ou um professor que sente quando um aluno está com problemas emocionais.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- 6b. NI (Core Power) -->
+  <div class="slide slide-quad">
+    <div class="quad-accent-bar" style="background:var(--ni)"></div>
+    <div class="en">
+      <div class="quad-tag" style="color:var(--ni)">Quadrant 1 &middot; Natural Intelligence</div>
+      <div class="quad-block">
+        <div class="label-text">Core Power</div>
+        <p class="sans-body">Humans excel at reading subtle social cues, reframing complex problems, and using empathy to navigate ambiguity, things AI still struggles to match.</p>
+      </div>
+    </div>
+    <div class="pt">
+      <div class="quad-tag" style="color:var(--ni)">Quadrante 1 &middot; Inteligência Natural</div>
       <div class="quad-block">
         <div class="label-text">Ponto forte</div>
         <p class="sans-body">Pessoas são ótimas em ler sinais sociais sutis, reformular problemas complicados e usar empatia para lidar com situações incertas, habilidades que a IA ainda não domina.</p>
@@ -583,7 +671,7 @@ body.on-light .tb-brand { color: #999; }
     </div>
   </div>
 
-  <!-- 8. NS -->
+  <!-- 8. NS (Definition + Vibe) -->
   <div class="slide slide-quad">
     <div class="quad-accent-bar" style="background:var(--ns)"></div>
     <div class="en">
@@ -597,10 +685,6 @@ body.on-light .tb-brand { color: #999; }
         <div class="label-text">The Vibe</div>
         <p class="sans-body">An executive team ignoring red flags because "We've always done it this way." Or employees terrified to speak up about a disastrous pilot project because they don't want to rock the boat.</p>
       </div>
-      <div class="quad-block">
-        <div class="label-text">Core Pitfall</div>
-        <p class="sans-body">Stubbornness, overconfidence, and fear. When these come together, well-intentioned humans spiral into flawed judgments, often embedding those mistakes into corporate culture and technology.</p>
-      </div>
     </div>
     <div class="pt">
       <div class="quad-tag" style="color:var(--ns)">Quadrante 2</div>
@@ -613,6 +697,21 @@ body.on-light .tb-brand { color: #999; }
         <div class="label-text">Como é</div>
         <p class="sans-body">Uma diretoria ignorando sinais de alerta porque "sempre foi assim". Ou funcionários com medo de questionar um projeto que está afundando, só para não "causar atrito".</p>
       </div>
+    </div>
+  </div>
+
+  <!-- 8b. NS (Core Pitfall) -->
+  <div class="slide slide-quad">
+    <div class="quad-accent-bar" style="background:var(--ns)"></div>
+    <div class="en">
+      <div class="quad-tag" style="color:var(--ns)">Quadrant 2 &middot; Natural Stupidity</div>
+      <div class="quad-block">
+        <div class="label-text">Core Pitfall</div>
+        <p class="sans-body">Stubbornness, overconfidence, and fear. When these come together, well-intentioned humans spiral into flawed judgments, often embedding those mistakes into corporate culture and technology.</p>
+      </div>
+    </div>
+    <div class="pt">
+      <div class="quad-tag" style="color:var(--ns)">Quadrante 2 &middot; Estupidez Natural</div>
       <div class="quad-block">
         <div class="label-text">Armadilha</div>
         <p class="sans-body">Teimosia, excesso de confiança e medo. Essa mistura leva pessoas bem-intencionadas a fazer julgamentos ruins, e muitas vezes esses erros ainda acabam virando parte da cultura ou da tecnologia da empresa.</p>
@@ -635,7 +734,7 @@ body.on-light .tb-brand { color: #999; }
     </div>
   </div>
 
-  <!-- 10. AI -->
+  <!-- 10. AI (Definition + Vibe) -->
   <div class="slide slide-quad">
     <div class="quad-accent-bar" style="background:var(--ai)"></div>
     <div class="en">
@@ -649,10 +748,6 @@ body.on-light .tb-brand { color: #999; }
         <div class="label-text">The Vibe</div>
         <p class="sans-body">AI can scan millions of medical images faster than a swarm of doctors, forecast supply-chain disruptions, or even compose music that mimics a certain composer's style.</p>
       </div>
-      <div class="quad-block">
-        <div class="label-text">Core Opportunity</div>
-        <p class="sans-body">Unmatched speed, consistency, and scalability, if guided correctly. AI frees us from grunt work and can open new frontiers in research, product design, and problem-solving.</p>
-      </div>
     </div>
     <div class="pt">
       <div class="quad-tag" style="color:var(--ai)">Quadrante 3</div>
@@ -665,6 +760,21 @@ body.on-light .tb-brand { color: #999; }
         <div class="label-text">Como é</div>
         <p class="sans-body">A IA pode analisar milhões de exames médicos mais rápido que um exército de médicos, prever problemas na cadeia de suprimentos ou até compor música no estilo de um compositor famoso.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- 10b. AI (Core Opportunity) -->
+  <div class="slide slide-quad">
+    <div class="quad-accent-bar" style="background:var(--ai)"></div>
+    <div class="en">
+      <div class="quad-tag" style="color:var(--ai)">Quadrant 3 &middot; Artificial Intelligence</div>
+      <div class="quad-block">
+        <div class="label-text">Core Opportunity</div>
+        <p class="sans-body">Unmatched speed, consistency, and scalability, if guided correctly. AI frees us from grunt work and can open new frontiers in research, product design, and problem-solving.</p>
+      </div>
+    </div>
+    <div class="pt">
+      <div class="quad-tag" style="color:var(--ai)">Quadrante 3 &middot; Inteligência Artificial</div>
       <div class="quad-block">
         <div class="label-text">Oportunidade</div>
         <p class="sans-body">Velocidade, consistência e escalabilidade, quando bem direcionada. A IA nos livra de tarefas repetitivas e pode abrir caminhos para inovações em pesquisa, desenvolvimento de produtos e solução de problemas.</p>
@@ -672,7 +782,7 @@ body.on-light .tb-brand { color: #999; }
     </div>
   </div>
 
-  <!-- 11. AS -->
+  <!-- 11. AS (Definition + Hallucination) -->
   <div class="slide slide-quad">
     <div class="quad-accent-bar" style="background:var(--as)"></div>
     <div class="en">
@@ -686,10 +796,6 @@ body.on-light .tb-brand { color: #999; }
         <div class="label-text">Hallucination Factor</div>
         <p class="sans-body">Large-scale text models might fabricate answers when faced with incomplete or contradictory inputs. They may sound authoritative, but they're basically making it up as they go.</p>
       </div>
-      <div class="quad-block">
-        <div class="label-text">Core Risk</div>
-        <p class="sans-body">AI can scale mistakes at warp speed. A small glitch or bias in your dataset can snowball into global fiascos once your system hits prime time.</p>
-      </div>
     </div>
     <div class="pt">
       <div class="quad-tag" style="color:var(--as)">Quadrante 4</div>
@@ -702,6 +808,21 @@ body.on-light .tb-brand { color: #999; }
         <div class="label-text">Alucinação</div>
         <p class="sans-body">Modelos de texto em grande escala podem "inventar" respostas quando os dados são incompletos ou contraditórios. Soam confiantes, mas estão basicamente chutando.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- 11b. AS (Core Risk) -->
+  <div class="slide slide-quad">
+    <div class="quad-accent-bar" style="background:var(--as)"></div>
+    <div class="en">
+      <div class="quad-tag" style="color:var(--as)">Quadrant 4 &middot; Artificial Stupidity</div>
+      <div class="quad-block">
+        <div class="label-text">Core Risk</div>
+        <p class="sans-body">AI can scale mistakes at warp speed. A small glitch or bias in your dataset can snowball into global fiascos once your system hits prime time.</p>
+      </div>
+    </div>
+    <div class="pt">
+      <div class="quad-tag" style="color:var(--as)">Quadrante 4 &middot; Estupidez Artificial</div>
       <div class="quad-block">
         <div class="label-text">Risco</div>
         <p class="sans-body">A IA pode espalhar erros na velocidade da luz. Um pequeno viés ou falha no conjunto de dados pode gerar um desastre global quando o sistema começa a rodar pra valer.</p>
@@ -755,18 +876,28 @@ body.on-light .tb-brand { color: #999; }
     </div>
   </div>
 
-  <!-- 15. LESSON 3 -->
+  <!-- 15. LESSON 3a -->
   <div class="slide slide-lesson">
     <div class="lesson-num-big">3</div>
     <div class="en">
       <h4 class="lesson-title">Merge Human Judgement with Machine Precision</h4>
       <p class="sans-body">AI can process enormous amounts of data but may lack the context and intuition that only human insight provides. Just like the RAG technique, which blends previously learned knowledge with active consultation of reliable sources, integrating human judgment with automated analyses leads to more robust and secure decisions.</p>
-      <p class="sans-body" style="margin-top:14px;">In critical decisions, allow experts to review and interpret the alerts and insights generated by algorithms, much like RAG ensures the AI "assistant" accesses the most current and accurate information.</p>
     </div>
     <div class="pt">
       <h4 class="lesson-title">Junte Julgamento Humano e Precisão da Máquina</h4>
       <p class="sans-body">A IA tem a capacidade de processar enormes volumes de dados, mas pode carecer do contexto e da intuição que somente o olhar humano oferece. Assim como a técnica RAG combina o conhecimento previamente aprendido com a consulta ativa a fontes confiáveis, integrar o julgamento humano com as análises automatizadas resulta em decisões mais sólidas e seguras.</p>
-      <p class="sans-body" style="margin-top:14px;">Em decisões críticas, permita que especialistas revisem e interpretem os alertas e insights gerados pelos algoritmos, tal como o RAG assegura que o sistema tenha acesso às informações mais atuais e precisas.</p>
+    </div>
+  </div>
+
+  <!-- 15b. LESSON 3b -->
+  <div class="slide slide-lesson">
+    <div class="en">
+      <h4 class="lesson-title" style="color:var(--muted);font-size:clamp(16px,4vw,20px);margin-bottom:20px;">Lesson 3 &middot; Merge Human Judgement with Machine Precision</h4>
+      <p class="sans-body">In critical decisions, allow experts to review and interpret the alerts and insights generated by algorithms, much like RAG ensures the AI "assistant" accesses the most current and accurate information.</p>
+    </div>
+    <div class="pt">
+      <h4 class="lesson-title" style="color:var(--muted);font-size:clamp(16px,4vw,20px);margin-bottom:20px;">Lição 3 &middot; Junte Julgamento Humano e Precisão da Máquina</h4>
+      <p class="sans-body">Em decisões críticas, permita que especialistas revisem e interpretem os alertas e insights gerados pelos algoritmos, tal como o RAG assegura que o sistema tenha acesso às informações mais atuais e precisas.</p>
     </div>
   </div>
 
@@ -854,41 +985,57 @@ body.on-light .tb-brand { color: #999; }
     </div>
   </div>
 
-  <!-- 21. PRACTICAL RECS 1 -->
+  <!-- 21. PRACTICAL RECS 1a -->
   <div class="slide">
     <div class="en">
       <div class="eyebrow">Practical Recommendations</div>
       <div class="label-text" style="font-size:16px;margin-bottom:10px;">How Much We Listen Is How Much We Learn</div>
       <p class="sans-body">Innovation rarely emerges in a vacuum. It thrives in a culture of curiosity, both about deliverables and about people's deeper purposes, concerns, and circumstances. When you listen openly, you expose blind spots and spark ideas that data alone can't reveal.</p>
-      <div class="rule-line"></div>
-      <div class="label-text" style="font-size:16px;margin-bottom:10px;">The Conversations Are the Work</div>
-      <p class="sans-body">If your team isn't excellent at timely, results-oriented conversations, they're primed to be outpaced by AI. Machines excel at tasks, but humans excel at shared inquiry. Regularly invest in building skills, asking better questions, giving clearer feedback, to keep the organization's collective intelligence ahead of automated solutions.</p>
     </div>
     <div class="pt">
       <div class="eyebrow">Recomendações Práticas</div>
       <div class="label-text" style="font-size:16px;margin-bottom:10px;">Quanto Mais Ouvimos, Mais Aprendemos</div>
       <p class="sans-body">A inovação dificilmente nasce num vácuo. Ela se desenvolve numa cultura de curiosidade, tanto em relação aos entregáveis quanto aos propósitos, preocupações e contextos das pessoas. Ao ouvir de forma aberta, você identifica pontos cegos e acende ideias que só dados não conseguem revelar.</p>
-      <div class="rule-line"></div>
+    </div>
+  </div>
+
+  <!-- 21b. PRACTICAL RECS 1b -->
+  <div class="slide">
+    <div class="en">
+      <div class="eyebrow">Practical Recommendations</div>
+      <div class="label-text" style="font-size:16px;margin-bottom:10px;">The Conversations Are the Work</div>
+      <p class="sans-body">If your team isn't excellent at timely, results-oriented conversations, they're primed to be outpaced by AI. Machines excel at tasks, but humans excel at shared inquiry. Regularly invest in building skills, asking better questions, giving clearer feedback, to keep the organization's collective intelligence ahead of automated solutions.</p>
+    </div>
+    <div class="pt">
+      <div class="eyebrow">Recomendações Práticas</div>
       <div class="label-text" style="font-size:16px;margin-bottom:10px;">As Conversas São o Trabalho</div>
       <p class="sans-body">Se a sua equipe não domina conversas focadas em alinhamento, ação e resultados, ela corre o risco de ser superada pela IA. Máquinas são ótimas em executar tarefas, mas nós, humanos, somos insubstituíveis no diálogo. Invista continuamente no aprimoramento de habilidades para manter a inteligência coletiva da organização à frente das soluções automatizadas.</p>
     </div>
   </div>
 
-  <!-- 22. PRACTICAL RECS 2 -->
+  <!-- 22a. PRACTICAL RECS 2a -->
   <div class="slide">
     <div class="en">
       <div class="eyebrow">Practical Recommendations</div>
       <div class="label-text" style="font-size:16px;margin-bottom:10px;">Accountability Means Commitment, Not Compliance</div>
       <p class="sans-body">True accountability is built on commitment. People who merely comply do the minimum. Those who commit bring fresh thinking and deliver surprising, high-value results. Align on shared goals so that each individual's responsibilities feel purposeful, not dictated.</p>
-      <div class="rule-line"></div>
-      <div class="label-text" style="font-size:16px;margin-bottom:10px;">No Progress Without Appreciation</div>
-      <p class="sans-body">We all improve more through our strengths than our weaknesses. Recognize each person's authentic contribution, beyond surface-level compliments, and you elevate morale, engagement, and performance. This sense of appreciation feeds a supportive atmosphere where individuals feel free to test ideas and refine them quickly.</p>
     </div>
     <div class="pt">
       <div class="eyebrow">Recomendações Práticas</div>
       <div class="label-text" style="font-size:16px;margin-bottom:10px;">Accountability Significa Comprometimento, Não Só Conformidade</div>
       <p class="sans-body">O verdadeiro accountability é baseado em comprometimento. Quem age pela conformidade faz o mínimo. Já quem se compromete extrapola os resultados básicos. Alinhe objetivos comuns para que cada pessoa veja suas responsabilidades como algo significativo, e não apenas imposto.</p>
-      <div class="rule-line"></div>
+    </div>
+  </div>
+
+  <!-- 22b. PRACTICAL RECS 2b -->
+  <div class="slide">
+    <div class="en">
+      <div class="eyebrow">Practical Recommendations</div>
+      <div class="label-text" style="font-size:16px;margin-bottom:10px;">No Progress Without Appreciation</div>
+      <p class="sans-body">We all improve more through our strengths than our weaknesses. Recognize each person's authentic contribution, beyond surface-level compliments, and you elevate morale, engagement, and performance. This sense of appreciation feeds a supportive atmosphere where individuals feel free to test ideas and refine them quickly.</p>
+    </div>
+    <div class="pt">
+      <div class="eyebrow">Recomendações Práticas</div>
       <div class="label-text" style="font-size:16px;margin-bottom:10px;">Não Existe Fator Humano Sem Reconhecimento</div>
       <p class="sans-body">Todos nós crescemos mais a partir de nossas forças do que de nossas fraquezas. Ao reconhecer a contribuição autêntica de cada um, em vez de elogios superficiais, você eleva moral, engajamento e desempenho. Esse tipo de apreciação cria um clima favorável, onde todos se sentem livres para testar ideias e aperfeiçoá-las de forma rápida.</p>
     </div>
@@ -963,13 +1110,6 @@ body.on-light .tb-brand { color: #999; }
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
 </div>
-
-<button id="btn-share" title="Share" onclick="shareArticle()">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-  </svg>
-</button>
 
 <script>
 const slides   = document.querySelectorAll('.slide');
