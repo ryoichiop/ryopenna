@@ -1068,8 +1068,7 @@ window.shareBook=function(){
 };
 
 // === INIT ===
-const saved=parseInt(localStorage.getItem('prompt-page')||'0');
-if(saved>0&&saved<TOTAL){pages[0].classList.remove('active');current=saved}
+// Always start on the cover page (page 0)
 pages[current].classList.add('active');
 updateUI();
 })();
