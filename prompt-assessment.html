@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JD05CR09T4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-JD05CR09T4');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Qual é o seu estilo de prompt? | Ryo Penna</title>
+<meta name="description" content="Todo prompt revela um padrão. Descubra o seu estilo de prompt em 8 cenários reais.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Qual é o seu estilo de prompt?">
+<meta property="og:description" content="Todo prompt revela um padrão. Este assessment revela o seu.">
+<meta property="og:url" content="https://ryopenna.com/prompt-assessment">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Qual é o seu estilo de prompt?">
+<meta name="twitter:description" content="Todo prompt revela um padrão. Este assessment revela o seu.">
+<link rel="canonical" href="https://ryopenna.com/prompt-assessment">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Azeret+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Azeret+Mono:wght@300;400&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#fff;--bg2:#f8f8fa;--border:#e8e8ed;--border-light:#f0f0f3;--accent:#2dd4bf;--accent-glow:rgba(45,212,191,0.25);--accent-subtle:rgba(45,212,191,0.08);--ink:#191c24;--ink2:#6e6e73;--ink3:#aeaeb2;--radius:14px;--radius-btn:10px;--radius-badge:6px;--ease:cubic-bezier(.16,1,.3,1)}
+  html,body{background:var(--bg);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
+  .root{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px 40px}
+  .wrap{width:100%;max-width:540px}
+  .lang-btn{position:fixed;top:16px;right:20px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-badge);padding:6px 12px;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;z-index:101;transition:all .3s var(--ease)}
+  .lang-btn:hover{color:var(--ink);border-color:var(--ink3)}
+  .site-footer{margin-top:56px;text-align:center}
+  .site-footer a{font-family:'Sora',sans-serif;font-size:13px;font-weight:600;letter-spacing:-0.03em;color:var(--ink3);text-decoration:none;transition:color .2s}
+  .site-footer a:hover{color:var(--ink)}
+  .intro-wrap{display:flex;flex-direction:column;gap:0}
+  .intro-title{font-family:'Sora',sans-serif;font-size:clamp(36px,8vw,56px);font-weight:700;line-height:1.04;letter-spacing:-0.04em;color:var(--ink);margin-bottom:32px;white-space:pre-line}
+  .intro-lines{margin-bottom:48px}
+  .intro-line{font-size:17px;font-weight:300;line-height:1.8;color:var(--ink2)}
+  .btn-start{background:none;color:var(--ink);font-family:'Sora',sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.02em;padding:0;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:gap .3s var(--ease)}
+  .btn-start:hover{gap:14px}
+  .btn-start-arrow{display:inline-block;width:32px;height:32px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease)}
+  .btn-start:hover .btn-start-arrow{transform:translateX(2px)}
+  .q-counter{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:24px}
+  .q-situation-wrap{padding-left:20px;border-left:2px solid var(--border);margin-bottom:32px}
+  .q-situation{font-size:17px;font-weight:400;line-height:1.7;color:var(--ink);font-style:italic}
+  .q-prompt{font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:18px;letter-spacing:-0.03em}
+  .options{display:flex;flex-direction:column;gap:10px}
+  .option-card{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:18px 22px;cursor:pointer;text-align:left;transition:all .3s var(--ease);position:relative}
+  .option-card:hover{border-color:var(--ink3);background:var(--bg2)}
+  .option-card:active{transform:scale(.99)}
+  .option-card.chosen{border-color:var(--accent);background:var(--accent-subtle)}
+  .option-card.faded{opacity:.18;pointer-events:none;transform:scale(.98)}
+  .option-card.locked{pointer-events:none}
+  .opt-text{font-size:15px;font-weight:400;color:var(--ink);line-height:1.55}
+  .opt-badge{position:absolute;top:10px;right:14px;font-family:'Azeret Mono',monospace;font-size:9px;font-weight:400;letter-spacing:1px;padding:2px 8px;border-radius:var(--radius-badge);background:var(--accent-subtle);color:var(--accent)}
+  .slide-enter{animation:slideIn .4s var(--ease) forwards}
+  @keyframes slideIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .res-hero-name{font-family:'Sora',sans-serif;font-size:clamp(52px,12vw,80px);font-weight:700;letter-spacing:-0.04em;line-height:1;margin-bottom:6px}
+  .res-hero-label{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:48px}
+  .res-headline-wrap{display:flex;gap:20px;align-items:stretch;margin-bottom:18px}
+  .res-accent-bar{width:3px;border-radius:2px;flex-shrink:0}
+  .res-headline{font-family:'Sora',sans-serif;font-size:clamp(22px,4.2vw,32px);font-weight:600;line-height:1.2;letter-spacing:-0.03em;color:var(--ink);white-space:pre-line}
+  .res-desc{font-size:16px;font-weight:300;line-height:1.75;color:var(--ink2);padding-left:23px}
+  .section-label{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+  .divider-line{width:100%;height:1px;background:var(--border);margin:40px 0}
+  .space-lg{height:48px}
+  .space-xl{height:64px}
+  .trait-text{font-size:15px;font-weight:400;line-height:1.7;color:var(--ink)}
+  .rank-list{display:flex;flex-direction:column;gap:2px;margin-top:4px}
+  .rank-item{border-radius:var(--radius-btn);padding:14px 16px;cursor:pointer;transition:all .3s var(--ease);border:1px solid transparent}
+  .rank-item:hover{background:var(--bg2)}
+  .rank-header{display:flex;align-items:center;gap:14px}
+  .rank-num{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .rank-info{flex:1;min-width:0}
+  .rank-name{font-family:'Sora',sans-serif;font-size:14px;font-weight:600;letter-spacing:-0.02em}
+  .rank-tagline{font-size:12px;font-weight:300;color:var(--ink2);margin-top:2px}
+  .rank-chevron{color:var(--ink3);transition:transform .25s var(--ease);display:inline-flex;align-items:center;flex-shrink:0}
+  .rank-chevron.open{transform:rotate(180deg)}
+  .rank-expand{padding:8px 16px 8px 56px;animation:expandIn .3s var(--ease) forwards}
+  @keyframes expandIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+  .rank-expand-text{font-size:13px;font-weight:300;line-height:1.75;color:var(--ink2)}
+  .rank-expand-chapter{font-family:'Azeret Mono',monospace;font-size:9px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;margin-top:10px}
+  .blindspot-wrap{padding-left:20px;position:relative}
+  .blindspot-bar{position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:2px}
+  .blindspot-text{font-size:15px;font-weight:300;line-height:1.8;color:var(--ink2)}
+  .blindspot-text strong{font-weight:500;color:var(--ink)}
+  .prompt-wrap{padding-left:20px;border-left:2px solid var(--border)}
+  .prompt-text{font-size:15px;font-weight:400;line-height:1.7;color:var(--ink);font-style:italic}
+  .book-section{padding-top:48px;margin-top:48px;border-top:1px solid var(--border)}
+  .book-teaser-label{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  .book-title{font-family:'Sora',sans-serif;font-size:24px;font-weight:600;letter-spacing:-0.03em;color:var(--ink);margin-bottom:12px}
+  .book-line{font-size:15px;font-weight:300;line-height:1.7;color:var(--ink2);margin-bottom:28px;max-width:420px}
+  .btn-book{background:var(--accent);color:#0e1117;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border:none;border-radius:var(--radius-btn);cursor:pointer;box-shadow:0 0 20px var(--accent-glow);transition:transform .3s var(--ease);text-decoration:none;display:inline-block}
+  .btn-book:hover{transform:scale(1.02)}
+  .share-wrap{margin-top:48px}
+  .share-phrase{font-size:15px;font-weight:400;line-height:1.6;color:var(--ink);padding:20px 24px;background:var(--bg2);border:1px solid var(--border-light);border-radius:var(--radius);cursor:pointer;transition:all .2s var(--ease);position:relative;user-select:all}
+  .share-phrase:hover{border-color:var(--ink3)}
+  .share-phrase:active{transform:scale(.99)}
+  .share-hint{font-family:'Azeret Mono',monospace;font-size:9px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-top:8px;transition:color .2s}
+  .share-hint.copied{color:var(--accent)}
+  .btn-restart{background:none;border:none;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;margin-top:32px;padding:0;transition:color .2s}
+  .btn-restart:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const { useState, useCallback, useMemo, createElement: h } = React;
+
+const SCENARIOS_PT = [
+  { id: 0, situation: "Um colega te manda uma mensagem: \"Preciso que voc\u00ea revise esse documento at\u00e9 sexta. \u00c9 importante.\"", options: [
+    { dim: "intencao", text: "Perguntar o que ele quer que saia dessa revis\u00e3o" },
+    { dim: "contexto", text: "Perguntar para quem \u00e9 o documento e em que contexto vai ser usado" },
+    { dim: "restricao", text: "Combinar o que conta como \"revis\u00e3o feita\": coment\u00e1rios, reescrita, parecer?" },
+    { dim: "abertura", text: "Perguntar \"o que te preocupa nesse documento?\"" },
+  ]},
+  { id: 1, situation: "Algu\u00e9m do time diz: \"Acho que a gente devia repensar esse projeto.\"", options: [
+    { dim: "intencao", text: "Perguntar o que exatamente essa pessoa quer que aconte\u00e7a" },
+    { dim: "contexto", text: "Perguntar o que ela est\u00e1 vendo que gerou essa conclus\u00e3o" },
+    { dim: "restricao", text: "Delimitar: repensar o escopo, o prazo, a abordagem ou o projeto inteiro?" },
+    { dim: "abertura", text: "Perguntar \"o que voc\u00ea mudaria se a decis\u00e3o fosse s\u00f3 sua?\"" },
+  ]},
+  { id: 2, situation: "Voc\u00ea precisa pedir a algu\u00e9m uma apresenta\u00e7\u00e3o sobre os resultados do trimestre.", options: [
+    { dim: "intencao", text: "Dizer qual decis\u00e3o precisa ser tomada depois dessa apresenta\u00e7\u00e3o" },
+    { dim: "contexto", text: "Explicar o que a audi\u00eancia j\u00e1 sabe, o que n\u00e3o sabe e o que est\u00e1 preocupando" },
+    { dim: "restricao", text: "Definir quantos slides, quanto tempo e quais m\u00e9tricas n\u00e3o podem faltar" },
+    { dim: "abertura", text: "Perguntar para a pessoa o que ela acha que a audi\u00eancia precisa ouvir" },
+  ]},
+  { id: 3, situation: "Um amigo te liga e diz: \"Estou pensando em pedir demiss\u00e3o. O que voc\u00ea acha?\"", options: [
+    { dim: "intencao", text: "Perguntar o que ele espera que mude na vida dele se sair" },
+    { dim: "contexto", text: "Perguntar o que est\u00e1 acontecendo no trabalho e na vida dele agora" },
+    { dim: "restricao", text: "Ajudar a mapear o que precisa estar resolvido antes de decidir" },
+    { dim: "abertura", text: "Perguntar \"o que voc\u00ea faria se soubesse que vai dar certo?\"" },
+  ]},
+  { id: 4, situation: "Voc\u00ea escreve um prompt para uma IA: \"Me ajuda a escrever um e-mail importante.\"", options: [
+    { dim: "intencao", text: "Dizer exatamente o que quer que o destinat\u00e1rio fa\u00e7a depois de ler" },
+    { dim: "contexto", text: "Explicar quem \u00e9 o destinat\u00e1rio, qual \u00e9 a rela\u00e7\u00e3o e o que j\u00e1 aconteceu" },
+    { dim: "restricao", text: "Definir tom, tamanho e o que n\u00e3o pode aparecer" },
+    { dim: "abertura", text: "Perguntar \u00e0 IA \"qual seria a melhor abordagem para essa situa\u00e7\u00e3o?\"" },
+  ]},
+  { id: 5, situation: "Num jantar, algu\u00e9m pergunta \"Como foi seu dia?\" e voc\u00ea quer uma conversa de verdade.", options: [
+    { dim: "intencao", text: "Saber primeiro o que voc\u00ea quer que saia dessa conversa" },
+    { dim: "contexto", text: "Dar um contexto concreto que abra caminho para o outro se conectar" },
+    { dim: "restricao", text: "Escolher um momento espec\u00edfico do dia em vez de responder no geral" },
+    { dim: "abertura", text: "Devolver com \"o que aconteceu hoje que te surpreendeu?\"" },
+  ]},
+  { id: 6, situation: "Duas pessoas discordam sobre como seguir. As duas te pedem para arbitrar.", options: [
+    { dim: "intencao", text: "Perguntar a cada um o que est\u00e1 tentando proteger com a posi\u00e7\u00e3o dele" },
+    { dim: "contexto", text: "Garantir que os dois est\u00e3o trabalhando com a mesma informa\u00e7\u00e3o" },
+    { dim: "restricao", text: "Definir os crit\u00e9rios que uma boa solu\u00e7\u00e3o precisa atender antes de escolher" },
+    { dim: "abertura", text: "Perguntar \"existe uma terceira op\u00e7\u00e3o que ningu\u00e9m considerou?\"" },
+  ]},
+  { id: 7, situation: "Voc\u00ea precisa convencer algu\u00e9m de algo importante. A pessoa n\u00e3o est\u00e1 convencida.", options: [
+    { dim: "intencao", text: "Ter clareza sobre o que voc\u00ea realmente precisa que a pessoa fa\u00e7a ou pense" },
+    { dim: "contexto", text: "Entender o que a pessoa est\u00e1 levando em conta que voc\u00ea talvez n\u00e3o esteja" },
+    { dim: "restricao", text: "Reduzir o pedido ao m\u00ednimo essencial para descobrir onde est\u00e1 a resist\u00eancia" },
+    { dim: "abertura", text: "Parar de argumentar e perguntar \"o que te faria considerar isso?\"" },
+  ]},
+];
+
+const SCENARIOS_EN = [
+  { id: 0, situation: "A colleague messages you: \"I need you to review this document by Friday. It's important.\"", options: [
+    { dim: "intencao", text: "Ask what they want to get out of the review" },
+    { dim: "contexto", text: "Ask who the document is for and in what context it will be used" },
+    { dim: "restricao", text: "Agree on what counts as \"review done\": comments, rewrite, assessment?" },
+    { dim: "abertura", text: "Ask \"what concerns you about this document?\"" },
+  ]},
+  { id: 1, situation: "Someone on the team says: \"I think we should rethink this project.\"", options: [
+    { dim: "intencao", text: "Ask what exactly this person wants to happen" },
+    { dim: "contexto", text: "Ask what they're seeing that led to this conclusion" },
+    { dim: "restricao", text: "Narrow it down: rethink the scope, the timeline, the approach, or the whole project?" },
+    { dim: "abertura", text: "Ask \"what would you change if the decision were yours alone?\"" },
+  ]},
+  { id: 2, situation: "You need to ask someone for a presentation on quarterly results.", options: [
+    { dim: "intencao", text: "Say what decision needs to be made after the presentation" },
+    { dim: "contexto", text: "Explain what the audience already knows, doesn't know, and is worried about" },
+    { dim: "restricao", text: "Define how many slides, how much time, and which metrics must be included" },
+    { dim: "abertura", text: "Ask the person what they think the audience needs to hear" },
+  ]},
+  { id: 3, situation: "A friend calls and says: \"I'm thinking about quitting my job. What do you think?\"", options: [
+    { dim: "intencao", text: "Ask what they expect to change in their life if they leave" },
+    { dim: "contexto", text: "Ask what's happening at work and in their life right now" },
+    { dim: "restricao", text: "Help map what needs to be resolved before making that decision" },
+    { dim: "abertura", text: "Ask \"what would you do if you knew it would work out?\"" },
+  ]},
+  { id: 4, situation: "You type a prompt to an AI: \"Help me write an important email.\"", options: [
+    { dim: "intencao", text: "Say exactly what you want the recipient to do after reading" },
+    { dim: "contexto", text: "Explain who the recipient is, your relationship, and what's already happened" },
+    { dim: "restricao", text: "Define tone, length, and what shouldn't appear" },
+    { dim: "abertura", text: "Ask the AI \"what would be the best approach for this situation?\"" },
+  ]},
+  { id: 5, situation: "At dinner, someone asks \"How was your day?\" and you want a real conversation.", options: [
+    { dim: "intencao", text: "Know first what you want to come out of this conversation" },
+    { dim: "contexto", text: "Give a concrete detail that opens a path for the other person to connect" },
+    { dim: "restricao", text: "Pick one specific moment from the day instead of answering broadly" },
+    { dim: "abertura", text: "Respond with \"what happened today that surprised you?\"" },
+  ]},
+  { id: 6, situation: "Two people disagree on how to move forward. Both ask you to arbitrate.", options: [
+    { dim: "intencao", text: "Ask each one what they're trying to protect with their position" },
+    { dim: "contexto", text: "Make sure both are working with the same information" },
+    { dim: "restricao", text: "Define the criteria a good solution must meet before choosing" },
+    { dim: "abertura", text: "Ask \"is there a third option nobody has considered?\"" },
+  ]},
+  { id: 7, situation: "You need to convince someone of something important. They're not convinced.", options: [
+    { dim: "intencao", text: "Get clear on what you really need this person to do or think" },
+    { dim: "contexto", text: "Understand what the person is taking into account that you might not be" },
+    { dim: "restricao", text: "Reduce the ask to its bare minimum to find where the resistance is" },
+    { dim: "abertura", text: "Stop arguing and ask \"what would make you consider this?\"" },
+  ]},
+];
+
+const DIM_COLORS = { intencao: "#E8622A", contexto: "#2D7DD2", restricao: "#7C3AED", abertura: "#059669" };
+const DIM_META = {
+  pt: { intencao: { name: "Inten\u00e7\u00e3o", tagline: "Clareza antes de falar" }, contexto: { name: "Contexto", tagline: "Tradu\u00e7\u00e3o antes de pedir" }, restricao: { name: "Restri\u00e7\u00e3o", tagline: "Bordas que direcionam" }, abertura: { name: "Abertura", tagline: "Espa\u00e7o para a verdade" } },
+  en: { intencao: { name: "Intent", tagline: "Clarity before speaking" }, contexto: { name: "Context", tagline: "Translation before asking" }, restricao: { name: "Constraint", tagline: "Boundaries that direct" }, abertura: { name: "Openness", tagline: "Space for truth" } },
+};
+const AXIS_EXPLAIN = {
+  pt: { intencao: "Inten\u00e7\u00e3o \u00e9 saber o que voc\u00ea quer antes de abrir a boca. N\u00e3o o tema da conversa, mas o resultado concreto que precisa sair dela. Quando a inten\u00e7\u00e3o \u00e9 clara, as pessoas sabem para onde est\u00e3o indo. Quando n\u00e3o \u00e9, cada uma preenche o vazio com o que imagina ser o objetivo.", contexto: "Contexto \u00e9 a informa\u00e7\u00e3o que o outro precisa para te ajudar. N\u00e3o toda a informa\u00e7\u00e3o que voc\u00ea tem, mas a que faz diferen\u00e7a para quem vai agir. \"O que era \u00f3bvio para mim e n\u00e3o era para ela?\" \u00e9 a pergunta que faltou.", restricao: "Restri\u00e7\u00e3o s\u00e3o os limites que direcionam. Quanto mais limites, melhor o resultado. Porque limites reduzem o espa\u00e7o de possibilidades. E quando o espa\u00e7o \u00e9 menor, \u00e9 mais f\u00e1cil encontrar algo bom dentro dele.", abertura: "Abertura \u00e9 a forma da pergunta. N\u00e3o abertura total, que gera dispers\u00e3o. Abertura calibrada. \"Como foi seu dia?\" \u00e9 aberta demais. \"O que aconteceu hoje que te surpreendeu?\" tem a mesma inten\u00e7\u00e3o, mas d\u00e1 foco." },
+  en: { intencao: "Intent is knowing what you want before you open your mouth. Not the topic, but the concrete outcome. When intent is clear, people know where they're going. When it isn't, each person fills the void with what they imagine the objective to be.", contexto: "Context is the information the other person needs to help you. Not all the information you have, but the part that matters. \"What was obvious to me and not to them?\" is the question that was missing.", restricao: "Constraint is the limits that direct. The more limits you give, the better the result. Because limits reduce the space of possibilities. And when the space is smaller, it's easier to find something good within it.", abertura: "Openness is the shape of the question. Not total openness, which creates dispersion. Calibrated openness. \"How was your day?\" is too open. \"What happened today that surprised you?\" has the same intent but gives focus." },
+};
+const BLINDSPOT_PROBLEMS = {
+  pt: { intencao: "reuni\u00f5es que terminam sem que fique claro o que cada pessoa vai fazer, conversas que giram sem chegar a lugar nenhum, e a sensa\u00e7\u00e3o de que \"estamos desalinhados\" sem entender por qu\u00ea", contexto: "pessoas que entregam algo diferente do esperado, retrabalho frequente, e a frustra\u00e7\u00e3o de \"mas eu j\u00e1 expliquei isso\" quando na verdade explicou o qu\u00ea, mas n\u00e3o o porqu\u00ea", restricao: "entregas que voltam fora do esperado, discuss\u00f5es que n\u00e3o viram decis\u00e3o, e a dificuldade de avaliar se algo ficou bom quando ningu\u00e9m combinou antes o que \"bom\" significa", abertura: "concord\u00e2ncia na hora e resist\u00eancia depois, pessoas que dizem \"sim\" quando pensam \"n\u00e3o\", e obje\u00e7\u00f5es importantes que aparecem tarde demais para mudar o rumo" },
+  en: { intencao: "meetings that end without clarity on what each person will do, conversations that spin without landing, and the feeling of \"we're misaligned\" without understanding why", contexto: "people delivering something different from expected, frequent rework, and the frustration of \"but I already explained this\" when you explained the what but not the why", restricao: "deliverables that come back off-target, discussions that don't become decisions, and the difficulty of evaluating quality when nobody agreed upfront on what \"good\" means", abertura: "agreement in the moment and resistance afterward, people who say \"yes\" when they think \"no\", and important objections that surface too late to change course" },
+};
+const PRACTICE_PROMPTS = {
+  pt: { intencao: "Antes da sua pr\u00f3xima conversa importante, escreva em uma frase o que precisa sair dali. N\u00e3o o tema. O resultado. Depois pergunte a si mesmo: as outras pessoas sabem disso?", contexto: "Na pr\u00f3xima vez que pedir algo a algu\u00e9m, antes de falar, pergunte: \"o que \u00e9 \u00f3bvio para mim mas provavelmente n\u00e3o \u00e9 \u00f3bvio para quem vai executar?\" Ofere\u00e7a essa resposta como contexto.", restricao: "Na pr\u00f3xima vez que delegar algo, em vez de s\u00f3 dizer o que precisa, defina tamb\u00e9m: como seria um resultado excelente? E como seria um resultado que n\u00e3o serve? Essas duas bordas mudam tudo.", abertura: "Na pr\u00f3xima reuni\u00e3o, troque \"Entendeu?\" por \"O que ainda n\u00e3o est\u00e1 claro?\" e observe o que muda. A primeira pergunta fecha o espa\u00e7o. A segunda abre." },
+  en: { intencao: "Before your next important conversation, write in one sentence what needs to come out of it. Not the topic. The outcome. Then ask yourself: do the others know this?", contexto: "Next time you ask someone for something, ask yourself first: \"what is obvious to me but probably not obvious to the person executing?\" Offer that answer as context.", restricao: "Next time you delegate, also define: what would an excellent result look like? And an unacceptable one? Those two boundaries change everything.", abertura: "In your next meeting, replace \"Got it?\" with \"What's still unclear?\" and notice what changes. The first closes the space. The second opens it." },
+};
+const PROFILES = {
+  pt: {
+    intencao: { title: "Inten\u00e7\u00e3o", headline: "Voc\u00ea sabe o que quer\nantes de abrir a boca.", desc: "Seu primeiro instinto \u00e9 ter clareza sobre o resultado. Antes de pedir, perguntar ou instruir, voc\u00ea define internamente o que precisa acontecer. Isso te d\u00e1 velocidade e dire\u00e7\u00e3o.", body: "Corta ambiguidade. Acelera decis\u00f5es. As pessoas ao seu redor sabem para onde est\u00e3o indo. O risco: pode atropelar o processo, confundir clareza pr\u00f3pria com alinhamento dos outros, e n\u00e3o ouvir o que n\u00e3o esperava ouvir." },
+    contexto: { title: "Contexto", headline: "Voc\u00ea traduz o mundo\npara quem precisa agir.", desc: "Seu primeiro instinto \u00e9 garantir que o outro tenha o panorama completo. Antes de pedir algo, voc\u00ea explica o porqu\u00ea, o cen\u00e1rio, o que j\u00e1 foi tentado.", body: "Reduz retrabalho. As pessoas executam com intelig\u00eancia, n\u00e3o com obedi\u00eancia. Transforma instru\u00e7\u00f5es em entendimento. O risco: pode dar informa\u00e7\u00e3o demais, demorar para chegar ao ponto, e confundir compreens\u00e3o com a\u00e7\u00e3o." },
+    restricao: { title: "Restri\u00e7\u00e3o", headline: "Voc\u00ea d\u00e1 estrutura\npara o outro brilhar.", desc: "Seu primeiro instinto \u00e9 definir bordas. Crit\u00e9rios, formatos, limites. N\u00e3o por rigidez, mas porque voc\u00ea entende que espa\u00e7o sem mapa n\u00e3o \u00e9 liberdade.", body: "Entregas precisas. Reuni\u00f5es com resultado. As pessoas sabem exatamente o que \u00e9 sucesso antes de come\u00e7ar. O risco: pode sufocar criatividade, gerar obedi\u00eancia em vez de protagonismo, e confundir processo com progresso." },
+    abertura: { title: "Abertura", headline: "Voc\u00ea faz as perguntas\nque mudam a conversa.", desc: "Seu primeiro instinto \u00e9 criar espa\u00e7o. Em vez de responder, voc\u00ea pergunta. Em vez de direcionar, voc\u00ea convida. Isso desbloqueia o que n\u00e3o est\u00e1 sendo dito.", body: "Desbloqueia equipes travadas. Traz \u00e0 tona resist\u00eancias antes que virem sabotagem. Gera confian\u00e7a profunda. O risco: pode abrir espa\u00e7o demais, perder foco, e confundir escuta com aus\u00eancia de dire\u00e7\u00e3o." },
+    equilibrado: { title: "Vers\u00e1til", headline: "Voc\u00ea adapta o estilo\nao que o momento pede.", desc: "Voc\u00ea n\u00e3o tem um eixo dominante. Transita entre os quatro com naturalidade. Isso \u00e9 raro.", body: "Flexibilidade genu\u00edna. Leitura de contexto afiada. Capacidade de ajustar a comunica\u00e7\u00e3o em tempo real. O risco: sem uma assinatura clara, as pessoas ao redor podem n\u00e3o saber o que esperar. Versatilidade sem inten\u00e7\u00e3o vira inconsist\u00eancia." },
+  },
+  en: {
+    intencao: { title: "Intent", headline: "You know what you want\nbefore you open your mouth.", desc: "Your first instinct is clarity about the outcome. Before asking, questioning, or instructing, you define internally what needs to happen.", body: "Cuts ambiguity. Accelerates decisions. People around you know where they're going. The risk: can steamroll the process, mistake personal clarity for group alignment, and miss what you didn't expect to hear." },
+    contexto: { title: "Context", headline: "You translate the world\nfor those who need to act.", desc: "Your first instinct is to make sure the other person has the full picture. Before asking, you explain the why, the scenario, what's been tried.", body: "Reduces rework. People execute with intelligence, not obedience. The risk: can give too much information, take too long to get to the point, and mistake comprehension for action." },
+    restricao: { title: "Constraint", headline: "You give structure\nso others can shine.", desc: "Your first instinct is to define boundaries. Criteria, formats, limits. Not out of rigidity, but because space without a map isn't freedom.", body: "Precise deliverables. Meetings with outcomes. People know what success looks like before they start. The risk: can stifle creativity, generate compliance instead of ownership, and mistake process for progress." },
+    abertura: { title: "Openness", headline: "You ask the questions\nthat change the conversation.", desc: "Your first instinct is to create space. Instead of answering, you ask. Instead of directing, you invite. This unlocks what's not being said.", body: "Unlocks stuck teams. Surfaces resistance early. Builds deep trust. The risk: can open too much space, lose focus, and mistake listening for lack of direction." },
+    equilibrado: { title: "Versatile", headline: "You adapt your style\nto what the moment needs.", desc: "You don't have a dominant axis. You move between the four naturally. This is rare.", body: "Genuine flexibility. Sharp contextual reading. Ability to adjust in real time. The risk: without a clear signature, people around you may not know what to expect. Versatility without intent becomes inconsistency." },
+  },
+};
+const UI = {
+  pt: { introLine1: "Todo prompt revela um padr\u00e3o.", introLine2: "Este assessment revela o seu.", start: "Come\u00e7ar", q1: "O que \u00e9 mais natural para voc\u00ea?", q2: "E o que voc\u00ea quase escolheu?", of: "de", tagResult: "SEU ESTILO DE PROMPT", sectionMap: "DO MAIS NATURAL AO MENOS", sectionBlindspot: "ONDE SEUS PROBLEMAS MORAM", sectionPrompt: "UM PROMPT PARA PRATICAR", langToggle: "EN", chapterRef: "CAP\u00cdTULO {n}", blindspotIntro: "O eixo que voc\u00ea menos ativou foi ", blindspotMid: ". \u00c9 quase certo que os problemas que mais te frustram vivem exatamente a\u00ed: ", bookTeaser: "ESSES 4 EIXOS S\u00c3O A BASE DO LIVRO", bookTitle: "A Arte do Prompt", bookLine: "25 cap\u00edtulos curtos sobre a habilidade humana mais usada e menos ensinada: fazer boas perguntas. Para m\u00e1quinas, pessoas e si mesmo.", bookCta: "Saiba mais", sharePhrase: "Meu estilo de prompt \u00e9 {style}. Qual \u00e9 o seu?", copied: "Copiado", restart: "Refazer", title: "Qual \u00e9 o seu\nestilo de prompt?" },
+  en: { introLine1: "Every prompt reveals a pattern.", introLine2: "This assessment reveals yours.", start: "Start", q1: "What's most natural for you?", q2: "And what did you almost choose?", of: "of", tagResult: "YOUR PROMPT STYLE", sectionMap: "FROM MOST TO LEAST NATURAL", sectionBlindspot: "WHERE YOUR PROBLEMS LIVE", sectionPrompt: "A PROMPT TO PRACTICE", langToggle: "PT", chapterRef: "CHAPTER {n}", blindspotIntro: "The axis you activated least was ", blindspotMid: ". The problems that frustrate you most almost certainly live right there: ", bookTeaser: "THESE 4 AXES ARE THE FOUNDATION OF THE BOOK", bookTitle: "The Art of Prompting", bookLine: "25 short chapters on the most used and least taught human skill: asking good questions. For machines, people, and yourself.", bookCta: "Learn more", sharePhrase: "My prompt style is {style}. What's yours?", copied: "Copied", restart: "Retake", title: "What's your\nprompt style?" },
+};
+
+const CHAPTER_MAP = { intencao: 5, contexto: 6, restricao: 7, abertura: 8 };
+
+function seededShuffle(arr, seed) {
+  var a = arr.slice();
+  var s = seed;
+  for (var i = a.length - 1; i > 0; i--) {
+    s = (s * 16807) % 2147483647;
+    var j = s % (i + 1);
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+  }
+  return a;
+}
+
+function computeResult(answers) {
+  var scores = { intencao: 0, contexto: 0, restricao: 0, abertura: 0 };
+  var fc = { intencao: 0, contexto: 0, restricao: 0, abertura: 0 };
+  Object.values(answers).forEach(function(v) {
+    if (v.first) { scores[v.first] += 2; fc[v.first]++; }
+    if (v.second) scores[v.second] += 1;
+  });
+  var max = Math.max.apply(null, Object.values(scores));
+  var total = Object.values(scores).reduce(function(a, b) { return a + b; }, 0);
+  var isBalanced = max <= (total / 4) * 1.35;
+  var sorted = Object.entries(scores).sort(function(a, b) { return b[1] - a[1]; });
+  var dominant = isBalanced ? "equilibrado" : sorted[0][0];
+  return { scores: scores, firstCounts: fc, dominant: dominant, leastNatural: sorted.map(function(d) { return d[0]; }).pop(), ranking: sorted.map(function(d) { return d[0]; }), isBalanced: isBalanced };
+}
+
+function Footer() {
+  return h("div", { className: "site-footer" },
+    h("a", { href: "https://ryopenna.com", target: "_blank", rel: "noopener noreferrer" }, "ryopenna.com")
+  );
+}
+
+function PromptStyleAssessment() {
+  var _lang = useState(function() {
+    try { var n = navigator.language || navigator.userLanguage || ""; return n.toLowerCase().startsWith("pt") ? "pt" : "en"; } catch(e) { return "pt"; }
+  });
+  var lang = _lang[0], setLang = _lang[1];
+  var _screen = useState("intro"); var screen = _screen[0], setScreen = _screen[1];
+  var _scenarioIdx = useState(0); var scenarioIdx = _scenarioIdx[0], setScenarioIdx = _scenarioIdx[1];
+  var _phase = useState(1); var phase = _phase[0], setPhase = _phase[1];
+  var _firstPick = useState(null); var firstPick = _firstPick[0], setFirstPick = _firstPick[1];
+  var _answers = useState({}); var answers = _answers[0], setAnswers = _answers[1];
+  var _result = useState(null); var result = _result[0], setResult = _result[1];
+  var _slideKey = useState(0); var slideKey = _slideKey[0], setSlideKey = _slideKey[1];
+  var _expandedRank = useState(null); var expandedRank = _expandedRank[0], setExpandedRank = _expandedRank[1];
+  var _copied = useState(false); var copied = _copied[0], setCopied = _copied[1];
+
+  var scenarios = lang === "en" ? SCENARIOS_EN : SCENARIOS_PT;
+  var ui = UI[lang]; var profiles = PROFILES[lang]; var dimMeta = DIM_META[lang]; var axisExplain = AXIS_EXPLAIN[lang];
+
+  var _seed = useState(function() { return Math.floor(Math.random() * 100000); });
+  var shuffleSeed = _seed[0];
+  var shuffled = useMemo(function() {
+    return scenarios.map(function(s, i) {
+      return Object.assign({}, s, { options: seededShuffle(s.options, shuffleSeed + i) });
+    });
+  }, [scenarios, shuffleSeed]);
+
+  var pick1 = useCallback(function(dim, idx) { setFirstPick({ dim: dim, idx: idx }); setPhase(2); }, []);
+  var pick2 = useCallback(function(dim) {
+    var next = Object.assign({}, answers);
+    next[scenarioIdx] = { first: firstPick.dim, second: dim };
+    setAnswers(next);
+    setTimeout(function() {
+      if (scenarioIdx < scenarios.length - 1) {
+        setScenarioIdx(function(i) { return i + 1; });
+        setPhase(1); setFirstPick(null);
+        setSlideKey(function(k) { return k + 1; });
+      } else {
+        setResult(computeResult(next));
+        setScreen("result");
+        setSlideKey(function(k) { return k + 1; });
+      }
+    }, 280);
+  }, [answers, firstPick, scenarioIdx, scenarios.length]);
+
+  var restart = function() {
+    setScreen("intro"); setScenarioIdx(0); setPhase(1); setFirstPick(null);
+    setAnswers({}); setResult(null); setExpandedRank(null); setCopied(false);
+    setSlideKey(function(k) { return k + 1; });
+  };
+
+  var handleCopy = function() {
+    if (!result) return;
+    var phrase = ui.sharePhrase.replace("{style}", profiles[result.dominant].title) + "\n" + window.location.href;
+    navigator.clipboard.writeText(phrase).then(function() { setCopied(true); setTimeout(function() { setCopied(false); }, 2000); }).catch(function() {});
+  };
+
+  var sc = shuffled[scenarioIdx];
+
+  return h(React.Fragment, null,
+    h("div", { className: "root" },
+      h("button", { className: "lang-btn", onClick: function() { setLang(function(l) { return l === "pt" ? "en" : "pt"; }); } }, ui.langToggle),
+      h("div", { className: "wrap" },
+
+        screen === "intro" && h("div", { className: "slide-enter", key: "i-" + slideKey },
+          h("div", { className: "intro-wrap" },
+            h("h1", { className: "intro-title" }, ui.title),
+            h("div", { className: "intro-lines" },
+              h("p", { className: "intro-line" }, ui.introLine1),
+              h("p", { className: "intro-line" }, ui.introLine2)
+            ),
+            h("button", { className: "btn-start", onClick: function() { setScreen("scenario"); setSlideKey(function(k) { return k + 1; }); } },
+              h("span", { className: "btn-start-arrow" },
+                h("svg", { width: 14, height: 14, viewBox: "0 0 14 14", fill: "none" },
+                  h("path", { d: "M3 7h8M8 4l3 3-3 3", stroke: "#fff", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" })
+                )
+              ),
+              ui.start
+            )
+          ),
+          h(Footer)
+        ),
+
+        screen === "scenario" && sc && h("div", { className: "slide-enter", key: "s-" + slideKey + "-" + phase },
+          h("div", { className: "q-counter" }, (scenarioIdx + 1) + " " + ui.of + " " + scenarios.length),
+          h("div", { className: "q-situation-wrap" },
+            h("p", { className: "q-situation" }, sc.situation)
+          ),
+          h("div", { className: "q-prompt" }, phase === 1 ? ui.q1 : ui.q2),
+          h("div", { className: "options" },
+            sc.options.map(function(o, idx) {
+              var is1 = firstPick && firstPick.idx === idx;
+              var chosen = is1 && phase === 2;
+              var faded = phase === 2 && is1;
+              return h("button", {
+                key: idx,
+                className: "option-card" + (chosen ? " chosen locked" : "") + (faded ? " faded" : ""),
+                onClick: function() { if (faded) return; phase === 1 ? pick1(o.dim, idx) : pick2(o.dim); }
+              },
+                h("span", { className: "opt-text" }, o.text),
+                chosen && h("span", { className: "opt-badge" }, "1\u00b0")
+              );
+            })
+          ),
+          h(Footer)
+        ),
+
+        screen === "result" && result && (function() {
+          var p = profiles[result.dominant];
+          var dc = result.isBalanced ? "#2dd4bf" : DIM_COLORS[result.dominant];
+          var least = result.leastNatural;
+          var leastColor = DIM_COLORS[least];
+          var shareText = ui.sharePhrase.replace("{style}", p.title);
+
+          return h("div", { className: "slide-enter", key: "r-" + slideKey },
+            h("div", { className: "res-hero-name", style: { color: dc } }, p.title),
+            h("div", { className: "res-hero-label" }, ui.tagResult),
+            h("div", { className: "res-headline-wrap" },
+              h("div", { className: "res-accent-bar", style: { background: dc } }),
+              h("h2", { className: "res-headline" }, p.headline)
+            ),
+            h("p", { className: "res-desc" }, p.desc),
+            h("div", { className: "space-xl" }),
+            h("p", { className: "trait-text" }, p.body),
+            h("div", { className: "space-xl" }),
+            h("div", { className: "section-label" }, ui.sectionMap),
+            h("div", { className: "rank-list" },
+              result.ranking.map(function(dim, i) {
+                var c = DIM_COLORS[dim];
+                var m = dimMeta[dim];
+                var isOpen = expandedRank === dim;
+                return h("div", { key: dim },
+                  h("div", { className: "rank-item", style: { borderColor: isOpen ? c + "40" : "transparent" }, onClick: function() { setExpandedRank(isOpen ? null : dim); } },
+                    h("div", { className: "rank-header" },
+                      h("div", { className: "rank-num", style: { background: c + "12", color: c } }, i + 1),
+                      h("div", { className: "rank-info" },
+                        h("div", { className: "rank-name", style: { color: i === 0 ? c : "var(--ink)" } }, m.name),
+                        h("div", { className: "rank-tagline" }, m.tagline)
+                      ),
+                      h("span", { className: "rank-chevron" + (isOpen ? " open" : "") },
+                        h("svg", { width: 12, height: 12, viewBox: "0 0 12 12", fill: "none" },
+                          h("path", { d: "M2 4l4 4 4-4", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" })
+                        )
+                      )
+                    )
+                  ),
+                  isOpen && h("div", { className: "rank-expand" },
+                    h("p", { className: "rank-expand-text" }, axisExplain[dim]),
+                    h("p", { className: "rank-expand-chapter", style: { color: c } }, ui.chapterRef.replace("{n}", CHAPTER_MAP[dim]))
+                  )
+                );
+              })
+            ),
+            h("div", { className: "space-xl" }),
+            h("div", { className: "blindspot-wrap" },
+              h("div", { className: "blindspot-bar", style: { background: leastColor } }),
+              h("p", { className: "blindspot-text" },
+                ui.blindspotIntro,
+                h("strong", { style: { color: leastColor } }, dimMeta[least].name),
+                ui.blindspotMid,
+                h("strong", null, BLINDSPOT_PROBLEMS[lang][least]),
+                "."
+              )
+            ),
+            h("div", { className: "space-lg", style: { height: 40 } }),
+            h("div", { className: "prompt-wrap" },
+              h("p", { className: "prompt-text" }, PRACTICE_PROMPTS[lang][least])
+            ),
+            h("div", { className: "book-section" },
+              h("div", { className: "book-teaser-label" }, ui.bookTeaser),
+              h("div", { className: "book-title" }, ui.bookTitle),
+              h("p", { className: "book-line" }, ui.bookLine),
+              h("a", { href: "https://ryopenna.com/prompt-landing", target: "_blank", rel: "noopener noreferrer", className: "btn-book" }, ui.bookCta)
+            ),
+            h("div", { className: "share-wrap" },
+              h("div", { className: "share-phrase", onClick: handleCopy }, shareText),
+              h("p", { className: "share-hint" + (copied ? " copied" : "") }, copied ? ui.copied : "\u2191 tap to copy")
+            ),
+            h("button", { className: "btn-restart", onClick: restart }, ui.restart),
+            h(Footer)
+          );
+        })()
+      )
+    )
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(h(PromptStyleAssessment));
+</script>
+</body>
+</html>
