@@ -87,17 +87,18 @@
   .prompt-wrap{padding-left:20px;border-left:2px solid var(--border)}
   .prompt-text{font-size:15px;font-weight:400;line-height:1.7;color:var(--ink);font-style:italic}
   .book-section{padding-top:48px;margin-top:48px;border-top:1px solid var(--border)}
+  .book-content{display:flex;gap:28px;align-items:flex-start}
+  .book-cover{width:120px;flex-shrink:0;border-radius:4px;box-shadow:0 8px 30px rgba(0,0,0,.12);overflow:hidden}
+  .book-cover img{width:100%;display:block}
+  .book-text{flex:1;min-width:0}
   .book-teaser-label{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
   .book-title{font-family:'Sora',sans-serif;font-size:24px;font-weight:600;letter-spacing:-0.03em;color:var(--ink);margin-bottom:12px}
   .book-line{font-size:15px;font-weight:300;line-height:1.7;color:var(--ink2);margin-bottom:28px;max-width:420px}
   .btn-book{background:var(--accent);color:#0e1117;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border:none;border-radius:var(--radius-btn);cursor:pointer;box-shadow:0 0 20px var(--accent-glow);transition:transform .3s var(--ease);text-decoration:none;display:inline-block}
   .btn-book:hover{transform:scale(1.02)}
-  .share-wrap{margin-top:48px}
-  .share-phrase{font-size:15px;font-weight:400;line-height:1.6;color:var(--ink);padding:20px 24px;background:var(--bg2);border:1px solid var(--border-light);border-radius:var(--radius);cursor:pointer;transition:all .2s var(--ease);position:relative;user-select:all}
-  .share-phrase:hover{border-color:var(--ink3)}
-  .share-phrase:active{transform:scale(.99)}
-  .share-hint{font-family:'Azeret Mono',monospace;font-size:9px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-top:8px;transition:color .2s}
-  .share-hint.copied{color:var(--accent)}
+  .btn-share{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--border);border-radius:var(--radius-btn);padding:10px 20px;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;margin-top:32px;transition:all .3s var(--ease)}
+  .btn-share:hover{color:var(--ink);border-color:var(--ink3)}
+  .btn-share svg{flex-shrink:0}
   .btn-restart{background:none;border:none;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;margin-top:32px;padding:0;transition:color .2s}
   .btn-restart:hover{color:var(--ink)}
 </style>
@@ -243,8 +244,8 @@ const PROFILES = {
   },
 };
 const UI = {
-  pt: { introLine1: "Todo prompt revela um padr\u00e3o.", introLine2: "Este assessment revela o seu.", start: "Come\u00e7ar", q1: "O que \u00e9 mais natural para voc\u00ea?", q2: "E o que voc\u00ea quase escolheu?", of: "de", tagResult: "SEU ESTILO DE PROMPT", sectionMap: "DO MAIS NATURAL AO MENOS", sectionBlindspot: "ONDE SEUS PROBLEMAS MORAM", sectionPrompt: "UM PROMPT PARA PRATICAR", langToggle: "EN", chapterRef: "CAP\u00cdTULO {n}", blindspotIntro: "O eixo que voc\u00ea menos ativou foi ", blindspotMid: ". \u00c9 quase certo que os problemas que mais te frustram vivem exatamente a\u00ed: ", bookTeaser: "ESSES 4 EIXOS S\u00c3O A BASE DO LIVRO", bookTitle: "A Arte do Prompt", bookLine: "25 cap\u00edtulos curtos sobre a habilidade humana mais usada e menos ensinada: fazer boas perguntas. Para m\u00e1quinas, pessoas e si mesmo.", bookCta: "Saiba mais", sharePhrase: "Meu estilo de prompt \u00e9 {style}. Qual \u00e9 o seu?", copied: "Copiado", restart: "Refazer", title: "Qual \u00e9 o seu\nestilo de prompt?" },
-  en: { introLine1: "Every prompt reveals a pattern.", introLine2: "This assessment reveals yours.", start: "Start", q1: "What's most natural for you?", q2: "And what did you almost choose?", of: "of", tagResult: "YOUR PROMPT STYLE", sectionMap: "FROM MOST TO LEAST NATURAL", sectionBlindspot: "WHERE YOUR PROBLEMS LIVE", sectionPrompt: "A PROMPT TO PRACTICE", langToggle: "PT", chapterRef: "CHAPTER {n}", blindspotIntro: "The axis you activated least was ", blindspotMid: ". The problems that frustrate you most almost certainly live right there: ", bookTeaser: "THESE 4 AXES ARE THE FOUNDATION OF THE BOOK", bookTitle: "The Art of Prompting", bookLine: "25 short chapters on the most used and least taught human skill: asking good questions. For machines, people, and yourself.", bookCta: "Learn more", sharePhrase: "My prompt style is {style}. What's yours?", copied: "Copied", restart: "Retake", title: "What's your\nprompt style?" },
+  pt: { introLine1: "Todo prompt revela um padr\u00e3o.", introLine2: "Este assessment revela o seu.", start: "Come\u00e7ar", q1: "O que \u00e9 mais natural para voc\u00ea?", q2: "E o que voc\u00ea quase escolheu?", of: "de", tagResult: "SEU ESTILO DE PROMPT", sectionMap: "DO MAIS NATURAL AO MENOS", sectionBlindspot: "ONDE SEUS PROBLEMAS MORAM", sectionPrompt: "UM PROMPT PARA PRATICAR", langToggle: "EN", chapterRef: "CAP\u00cdTULO {n}", blindspotIntro: "O eixo que voc\u00ea menos ativou foi ", blindspotMid: ". \u00c9 quase certo que os problemas que mais te frustram vivem exatamente a\u00ed: ", bookTeaser: "ESSES 4 EIXOS S\u00c3O A BASE DO LIVRO", bookTitle: "A Arte do Prompt", bookLine: "25 cap\u00edtulos curtos sobre a habilidade humana mais usada e menos ensinada: fazer boas perguntas. Para m\u00e1quinas, pessoas e si mesmo.", bookCta: "Saiba mais", sharePhrase: "Meu estilo de prompt \u00e9 {style}. Qual \u00e9 o seu?", share: "Compartilhar", restart: "Refazer", title: "Qual \u00e9 o seu\nestilo de prompt?" },
+  en: { introLine1: "Every prompt reveals a pattern.", introLine2: "This assessment reveals yours.", start: "Start", q1: "What's most natural for you?", q2: "And what did you almost choose?", of: "of", tagResult: "YOUR PROMPT STYLE", sectionMap: "FROM MOST TO LEAST NATURAL", sectionBlindspot: "WHERE YOUR PROBLEMS LIVE", sectionPrompt: "A PROMPT TO PRACTICE", langToggle: "PT", chapterRef: "CHAPTER {n}", blindspotIntro: "The axis you activated least was ", blindspotMid: ". The problems that frustrate you most almost certainly live right there: ", bookTeaser: "THESE 4 AXES ARE THE FOUNDATION OF THE BOOK", bookTitle: "The Art of Prompting", bookLine: "25 short chapters on the most used and least taught human skill: asking good questions. For machines, people, and yourself.", bookCta: "Learn more", sharePhrase: "My prompt style is {style}. What's yours?", share: "Share", restart: "Retake", title: "What's your\nprompt style?" },
 };
 
 const CHAPTER_MAP = { intencao: 5, contexto: 6, restricao: 7, abertura: 8 };
@@ -294,7 +295,6 @@ function PromptStyleAssessment() {
   var _result = useState(null); var result = _result[0], setResult = _result[1];
   var _slideKey = useState(0); var slideKey = _slideKey[0], setSlideKey = _slideKey[1];
   var _expandedRank = useState(null); var expandedRank = _expandedRank[0], setExpandedRank = _expandedRank[1];
-  var _copied = useState(false); var copied = _copied[0], setCopied = _copied[1];
 
   var scenarios = lang === "en" ? SCENARIOS_EN : SCENARIOS_PT;
   var ui = UI[lang]; var profiles = PROFILES[lang]; var dimMeta = DIM_META[lang]; var axisExplain = AXIS_EXPLAIN[lang];
@@ -327,14 +327,19 @@ function PromptStyleAssessment() {
 
   var restart = function() {
     setScreen("intro"); setScenarioIdx(0); setPhase(1); setFirstPick(null);
-    setAnswers({}); setResult(null); setExpandedRank(null); setCopied(false);
+    setAnswers({}); setResult(null); setExpandedRank(null);
     setSlideKey(function(k) { return k + 1; });
   };
 
-  var handleCopy = function() {
+  var handleShare = function() {
     if (!result) return;
-    var phrase = ui.sharePhrase.replace("{style}", profiles[result.dominant].title) + "\n" + window.location.href;
-    navigator.clipboard.writeText(phrase).then(function() { setCopied(true); setTimeout(function() { setCopied(false); }, 2000); }).catch(function() {});
+    var phrase = ui.sharePhrase.replace("{style}", profiles[result.dominant].title);
+    var url = window.location.href;
+    if (navigator.share) {
+      navigator.share({ text: phrase, url: url }).catch(function() {});
+    } else {
+      navigator.clipboard.writeText(phrase + "\n" + url).catch(function() {});
+    }
   };
 
   var sc = shuffled[scenarioIdx];
@@ -392,8 +397,6 @@ function PromptStyleAssessment() {
           var dc = result.isBalanced ? "#2dd4bf" : DIM_COLORS[result.dominant];
           var least = result.leastNatural;
           var leastColor = DIM_COLORS[least];
-          var shareText = ui.sharePhrase.replace("{style}", p.title);
-
           return h("div", { className: "slide-enter", key: "r-" + slideKey },
             h("div", { className: "res-hero-name", style: { color: dc } }, p.title),
             h("div", { className: "res-hero-label" }, ui.tagResult),
@@ -450,13 +453,24 @@ function PromptStyleAssessment() {
             ),
             h("div", { className: "book-section" },
               h("div", { className: "book-teaser-label" }, ui.bookTeaser),
-              h("div", { className: "book-title" }, ui.bookTitle),
-              h("p", { className: "book-line" }, ui.bookLine),
-              h("a", { href: "https://ryopenna.com/prompt-landing", target: "_blank", rel: "noopener noreferrer", className: "btn-book" }, ui.bookCta)
+              h("div", { className: "book-content" },
+                h("div", { className: "book-cover" },
+                  h("img", { src: lang === "pt" ? "PROMPTcapanova.png" : "PROMPTcapanovaEN.png", alt: ui.bookTitle })
+                ),
+                h("div", { className: "book-text" },
+                  h("div", { className: "book-title" }, ui.bookTitle),
+                  h("p", { className: "book-line" }, ui.bookLine),
+                  h("a", { href: "https://ryopenna.com/prompt-landing", target: "_blank", rel: "noopener noreferrer", className: "btn-book" }, ui.bookCta)
+                )
+              )
             ),
-            h("div", { className: "share-wrap" },
-              h("div", { className: "share-phrase", onClick: handleCopy }, shareText),
-              h("p", { className: "share-hint" + (copied ? " copied" : "") }, copied ? ui.copied : "\u2191 tap to copy")
+            h("button", { className: "btn-share", onClick: handleShare },
+              h("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" },
+                h("path", { d: "M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" }),
+                h("polyline", { points: "16 6 12 2 8 6" }),
+                h("line", { x1: 12, y1: 2, x2: 12, y2: 15 })
+              ),
+              ui.share
             ),
             h("button", { className: "btn-restart", onClick: restart }, ui.restart),
             h(Footer)
