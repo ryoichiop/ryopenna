@@ -40,6 +40,17 @@
   .btn-start:hover{gap:14px}
   .btn-start-arrow{display:inline-block;width:32px;height:32px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease)}
   .btn-start:hover .btn-start-arrow{transform:translateX(2px)}
+  .collect-wrap{display:flex;flex-direction:column;gap:0}
+  .collect-title{font-family:'Sora',sans-serif;font-size:clamp(24px,5vw,32px);font-weight:600;line-height:1.2;letter-spacing:-0.03em;color:var(--ink);margin-bottom:8px}
+  .collect-sub{font-size:15px;font-weight:300;line-height:1.6;color:var(--ink2);margin-bottom:36px}
+  .collect-form{display:flex;flex-direction:column;gap:12px}
+  .collect-input{padding:16px 18px;border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--ink);background:var(--bg);outline:none;transition:border-color .3s var(--ease)}
+  .collect-input::placeholder{color:var(--ink3)}
+  .collect-input:focus{border-color:var(--ink3)}
+  .collect-input.error{border-color:#e54d2e}
+  .btn-continue{background:var(--ink);color:#fff;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;letter-spacing:-0.02em;padding:16px 28px;border:none;border-radius:var(--radius);cursor:pointer;margin-top:8px;transition:opacity .3s var(--ease)}
+  .btn-continue:hover{opacity:.85}
+  .btn-continue:disabled{opacity:.35;cursor:default}
   .q-counter{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:24px}
   .q-situation-wrap{padding-left:20px;border-left:2px solid var(--border);margin-bottom:32px}
   .q-situation{font-size:17px;font-weight:400;line-height:1.7;color:var(--ink);font-style:italic}
@@ -96,10 +107,11 @@
   .book-line{font-size:15px;font-weight:300;line-height:1.7;color:var(--ink2);margin-bottom:28px;max-width:420px}
   .btn-book{background:var(--accent);color:#0e1117;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;padding:12px 24px;border:none;border-radius:var(--radius-btn);cursor:pointer;box-shadow:0 0 20px var(--accent-glow);transition:transform .3s var(--ease);text-decoration:none;display:inline-block}
   .btn-book:hover{transform:scale(1.02)}
-  .btn-share{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--border);border-radius:var(--radius-btn);padding:10px 20px;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;margin-top:32px;transition:all .3s var(--ease)}
+  .actions-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:24px;margin-top:48px}
+  .btn-share{display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--border);border-radius:var(--radius-btn);padding:10px 20px;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;transition:all .3s var(--ease)}
   .btn-share:hover{color:var(--ink);border-color:var(--ink3)}
   .btn-share svg{flex-shrink:0}
-  .btn-restart{background:none;border:none;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;margin-top:32px;padding:0;transition:color .2s}
+  .btn-restart{background:none;border:none;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;padding:0;transition:color .2s}
   .btn-restart:hover{color:var(--ink)}
 </style>
 </head>
@@ -244,11 +256,12 @@ const PROFILES = {
   },
 };
 const UI = {
-  pt: { introLine1: "Todo prompt revela um padr\u00e3o.", introLine2: "Este assessment revela o seu.", start: "Come\u00e7ar", q1: "O que \u00e9 mais natural para voc\u00ea?", q2: "E o que voc\u00ea quase escolheu?", of: "de", tagResult: "SEU ESTILO DE PROMPT", sectionMap: "DO MAIS NATURAL AO MENOS", sectionBlindspot: "ONDE SEUS PROBLEMAS MORAM", sectionPrompt: "UM PROMPT PARA PRATICAR", langToggle: "EN", chapterRef: "CAP\u00cdTULO {n}", blindspotIntro: "O eixo que voc\u00ea menos ativou foi ", blindspotMid: ". \u00c9 quase certo que os problemas que mais te frustram vivem exatamente a\u00ed: ", bookTeaser: "ESSES 4 EIXOS S\u00c3O A BASE DO LIVRO", bookTitle: "A Arte do Prompt", bookLine: "25 cap\u00edtulos curtos sobre a habilidade humana mais usada e menos ensinada: fazer boas perguntas. Para m\u00e1quinas, pessoas e si mesmo.", bookCta: "Saiba mais", sharePhrase: "Meu estilo de prompt \u00e9 {style}. Qual \u00e9 o seu?", share: "Compartilhar", restart: "Refazer", title: "Qual \u00e9 o seu\nestilo de prompt?" },
-  en: { introLine1: "Every prompt reveals a pattern.", introLine2: "This assessment reveals yours.", start: "Start", q1: "What's most natural for you?", q2: "And what did you almost choose?", of: "of", tagResult: "YOUR PROMPT STYLE", sectionMap: "FROM MOST TO LEAST NATURAL", sectionBlindspot: "WHERE YOUR PROBLEMS LIVE", sectionPrompt: "A PROMPT TO PRACTICE", langToggle: "PT", chapterRef: "CHAPTER {n}", blindspotIntro: "The axis you activated least was ", blindspotMid: ". The problems that frustrate you most almost certainly live right there: ", bookTeaser: "THESE 4 AXES ARE THE FOUNDATION OF THE BOOK", bookTitle: "The Art of Prompting", bookLine: "25 short chapters on the most used and least taught human skill: asking good questions. For machines, people, and yourself.", bookCta: "Learn more", sharePhrase: "My prompt style is {style}. What's yours?", share: "Share", restart: "Retake", title: "What's your\nprompt style?" },
+  pt: { introLine1: "Todo prompt revela um padr\u00e3o.", introLine2: "Este assessment revela o seu.", start: "Come\u00e7ar", collectTitle: "Seu resultado est\u00e1 pronto.", collectSub: "Para ver, preencha abaixo:", namePlaceholder: "Nome completo", emailPlaceholder: "Seu melhor e-mail", companyPlaceholder: "Empresa", continueBtn: "Ver resultado", q1: "O que \u00e9 mais natural para voc\u00ea?", q2: "E o que voc\u00ea quase escolheu?", of: "de", tagResult: "SEU ESTILO DE PROMPT", sectionMap: "DO MAIS NATURAL AO MENOS", sectionBlindspot: "ONDE SEUS PROBLEMAS MORAM", sectionPrompt: "UM PROMPT PARA PRATICAR", langToggle: "EN", chapterRef: "CAP\u00cdTULO {n}", blindspotIntro: "O eixo que voc\u00ea menos ativou foi ", blindspotMid: ". \u00c9 prov\u00e1vel que os problemas que mais te frustram vivam exatamente a\u00ed: ", bookTeaser: "ESSES 4 EIXOS S\u00c3O A BASE DO LIVRO", bookTitle: "A Arte do Prompt", bookLine: "25 cap\u00edtulos curtos sobre a habilidade humana mais usada e menos ensinada: fazer boas perguntas. Para m\u00e1quinas, pessoas e si mesmo.", bookCta: "Saiba mais", sharePhrase: "Meu estilo de prompt \u00e9 {style}. Qual \u00e9 o seu?", share: "Compartilhar", restart: "Refazer", title: "Qual \u00e9 o seu\nestilo de prompt?" },
+  en: { introLine1: "Every prompt reveals a pattern.", introLine2: "This assessment reveals yours.", start: "Start", collectTitle: "Your result is ready.", collectSub: "To see it, fill in below:", namePlaceholder: "Full name", emailPlaceholder: "Your best email", companyPlaceholder: "Company", continueBtn: "See result", q1: "What's most natural for you?", q2: "And what did you almost choose?", of: "of", tagResult: "YOUR PROMPT STYLE", sectionMap: "FROM MOST TO LEAST NATURAL", sectionBlindspot: "WHERE YOUR PROBLEMS LIVE", sectionPrompt: "A PROMPT TO PRACTICE", langToggle: "PT", chapterRef: "CHAPTER {n}", blindspotIntro: "The axis you activated least was ", blindspotMid: ". The problems that frustrate you most likely live right there: ", bookTeaser: "THESE 4 AXES ARE THE FOUNDATION OF THE BOOK", bookTitle: "The Art of Prompting", bookLine: "25 short chapters on the most used and least taught human skill: asking good questions. For machines, people, and yourself.", bookCta: "Learn more", sharePhrase: "My prompt style is {style}. What's yours?", share: "Share", restart: "Retake", title: "What's your\nprompt style?" },
 };
 
 const CHAPTER_MAP = { intencao: 5, contexto: 6, restricao: 7, abertura: 8 };
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw0PCbQ04tq3eJLHHdCHslY85T09uMk6FD61uGCnWiQB9ly0MQ-Stsw1SvjpaPmBaP_/exec';
 
 function seededShuffle(arr, seed) {
   var a = arr.slice();
@@ -295,6 +308,10 @@ function PromptStyleAssessment() {
   var _result = useState(null); var result = _result[0], setResult = _result[1];
   var _slideKey = useState(0); var slideKey = _slideKey[0], setSlideKey = _slideKey[1];
   var _expandedRank = useState(null); var expandedRank = _expandedRank[0], setExpandedRank = _expandedRank[1];
+  var _userName = useState(""); var userName = _userName[0], setUserName = _userName[1];
+  var _userEmail = useState(""); var userEmail = _userEmail[0], setUserEmail = _userEmail[1];
+  var _userCompany = useState(""); var userCompany = _userCompany[0], setUserCompany = _userCompany[1];
+  var _formError = useState({}); var formError = _formError[0], setFormError = _formError[1];
 
   var scenarios = lang === "en" ? SCENARIOS_EN : SCENARIOS_PT;
   var ui = UI[lang]; var profiles = PROFILES[lang]; var dimMeta = DIM_META[lang]; var axisExplain = AXIS_EXPLAIN[lang];
@@ -318,8 +335,9 @@ function PromptStyleAssessment() {
         setPhase(1); setFirstPick(null);
         setSlideKey(function(k) { return k + 1; });
       } else {
-        setResult(computeResult(next));
-        setScreen("result");
+        var res = computeResult(next);
+        setResult(res);
+        setScreen("collect");
         setSlideKey(function(k) { return k + 1; });
       }
     }, 280);
@@ -327,9 +345,30 @@ function PromptStyleAssessment() {
 
   var restart = function() {
     setScreen("intro"); setScenarioIdx(0); setPhase(1); setFirstPick(null);
-    setAnswers({}); setResult(null); setExpandedRank(null);
+    setAnswers({}); setResult(null); setExpandedRank(null); setUserName(""); setUserEmail(""); setUserCompany(""); setFormError({});
     setSlideKey(function(k) { return k + 1; });
   };
+
+  var handleCollectSubmit = function() {
+    var errors = {};
+    if (!userName.trim()) errors.name = true;
+    if (!userEmail.trim() || !/^[^@]+@[^@]+\.[^@]+$/.test(userEmail.trim())) errors.email = true;
+    if (Object.keys(errors).length > 0) { setFormError(errors); return; }
+    setFormError({});
+    if (SCRIPT_URL) {
+      var now = new Date().toISOString();
+      fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: userName.trim(), email: userEmail.trim(), company: userCompany.trim(), source: 'assessment', lang: lang, date: now })
+      }).catch(function() {});
+      if (result) {
+        fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: userName.trim(), email: userEmail.trim(), company: userCompany.trim(), source: 'assessment-result', lang: lang, date: now, result: result.dominant === 'equilibrado' ? (lang === 'pt' ? 'Versátil' : 'Versatile') : DIM_META[lang][result.dominant].name })
+        }).catch(function() {});
+      }
+    }
+    setScreen("result"); setSlideKey(function(k) { return k + 1; });
+  };
+
 
   var handleShare = function() {
     if (!result) return;
@@ -363,6 +402,20 @@ function PromptStyleAssessment() {
                 )
               ),
               ui.start
+            )
+          ),
+          h(Footer)
+        ),
+
+        screen === "collect" && h("div", { className: "slide-enter", key: "c-" + slideKey },
+          h("div", { className: "collect-wrap" },
+            h("h2", { className: "collect-title" }, ui.collectTitle),
+            h("p", { className: "collect-sub" }, ui.collectSub),
+            h("div", { className: "collect-form" },
+              h("input", { className: "collect-input" + (formError.name ? " error" : ""), type: "text", placeholder: ui.namePlaceholder, value: userName, onChange: function(e) { setUserName(e.target.value); setFormError(function(f) { var n = Object.assign({}, f); delete n.name; return n; }); } }),
+              h("input", { className: "collect-input" + (formError.email ? " error" : ""), type: "email", placeholder: ui.emailPlaceholder, value: userEmail, onChange: function(e) { setUserEmail(e.target.value); setFormError(function(f) { var n = Object.assign({}, f); delete n.email; return n; }); } }),
+              h("input", { className: "collect-input", type: "text", placeholder: ui.companyPlaceholder, value: userCompany, onChange: function(e) { setUserCompany(e.target.value); }, onKeyDown: function(e) { if (e.key === "Enter") handleCollectSubmit(); } }),
+              h("button", { className: "btn-continue", onClick: handleCollectSubmit }, ui.continueBtn)
             )
           ),
           h(Footer)
@@ -464,15 +517,17 @@ function PromptStyleAssessment() {
                 )
               )
             ),
-            h("button", { className: "btn-share", onClick: handleShare },
-              h("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" },
-                h("path", { d: "M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" }),
-                h("polyline", { points: "16 6 12 2 8 6" }),
-                h("line", { x1: 12, y1: 2, x2: 12, y2: 15 })
+            h("div", { className: "actions-wrap" },
+              h("button", { className: "btn-share", onClick: handleShare },
+                h("svg", { width: 16, height: 16, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" },
+                  h("path", { d: "M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" }),
+                  h("polyline", { points: "16 6 12 2 8 6" }),
+                  h("line", { x1: 12, y1: 2, x2: 12, y2: 15 })
+                ),
+                ui.share
               ),
-              ui.share
+              h("button", { className: "btn-restart", onClick: restart }, ui.restart)
             ),
-            h("button", { className: "btn-restart", onClick: restart }, ui.restart),
             h(Footer)
           );
         })()
