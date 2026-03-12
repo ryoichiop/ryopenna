@@ -348,11 +348,11 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--tx);line-heig
 
 /* DUAL COVER SELECT */
 .cover-select{display:flex;align-items:center;justify-content:center;gap:24px;height:100%;padding:20px}
-.cover-option{cursor:pointer;transition:all .3s ease;position:relative;max-width:45%;display:flex;flex-direction:column;align-items:center;gap:12px}
+.cover-option{cursor:pointer;transition:all .3s ease;position:relative;max-width:45%;display:flex;flex-direction:column-reverse;align-items:center;gap:12px}
 .cover-option img{max-height:80vh;max-width:100%;object-fit:contain;border-radius:0;transition:transform .3s ease,box-shadow .3s ease}
-.cover-option:hover img{transform:scale(1.02);box-shadow:0 20px 60px rgba(255,255,255,.08)}
-.cover-label{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);transition:color .3s}
-.cover-option:hover .cover-label{color:rgba(255,255,255,.7)}
+.cover-option:hover img{transform:scale(1.02);box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.cover-label{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,0,0,.35);transition:color .3s}
+.cover-option:hover .cover-label{color:rgba(0,0,0,.6)}
 @media(max-width:600px){.cover-select{gap:12px;padding:12px}.cover-option{max-width:48%}.cover-label{font-size:8px;letter-spacing:2px}}
 /* FULL-BLEED COVER */
 .reader.on-cover{background:#ffffff;transition:background .4s}.reader{transition:background .4s}

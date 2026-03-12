@@ -3,10 +3,18 @@
 // Implantar → Gerenciar implantacoes → Editar → Nova versao → Implantar
 
 function doPost(e) {
-  var sheet = SpreadsheetApp.openById(getOrCreateSheet_()).getSheetByName('Leads');
   var data = JSON.parse(e.postData.contents);
   var timestamp = new Date().toISOString();
 
+  // Contact form: send email
+  if (data.source === 'contact') {
+    var subject = (data.name || 'Site') + (data.company ? ' (' + data.company + ')' : '') + ' via ryopenna.com';
+    var body = 'Nome: ' + (data.name || '') + '\nEmpresa: ' + (data.company || '') + '\n\nMensagem:\n' + (data.message || '');
+    MailApp.sendEmail('ryo@ryopenna.com', subject, body);
+  }
+
+  // Log to spreadsheet
+  var sheet = SpreadsheetApp.openById(getOrCreateSheet_()).getSheetByName('Leads');
   sheet.appendRow([
     timestamp,
     data.name || '',
@@ -15,7 +23,7 @@ function doPost(e) {
     data.linkedin || '',
     data.source || '',
     data.lang || '',
-    data.result || ''
+    data.result || data.message || ''
   ]);
 
   return ContentService
