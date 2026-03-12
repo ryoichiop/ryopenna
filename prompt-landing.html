@@ -34,7 +34,7 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
 .hero{min-height:100vh;display:flex;align-items:center;padding:80px 24px 60px}
 .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
 .hero-cover{display:flex;justify-content:center}
-.hero-cover img{max-height:70vh;max-width:100%;object-fit:contain;border-radius:2px;box-shadow:0 30px 80px rgba(0,0,0,.12)}
+.hero-cover img{max-height:70vh;max-width:100%;object-fit:contain}
 .hero-text{display:flex;flex-direction:column;gap:24px}
 .hero-hook{font-family:var(--serif);font-size:clamp(28px,4vw,42px);line-height:1.2;color:var(--black);font-weight:400}
 .hero-hook em{font-style:italic;color:var(--gray)}
@@ -240,8 +240,8 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
   .lang-toggle button{color:#999}
   .lang-toggle button.active{background:#e8e8e8;color:#0e0e0e}
 
-  /* Hero — book cover border so black cover doesn't merge */
-  .hero-cover img{box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.12)}
+  /* Hero — transparent mockup, no box shadow needed */
+  .hero-cover img{box-shadow:none}
   .hero-hook em{color:#bbb}
   .hero-sub{color:#ccc}
   .hero-form input{border-color:#333;background:#1a1a1a;color:#e8e8e8}
