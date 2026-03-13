@@ -1416,16 +1416,7 @@ window.BOOK_EN={"intro": {"number": "INTRODUCTION", "subtitle": "YOU ALREADY DO 
       var k = el.getAttribute('data-img');
       if(window.IMGS && window.IMGS[k]) el.src = window.IMGS[k];
     });
-    // Swap chapter 14 opener-illustration (Prompt Compass)
-    var ch14page = document.querySelector('[data-chapter="14"]');
-    if(ch14page){
-      var ch14img = ch14page.querySelector('.opener-illustration img');
-      if(ch14img){
-        if(!ch14img.getAttribute('data-pt-src')) ch14img.setAttribute('data-pt-src', ch14img.src);
-        ch14img.src = (lang === 'en') ? 'matrixEN.png' : ch14img.getAttribute('data-pt-src');
-      }
-    }
-    
+
     document.querySelectorAll('.lang-btn,.cover-lang-btn').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
