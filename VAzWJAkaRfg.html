@@ -187,8 +187,9 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--tx);line-heig
 .end-links a{display:block;font-family:var(--mono);font-size:12px;letter-spacing:1px;color:var(--ac);text-decoration:none;padding:8px 0;transition:opacity .2s}
 .end-links a:hover{opacity:.7}
 
-/* Share button */
-.share-btn{display:inline-flex;align-items:center;gap:8px;margin-top:32px;padding:14px 32px;border:1px solid var(--ac);border-radius:12px;background:none;color:var(--ac);cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;transition:all .3s}
+/* Share buttons */
+.share-buttons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:32px}
+.share-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--ac);border-radius:12px;background:none;color:var(--ac);cursor:pointer;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;text-decoration:none}
 .share-btn:hover{background:var(--ac);color:var(--bg)}
 .share-btn.shared{background:color-mix(in srgb,var(--green) 12%,transparent);border-color:var(--green);color:var(--green)}
 
@@ -689,7 +690,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--tx);line-heig
 <div class="prompt-card"><div class="prompt-card-header"><span class="prompt-num">29</span><span class="prompt-name">Prompt Diário</span></div><p class="prompt-text">Me faça uma pergunta para reflexão hoje. Deve ser uma pergunta que eu não faria a mim mesmo espontaneamente. Relacionada a [área da vida que quero desenvolver]. Só a pergunta, sem explicação.</p><div class="prompt-actions"><button class="btn-copy" onclick="copyPrompt(this)" data-prompt="Me faça uma pergunta para reflexão hoje. Deve ser uma pergunta que eu não faria a mim mesmo espontaneamente. Relacionada a [área da vida que quero desenvolver]. Só a pergunta, sem explicação."><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button></div></div>
 <div class="prompt-card"><div class="prompt-card-header"><span class="prompt-num">30</span><span class="prompt-name">Meta-Prompt</span></div><p class="prompt-text">O que eu deveria estar te perguntando sobre [tema] que eu nem sei que deveria perguntar?</p><div class="prompt-actions"><button class="btn-copy" onclick="copyPrompt(this)" data-prompt="O que eu deveria estar te perguntando sobre [tema] que eu nem sei que deveria perguntar?"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button></div></div>
 </div></div><div class="scroll-hint"><span class="scroll-hint-text">continue lendo</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg></div></div>
-<div class="page page-end"><div class="page-scroll"><div class="end-content"><p class="end-mark">&#10038;</p><p class="end-question">Qual é a próxima pergunta que você vai fazer?</p><div class="end-divider"></div><div class="share-nudge"><p class="share-nudge-question">Quem precisa ler isso?</p><button class="share-btn" id="shareBtn" onclick="shareBook()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Enviar</button></div><div class="ask-section"><h3 class="ask-title">Agora é sua vez. Faça uma pergunta ao autor.</h3><p class="ask-sub">Eu leio e respondo todas.</p><div class="ask-form" id="askForm"><div class="ask-field"><label>Sua pergunta</label><textarea id="askQuestion" placeholder="O que você quer saber?"></textarea><span class="field-error">Escreva sua pergunta</span></div><div class="ask-row"><div class="ask-field"><label>Nome</label><input type="text" id="askName" placeholder="Seu nome" autocomplete="name"><span class="field-error">Preencha seu nome</span></div><div class="ask-field"><label>E-mail</label><input type="email" id="askEmail" placeholder="seu@email.com" autocomplete="email"><span class="field-error">Informe um e-mail válido</span></div></div><div class="ask-row"><div class="ask-field"><label>Empresa <span class="opt">(opcional)</span></label><input type="text" id="askCompany" placeholder="Onde você trabalha" autocomplete="organization"></div><div class="ask-field"><label>LinkedIn <span class="opt">(opcional)</span></label><input type="url" id="askLinkedin" placeholder="linkedin.com/in/seuperfil" autocomplete="url"></div></div><button class="ask-submit" id="askSubmit" type="button">Enviar pergunta</button></div><div class="ask-confirmation" id="askConfirmation"><p class="ask-check">&#10003;</p><p>Pergunta enviada. Obrigado por ler até aqui.</p></div></div><div class="end-links"><p class="end-continue">Continue a conversa</p><a href="https://www.ryopenna.com" target="_blank">ryopenna.com</a><a href="https://www.instagram.com/ryopenna" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/ryopenna" target="_blank">LinkedIn</a><a href="https://open.spotify.com/show/escutaprimeiro" target="_blank">Podcast: Escuta Primeiro</a></div></div></div></div></div></div>
+<div class="page page-end"><div class="page-scroll"><div class="end-content"><p class="end-mark">&#10038;</p><p class="end-question">Qual é a próxima pergunta que você vai fazer?</p><div class="end-divider"></div><div class="share-nudge"><p class="share-nudge-question">Quem precisa ler isso?</p><div class="share-buttons"><a class="share-btn" id="shareEmail" href="#" onclick="shareVia('email');return false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg> E-mail</a><a class="share-btn" id="shareLinkedin" href="#" onclick="shareVia('linkedin');return false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</a><a class="share-btn" id="shareWhatsapp" href="#" onclick="shareVia('whatsapp');return false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg> WhatsApp</a><a class="share-btn" id="shareInstagram" href="#" onclick="shareVia('instagram');return false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Instagram</a></div></div><div class="ask-section"><h3 class="ask-title">Agora é sua vez. Faça uma pergunta ao autor.</h3><p class="ask-sub">Eu leio e respondo todas.</p><div class="ask-form" id="askForm"><div class="ask-field"><label>Sua pergunta</label><textarea id="askQuestion" placeholder="O que você quer saber?"></textarea><span class="field-error">Escreva sua pergunta</span></div><div class="ask-row"><div class="ask-field"><label>Nome</label><input type="text" id="askName" placeholder="Seu nome" autocomplete="name"><span class="field-error">Preencha seu nome</span></div><div class="ask-field"><label>E-mail</label><input type="email" id="askEmail" placeholder="seu@email.com" autocomplete="email"><span class="field-error">Informe um e-mail válido</span></div></div><div class="ask-row"><div class="ask-field"><label>Empresa <span class="opt">(opcional)</span></label><input type="text" id="askCompany" placeholder="Onde você trabalha" autocomplete="organization"></div><div class="ask-field"><label>LinkedIn <span class="opt">(opcional)</span></label><input type="url" id="askLinkedin" placeholder="linkedin.com/in/seuperfil" autocomplete="url"></div></div><button class="ask-submit" id="askSubmit" type="button">Enviar pergunta</button></div><div class="ask-confirmation" id="askConfirmation"><p class="ask-check">&#10003;</p><p>Pergunta enviada. Obrigado por ler até aqui.</p></div></div><div class="end-links"><p class="end-continue">Continue a conversa</p><a href="https://www.ryopenna.com" target="_blank">ryopenna.com</a><a href="https://www.instagram.com/ryopenna" target="_blank">Instagram</a><a href="https://www.linkedin.com/in/ryopenna" target="_blank">LinkedIn</a><a href="https://open.spotify.com/show/escutaprimeiro" target="_blank">Podcast: Escuta Primeiro</a></div></div></div></div></div></div>
   <footer class="reader-footer"><button class="nav-arrow" id="prevBtn" aria-label="Anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><span class="page-indicator" id="pageNum">1 / 38</span><button class="nav-arrow" id="nextBtn" aria-label="Próxima"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 6 15 12 9 18"/></svg></button></footer>
 </div>
 <div class="overlay" id="tocOverlay"></div>
@@ -1051,19 +1052,23 @@ $$('.page-chapter .page-scroll').forEach(ps=>{
 });
 
 // === SHARE ===
-window.shareBook=function(){
-  const url = window.location.href;
-  const text = 'A Arte do Prompt, por Ryo Penna';
-  if(navigator.share){
-    navigator.share({title:'PROMPT',text:text,url:url}).catch(()=>{});
-  } else {
-    navigator.clipboard.writeText(url).then(()=>{
-      const btn=document.getElementById('shareBtn');
-      btn.classList.add('shared');
-      const orig=btn.innerHTML;
-      btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Link copiado!';
-      showToast('Link copiado!');
-      setTimeout(()=>{btn.innerHTML=orig;btn.classList.remove('shared')},3000);
+window.shareVia=function(platform){
+  var url = 'https://ryopenna.com/VAzWJAkaRfg';
+  var lang = document.documentElement.lang === 'en' || document.title.indexOf('Art of') > -1 ? 'en' : 'pt';
+  var text = lang === 'en' ? 'The Art of Prompting, by Ryo Penna' : 'A Arte do Prompt, por Ryo Penna';
+  if(platform === 'email'){
+    var subject = encodeURIComponent(text);
+    var body = encodeURIComponent(text + '\n\n' + url);
+    window.open('mailto:?subject=' + subject + '&body=' + body);
+  } else if(platform === 'linkedin'){
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url), '_blank');
+  } else if(platform === 'whatsapp'){
+    window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank');
+  } else if(platform === 'instagram'){
+    navigator.clipboard.writeText(url).then(function(){
+      showToast(lang === 'en' ? 'Link copied! Paste it in your Instagram story or DM.' : 'Link copiado! Cole no seu story ou DM do Instagram.');
+    }).catch(function(){
+      showToast(lang === 'en' ? 'Copy this link: ' + url : 'Copie este link: ' + url);
     });
   }
 };
@@ -1115,18 +1120,19 @@ updateUI();
   btn.addEventListener('click', async function(){
     if(!validate()) return;
     btn.disabled = true;
-    btn.textContent = 'Enviando...';
-
+    var currentLang = document.title.indexOf('Art of') > -1 ? 'en' : 'pt';
+    btn.textContent = currentLang === 'en' ? 'Sending...' : 'Enviando...';
     const data = {
-      question: fields.question.value.trim(),
+      source: 'book-question',
       name: fields.name.value.trim(),
       email: fields.email.value.trim(),
       company: fields.company.value.trim(),
       linkedin: fields.linkedin.value.trim(),
-      date: new Date().toISOString()
+      lang: currentLang,
+      message: fields.question.value.trim()
     };
 
-    const SCRIPT_URL = '';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbziWzClIOpq1Jk8aP37d08FMbhbiKEdT3XSfGJGIQAeJlQmUxMJ57DAB5zAl_QzoHUv/exec';
 
     if(SCRIPT_URL){
       try {
@@ -1357,11 +1363,68 @@ window.BOOK_EN={"intro": {"number": "INTRODUCTION", "subtitle": "YOU ALREADY DO 
     document.querySelectorAll('.reflection-input').forEach(function(el){
       el.placeholder = (lang === 'en') ? 'Write here...' : 'Escreva aqui...';
     });
-    
+
+    // Swap end page texts
+    var endQ = document.querySelector('.end-question');
+    if(endQ) endQ.textContent = (lang === 'en') ? "What\u2019s the next question you\u2019ll ask?" : 'Qual \u00e9 a pr\u00f3xima pergunta que voc\u00ea vai fazer?';
+    var shareQ = document.querySelector('.share-nudge-question');
+    if(shareQ) shareQ.textContent = (lang === 'en') ? 'Who needs to read this?' : 'Quem precisa ler isso?';
+    var askTitle = document.querySelector('.ask-title');
+    if(askTitle) askTitle.textContent = (lang === 'en') ? 'Now it\u2019s your turn. Ask the author a question.' : 'Agora \u00e9 sua vez. Fa\u00e7a uma pergunta ao autor.';
+    var askSub = document.querySelector('.ask-sub');
+    if(askSub) askSub.textContent = (lang === 'en') ? 'I read and answer every one.' : 'Eu leio e respondo todas.';
+    var askBtn = document.getElementById('askSubmit');
+    if(askBtn && !askBtn.disabled) askBtn.textContent = (lang === 'en') ? 'Send question' : 'Enviar pergunta';
+    var endCont = document.querySelector('.end-continue');
+    if(endCont) endCont.textContent = (lang === 'en') ? 'Continue the conversation' : 'Continue a conversa';
+    // Form labels
+    var askForm = document.getElementById('askForm');
+    if(askForm){
+      var labels = askForm.querySelectorAll('label');
+      var labelsEN = ['Your question','Name','E-mail','Company','LinkedIn'];
+      var labelsPT = ['Sua pergunta','Nome','E-mail','Empresa','LinkedIn'];
+      labels.forEach(function(l,i){
+        var opt = l.querySelector('.opt');
+        if(i < labelsEN.length) l.innerHTML = (lang === 'en') ? labelsEN[i] : labelsPT[i];
+        if(opt && (i === 3 || i === 4)) l.appendChild(opt);
+      });
+      var optSpans = askForm.querySelectorAll('.opt');
+      optSpans.forEach(function(s){ s.textContent = (lang === 'en') ? '(optional)' : '(opcional)'; });
+      var qTA = document.getElementById('askQuestion');
+      if(qTA) qTA.placeholder = (lang === 'en') ? 'What do you want to know?' : 'O que voc\u00ea quer saber?';
+      var nI = document.getElementById('askName');
+      if(nI) nI.placeholder = (lang === 'en') ? 'Your name' : 'Seu nome';
+      var cI = document.getElementById('askCompany');
+      if(cI) cI.placeholder = (lang === 'en') ? 'Where do you work' : 'Onde voc\u00ea trabalha';
+      var lI = document.getElementById('askLinkedin');
+      if(lI) lI.placeholder = (lang === 'en') ? 'linkedin.com/in/yourprofile' : 'linkedin.com/in/seuperfil';
+      var errors = askForm.querySelectorAll('.field-error');
+      var errEN = ['Write your question','Enter your name','Enter a valid e-mail'];
+      var errPT = ['Escreva sua pergunta','Preencha seu nome','Informe um e-mail v\u00e1lido'];
+      errors.forEach(function(e,i){ if(i<errEN.length) e.textContent = (lang === 'en') ? errEN[i] : errPT[i]; });
+    }
+    // Confirmation message
+    var askConf = document.querySelector('.ask-confirmation p:not(.ask-check)');
+    if(askConf) askConf.textContent = (lang === 'en') ? 'Question sent. Thank you for reading this far.' : 'Pergunta enviada. Obrigado por ler at\u00e9 aqui.';
+    // Podcast link
+    var podLink = document.querySelector('.end-links a[href*="spotify"]');
+    if(podLink) podLink.textContent = (lang === 'en') ? 'Podcast: Listen First' : 'Podcast: Escuta Primeiro';
+
+    // Set image map for language-dependent images
+    window.IMGS = (lang === 'en') ? { matriz: 'matrixEN.png' } : {};
     document.querySelectorAll('[data-img]').forEach(function(el){
       var k = el.getAttribute('data-img');
       if(window.IMGS && window.IMGS[k]) el.src = window.IMGS[k];
     });
+    // Swap chapter 14 opener-illustration (Prompt Compass)
+    var ch14page = document.querySelector('[data-chapter="14"]');
+    if(ch14page){
+      var ch14img = ch14page.querySelector('.opener-illustration img');
+      if(ch14img){
+        if(!ch14img.getAttribute('data-pt-src')) ch14img.setAttribute('data-pt-src', ch14img.src);
+        ch14img.src = (lang === 'en') ? 'matrixEN.png' : ch14img.getAttribute('data-pt-src');
+      }
+    }
     
     document.querySelectorAll('.lang-btn,.cover-lang-btn').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
