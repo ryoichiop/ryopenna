@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /conversant/
+Disallow: /ryo/
+Disallow: /_misc/
+
+Sitemap: https://ryopenna.com/sitemap.xml

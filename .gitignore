@@ -1,11 +1,11 @@
-*.bak
-0303_1_.mov
+.DS_Store
+*.HEIC
 IMG_6643.JPG
-Consultor.jpg
-Palestrante.png
-Pesquisador.jpg
-Pesquisador.HEIC
-Ryo Penna.png
-Slide 1.png
-ryo-preview.html
+*.bak
 .claude/
+conversant/designkit/node_modules/
+conversant/designkit/.next/
+ryo/content/linkedin/linkedin-assistant/node_modules/
+ryo/content/linkedin/linkedin-assistant/.env
+ryo/strategy/strategy-dashboard/node_modules/
+ryo/strategy/strategy-dashboard/.env
