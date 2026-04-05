@@ -302,6 +302,7 @@ const UI = {
 
 const CHAPTER_MAP = { intencao: 5, contexto: 6, restricao: 7, abertura: 8 };
 var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbziWzClIOpq1Jk8aP37d08FMbhbiKEdT3XSfGJGIQAeJlQmUxMJ57DAB5zAl_QzoHUv/exec';
+var URL_SOURCE = (new URLSearchParams(window.location.search)).get('source') || 'assessment';
 
 function seededShuffle(arr, seed) {
   var a = arr.slice();
@@ -400,11 +401,11 @@ function PromptStyleAssessment() {
     if (SCRIPT_URL) {
       var now = new Date().toISOString();
       fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: userName.trim(), email: userEmail.trim(), company: userCompany.trim(), source: 'assessment', lang: lang, date: now })
+        body: JSON.stringify({ name: userName.trim(), email: userEmail.trim(), company: userCompany.trim(), source: URL_SOURCE, lang: lang, date: now })
       }).catch(function() {});
       if (result) {
         fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: userName.trim(), email: userEmail.trim(), company: userCompany.trim(), source: 'assessment-result', lang: lang, date: now, result: DIM_META[lang][result.dominant].name })
+          body: JSON.stringify({ name: userName.trim(), email: userEmail.trim(), company: userCompany.trim(), source: URL_SOURCE + '-result', lang: lang, date: now, result: DIM_META[lang][result.dominant].name })
         }).catch(function() {});
       }
     }
