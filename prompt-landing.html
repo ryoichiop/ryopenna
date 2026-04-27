@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://ryopenna.com/capanovaPT.png">
 <link rel="canonical" href="https://ryopenna.com/prompt-landing.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@300;400&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@300;400&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -43,7 +43,7 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
 .lang-toggle button.active{background:var(--dark);color:#fff}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:80px 24px 60px}
+.hero{display:flex;align-items:center;padding:80px 24px 24px}
 .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
 .hero-cover{display:flex;justify-content:center}
 .hero-cover img{max-height:70vh;max-width:100%;object-fit:contain}
@@ -323,22 +323,53 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
   .footer-links a:hover{color:#e8e8e8}
 }
 
-/* ASSESSMENT MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
-.modal-overlay.open{opacity:1;pointer-events:auto}
-.modal-card{background:var(--bg);border-radius:16px;padding:48px 40px 40px;max-width:420px;width:90%;text-align:center;transform:translateY(20px) scale(.97);transition:transform .4s cubic-bezier(.16,1,.3,1);position:relative;box-shadow:0 24px 80px rgba(0,0,0,.18)}
-.modal-overlay.open .modal-card{transform:translateY(0) scale(1)}
-.modal-label{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--light);margin-bottom:20px}
-.modal-title{font-family:var(--serif);font-size:clamp(22px,3vw,28px);line-height:1.3;color:var(--black);margin-bottom:16px}
-.modal-desc{font-family:var(--sans);font-size:15px;color:var(--gray);line-height:1.6;margin-bottom:32px}
-.modal-cta{display:inline-block;padding:16px 36px;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 50%,#1a1a1a 100%);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .35s;letter-spacing:.01em}
-.modal-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.25)}
-.modal-dismiss{display:block;margin-top:18px;font-family:var(--sans);font-size:13px;color:var(--light);cursor:pointer;background:none;border:none;transition:color .2s;letter-spacing:.02em}
-.modal-dismiss:hover{color:var(--gray)}
+/* TESTIMONIALS */
+.testimonials-section{padding:8px 24px 40px;background:transparent}
+.testimonials-inner{max-width:1200px;margin:0 auto}
+.testimonials-eyebrow{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--light);margin-bottom:12px;text-align:center}
+.testimonials-section .section-title{font-family:var(--serif);font-size:clamp(20px,2.2vw,24px);line-height:1.3;color:var(--black);text-align:center;max-width:100%;margin-bottom:20px;font-weight:400}
+.testimonials-carousel{position:relative;overflow:hidden;border-radius:12px;background:#fff;border:1px solid var(--faint)}
+.testimonials-track{display:flex;align-items:stretch;transition:transform .7s cubic-bezier(.65,0,.35,1);will-change:transform}
+.testimonial-card{flex:0 0 100%;width:100%;padding:28px 40px 24px;display:flex;flex-direction:column;gap:14px;background:transparent;border:none;border-radius:0;box-sizing:border-box}
+.testimonial-stars{display:flex;gap:3px;color:#f5b400}
+.testimonial-stars svg{width:16px;height:16px}
+.testimonial-quote{font-family:var(--serif);font-size:18px;line-height:1.55;color:var(--dark);margin:0;font-weight:400}
+.testimonial-quote strong{font-weight:700;color:var(--black);background:linear-gradient(transparent 65%,rgba(245,180,0,.28) 65%)}
+.testimonial-author{display:flex;align-items:center;justify-content:flex-start;gap:14px;padding-top:14px;border-top:1px solid var(--faint);flex-wrap:wrap;margin-top:auto}
+.testimonial-name{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--black);letter-spacing:0.01em}
+.testimonial-linkedin{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--gray);text-decoration:none;padding:6px 12px;border:1px solid var(--faint);border-radius:5px;transition:all .3s;letter-spacing:0.02em}
+.testimonial-linkedin:hover{background:#0A66C2;color:#fff;border-color:#0A66C2}
+.testimonial-linkedin svg{width:13px;height:13px;flex-shrink:0}
+.carousel-dots{display:flex;justify-content:center;gap:7px;margin-top:14px}
+.carousel-dot{width:6px;height:6px;border-radius:50%;border:none;background:#d0d0d0;cursor:pointer;padding:0;transition:all .3s ease}
+.carousel-dot:hover{background:var(--gray)}
+.carousel-dot.active{background:var(--dark);transform:scale(1.4)}
+@media(max-width:640px){.testimonial-card{padding:22px 24px 20px}.testimonial-quote{font-size:16px;line-height:1.5}}
+
+/* ASSESSMENT SECTION */
+.assessment-section{padding:90px 24px}
+.assessment-inner{max-width:760px;margin:0 auto;text-align:center;padding:64px 40px;border:1px solid var(--faint);border-radius:18px;background:#fafafa}
+.assessment-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--light);margin-bottom:20px}
+.assessment-title{font-family:var(--serif);font-size:clamp(26px,3.2vw,34px);line-height:1.25;color:var(--black);margin-bottom:18px;font-weight:400}
+.assessment-desc{font-family:var(--sans);font-size:16px;color:var(--gray);line-height:1.6;margin:0 auto 32px;max-width:520px}
+.assessment-cta-btn{display:inline-block;padding:16px 36px;background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 50%,#1a1a1a 100%);color:#fff;border-radius:10px;font-family:var(--sans);font-size:16px;font-weight:600;text-decoration:none;transition:all .35s;letter-spacing:.01em;position:relative;overflow:hidden}
+.assessment-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.25)}
+@media(max-width:640px){.assessment-inner{padding:48px 24px}}
 
 @media(prefers-color-scheme:dark){
-  .modal-card{background:#1a1a1a;box-shadow:0 24px 80px rgba(0,0,0,.5)}
-  .modal-cta{background:linear-gradient(135deg,#e8e8e8 0%,#d0d0d0 50%,#e8e8e8 100%);color:#0e0e0e}
+  .testimonials-section{background:transparent}
+  .testimonials-carousel{background:#1a1a1a;border-color:#2a2a2a}
+  .testimonial-quote{color:#e0e0e0}
+  .testimonial-author{border-top-color:#2a2a2a}
+  .testimonial-name{color:#f0f0f0}
+  .testimonial-linkedin{border-color:#333;color:#bbb}
+  .testimonial-linkedin:hover{background:#0A66C2;color:#fff;border-color:#0A66C2}
+  .carousel-dot{background:#333}
+  .carousel-dot:hover{background:#666}
+  .carousel-dot.active{background:#e8e8e8}
+  .assessment-inner{background:#111;border-color:#2a2a2a}
+  .assessment-cta-btn{background:linear-gradient(135deg,#e8e8e8 0%,#d0d0d0 50%,#e8e8e8 100%);color:#0e0e0e}
+  .assessment-cta-btn:hover{box-shadow:0 8px 25px rgba(255,255,255,.12)}
 }
 
 </style>
@@ -386,13 +417,105 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
 <h1 class="hero-hook fade-up" data-pt="A habilidade cada vez mais necessária <em>é a menos ensinada.</em>" data-en="The increasingly essential skill <em>is the least taught.</em>">A habilidade cada vez mais necessária <em>é a menos ensinada.</em></h1>
 <p class="hero-author fade-up">Ryo Penna</p>
 <p class="hero-sub fade-up" data-pt="Como fazer as perguntas certas para IA, pessoas e si mesmo" data-en="How to ask the right questions to AI, people, and yourself">Como fazer as perguntas certas para IA, pessoas e si mesmo</p>
-<p class="hero-date fade-up" data-pt="Lançamento em abril de 2026" data-en="Launching April 2026">Lançamento em abril de 2026</p>
+<p class="hero-date fade-up" data-pt="Disponível agora, sem custos" data-en="Available now, free of charge">Disponível agora, sem custos</p>
 <div class="hero-form fade-up" id="heroForm">
 <input type="email" id="heroEmail" data-pt="Seu melhor e-mail" data-en="Your best email" placeholder="Seu melhor e-mail">
 <button onclick="subscribe('hero')" data-pt="Garantir meu exemplar →" data-en="Secure my copy →">Garantir meu exemplar →</button>
-<p class="form-hint" data-pt="Receba seu livro digital antes do lançamento oficial" data-en="Get your digital book before the official launch">Receba seu livro digital antes do lançamento oficial</p>
+<p class="form-hint" data-pt="Receba seu livro digital" data-en="Get your digital book">Receba seu livro digital</p>
 </div>
 <p class="form-confirm" id="heroConfirm" style="color:var(--gray)" data-pt="Pronto! Seu exemplar está reservado." data-en="Done! Your copy is reserved."></p>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+<div class="testimonials-inner">
+<p class="testimonials-eyebrow fade-up" data-pt="Depoimentos" data-en="Testimonials">Depoimentos</p>
+<h2 class="section-title fade-up" data-pt="O que os primeiros leitores disseram." data-en="What the first readers said.">O que os primeiros leitores disseram.</h2>
+<div class="testimonials-carousel" id="testimonialsCarousel">
+<div class="testimonials-track">
+
+<div class="testimonial-card">
+<div class="testimonial-stars" aria-label="5 de 5 estrelas">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-quote">“Você começa achando que é só mais um livro sobre IA, mas rapidinho percebe que ele está falando direto com você. Em vários momentos dá aquele estalo meio incômodo, tipo ‘cara… eu realmente estou fazendo as perguntas erradas faz tempo’. <strong>Não é sobre tecnologia, é sobre como você pensa, decide e se posiciona</strong>. Teve uma parte que ficou comigo: quando entendi que meus resultados não estavam travados por falta de esforço, mas pela forma como eu estava conduzindo o jogo. Depois disso, não dá mais pra se fazer de desentendido, ou você melhora o jeito de perguntar, ou continua rodando em círculo.”</p>
+<div class="testimonial-author">
+<span class="testimonial-name">Douglas Capocecera</span>
+<a class="testimonial-linkedin" href="https://www.linkedin.com/in/efici%C3%AAncia-operacional/" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+
+<div class="testimonial-card">
+<div class="testimonial-stars" aria-label="5 de 5 estrelas">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-quote">“A Arte do Prompt vai além de ensinar como escrever bons prompts: ele muda a forma como você enxerga comunicação e responsabilidade. Um dos pontos mais fortes é perceber que a diferença entre resultados não está na complexidade, mas na clareza: intenção, contexto, restrição e abertura bem calibrada. O livro traz uma provocação que fica: começamos a perceber prompts fracos em tudo, desde reuniões até conversas do dia a dia. No fim, a mensagem é simples e poderosa: <strong>a qualidade do que recebemos está diretamente ligada à qualidade do que pedimos</strong>, e isso nos torna responsáveis pelos entregáveis que passam por nós.”</p>
+<div class="testimonial-author">
+<span class="testimonial-name">Jordana Carraro</span>
+<a class="testimonial-linkedin" href="https://www.linkedin.com/in/jordana-carraro/" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+
+<div class="testimonial-card">
+<div class="testimonial-stars" aria-label="5 de 5 estrelas">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-quote">“Ryo Penna, em seu livro, <strong>nos liberta do mecanismo invisível que nos aprisiona ao automático: buscar respostas rápidas, fugir do desconforto e proteger, quase instintivamente, nossos próprios modelos mentais.</strong> Ele nos conduz à reflexão por meio de perguntas e ensinamentos, com uma abordagem clara e objetiva, revelando a importância de formular a pergunta adequada, capaz de romper a superfície e expor as verdadeiras causas.”</p>
+<div class="testimonial-author">
+<span class="testimonial-name">Rodrigo Gamallo</span>
+<a class="testimonial-linkedin" href="https://www.linkedin.com/in/rodrigo-gamallo-692b45119/" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+
+<div class="testimonial-card">
+<div class="testimonial-stars" aria-label="5 de 5 estrelas">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+</div>
+<p class="testimonial-quote">“Clareza não é dom, é decisão. Muito do retrabalho nasce do que comunicamos mal. <strong>Este livro é um convite para reduzir a distância entre o que você pensa e o que o outro entende.</strong>”</p>
+<div class="testimonial-author">
+<span class="testimonial-name">Garrido Lima</span>
+<a class="testimonial-linkedin" href="https://www.linkedin.com/in/garridolima/" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+LinkedIn
+</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="carousel-dots" id="carouselDots">
+<button class="carousel-dot active" type="button" aria-label="Depoimento 1"></button>
+<button class="carousel-dot" type="button" aria-label="Depoimento 2"></button>
+<button class="carousel-dot" type="button" aria-label="Depoimento 3"></button>
+<button class="carousel-dot" type="button" aria-label="Depoimento 4"></button>
 </div>
 </div>
 </section>
@@ -535,15 +658,25 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
 </div>
 </section>
 
+<!-- ASSESSMENT -->
+<section class="assessment-section">
+<div class="assessment-inner fade-up">
+<p class="assessment-eyebrow" data-pt="Antes de começar a ler" data-en="Before you start reading">Antes de começar a ler</p>
+<h2 class="assessment-title" data-pt="Descubra seu estilo de prompt." data-en="Discover your prompt style.">Descubra seu estilo de prompt.</h2>
+<p class="assessment-desc" data-pt="Um teste rápido que revela como você faz perguntas — para IA, para pessoas e para si mesmo." data-en="A quick test that reveals how you ask questions — to AI, to people, and to yourself.">Um teste rápido que revela como você faz perguntas — para IA, para pessoas e para si mesmo.</p>
+<a class="assessment-cta-btn" href="https://ryopenna.com/prompt-assessment" data-pt="Fazer o teste →" data-en="Take the test →">Fazer o teste →</a>
+</div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section">
 <div class="section-inner" style="text-align:center">
 <p class="cta-stats fade-up" data-pt="Português e Inglês · 23 capítulos · 20 prompts · Acesso completo, sem custo" data-en="Portuguese and English · 23 chapters · 20 prompts · Full access, no cost">Português e Inglês · 23 capítulos · 20 prompts · Acesso completo, sem custo</p>
-<h2 class="cta-title fade-up" data-pt="Seu em abril de 2026." data-en="Yours in April 2026.">Seu em abril de 2026.</h2>
+<h2 class="cta-title fade-up" data-pt="Comece sua leitura agora." data-en="Start reading now.">Comece sua leitura agora.</h2>
 <div class="cta-form fade-up" id="ctaForm">
 <input type="email" id="ctaEmail" data-pt="Seu melhor e-mail" data-en="Your best email" placeholder="Seu melhor e-mail">
 <button onclick="subscribe('cta')" data-pt="Garantir meu exemplar →" data-en="Secure my copy →">Garantir meu exemplar →</button>
-<p class="form-hint cta-hint" data-pt="Receba seu livro digital antes do lançamento oficial" data-en="Get your digital book before the official launch">Receba seu livro digital antes do lançamento oficial</p>
+<p class="form-hint cta-hint" data-pt="Receba seu livro digital" data-en="Get your digital book">Receba seu livro digital</p>
 </div>
 <p class="form-confirm cta-confirm" id="ctaConfirm" data-pt="Pronto! Seu exemplar está reservado." data-en="Done! Your copy is reserved."></p>
 </div>
@@ -560,22 +693,9 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
 
 <div id="enCoverData" data-src="mockupEN.png" style="display:none"></div>
 
-<!-- ASSESSMENT MODAL -->
-<div class="modal-overlay" id="assessmentModal">
-<div class="modal-card">
-<p class="modal-label" data-pt="Enquanto o livro não chega" data-en="While you wait for the book">Enquanto o livro não chega</p>
-<h3 class="modal-title" data-pt="Descubra seu estilo de prompt." data-en="Discover your prompt style.">Descubra seu estilo de prompt.</h3>
-<p class="modal-desc" data-pt="Um teste rápido que revela como você faz perguntas — para IA, para pessoas e para si mesmo." data-en="A quick test that reveals how you ask questions — to AI, to people, and to yourself.">Um teste rápido que revela como você faz perguntas — para IA, para pessoas e para si mesmo.</p>
-<a class="modal-cta" href="https://ryopenna.com/prompt-assessment" data-pt="Fazer o teste →" data-en="Take the test →">Fazer o teste →</a>
-<button class="modal-dismiss" onclick="closeModal()" data-pt="agora não" data-en="not now">agora não</button>
-</div>
-</div>
-
 <script>
 var SCRIPT_URL='https://script.google.com/macros/s/AKfycbziWzClIOpq1Jk8aP37d08FMbhbiKEdT3XSfGJGIQAeJlQmUxMJ57DAB5zAl_QzoHUv/exec';
-function subscribe(s){var e=document.getElementById(s==='hero'?'heroEmail':'ctaEmail'),v=e.value.trim();if(!v||!/^[^@]+@[^@]+\.[^@]+$/.test(v))return e.focus();document.getElementById(s==='hero'?'heroForm':'ctaForm').style.display='none';var c=document.getElementById(s==='hero'?'heroConfirm':'ctaConfirm');c.style.display='block';c.textContent=c.getAttribute('data-'+currentLang);if(SCRIPT_URL)fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:v,source:s,lang:currentLang,date:new Date().toISOString()})}).catch(function(){});setTimeout(function(){document.getElementById('assessmentModal').classList.add('open');},1200);}
-function closeModal(){document.getElementById('assessmentModal').classList.remove('open');}
-document.getElementById('assessmentModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+function subscribe(s){var e=document.getElementById(s==='hero'?'heroEmail':'ctaEmail'),v=e.value.trim();if(!v||!/^[^@]+@[^@]+\.[^@]+$/.test(v))return e.focus();document.getElementById(s==='hero'?'heroForm':'ctaForm').style.display='none';var c=document.getElementById(s==='hero'?'heroConfirm':'ctaConfirm');c.style.display='block';c.textContent=c.getAttribute('data-'+currentLang);if(SCRIPT_URL)fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:v,source:s,lang:currentLang,date:new Date().toISOString()})}).catch(function(){});window.open('https://ryopenna.com/prompt-book/','_blank','noopener');}
 var currentLang='pt',ptCover=document.getElementById('heroCover').src,enCover=document.getElementById('enCoverData').getAttribute('data-src');
 function setLang(l){if(l===currentLang)return;currentLang=l;document.documentElement.lang=l;document.title=l==='en'?'The Art of Prompting | Ryo Penna':'A Arte do Prompt | Ryo Penna';document.getElementById('heroCover').src=l==='en'?enCover:ptCover;document.querySelectorAll('[data-'+l+']').forEach(function(el){var v=el.getAttribute('data-'+l);if(el.tagName==='INPUT')el.placeholder=v;else if(el.tagName==='BUTTON')el.textContent=v;else el.innerHTML=v;});document.querySelectorAll('.lang-toggle button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-lang')===l);});try{localStorage.setItem('lang',l);}catch(e){}}
 (function(){var saved=null;try{saved=localStorage.getItem('lang');}catch(e){}if(!saved){var bl=(navigator.language||'').slice(0,2).toLowerCase();if(['pt','en'].indexOf(bl)>=0)saved=bl;}var lang=saved||'en';if(lang!=='pt')setLang(lang);})();
@@ -583,6 +703,7 @@ var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){i
 document.querySelectorAll('.fade-up').forEach(function(el,i){el.style.transitionDelay=(i%5)*.08+'s';obs.observe(el);});
 document.getElementById('heroEmail').addEventListener('keypress',function(e){if(e.key==='Enter')subscribe('hero');});
 document.getElementById('ctaEmail').addEventListener('keypress',function(e){if(e.key==='Enter')subscribe('cta');});
+(function(){var carousel=document.getElementById('testimonialsCarousel');if(!carousel)return;var track=carousel.querySelector('.testimonials-track');if(!track)return;var cards=track.querySelectorAll('.testimonial-card');var dots=document.querySelectorAll('#carouselDots .carousel-dot');var idx=0,timer=null,delay=4000;function show(i){idx=i;track.style.transform='translateX(-'+(i*100)+'%)';dots.forEach(function(d,j){d.classList.toggle('active',j===i);});}function next(){show((idx+1)%cards.length);}function start(){stop();timer=setInterval(next,delay);}function stop(){if(timer){clearInterval(timer);timer=null;}}dots.forEach(function(d,j){d.addEventListener('click',function(){show(j);start();});});carousel.addEventListener('mouseenter',stop);carousel.addEventListener('mouseleave',start);start();})();
 </script>
 </body>
 </html>
