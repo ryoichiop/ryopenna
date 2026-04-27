@@ -22,12 +22,12 @@
 <meta name="twitter:image" content="https://ryopenna.com/capanovaPT.png">
 <link rel="canonical" href="https://ryopenna.com/prompt-landing.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@300;400&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'DM Sans',system-ui,sans-serif;
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
   --mono:'JetBrains Mono',monospace;
   --black:#0e0e0e;--dark:#1a1a1a;--gray:#666;--light:#999;--faint:#e8e8e8;--bg:#fff;
 }
@@ -52,8 +52,9 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
 .hero-hook em{font-style:italic;color:var(--gray)}
 .hero-author{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--light)}
 .hero-sub{font-family:var(--sans);font-size:17px;color:var(--gray);line-height:1.6;font-weight:400}
-.hero-date{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:0.05em;color:var(--dark);display:flex;align-items:center;gap:12px}
+.hero-date{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0.05em;color:var(--dark);display:flex;align-items:center;gap:12px}
 .hero-date::before{content:'';width:24px;height:1px;background:var(--dark)}
+.hero-date .hl{background:linear-gradient(transparent 60%,rgba(245,180,0,.4) 60%);padding:0 2px;color:var(--black)}
 .hero-form{display:flex;flex-direction:column;gap:10px;max-width:380px}
 .hero-form input{padding:15px 16px;border:1px solid var(--faint);border-radius:8px;font-family:var(--sans);font-size:15px;outline:none;transition:border .3s;text-align:center}
 .hero-form input:focus{border-color:var(--dark)}
@@ -333,7 +334,7 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
 .testimonial-card{flex:0 0 100%;width:100%;padding:28px 40px 24px;display:flex;flex-direction:column;gap:14px;background:transparent;border:none;border-radius:0;box-sizing:border-box}
 .testimonial-stars{display:flex;gap:3px;color:#f5b400}
 .testimonial-stars svg{width:16px;height:16px}
-.testimonial-quote{font-family:var(--serif);font-size:18px;line-height:1.55;color:var(--dark);margin:0;font-weight:400}
+.testimonial-quote{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--dark);margin:0;font-weight:400}
 .testimonial-quote strong{font-weight:700;color:var(--black);background:linear-gradient(transparent 65%,rgba(245,180,0,.28) 65%)}
 .testimonial-author{display:flex;align-items:center;justify-content:flex-start;gap:14px;padding-top:14px;border-top:1px solid var(--faint);flex-wrap:wrap;margin-top:auto}
 .testimonial-name{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--black);letter-spacing:0.01em}
@@ -417,7 +418,7 @@ body{font-family:var(--sans);color:var(--dark);background:var(--bg);-webkit-font
 <h1 class="hero-hook fade-up" data-pt="A habilidade cada vez mais necessária <em>é a menos ensinada.</em>" data-en="The increasingly essential skill <em>is the least taught.</em>">A habilidade cada vez mais necessária <em>é a menos ensinada.</em></h1>
 <p class="hero-author fade-up">Ryo Penna</p>
 <p class="hero-sub fade-up" data-pt="Como fazer as perguntas certas para IA, pessoas e si mesmo" data-en="How to ask the right questions to AI, people, and yourself">Como fazer as perguntas certas para IA, pessoas e si mesmo</p>
-<p class="hero-date fade-up" data-pt="Disponível agora, sem custos" data-en="Available now, free of charge">Disponível agora, sem custos</p>
+<p class="hero-date fade-up" data-pt="<span class='hl'>Disponível agora, sem custos</span>" data-en="<span class='hl'>Available now, free of charge</span>"><span class="hl">Disponível agora, sem custos</span></p>
 <div class="hero-form fade-up" id="heroForm">
 <input type="email" id="heroEmail" data-pt="Seu melhor e-mail" data-en="Your best email" placeholder="Seu melhor e-mail">
 <button onclick="subscribe('hero')" data-pt="Garantir meu exemplar →" data-en="Secure my copy →">Garantir meu exemplar →</button>
