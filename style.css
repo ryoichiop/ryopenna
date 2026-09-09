@@ -786,3 +786,13 @@ section:has(+ .pq){padding-bottom:0}
 @media (hover:hover) and (pointer:fine){
   .cta.solid:hover{color:#1fbfad}
 }
+
+/* ---------- hero sem vídeo (mobile e movimento reduzido) ---------- */
+@media (max-width:860px){
+  .hero-video{min-height:auto;background:var(--ink)}
+  .hero-video::after{content:none}
+  .hero-video .inner{padding:clamp(64px,12vh,110px) clamp(20px,6vw,40px) clamp(48px,9vh,80px)}
+  .hero-video h1{font-size:clamp(2.05rem,7.4vw,2.6rem);max-width:16ch}
+}
+html.hero-still .hero-video::after{content:none}
+html.hero-still .hero-video{background:var(--ink)}

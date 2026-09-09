@@ -560,3 +560,23 @@
     });
   });
 })();
+
+/* hero: o vídeo de fundo é exclusivo do desktop.
+   No mobile ele nem é baixado, o que poupa 13MB de dados. */
+(function () {
+  var v = document.querySelector('video.hero-bg');
+  if (!v) return;
+  var wide = window.matchMedia('(min-width: 861px)').matches;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!wide || still) {
+    v.removeAttribute('poster');
+    v.remove();
+    document.documentElement.classList.add('hero-still');
+    return;
+  }
+  var src = v.querySelector('source[data-src]');
+  if (src) {
+    src.src = src.getAttribute('data-src');
+    v.load();
+  }
+})();
