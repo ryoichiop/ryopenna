@@ -120,6 +120,7 @@ a{color:inherit;text-decoration:none}
 .hero-video{position:relative;overflow:hidden;min-height:min(66dvh,640px);display:flex;align-items:center;justify-content:center;text-align:center}
 .hero-video video,.hero-video .poster{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center top;
   filter:saturate(.8);
 }
 .hero-video::after{
