@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insights de Liderança 2026 · Ryo Penna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#2dd4bf; --teal-deep:#0c6b60; --teal-wash:#eef4f2;
+    --paper:#faf9f7; --ink:#1a1a1a; --ink-muted:rgba(26,26,26,.62);
+    --line:rgba(26,26,26,.12); --line-faint:rgba(26,26,26,.06);
+    --stage:#0d0d0f; --stage-ink:#f2f0ec; --stage-muted:rgba(242,240,236,.68);
+    --stage-line:rgba(242,240,236,.14);
+    --w:840px; --gutter:clamp(20px,4vw,48px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;font-size:16.5px;line-height:1.65}
+  .wrap{max-width:var(--w);margin:0 auto;padding:0 var(--gutter)}
+  ::selection{background:rgba(45,212,191,.28)}
+  sup{font-size:.68em;color:var(--teal-deep);font-weight:500;letter-spacing:.02em}
+  .stage sup{color:var(--teal)}
+
+  /* Stage (dark bookends) */
+  .stage{background:var(--stage);color:var(--stage-ink)}
+  .cover{padding:clamp(88px,16vh,160px) 0 clamp(72px,12vh,120px)}
+  .cover .kicker{font-family:'Roboto Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:28px}
+  h1{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:clamp(2.5rem,6vw,4.2rem);line-height:1.08;letter-spacing:-.015em;max-width:16ch}
+  .cover .lede{margin-top:28px;font-size:17.5px;color:var(--stage-muted);max-width:58ch}
+  .cover .byline{margin-top:44px;padding-top:20px;border-top:1px solid var(--stage-line);font-family:Newsreader,Georgia,serif;font-size:1.15rem}
+  .cover .byline span{display:block;font-family:Inter,sans-serif;font-size:13px;color:var(--stage-muted);margin-top:4px}
+
+  /* Paper body */
+  .body{padding:clamp(64px,10vh,110px) 0}
+  section{margin-bottom:clamp(64px,10vh,104px)}
+  h2{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;letter-spacing:-.01em;margin-bottom:28px;max-width:26ch}
+  .trend-n{font-family:'Roboto Mono',ui-monospace,monospace;font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--teal-deep);display:block;margin-bottom:14px}
+  h3{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:clamp(1.25rem,2vw,1.5rem);margin:38px 0 12px}
+  p{margin-bottom:1.05em;max-width:68ch}
+  .muted{color:var(--ink-muted)}
+  strong{font-weight:600}
+  em{font-style:italic}
+
+  .takeaway{border-left:2px solid var(--teal);padding:6px 0 6px 22px;margin:34px 0;font-family:Newsreader,Georgia,serif;font-style:italic;font-size:clamp(1.25rem,2.2vw,1.55rem);line-height:1.4;max-width:32ch}
+
+  /* Executive summary rows */
+  .exec{border-top:1px solid var(--line)}
+  .exec-row{display:grid;grid-template-columns:44px 1fr;gap:18px;border-bottom:1px solid var(--line);padding:20px 0;align-items:baseline}
+  .exec-row .n{font-family:'Roboto Mono',ui-monospace,monospace;font-size:12px;color:var(--teal-deep);letter-spacing:.08em}
+  .exec-row h3{margin:0 0 4px;font-size:1.15rem}
+  .exec-row p{margin:0;color:var(--ink-muted);font-size:14.5px}
+
+  /* Matrix table */
+  .tablewrap{overflow-x:auto;margin:26px 0}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px}
+  th{font-family:'Roboto Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);text-align:left;padding:10px 14px 10px 0;border-bottom:1px solid var(--line)}
+  td{padding:12px 14px 12px 0;border-bottom:1px solid var(--line-faint);vertical-align:top;line-height:1.5}
+  td:first-child{font-family:Newsreader,Georgia,serif;font-size:15px;min-width:150px}
+
+  /* Action box */
+  .acao{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:40px;padding:6px 0}
+  .acao-title{font-family:'Roboto Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);padding:18px 0 4px}
+  .nivel{padding:18px 0 22px;border-top:1px solid var(--line-faint)}
+  .nivel:first-of-type{border-top:none}
+  .nivel h4{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:1.12rem;margin-bottom:10px}
+  .nivel h4 span{font-family:Inter,sans-serif;font-size:12.5px;font-weight:400;color:var(--ink-muted);margin-left:10px}
+  .nivel ul,.observar ul{list-style:none}
+  .nivel li,.observar li{position:relative;padding-left:20px;margin-bottom:9px;font-size:15.5px;line-height:1.55;max-width:66ch}
+  .nivel li::before,.observar li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:1px;background:var(--teal-deep)}
+  .observar{margin-top:8px}
+
+  .sinal{font-family:'Roboto Mono',ui-monospace,monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted);margin:-14px 0 26px}
+
+  /* Stat strip: os 2-3 dados que sustentam o insight */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:30px 0 6px}
+  .stat{padding:20px 18px 20px 0}
+  .stat + .stat{border-left:1px solid var(--line-faint);padding-left:18px}
+  .stat .num{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.1;color:var(--teal-deep)}
+  .stat .lbl{font-size:12.5px;line-height:1.5;color:var(--ink-muted);margin-top:6px}
+  @media (max-width:640px){.stats{grid-template-columns:1fr}.stat + .stat{border-left:none;border-top:1px solid var(--line-faint);padding-left:0;padding-top:16px}}
+
+  /* Ruído list */
+  .ruido{border-top:1px solid var(--line)}
+  .ruido-item{border-bottom:1px solid var(--line);padding:30px 0}
+  .ruido-item h3{font-family:Newsreader,Georgia,serif;font-size:1.3rem;margin:0 0 12px}
+  .ruido-item p{margin-bottom:8px;font-size:15px}
+  .ruido-item .rot{font-family:'Roboto Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep)}
+
+  /* Wash band */
+  .wash{background:var(--teal-wash);padding:clamp(48px,7vh,72px) 0}
+  .wash h2{margin-bottom:18px}
+
+  /* Stage close */
+  .close{padding:clamp(80px,13vh,140px) 0}
+  .close h2{color:var(--stage-ink);font-size:clamp(2rem,4vw,3rem);max-width:22ch}
+  .close p{color:var(--stage-muted)}
+  .close .takeaway{color:var(--stage-ink);border-left-color:var(--teal)}
+  .close .assinatura{margin-top:56px;padding-top:22px;border-top:1px solid var(--stage-line);font-family:Newsreader,Georgia,serif;font-size:1.15rem;color:var(--stage-ink)}
+  .close .assinatura span{display:block;font-family:Inter,sans-serif;font-size:13px;color:var(--stage-muted);margin-top:4px}
+
+  /* Notes */
+  .notas{padding:clamp(48px,7vh,72px) 0;border-top:1px solid var(--stage-line);background:var(--stage)}
+  .notas h2{color:var(--stage-ink);font-size:1.5rem}
+  .notas p,.notas li{color:var(--stage-muted);font-size:13px;line-height:1.7;max-width:76ch}
+  .notas ol{padding-left:22px;margin-top:14px}
+  .notas li{margin-bottom:7px}
+  .notas .refid{color:var(--teal)}
+
+  @media print{
+    body{font-size:11pt}
+    .cover{padding:120px 0 90px}
+    .trend,.wash,.close,.notas,.pagebreak{break-before:page}
+    .acao,.takeaway,.exec-row,.ruido-item,tr{break-inside:avoid}
+    a{color:inherit;text-decoration:none}
+  }
+  @page{size:A4;margin:0}
+</style>
+</head>
+<body>
+
+<header class="stage cover">
+  <div class="wrap">
+    <div class="kicker">Relatório · Setembro 2026 · 1ª edição</div>
+    <h1>Insights de <em style="color:var(--teal)">Liderança</em> 2026</h1>
+    <p class="lede">Nove insights separados do ruído por um método declarado: 42 referências públicas numeradas, literatura acadêmica e um ano inteiro dentro de salas de liderança. Com contraevidência, indicadores de observação e o que fazer em três níveis de liderança.</p>
+    <div class="byline">Ryo Penna<span>Consultor global de liderança · Autor de A Arte do Prompt · ryopenna.com</span></div>
+  </div>
+</header>
+
+<main class="body">
+  <div class="wrap">
+
+    <section>
+      <h2>O relatório em uma página</h2>
+      <p>A tese que emergiu do cruzamento das fontes, e que eu não tinha quando comecei: <strong>em 2026, as organizações estão cortando exatamente o que a IA tornou mais valioso, a camada humana que traduz estratégia em execução.</strong></p>
+      <div class="exec">
+        <div class="exec-row"><span class="n">01</span><div><h3>As empresas estão cortando a camada que explica 70% do engajamento</h3><p>A média gestão vira troféu de eficiência no exato momento em que os dados a apontam como o mecanismo do resultado.</p></div></div>
+        <div class="exec-row"><span class="n">02</span><div><h3>Nunca se comunicou tanto. Nunca se soube tão pouco o que fazer</h3><p>Volume de mensagens no máximo histórico, conversa desenhada em extinção. O canal entupiu.</p></div></div>
+        <div class="exec-row"><span class="n">03</span><div><h3>A maioria das pessoas não consegue ligar a própria tarefa ao resultado da empresa</h3><p>Clareza em queda há dez anos, na década das ferramentas de alinhamento. Cascatear metas não criou linha de visão.</p></div></div>
+        <div class="exec-row"><span class="n">04</span><div><h3>A IA demitiu menos gente do que a narrativa dela</h3><p>Mais da metade das demissões cita IA. Menos de 1% veio de ganho real de produtividade. A narrativa corre à frente do mecanismo.</p></div></div>
+        <div class="exec-row"><span class="n">05</span><div><h3>O resultado do seu ano depende de gente que não se reporta a você</h3><p>Achatamento e matriz tornaram a liderança lateral o trabalho real. Autoridade compra presença; execução se negocia entre pares.</p></div></div>
+        <div class="exec-row"><span class="n">06</span><div><h3>A confiança não acabou. Ela parou de atravessar camadas</h3><p>A confiança institucional resiste. A de relação encolheu: hoje ela não sobrevive a duas camadas hierárquicas de distância.</p></div></div>
+        <div class="exec-row"><span class="n">07</span><div><h3>O mercado comprou obediência e está contabilizando como engajamento</h3><p>O sim ficou barato de novo. E presença é indistinguível de engajamento no dashboard, até a hora de executar.</p></div></div>
+        <div class="exec-row"><span class="n">08</span><div><h3>O "depois da mudança" não existe mais. Liderar agora é durante</h3><p>Um terço dos trabalhadores viveu 15 mudanças num ano. E a etapa que transformaria mudança em aprendizado, o ajuste, é a que os times pulam.</p></div></div>
+        <div class="exec-row"><span class="n">09</span><div><h3>A IA está automatizando o trabalho onde se aprendia a liderar</h3><p>O sinal mais fraco do relatório, e o de maior consequência: a formação de líderes tem dez anos de atraso embutido.</p></div></div>
+      </div>
+    </section>
+
+    <section class="pagebreak">
+      <h2>Método</h2>
+      <p>Relatórios de tendência costumam esconder o método. Este declara o dele, porque a diferença entre sinal e ruído está exatamente aí.</p>
+      <h3>As quatro fontes</h3>
+      <p><strong>Campo.</strong> Um ano de trabalho com equipes de liderança em cerca de 15 organizações: indústrias multinacionais, fundos globais, foodtechs, organizações internacionais sem fins lucrativos, empresas familiares, no Brasil e fora. De 171 transcritos únicos de sessões, cerca de 85 foram relidos na íntegra para este relatório. Toda referência de campo foi anonimizada: nenhum nome de pessoa ou empresa cliente aparece aqui.</p>
+      <p><strong>Literatura.</strong> 25 achados de pesquisa publicados entre 2024 e 2026, priorizando experimentos controlados e meta-análises: Nature, NBER, Harvard Business School, Stanford, MIT, METR, Psychology &amp; Health.</p>
+      <p><strong>Relatórios de mercado.</strong> As edições 2025 e 2026 de 12 relatórios globais: Gallup, DDI, Deloitte, Edelman, WEF, McKinsey, Microsoft, Gartner, Korn Ferry, PwC, LinkedIn, mais o Panorama 2026 da Amcham e Humanizadas com 629 executivos brasileiros.</p>
+      <p><strong>Casos noticiados.</strong> 23 casos de 2026 com empresa, data e veículo verificáveis. Casos sem confirmação em fonte nomeada foram descartados.</p>
+      <h3>Os filtros</h3>
+      <p>Um insight só entrou se passou por dois filtros ao mesmo tempo: aparecer em pelo menos duas fontes independentes entre si, e ressoar com o que vi em campo este ano. Convergência entre relatórios que citam a mesma pesquisa de origem não conta como independência.</p>
+      <p>Cada afirmação carrega o peso da própria evidência, nesta ordem: experimento controlado, série longitudinal, survey de autorrelato, levantamento de mercado. O tipo de evidência está marcado no início de cada insight, e os 3 dados que mais sustentam cada um abrem a seção. Números de trackers aparecem sempre nomeados como levantamento, nunca como estatística.</p>
+      <p>E cada insight tem uma seção de contraevidência: o que o contradiz, e como pesei isso. Um insight sem contraevidência declarada é marketing.</p>
+      <p>Os títulos seguem a disciplina que Chris Anderson descreve em TED Talks: cada um é uma ideia central completa, o throughline, uma frase que carrega o argumento inteiro e se sustenta sozinha. Título que é só tema ("IA e gestão") não diz nada; título que é ideia obriga o texto a prová-la.</p>
+      <h3>As limitações</h3>
+      <p>Quatro, declaradas. Primeira: meu campo reflete clientes ativos e organizações que procuraram ajuda, não o mercado que não procurou. Segunda: julho e setembro têm pouco material de campo. Terceira: os surveys de mercado usam escalas não comparáveis entre si; quando dois relatórios parecem se contradizer, a diferença de escala está apontada no texto. Quarta: parte do acervo de podcast da minha própria prática não pôde ser consultada a tempo desta edição.</p>
+      <p><strong>Sobre os nomes de campo nesta versão.</strong> Esta é uma versão de trabalho: as referências de campo estão nomeadas (pessoa, organização, data) para permitir verificação. A publicação final será reanonimizada. Cada citação de campo foi reconferida contra o transcrito original; onde a reverificação falhou, o trecho está marcado como não conferido ou foi removido. Dois registros da primeira mineração caíram nessa checagem: um dado de diagnóstico que não existe nos transcritos (era duplicação do estudo 19/81) e uma cena de fábrica cuja origem não foi localizada.</p>
+      <h3>Como ler</h3>
+      <p>Cada insight fecha com o que fazer em três níveis: <strong>Direção</strong>, quem desenha o sistema; <strong>Gerência</strong>, quem traduz estratégia em operação; <strong>Primeira liderança</strong>, quem lidera quem executa. Toda ação passou por um teste antes de entrar: começa numa agenda real na próxima segunda-feira. Para a Primeira liderança, isso significa uma conversa; para a Gerência, uma prática; para a Direção, uma decisão, inclusive de orçamento, porque orçamento é a agenda da Direção. Contexto sem ação é só notícia.</p>
+    </section>
+
+    <section class="pagebreak">
+      <h2>A tensão do ano</h2>
+      <p>As empresas nunca comunicaram tanto. E nunca executaram tão pouco.</p>
+      <p>Um trabalhador médio recebe 117 emails e 153 mensagens por dia, interrompido a cada 2 minutos<sup>1</sup>. No mesmo período, a proporção de pessoas que sabem o que se espera delas no trabalho caiu de 61% para 45% em dez anos<sup>2</sup>. O volume subiu. A clareza caiu.</p>
+      <p>No Brasil, 52% dos executivos apontam a dificuldade de executar a estratégia como a barreira número 1 do negócio<sup>3</sup>. Acima de tecnologia. Acima de mercado. Acima de capital. E quando esses mesmos executivos listam o que vai decidir 2026, os dois primeiros fatores são alinhamento entre estratégia e operação, com 66%, e capacidade de execução, com 60%<sup>3</sup>.</p>
+      <p>Passei 2026 dentro de salas de liderança. Num workshop com a liderança sul-americana da EagleBurgmann, em maio, citei um estudo global feito com um cliente anterior: 19% dos obstáculos de crescimento eram técnicos, 81% eram sociais. A sala inteira reconheceu a proporção. Com variações, ela me acompanhou o ano inteiro, do iFood à The Nature Conservancy.</p>
+      <p>O pano de fundo mudou junto. Um terço dos trabalhadores viveu 15 mudanças organizacionais relevantes em um único ano<sup>4</sup>. 85% dos líderes dizem que adaptabilidade é crítica; 7% dizem liderar bem essa adaptação<sup>4</sup>. A mudança deixou de ser um evento com começo, meio e fim. Virou clima. Liderar em 2026 é decidir de dentro de um sistema que não vai parar de se mover para você decidir.</p>
+      <p>Os nove insights a seguir são o que sobrou depois dos filtros. O que não passou está na seção de ruído. Em liderança, o ruído não é inofensivo: cada moda comprada é uma conversa real adiada.</p>
+      <h3>A matriz de sinais</h3>
+      <div class="tablewrap">
+        <table>
+          <tr><th>Insight</th><th>Força do sinal</th><th>Melhor evidência</th><th>Horizonte</th><th>Indicador a observar</th></tr>
+          <tr><td>01 · A demolição do andar do meio</td><td>Forte</td><td>Longitudinal (Gallup, DDI) + casos</td><td>Agora</td><td>Reversões de cortes; clareza de prioridades nas empresas achatadas</td></tr>
+          <tr><td>02 · Recorde de comunicação, escassez de conversa</td><td>Forte</td><td>Volume (Microsoft) + meta-análise de silêncio</td><td>Agora</td><td>Volume de mensagens pós-agentes de IA</td></tr>
+          <tr><td>03 · Desalinhamento crônico</td><td>Forte</td><td>Longitudinal (Gallup, 10 anos) + surveys</td><td>Agora</td><td>Série de clareza de expectativas; efeito do achatamento na linha de visão</td></tr>
+          <tr><td>04 · A IA como álibi</td><td>Forte</td><td>Experimentos (METR, HBS) + levantamentos</td><td>Agora</td><td>Recontratações públicas; % de orçamento de IA no Brasil</td></tr>
+          <tr><td>05 · Liderar quem não se reporta para você</td><td>Moderado a forte</td><td>Surveys adjacentes + padrão de campo</td><td>Agora a 3 anos</td><td>Metas cruzadas na remuneração; conflito lateral no clima</td></tr>
+          <tr><td>06 · O raio curto da confiança</td><td>Forte na direção, moderado nos detalhes</td><td>Longitudinal (DDI) + survey (Edelman)</td><td>Agora a 3 anos</td><td>Insularidade na edição 2027 do Edelman</td></tr>
+          <tr><td>07 · A economia do sim barato</td><td>Forte</td><td>Surveys convergentes + padrão de campo</td><td>Agora</td><td>Rotatividade quando o mercado reaquecer</td></tr>
+          <tr><td>08 · O fim do "depois da mudança"</td><td>Forte</td><td>Meta-análise (debriefs) + séries clássicas + 10 contextos de campo</td><td>Agora</td><td>Percentual de ações de retrospectiva implementadas</td></tr>
+          <tr><td>09 · O degrau que sumiu</td><td>Moderado, consequência alta</td><td>Longitudinal (Stanford, folha de pagamento)</td><td>3 a 10 anos</td><td>Gap de emprego jovem; contratação júnior no Brasil</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="trend">
+      <span class="trend-n">Insight 01 · A demolição do andar do meio</span>
+      <h2>As empresas estão cortando a camada que explica 70% do engajamento</h2>
+      <p class="sinal">Sinal forte · Longitudinal + projeções + casos nomeados · Horizonte: agora</p>
+      <div class="stats">
+        <div class="stat"><div class="num">31% &rarr; 22%</div><div class="lbl">engajamento dos gestores, 2022 a 2025: a queda mais rápida de toda a hierarquia<sup>7</sup></div></div>
+        <div class="stat"><div class="num">70%</div><div class="lbl">da variação do engajamento das equipes é explicada pelo gestor<sup>7</sup></div></div>
+        <div class="stat"><div class="num">41%</div><div class="lbl">dos empregados dizem que a própria empresa cortou camadas gerenciais no último ano<sup>6</sup></div></div>
+      </div>
+      <p>O corte de gestores virou troféu. Empresas anunciam camadas a menos como quem anuncia margem a mais.</p>
+      <h3>O que os dados mostram</h3>
+      <p>A Gartner projeta que, até o fim de 2026, uma em cada cinco organizações usará IA para eliminar mais da metade dos cargos de média gestão<sup>5</sup>. Isso é projeção. O que já é observação: 41% dos empregados dizem que a própria empresa cortou camadas gerenciais no último ano<sup>6</sup>, a Cloudflare cortou 20% do quadro citando nominalmente "eliminação de funções de média gestão pela IA", e a Amazon somou cerca de 30 mil cortes corporativos em nome de "antiburocracia"<sup>11</sup>. Em junho, a imprensa de negócios já tratava o achatamento como fenômeno com nome próprio<sup>10</sup>.</p>
+      <p>Agora o outro lado da mesma moeda, medido ano a ano. O engajamento dos gestores caiu de 31% em 2022 para 22% em 2025, com 5 pontos perdidos só no último ano: a queda mais rápida de toda a hierarquia, até quase encostar nos 19% de quem não lidera ninguém<sup>7</sup>. O prêmio de energia que justificava o cargo desapareceu. 71% dos líderes relatam mais estresse desde que assumiram; 40% dos estressados já consideraram largar a liderança<sup>8</sup>. Gestores gastam 40% do tempo apagando incêndio e tratando burocracia, e 13% desenvolvendo pessoas, que é a parte do trabalho que justifica o cargo existir<sup>9</sup>. 73% das organizações reconhecem que o papel precisa ser reinventado. 7% estão fazendo isso<sup>9</sup>.</p>
+      <p>O dado que amarra tudo: gestores explicam 70% da variação do engajamento das equipes<sup>7</sup>. A camada que está sendo demolida é a que sustenta o prédio.</p>
+      <p>E há prova de que o problema é tratável, não inevitável. Em organizações com práticas de referência, 79% dos gestores estão engajados, quase quatro vezes a média global. Quando o gestor recebe treinamento básico para o cargo, o próprio bem-estar dele salta de 28% para 50%<sup>7</sup>.</p>
+      <h3>O que eu vi em campo</h3>
+      <p>O gestor do meio de 2026 chega exausto antes de a pauta começar. No iFood, Franciele Bianchini, de People Development do Marketplace, resumiu numa conversa de abril: a carga de mudança pesa mais que as horas. O desgaste vem do redirecionamento constante, não das noites viradas. Na mesma empresa, Paula, VP de Growth, descreveu em maio a versão matricial do problema: diretores respondendo por um negócio de R$ 2 bilhões por mês sem que as pessoas necessárias fossem deles.</p>
+      <p>Numa instituição financeira brasileira de estrutura de partnership (o nome não ficou registrado no transcrito), Tamima, responsável por T&amp;D do front office, descreveu em março gestores que "lideram pelo título, não por escolha": promovidos por excelência técnica, sem que a competência de liderança viesse junto. Esse padrão apareceu em cinco contextos distintos do meu ano. E há a cena do líder-herói que salva o turno da madrugada enquanto o time nunca aprende a salvar o próprio turno; registro da primeira mineração cuja origem não reconferi nos transcritos, mantido aqui como não conferido porque o padrão que ele ilustra apareceu verificado em outros contextos.</p>
+      <h3>A contraevidência</h3>
+      <p>Há uma leitura legítima de que parte do achatamento é desburocratização saudável: camadas que só carimbavam decisão mereciam sumir, e a própria Amazon enquadra os cortes assim<sup>11</sup>. Aceito parcialmente. A distinção que os dados sustentam é outra: camada que só transmite informação é substituível; camada que traduz prioridade, contexto e risco, não. O erro de 2026 é cortar as duas com a mesma régua. Vale registrar também que a projeção da Gartner pode não se realizar; por isso ela está marcada como projeção, e o indicador de observação abaixo existe.</p>
+      <div class="takeaway">Cortar o tradutor não encurta a distância entre estratégia e operação.</div>
+      <h3>O que observar nos próximos 12 meses</h3>
+      <div class="observar"><ul>
+        <li>Reversões: a Gartner prevê que metade dos cortes atribuídos à IA será revertida até 2027<sup>16</sup>. Se as recontratações de gestores começarem, a tese se confirma da pior forma.</li>
+        <li>Clareza de prioridades nas empresas achatadas: se o dado de acesso ao plano estratégico cair ainda mais onde houve corte de camada, o mecanismo está exposto.</li>
+        <li>O que a Gallup 2027 mostrar do engajamento de gestores: estabilização ou quarto ano de queda.</li>
+      </ul></div>
+      <div class="acao">
+        <div class="acao-title">O que fazer</div>
+        <div class="nivel">
+          <h4>Direção<span>quem desenha o sistema</span></h4>
+          <ul>
+            <li>Antes de cortar uma camada, mapeie as conversas que ela carrega: quem traduz prioridade, quem escala risco, quem dá contexto, quem segura o cliente interno. Decida por escrito quem herda cada uma. Corte sem herdeiro é dívida.</li>
+            <li>Separe as duas camadas com réguas diferentes: a que transmite informação pode ser automatizada; a que traduz significado precisa ser protegida e medida pelo que só ela faz.</li>
+            <li>Treine antes de cortar. Gestor treinado quase dobra o próprio bem-estar<sup>7</sup>. É a alavanca mais barata de todo o dado deste relatório.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Gerência<span>quem traduz estratégia em operação</span></h4>
+          <ul>
+            <li>Saia do papel de repassador de informação, porque esse papel está condenado. Menos reunião de status, mais conversa individual com a pauta do liderado no centro.</li>
+            <li>Antes de delegar, um teste: consigo prometer que essa pessoa terá sucesso nesta entrega? Se a resposta é não, o que falta é contexto, não competência. Só 19% dos líderes em ascensão sabem delegar<sup>8</sup>; é a habilidade que mais protege o próprio gestor.</li>
+            <li>Documente o critério das suas decisões recorrentes. O que só existe na sua cabeça é exatamente o que a empresa perde quando te move.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Primeira liderança<span>quem lidera quem executa</span></h4>
+          <ul>
+            <li>Toda entrega relevante começa com uma pergunta: o que você entendeu do que eu pedi? Quem sabe demais superestima a própria clareza; a taxa real de compreensão é sempre menor do que parece.</li>
+            <li>Para cima, outra pergunta: o que você gostaria que eu focasse para te dar tranquilidade? Feedback para cima é o elo mais fraco da cadeia; essa pergunta o torna seguro.</li>
+            <li>Pare de resgatar. Cada salvamento seu é um aprendizado que o time não fez.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="trend">
+      <span class="trend-n">Insight 02 · Recorde de comunicação, escassez de conversa</span>
+      <h2>Nunca se comunicou tanto. Nunca se soube tão pouco o que fazer</h2>
+      <p class="sinal">Sinal forte · Longitudinal (10 anos) + meta-análise · Horizonte: agora</p>
+      <div class="stats">
+        <div class="stat"><div class="num">270</div><div class="lbl">emails e mensagens por pessoa por dia, com interrupção a cada 2 minutos<sup>1</sup></div></div>
+        <div class="stat"><div class="num">57%</div><div class="lbl">das reuniões são marcadas sem convite prévio; depois das 20h, crescem 16% ao ano<sup>1</sup></div></div>
+        <div class="stat"><div class="num">50%</div><div class="lbl">das reuniões individuais são avaliadas como fracas por quem mais importa nelas, o liderado<sup>15</sup></div></div>
+      </div>
+      <p>Nunca foi tão fácil mandar mensagem. Nunca foi tão raro alguém saber o que fazer com ela.</p>
+      <h3>O que os dados mostram</h3>
+      <p>O volume primeiro: 117 emails e 153 mensagens por dia por pessoa, interrupção a cada 2 minutos, 57% das reuniões marcadas sem convite prévio, reuniões depois das 20h crescendo 16% ao ano<sup>1</sup>. Metade dos trabalhadores e líderes descreve o próprio trabalho como caótico e fragmentado<sup>1</sup>.</p>
+      <p>Esse tráfego todo não está comprando entendimento. A pergunta mais básica entre um líder e uma pessoa, "o que se espera de você?", está com a resposta em queda há dez anos, e esse buraco é tão grande que ganhou insight próprio, o próximo. Aqui fica o mecanismo: comunicação virou broadcast, e a conversa, que é bidirecional e desenhada, virou luxo de agenda.</p>
+      <p>E o dado mais silencioso do relatório: quanto menos as pessoas falam, mais adoecem. Uma meta-análise de 84 estudos, com 34.975 pessoas, encontrou correlação consistente entre silêncio no trabalho e burnout<sup>14</sup>. Correlação, não causa; mas na direção oposta à intuição gerencial de que calar poupa energia. Calar cobra juros.</p>
+      <h3>O que eu vi em campo</h3>
+      <p>Reunião gerando reunião. Times que convidam o chefe como garantia de que algo vai acontecer, o que já é um dado sobre confiança. Blocos de uma hora por padrão, independentemente do assunto. Na sessão de fevereiro com o Team One da EagleBurgmann, a liderança sul-americana da empresa, o grupo nomeou o próprio padrão, e a formulação ficou em ata: pretense sofisticada é agendar reuniões suficientes para evitar as conversas que geram progresso.</p>
+      <p>Atendi em coaching uma vice-presidente americana recém-promovida (organização não conferida nos meus registros) com 300 emails por dia, convencida de que a meta era responder tudo, até redefinir a meta como voltar a jantar com a família. E no workshop de maio da EagleBurgmann ficou registrada a troca que muda o jogo: substituir "faz sentido?" por "o que te preocupa no que eu pedi?" produz alinhamento mais honesto. A primeira pergunta pede confirmação; a segunda abre informação. Metade das reuniões individuais é considerada fraca por quem mais importa nelas, o liderado, e praticamente nenhuma organização treina gestores para conduzi-las<sup>15</sup>.</p>
+      <h3>A contraevidência</h3>
+      <p>Dois cuidados. O dado de volume vem da Microsoft, que vende a solução para o problema que descreve; conflito de interesse declarado. Por isso o insight não se apoia nele: se apoia na série longitudinal independente da Gallup e na meta-análise de silêncio. Segundo cuidado: ferramentas assíncronas bem usadas reduzem reunião, e há evidência experimental de que acesso a IA generativa diminui tempo de email e trabalho fora do horário<sup>22</sup>. A tecnologia não é a causa da escassez de conversa. A ausência de desenho é.</p>
+      <div class="takeaway">Comunicação é volume. Conversa é direção.</div>
+      <h3>O que observar nos próximos 12 meses</h3>
+      <div class="observar"><ul>
+        <li>O efeito dos agentes de IA no volume: se cada pessoa ganhar agentes que escrevem, o ruído multiplica. Quem medir clareza, e não tráfego, sai na frente.</li>
+        <li>A série da Gallup sobre clareza de expectativas: qualquer recuperação será o sinal mais importante do ano.</li>
+        <li>Empresas publicando "orçamento de atenção" como política explícita.</li>
+      </ul></div>
+      <div class="acao">
+        <div class="acao-title">O que fazer</div>
+        <div class="nivel">
+          <h4>Direção<span>quem desenha o sistema</span></h4>
+          <ul>
+            <li>Três prioridades, não dez. E um teste mensal: qualquer gestor consegue repeti-las sem consultar nada? Hoje, só 28% conseguem<sup>13</sup>.</li>
+            <li>Orçamento de atenção: para cada canal, ritual ou comitê novo, um sai. Atenção é o recurso mais escasso da empresa e o único sem dono no organograma.</li>
+            <li>Crie o sinal que falta: um mecanismo explícito para prioridade derrapando chegar ao topo sem custo político para quem avisa.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Gerência<span>quem traduz estratégia em operação</span></h4>
+          <ul>
+            <li>Mate o bloco de uma hora por padrão. Cada reunião nasce com propósito e papéis nomeados: quem decide, quem aconselha, quem executa.</li>
+            <li>Critério explícito antes da decisão. Critério que não elimina opção é enfeite.</li>
+            <li>Trate a reunião individual como a tecnologia de gestão que ela é: pauta do liderado no centro, cadência protegida, e a pergunta que destrava o resto: o que você tem tentado me comunicar que eu não tenho conseguido compreender?</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Primeira liderança<span>quem lidera quem executa</span></h4>
+          <ul>
+            <li>Cada pessoa do time sabe, por escrito, o que se espera dela neste trimestre. A conversa mais básica do trabalho sumiu do mercado; recoloque no seu time.</li>
+            <li>Troque "faz sentido?" por "o que te preocupa no que eu pedi?". A primeira pede confirmação. A segunda abre informação.</li>
+            <li>Silêncio no time é dado, não paz. Quem não fala está pagando o custo em saúde<sup>14</sup>, e a empresa em execução.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="trend">
+      <span class="trend-n">Insight 03 · Desalinhamento crônico</span>
+      <h2>A maioria das pessoas não consegue ligar a própria tarefa ao resultado da empresa</h2>
+      <p class="sinal">Sinal forte · Longitudinal + surveys convergentes · Horizonte: agora</p>
+      <div class="stats">
+        <div class="stat"><div class="num">61% &rarr; 45%</div><div class="lbl">pessoas que sabem o que se espera delas no trabalho, 2015 a 2024<sup>2</sup></div></div>
+        <div class="stat"><div class="num">27%</div><div class="lbl">dos funcionários têm acesso ao plano estratégico da própria empresa<sup>12</sup></div></div>
+        <div class="stat"><div class="num">28%</div><div class="lbl">dos executivos responsáveis por executar conseguem listar as 3 prioridades da empresa<sup>13</sup></div></div>
+      </div>
+      <p>Peça a alguém do seu time para explicar como a tarefa desta semana move o resultado do ano. O silêncio que vem tem nome: desalinhamento crônico.</p>
+      <h3>O que os dados mostram</h3>
+      <p>A série mais longa primeiro. Em 2015, 61% dos trabalhadores americanos diziam saber o que se espera deles no trabalho. Em 2024, 45%<sup>2</sup>. Dezesseis pontos perdidos em dez anos, exatamente a década em que as empresas mais investiram em OKRs, dashboards e cascateamento de metas. A ferramenta de alinhar se espalhou. O alinhamento caiu.</p>
+      <p>A cadeia rompe em todos os elos, medida por fontes diferentes: 71% dos líderes falham em comunicar prioridades e só 27% dos funcionários têm acesso ao plano estratégico<sup>12</sup>. No topo, não é melhor: quando pesquisadores do MIT pediram a executivos que listassem as três prioridades da própria empresa, só 28% conseguiram, e eram os responsáveis por executá-las<sup>13</sup>. Uma revisão sistemática de 160 estudos sobre implementação de estratégia converge: o que decide a execução é comunicação de prioridades, alinhamento da média gestão e accountability, mais do que a qualidade da formulação<sup>36</sup>.</p>
+      <p>O elo com resultado é direto e mensurável: levar clareza de expectativas ao nível das melhores práticas vale 9% a mais de lucratividade e 11% a mais de qualidade<sup>2</sup>. E os executivos brasileiros sabem onde dói: alinhamento entre estratégia e operação é o fator crítico número 1 para 2026, com 66%<sup>3</sup>.</p>
+      <h3>O que eu vi em campo</h3>
+      <p>Na captação global da The Nature Conservancy, as entrevistas pré-retiro mostraram times tão especializados que ninguém enxergava mais a jornada completa do doador: cada elo otimizava a própria parte de um caminho que ninguém via inteiro. No iFood, Franciele Bianchini descreveu o desafio de coesão entre Marketplace e Pago em termos parecidos: áreas que não se veem como um negócio só.</p>
+      <p>E o padrão mais revelador veio da Wellz, nas entrevistas antes do offsite de maio: dezenas de preocupações que cada pessoa achava que eram só dela tinham a mesma raiz, "para onde estamos indo?". O desalinhamento crônico raramente aparece como pergunta estratégica. Aparece como ansiedade individual multiplicada.</p>
+      <h3>A contraevidência</h3>
+      <p>A objeção óbvia: as empresas nunca investiram tanto em ferramentas de alinhamento, e a adoção de OKRs cresceu a década inteira. É verdade, e é o ponto: a queda de clareza aconteceu durante a década das ferramentas. Cascatear meta pelo sistema não é o mesmo que dar a cada pessoa a linha de visão entre a tarefa dela e o resultado. Uma é fluxo de dados. A outra é conversa. Segundo cuidado: o dado da Gallup é autorrelato; mas é a mesma régua há dez anos, e é a direção da série que condena.</p>
+      <div class="takeaway">Cascatear metas não cria linha de visão. Conversa cria.</div>
+      <h3>O que observar nos próximos 12 meses</h3>
+      <div class="observar"><ul>
+        <li>A série da Gallup sobre clareza de expectativas: continuar caindo com IA no meio seria o alarme máximo.</li>
+        <li>O efeito do achatamento (insight 01) sobre a linha de visão: menos tradutores deveria significar menos clareza; se aparecer nos dados, o mecanismo está provado.</li>
+        <li>Empresas incluindo "consigo ligar meu trabalho ao resultado" como pergunta padrão de pesquisa interna.</li>
+      </ul></div>
+      <div class="acao">
+        <div class="acao-title">O que fazer</div>
+        <div class="nivel">
+          <h4>Direção<span>quem desenha o sistema</span></h4>
+          <ul>
+            <li>Publique a linha do resultado numa página: as 3 prioridades e o caminho de cada área até elas. Se precisar de mais de uma página, ainda não está pronto para comunicar.</li>
+            <li>Teste a linha de visão por amostra, todo mês: "como a sua tarefa desta semana move a prioridade X?". Resposta vazia é dado de sistema, não defeito da pessoa.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Gerência<span>quem traduz estratégia em operação</span></h4>
+          <ul>
+            <li>Traduza cada prioridade em critério de trade-off do seu time: o que passamos a fazer, e o que deixamos de fazer por causa dela. Prioridade que não muda alocação é slogan.</li>
+            <li>Revise o portfólio com a régua da linha: tarefa que ninguém consegue ligar a resultado é candidata a morrer antes do próximo ciclo.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Primeira liderança<span>quem lidera quem executa</span></h4>
+          <ul>
+            <li>Uma vez por trimestre, no individual: "me explica como o seu trabalho aparece no resultado da empresa". Onde a linha se perder, o reparo é seu, não da pessoa.</li>
+            <li>Ao delegar, entregue o contexto junto com a tarefa: para quem é, o que muda se ficar pronto, o que acontece se não ficar. Todo erro de comunicação é um erro de contexto.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="trend">
+      <span class="trend-n">Insight 04 · A IA como álibi</span>
+      <h2>A IA demitiu menos gente do que a narrativa dela</h2>
+      <p class="sinal">Sinal forte · Experimentos controlados + levantamentos de mercado · Horizonte: agora</p>
+      <div class="stats">
+        <div class="stat"><div class="num">54% vs &lt;1%</div><div class="lbl">demissões de 2026 que citam IA vs demissões causadas por ganho real de produtividade<sup>11,5</sup></div></div>
+        <div class="stat"><div class="num">59%</div><div class="lbl">das empresas admitem que citar IA soa melhor que admitir dificuldade financeira<sup>17</sup></div></div>
+        <div class="stat"><div class="num">-19%</div><div class="lbl">velocidade real de desenvolvedores com IA que se sentiam 20% mais rápidos<sup>18</sup></div></div>
+      </div>
+      <p>Mais da metade das demissões de 2026 citou IA. Quase nenhuma foi causada por ela.</p>
+      <h3>O que os dados mostram</h3>
+      <p>Três números que não fecham entre si, e é exatamente esse o ponto. 54% das demissões de 2026 nos EUA mencionam IA, segundo levantamento de imprensa<sup>11</sup>. A Gartner calcula que menos de 1% das demissões veio de ganho real de produtividade com IA<sup>5</sup>. E um levantamento divulgado no Brasil registra 59% das empresas admitindo que citar IA soa melhor do que admitir dificuldade financeira<sup>17</sup>. A distância entre o primeiro número e o segundo é o tamanho da narrativa.</p>
+      <p>O movimento reverso já começou. Klarna admitiu publicamente que foi longe demais e recontratou; o Commonwealth Bank da Austrália reverteu cortes quando o bot de voz não deu conta; a IBM descobriu que a IA resolvia 94% dos chamados internos de RH e que os 6% restantes eram exatamente o que exigia gente, e anunciou triplicar a contratação de nível de entrada em 2026<sup>16</sup>. A Duolingo desfez o memorando "AI-first" depois da reação interna, sem nunca ter demitido ninguém por IA<sup>32</sup>. A previsão da Gartner: metade dos cortes atribuídos à IA será revertida até 2027<sup>16</sup>.</p>
+      <p>Dentro das empresas, o mesmo descompasso em escala micro, e aqui a evidência é experimental. Num estudo randomizado, desenvolvedores experientes com ferramentas de IA se sentiram 20% mais rápidos; medidos com relógio, estavam 19% mais lentos<sup>18</sup>. Estudo pequeno, 16 pessoas e 246 tarefas reais, mas pré-registrado, e o único do ano a medir percepção contra tempo real. No outro extremo de escala, um experimento de campo com 776 profissionais da P&amp;G mostrou indivíduo com IA igualando a performance de uma dupla sem IA, e a IA dissolvendo silos entre funções<sup>21</sup>. Em call centers, IA elevou a produtividade média em 14%, e a dos novatos em 34%<sup>22</sup>. O ganho é real. O que não é real é a leitura ingênua dele.</p>
+      <p>Porque há três efeitos colaterais documentados. Percepção distorcida, como no estudo dos desenvolvedores. Erosão de motivação: quem colabora com IA entrega mais e, ao voltar para tarefas sem IA, relata queda de 11% na motivação intrínseca e 20% mais tédio<sup>20</sup>. E uso clandestino: avaliadores que acreditam que alguém usou IA julgam a competência dessa pessoa 9% menor, pelo trabalho idêntico; resultado, 57% de quem usa esconde<sup>19</sup>. Em culturas que celebram o uso abertamente, a penalidade praticamente desaparece<sup>19</sup>.</p>
+      <p>O retrato brasileiro é o mais nítido de todos: 84% das empresas dizem usar IA, 61% não viram resultado relevante, 77% investem menos de 2% do orçamento, e o limitador número 1 citado não é a tecnologia, é a falta de gente qualificada, com 43%<sup>3</sup>. Adoção deixou de ser a barreira. Integração virou. A McKinsey chega à mesma conclusão por outro caminho: os funcionários usam IA numa proporção três vezes maior do que o C-suite estima, e a barreira número 1 para escalar, nas palavras do próprio relatório, é a liderança<sup>23</sup>. Só 12% dos CEOs dizem que a IA entregou benefício de custo e de receita ao mesmo tempo<sup>24</sup>.</p>
+      <h3>O que eu vi em campo</h3>
+      <p>A IA foi de experimento pessoal a mandato de CEO em cerca de 90 dias, e dá para datar pelo iFood. Em abril, Franciele Bianchini mapeava comigo os desafios de coesão do Marketplace, com "AI Workforce" já desenhada no mapa estratégico de People. Em maio, no Share, o evento interno para cerca de 8 mil pessoas, o CEO Diego disse que quem não prestasse atenção agora ficaria para trás. Noventa dias entre o bastidor e o palco.</p>
+      <p>E da operação do iFood veio o critério mais honesto do ano, relatado na mesma conversa de abril: alguns agentes ficam, outros são abandonados quando criam mais trabalho do que economizam. É o único critério que sobrevive a qualquer cenário de 2027. Se a capacidade da tecnologia saltar de novo, ele continua valendo; se estagnar, também. Narrativas envelhecem. Critérios não.</p>
+      <h3>A contraevidência</h3>
+      <p>Álibi não significa efeito zero. Há deslocamento real e mensurável: o emprego de jovens em ocupações expostas à IA está 19% abaixo da tendência<sup>31</sup>, e funções específicas, como atendimento, têm substituição verdadeira. O insight não afirma que a IA não corta empregos; afirma que a narrativa corre à frente do mecanismo, e que decisões tomadas pela narrativa estão sendo revertidas em público. Segundo cuidado: o estudo dos desenvolvedores tem n pequeno e mede um perfil específico; não generalize os 19% para toda função. O que generaliza é o gap entre percepção e medida.</p>
+      <div class="takeaway">O retorno da IA não depende da ferramenta. Depende da conversa em volta dela.</div>
+      <h3>O que observar nos próximos 12 meses</h3>
+      <div class="observar"><ul>
+        <li>Quantas empresas "AI-first" reverterão publicamente, e como o mercado precifica a reversão.</li>
+        <li>O orçamento brasileiro de IA saindo, ou não, da faixa de 2%<sup>3</sup>. Investimento é o teste da sinceridade do discurso.</li>
+        <li>Replicações do estudo de percepção contra tempo real em outras funções. Se o gap se confirmar fora de engenharia, muda a régua de todo piloto de IA.</li>
+      </ul></div>
+      <div class="acao">
+        <div class="acao-title">O que fazer</div>
+        <div class="nivel">
+          <h4>Direção<span>quem desenha o sistema</span></h4>
+          <ul>
+            <li>Se o corte é financeiro, diga que é financeiro. O álibi custa caro quando a recontratação vira notícia, e ela está virando.</li>
+            <li>Celebre o uso de IA em público, com nome e caso. A penalidade que faz metade do time esconder o uso desaparece onde ele é celebrado<sup>19</sup>.</li>
+            <li>Meça resultado, não adoção. Percentual de gente usando IA não é indicador de nada; tempo, qualidade e receita são.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Gerência<span>quem traduz estratégia em operação</span></h4>
+          <ul>
+            <li>Pilotos com relógio e métrica, nunca com percepção. Sentir-se rápido não é ser rápido<sup>18</sup>.</li>
+            <li>Crie a frase segura: "abandonei o agente porque criava mais trabalho". Isso é dado de piloto, não resistência à mudança.</li>
+            <li>Use a IA onde ela comprovadamente comprime a curva: novatos ganham 34%, veteranos quase nada<sup>22</sup>. Alocar IA por senioridade invertida é a decisão de maior retorno documentado.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Primeira liderança<span>quem lidera quem executa</span></h4>
+          <ul>
+            <li>Torne o uso visível no time: quem usa o quê, para quê. Pares ensinam pares mais rápido que qualquer treinamento.</li>
+            <li>Quando a IA absorver a parte do trabalho que dava orgulho, recomponha o trabalho<sup>20</sup>. Motivação também é um sistema, e ela caiu 11% onde ninguém redesenhou nada.</li>
+            <li>Pergunte no individual: o que a IA tirou do seu trabalho que você queria de volta? A resposta desenha o redesenho.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="trend">
+      <span class="trend-n">Insight 05 · Liderar quem não se reporta para você</span>
+      <h2>O resultado do seu ano depende de gente que não se reporta a você</h2>
+      <p class="sinal">Sinal moderado a forte · Surveys + projeções + padrão de campo consistente · Horizonte: agora a 3 anos</p>
+      <div class="stats">
+        <div class="stat"><div class="num">41%</div><div class="lbl">dos empregados viram a própria empresa cortar camadas gerenciais: menos chefes, mais pares<sup>6</sup></div></div>
+        <div class="stat"><div class="num">1 em 5</div><div class="lbl">organizações deve eliminar mais da metade da média gestão via IA até o fim de 2026 (projeção)<sup>5</sup></div></div>
+        <div class="stat"><div class="num">66%</div><div class="lbl">dos executivos brasileiros apontam alinhamento entre estratégia e operação como fator crítico número 1<sup>3</sup></div></div>
+      </div>
+      <p>O organograma diz quem manda em quem. O resultado depende de quem colabora com quem.</p>
+      <h3>O que os dados mostram</h3>
+      <p>Influência sem autoridade sempre existiu. O que 2026 mudou foi a proporção: com 41% das empresas cortando camadas<sup>6</sup> e a projeção de achatamento acelerando<sup>5</sup>, sobram menos chefes para arbitrar e mais trabalho que só acontece entre pares. A revisão sistemática de execução aponta a coordenação horizontal da média gestão como alavanca decisiva<sup>36</sup>, e há um dado experimental sugestivo: no estudo com 776 profissionais da P&amp;G, a IA dissolveu silos funcionais, com pessoas de R&amp;D propondo soluções comerciais e vice-versa<sup>21</sup>. As fronteiras entre funções estão ficando porosas nas duas direções: pela estrutura, que achatou, e pela ferramenta, que atravessa.</p>
+      <p>Honestidade metodológica: não existe ainda uma série pública medindo "liderança lateral" diretamente. Os dados acima são adjacentes e convergentes; o padrão de campo é que carrega este insight, e está marcado assim.</p>
+      <h3>O que eu vi em campo</h3>
+      <p>Foi o ano inteiro. No iFood, Paula, VP de Growth, descreveu diretores respondendo por um negócio de R$ 2 bilhões por mês sem que as pessoas necessárias fossem deles, enfrentando VPs com incentivos opostos. A régua dela ficou comigo: se a decisão fosse óbvia e sem contestação, não precisaria de um líder sênior ali. E a contrapartida também: empoderamento significa accountability; "a logística não entregou" não é desculpa aceitável.</p>
+      <p>Na Franklin Templeton, num intake do Enterprise Leader Program em setembro, um líder do negócio da Índia nomeou o lado sombra: a matriz não é só uma estrutura, é um esconderijo. Esconder-se nela raramente parece fuga; parece disciplina de processo. E na LifeStance, o desalinhamento lateral virou número: recrutadores com bônus por assinatura, sem estorno em caso de desistência, enquanto a taxa de desistência subia de 15% para 17%; o time de credenciamento previa cada desistência ("a gente sempre sabe", me disse Michelle, coordenadora na Califórnia) e não tinha canal para avisar quem contratava. Um incentivo pagava uma área para fabricar o problema da outra.</p>
+      <h3>A contraevidência</h3>
+      <p>2026 também foi o ano da autoridade imposta: mandatos de retorno cumpridos, cortes por decreto. A autoridade não morreu, e quem aposta que ela sumiu erra o diagnóstico. A resolução está no que cada moeda compra: a autoridade comprou presença (a disposição de sair por mandato caiu de 51% para 7%<sup>28</sup>), e não comprou adesão (13% mais rotatividade nas rígidas<sup>28</sup>). O que se compra por decreto está no insight 07. O que executa a estratégia se negocia entre pares, e não tem decreto que substitua.</p>
+      <div class="takeaway">Autoridade compra presença. Execução se negocia entre pares.</div>
+      <h3>O que observar nos próximos 12 meses</h3>
+      <div class="observar"><ul>
+        <li>Metas compartilhadas entre áreas entrando (ou não) nos sistemas de remuneração variável.</li>
+        <li>Conflito lateral aparecendo nas pesquisas de clima das empresas que achataram estrutura.</li>
+        <li>Crescimento de papéis de coordenação sem time próprio (program leads, chapter leads): o cargo cuja única ferramenta é influência.</li>
+        <li>Agentes de IA entrando na coordenação lateral: quando o trabalho de uma área chega via agente, quem responde por ele? A pergunta da accountability lateral vai ficar mais estranha antes de ficar mais clara.</li>
+      </ul></div>
+      <div class="acao">
+        <div class="acao-title">O que fazer</div>
+        <div class="nivel">
+          <h4>Direção<span>quem desenha o sistema</span></h4>
+          <ul>
+            <li>Pare de arbitrar conflito lateral. Cada escalada resolvida no topo ensina os pares que eles não precisam se resolver. Crie fóruns de pares com mandato real de decisão, e devolva o que subir sem ter passado por lá.</li>
+            <li>Audite os incentivos cruzados com a pergunta do caso LifeStance: algum bônus meu paga uma área para criar o problema de outra?</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Gerência<span>quem traduz estratégia em operação</span></h4>
+          <ul>
+            <li>Antes de pedir a um par, pesquise a visão dele: objetivos, preocupações, circunstâncias. Proponha na interseção entre as suas metas e as dele. Pedido que ignora a visão do outro colhe resistência, e resistência lateral não aparece como "não": aparece como atraso.</li>
+            <li>Feche acordos de mão dupla explícitos: o que eu prometo, o que eu peço, até quando. E pare de convidar o chefe como fiador: usar autoridade emprestada declara que a relação lateral falhou.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Primeira liderança<span>quem lidera quem executa</span></h4>
+          <ul>
+            <li>Peça bem: intenção, contexto, restrição e abertura. Um pedido vago para quem não te deve nada é um pedido negado em câmera lenta.</li>
+            <li>Nomeie a preocupação do par antes que ele precise nomear. E dê crédito público a quem entregou sem te dever nada: é a moeda que compra a próxima entrega.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="trend">
+      <span class="trend-n">Insight 06 · O raio curto da confiança</span>
+      <h2>A confiança não acabou. Ela parou de atravessar camadas</h2>
+      <p class="sinal">Sinal forte na direção, moderado nos detalhes · Longitudinal + survey · Horizonte: agora a 3 anos</p>
+      <div class="stats">
+        <div class="stat"><div class="num">46% &rarr; 29%</div><div class="lbl">confiança no gestor imediato, 2022 a 2025<sup>8</sup></div></div>
+        <div class="stat"><div class="num">42%</div><div class="lbl">prefeririam trocar de departamento a se reportar a um gestor com valores diferentes<sup>25</sup></div></div>
+        <div class="stat"><div class="num">9x</div><div class="lbl">mais confiança no gestor quando ele faz coaching de verdade<sup>8</sup></div></div>
+      </div>
+      <p>A confiança não desapareceu. Ela encolheu de alcance.</p>
+      <h3>O que os dados mostram</h3>
+      <p>A série mais dura: a confiança no gestor imediato caiu de 46% para 29% desde 2022, uma perda de 37% em três anos<sup>8</sup>. Só 32% dos líderes confiam na própria liderança sênior, e gestores de linha de frente confiam 1,5 vez menos no topo do que o topo imagina<sup>8</sup>. Do lado dos funcionários, só 22% concordam fortemente que a liderança da empresa tem direção clara<sup>7</sup>, e 29% citam falta de comunicação clara da liderança como o principal problema do próprio trabalho<sup>33</sup>.</p>
+      <p>O Edelman 2026 acrescenta a dimensão social: 70% das pessoas relutam em confiar em quem tem valores ou fontes de informação diferentes, e 42% prefeririam trocar de departamento a se reportar a um gestor com valores diferentes dos seus<sup>25</sup>. Quase 70% temem que líderes as enganem deliberadamente<sup>25</sup>. O relatório chama isso de insularidade, e vem de um ano em que 61% já carregavam ressentimento contra instituições<sup>26</sup>.</p>
+      <p>E aqui está o paradoxo que exige honestidade metodológica: o mesmo Edelman mostra "meu empregador" como a instituição mais confiável do mundo, com 78%, e o próprio CEO com 66%<sup>25</sup>. Contradição com a DDI? Não: escalas diferentes medindo coisas diferentes. Confiança institucional declarada é uma pergunta; concordância forte com comportamentos específicos do chefe é outra. Lidas juntas, dizem algo preciso: a confiança na instituição resiste, a confiança de relação encolheu. As pessoas confiam na empresa em tese. Duvidam dela a duas camadas de distância. E 73% esperam que seja o CEO a reconstruir esse tecido, consultando quem pensa diferente e dialogando com os críticos internos<sup>25</sup>.</p>
+      <p>A alavanca com melhor evidência: funcionários cujo gestor faz coaching de verdade confiam 9 vezes mais nele. As habilidades mais deficitárias nos líderes, medidas pela mesma pesquisa: escuta, empatia, dar e receber feedback<sup>8</sup>.</p>
+      <h3>O que eu vi em campo</h3>
+      <p>Uma frase resume o ano, dita por Mark, líder da área global de captação da The Nature Conservancy, em entrevista pré-retiro em agosto: confio no meu gestor, não no gestor do meu gestor. Os dados internos da própria TNC mostravam o mesmo: a confiança existia em cada elo direto e não subia a cadeia, no meio de uma reformulação global de estrutura, o programa Sharpening Our Focus.</p>
+      <p>Sob estresse, cada área protege o próprio território, e o padrão se repete em todos os níveis, como um fractal: empresa, vice-presidência, time. No Welcome Group, imobiliária familiar de Houston, Matthew Wolf, de treasury, relatou o custo dos feudos de conhecimento: a saída da diretora de property management levou embora a administração de contratos inteira, números sem fonte que ninguém mais entendia. Na Bree, fabricante paranaense de equipamentos de energia, Alessandra, de estratégia, descreveu gerentes em guerra, cada um provando que o problema era do outro. E vi, em cinco contextos, que a resistência quase nunca era contra a decisão: era contra o critério que ninguém explicou.</p>
+      <p>O antídoto que funcionou em agosto, na própria TNC: trocar "como recuperar a confiança?" por "pelo que você quer ser confiável?". A primeira pergunta olha para trás e gera defesa. A segunda olha para frente e gera compromisso.</p>
+      <h3>A contraevidência</h3>
+      <p>O dado de insularidade tem uma edição só; pode ser artefato de um ano polarizado, e está marcado para reteste em 2027. A queda medida pela DDI é robusta, mas é autorrelato de survey, não comportamento observado. E existe leitura alternativa para o paradoxo Edelman: o empregador pode estar confiável por contraste, porque governo e mídia caíram mais. Se for isso, a vantagem é herdada, não conquistada, e ainda mais frágil. Nenhuma das leituras muda a direção prática: a confiança que executa estratégia é a de relação, e essa está mais curta.</p>
+      <div class="takeaway">A confiança parou de viajar. Ela ficou local.</div>
+      <h3>O que observar nos próximos 12 meses</h3>
+      <div class="observar"><ul>
+        <li>O dado de insularidade na edição 2027 do Edelman: replicou ou era ruído de ano eleitoral americano.</li>
+        <li>A série da DDI sobre confiança no gestor imediato: quarta queda consecutiva ou primeira recuperação.</li>
+        <li>Empresas tratando skip-level como rotina de escuta, não como auditoria.</li>
+      </ul></div>
+      <div class="acao">
+        <div class="acao-title">O que fazer</div>
+        <div class="nivel">
+          <h4>Direção<span>quem desenha o sistema</span></h4>
+          <ul>
+            <li>Assuma que sua mensagem não atravessa duas camadas. Conversas diretas com a base, regulares, de escuta, não de transmissão. A pesquisa diz que é de você que se espera isso<sup>25</sup>.</li>
+            <li>Publique o critério junto com a decisão. Ninguém briga com a decisão que entendeu. Briga com o critério que ficou escondido.</li>
+            <li>Convide o crítico interno para a mesa antes da decisão, não para a comunicação depois dela. 74% dos funcionários esperam exatamente isso do CEO<sup>25</sup>.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Gerência<span>quem traduz estratégia em operação</span></h4>
+          <ul>
+            <li>Seu papel virou corretor de confiança: traduza o porquê para baixo e a realidade para cima, com a mesma honestidade nas duas direções. É a posição de maior alavancagem do organograma de 2026.</li>
+            <li>Coaching regular não é benefício. Quem o recebe confia 9 vezes mais no gestor<sup>8</sup>. Vinte minutos por semana por pessoa compram o ativo mais escasso do ano.</li>
+            <li>Treine as três habilidades que a pesquisa aponta como mais deficitárias: escuta, empatia, feedback. Não são traços de personalidade. São práticas com protocolo.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Primeira liderança<span>quem lidera quem executa</span></h4>
+          <ul>
+            <li>Prometa pouco. Cumpra visivelmente. Quando quebrar, nomeie antes de ser cobrado.</li>
+            <li>Pergunte ao time: pelo que vocês querem que a gente seja confiável? Confiabilidade escolhida é mais forte que confiança pedida.</li>
+            <li>A maioria das quebras de confiança começa em expectativa que nunca foi dita. Antes de julgar caráter, verifique se houve combinado.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="trend">
+      <span class="trend-n">Insight 07 · A economia do sim barato</span>
+      <h2>O mercado comprou obediência e está contabilizando como engajamento</h2>
+      <p class="sinal">Sinal forte · Surveys + levantamentos de imprensa + padrão de campo · Horizonte: agora</p>
+      <div class="stats">
+        <div class="stat"><div class="num">51% &rarr; 7%</div><div class="lbl">disposição de pedir demissão por mandato de retorno ao escritório, em um ano<sup>28</sup></div></div>
+        <div class="stat"><div class="num">13%</div><div class="lbl">mais rotatividade nas empresas com política rígida de retorno<sup>28</sup></div></div>
+        <div class="stat"><div class="num">20%</div><div class="lbl">engajamento global, o menor desde 2020: US$ 10 trilhões em produtividade perdida<sup>7</sup></div></div>
+      </div>
+      <p>O mercado de trabalho esfriou. O sim ficou mais fácil de comprar. E mais caro de carregar.</p>
+      <h3>O que os dados mostram</h3>
+      <p>Quase metade dos trabalhadores americanos descreve o próprio momento como segurar um emprego que não quer, por medo; a imprensa de negócios deu nome ao fenômeno, "job hugging", e ao desgaste silencioso que vem junto, "quiet cracking"<sup>27</sup>. A disposição de pedir demissão por causa de mandatos de retorno ao escritório caiu de 51% para 7% em um ano<sup>28</sup>. As pessoas voltaram.</p>
+      <p>A adesão, não. Empresas com política rígida de retorno tiveram 13% mais rotatividade, e 8 em cada 10 admitem ter perdido gente que queriam manter<sup>28</sup>. 52% dos líderes de recrutamento dizem que os mandatos atrapalham a contratação<sup>6</sup>. O engajamento global caiu para 20%, o menor nível desde 2020, com custo estimado em US$ 10 trilhões de produtividade, na ordem de 9% do PIB global<sup>7</sup>. Nos EUA, 51% dos funcionários estão buscando ou monitorando vagas enquanto trabalham, e só 28% concordam fortemente que suas opiniões contam<sup>33</sup>. A Gartner batizou a consequência de "regrettable retention", os desengajados que ficam, e a listou como principal barreira de produtividade de 2026<sup>5</sup>.</p>
+      <p>Obediência voltou a ser abundante. Engajamento continua escasso. E os dois são indistinguíveis num dashboard de presença, o que é exatamente o problema: o crachá bate o ponto, a pesquisa de clima é respondida, e a energia que executa não está lá.</p>
+      <h3>O que eu vi em campo</h3>
+      <p>A harmonia falsa foi o padrão mais caro do ano, presente em sete contextos distintos. Concordância na reunião, descrença no corredor. Reclamação sobre o par feita para o chefe, nunca para o par. Na Truth Initiative, a organização antitabagismo de Washington, a liderança executiva me pediu em janeiro, nas palavras dela, um trabalho de "caça ao pretense e à triangulação" que tinham se generalizado sob o estresse do corte de orçamento.</p>
+      <p>O sim barato tem uma assinatura reconhecível: a estratégia aprovada por unanimidade que ninguém executa. Alinhamento de verdade não se mede pelo que as pessoas dizem na reunião. Se mede por onde elas colocam tempo, dinheiro e talento depois dela.</p>
+      <h3>A contraevidência</h3>
+      <p>Alguém pode ler os mesmos dados como disciplina recuperada: o mercado esfriou, as pessoas aceitam mais, as empresas mandam mais, e daí? O contraponto está no melhor experimento do período: um estudo randomizado com 1.612 pessoas mostrou que o híbrido bem desenhado cortou pedidos de demissão em um terço sem nenhuma perda de performance medida<sup>29</sup>. Ou seja, a obediência forçada não era necessária para o resultado; era uma escolha, com custo. O segundo contraponto é temporal: engajamento é autorrelato, mas rotatividade não é, e os 13% a mais de saída nas empresas rígidas já são comportamento observado<sup>28</sup>. O estoque de sim barato vence junto com o ciclo do mercado.</p>
+      <div class="takeaway">O sim mais barato do mercado é o mais caro da empresa.</div>
+      <h3>O que observar nos próximos 12 meses</h3>
+      <div class="observar"><ul>
+        <li>O que acontece com a rotatividade voluntária no primeiro trimestre de reaquecimento do mercado. É o teste do estoque de sim barato.</li>
+        <li>A proporção de empresas medindo alinhamento por alocação de recursos, e não por pesquisa de clima.</li>
+        <li>Se "regrettable retention" aparece em mais fontes, ou fica como rótulo de uma consultoria só.</li>
+      </ul></div>
+      <div class="acao">
+        <div class="acao-title">O que fazer</div>
+        <div class="nivel">
+          <h4>Direção<span>quem desenha o sistema</span></h4>
+          <ul>
+            <li>Meça alinhamento por alocação, não por concordância: onde tempo, orçamento e talento foram parar depois da decisão. É o único indicador que o sim barato não consegue falsificar.</li>
+            <li>Em plenária, troque "alguém tem pergunta?" por "qual é a pergunta que vocês querem me fazer?". A primeira testa coragem individual. A segunda pressupõe que a pergunta existe, porque ela sempre existe.</li>
+            <li>Não confunda o silêncio pós-mandato com paz. A pesquisa mostra o custo chegando pela porta dos fundos: os melhores saem primeiro<sup>28</sup>.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Gerência<span>quem traduz estratégia em operação</span></h4>
+          <ul>
+            <li>Decida por consentimento, não por consenso: "alguém tem objeção?" no lugar de "todos concordam?". "Bom o suficiente por agora, seguro o suficiente para tentar" foi a frase que destravou as aprovações de tesouraria de Matthew Wolf no Welcome Group em maio.</li>
+            <li>Regra das três vezes: quem reclamou do mesmo problema três vezes leva o problema para quem pode resolver. Reclamar para quem não pode é fofoca com verniz de desabafo.</li>
+            <li>Depois de cada decisão importante, um contrato visível: quem faz o quê até quando, publicado. O sim barato morre de exposição.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Primeira liderança<span>quem lidera quem executa</span></h4>
+          <ul>
+            <li>Na conversa individual, uma pergunta: o que você não está me dizendo para não complicar a reunião?</li>
+            <li>Reaja bem à primeira má notícia. O que alguém te diz mostra a segurança que sente perto de você; como você reage define o que essa pessoa dirá da próxima vez.</li>
+            <li>Quando alguém discordar em público, agradeça em público. Você está pagando o preço de mercado do sim verdadeiro.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="trend">
+      <span class="trend-n">Insight 08 · O fim do "depois da mudança"</span>
+      <h2>O "depois da mudança" não existe mais. Liderar agora é durante</h2>
+      <p class="sinal">Sinal forte · Longitudinal + meta-análise + 10 contextos de campo · Horizonte: agora</p>
+      <div class="stats">
+        <div class="stat"><div class="num">&lt;15%</div><div class="lbl">das empresas comparam rotineiramente o resultado real com o que o plano prometia<sup>37</sup></div></div>
+        <div class="stat"><div class="num">85%</div><div class="lbl">dos times executivos gastam menos de 1 hora por mês discutindo estratégia<sup>38</sup></div></div>
+        <div class="stat"><div class="num">+25%</div><div class="lbl">de desempenho com debriefs bem conduzidos, em média com 18 minutos de duração<sup>39</sup></div></div>
+      </div>
+      <p>Toda comunicação de mudança promete um "depois". O depois parou de chegar. E a etapa que transformaria esse "durante" permanente em aprendizado é exatamente a que os times pulam.</p>
+      <h3>O que os dados mostram</h3>
+      <p>Primeiro, a saturação. Um terço dos trabalhadores viveu 15 mudanças organizacionais relevantes em um único ano<sup>4</sup>. 85% dos líderes dizem que construir adaptabilidade é crítico; 7% dizem estar liderando bem essa construção; só 27% acham que a própria organização gerencia mudança de forma eficaz<sup>4</sup>. 42% dos CEOs apontam como maior medo não estar se transformando rápido o suficiente<sup>24</sup>. E líderes que transformam mudança em rotina, com cadência e ritual, têm 3 vezes mais chance de adoção saudável<sup>5</sup>; fonte única, marcada como tal.</p>
+      <h3>A etapa que todo mundo pula</h3>
+      <p>O ciclo que uso com clientes tem três movimentos: Alinhar, Agir, Ajustar. As empresas compram os dois primeiros aos baldes: offsites e planejamento para alinhar, OKRs e ferramentas para agir. O terceiro, a conversa que compara o que aconteceu com o que se pretendia e converte a diferença em aprendizado, quase não existe. E isso não é impressão minha; é uma das lacunas mais bem documentadas da literatura de gestão.</p>
+      <p>Menos de 15% das empresas comparam rotineiramente os resultados com o que o plano do ano anterior previa, e por isso, nas palavras dos autores do estudo clássico, seguem "despejando dinheiro bom em estratégias perdedoras"<sup>37</sup>. As empresas entregam em média 63% do desempenho que suas estratégias prometem; dos 37% perdidos, o monitoramento inadequado é uma fatia nomeada<sup>37</sup>. 85% dos times executivos dedicam menos de 1 hora por mês à estratégia<sup>38</sup>. Nos projetos: só 14% das organizações se dizem altamente eficazes em capturar e aplicar lições aprendidas, e apenas 1 em cada 5 verifica com maturidade se o projeto entregou os benefícios prometidos<sup>40</sup>. E 83% dos líderes não recebem sinal nenhum quando uma prioridade estratégica começa a derrapar<sup>12</sup>: não existe nem o gatilho do ajuste.</p>
+      <p>O detalhe mais revelador vem do mundo ágil, que institucionalizou o ritual: 81% dos times dizem fazer retrospectiva a cada sprint, mas 69% implementam menos de 60% das ações combinadas antes da retro seguinte<sup>41</sup>. O ritual existe. O ajuste, não. E o prêmio de quem fecha o ciclo é dos maiores da literatura aplicada: uma meta-análise de 46 estudos mostra debriefs bem conduzidos melhorando o desempenho em 20 a 25%, com sessões de 18 minutos em média<sup>39</sup>. Custa quase nada. Quase ninguém faz.</p>
+      <p>Por que se pula a etapa mais barata? O mecanismo tem nome: medo. Num estudo qualitativo de referência, 85% dos entrevistados relataram já ter calado um problema relevante de trabalho em vez de levá-lo ao chefe<sup>42</sup> (amostra pequena, marcada como tal). Revisar exige dizer o que não funcionou. Onde dizer isso custa caro, a revisão vira teatro ou caça-culpados, e o time aprende a pular a etapa.</p>
+      <h3>O que eu vi em campo</h3>
+      <p>O ano confirmou o padrão nas próprias palavras dos times. No offsite da Wellz em maio, o time executivo se autodiagnosticou sobre o ciclo: forte em criar, fraco em revisar. "Grande energia indo para a criação, sem canalização para fechamento", a rodinha de hamster, e a frase que resume o custo: a fraqueza em revisão significa que o time pode estar deixando de aprender com o que já lançou. No debrief, o gap remanescente tinha nome e sobrenome comportamental: o líder comercial que "ainda luta para dizer não, convergir e revisar", escutando para defender, não para aprender.</p>
+      <p>Quando a revisão existe sem método, ela degenera. Na Sotreq Centro-Oeste, Mário, gestor sênior, descreveu reuniões quinzenais que revisam sempre os mesmos indicadores e viram tribunal: tendência de culpar outras áreas, ruído quando se tenta distribuir responsabilidade. Na Empiricus, em 2025, o padrão registrado era "encontrar culpados em vez de soluções", com "foco no negócio" servindo de desculpa para evitar a conversa. E num workshop de execução com uma empresa do setor automotivo (organização não nomeada nos meus registros), a formulação mais limpa da doença inteira: definir metas, abandonar durante o processo, só checar resultados no final. No iFood, os 92 comitês de calibração revisam gente o tempo todo; minha leitura, marcada como interpretação: ranking com efeito em bônus é avaliação, não é a conversa de aprendizado que o ciclo pede.</p>
+      <p>E o contraste, no mesmo período e no mesmo caderno: o Team One da EagleBurgmann fez três reuniões de ajuste consecutivas entre janeiro e março, com estrutura fixa (o que tentamos, que fatos temos, o que renovamos) e a pergunta "o que foi mais difícil do que o esperado?". O resultado está registrado no transcrito de janeiro: ciclos de correção mais rápidos pela queda da defensividade, times perguntando "o que posso fazer diferente?" em vez de se justificar. O mesmo desenho absorveu uma troca dura de liderança em março sem virar caça-culpados. Na ABC Birds, o comitê do projeto instalou o ajuste antes da execução, com um pré-mortem votado em retro board, enquadrado na sessão como prevenção em vez de culpa retrospectiva. E a lição mais pessoal do ano, contada numa call de desenho de retiro da TNC: quando demiti 30 pessoas na minha empresa anterior, no fim da pandemia, dizer "não sei se acabou, mas pode ser que sim" machucou mais do que a má notícia teria machucado. Ambiguidade dói mais que a verdade dura, e ajuste sem verdade não ajusta nada.</p>
+      <p>A formulação que amarra o insight nasceu num retiro regional da TNC América Latina, em julho, quando nomeei o que a sala estava fazendo: pedindo certeza de dentro de um sistema em movimento. A resposta madura não é prometer o "depois". É instalar a conversa que corrige o durante: ciclos de 90 dias com ajuste agendado desde o início, e a proteção de capacidade que Guilherme Furlan instalou na Wellz com uma pergunta: temos 15 projetos, vamos adicionar o 16º?</p>
+      <h3>A contraevidência</h3>
+      <p>Três contrapontos. O WEF mostra a estimativa de mudança de habilidades desacelerando, de 44% para 39%<sup>30</sup>: o discurso "nunca mudou tão rápido" está tecnicamente errado nessa dimensão; o que saturou foi o volume de reorganização simultânea, e o insight é sobre isso. Segundo: os dados clássicos de revisão (Mankins, Kaplan) têm vinte anos; a objeção "isso já melhorou" cai diante dos dados recentes, que mostram o mesmo buraco com ferramentas novas: 83% sem sinal de derrapagem em 2025<sup>12</sup> e 69% das ações de retrospectiva não implementadas em 2026<sup>41</sup>. Terceiro, e mais importante: revisar sem segurança piora, como a Sotreq e a Empiricus mostram; ajuste punitivo é pior que ajuste nenhum, porque ensina o time a esconder. A prescrição nunca é "façam retrospectivas". É "façam a conversa de ajuste livre de culpa".</p>
+      <div class="takeaway">Todo mundo alinha. Muita gente age. Quase ninguém ajusta. E é no ajuste que se aprende.</div>
+      <h3>O que observar nos próximos 12 meses</h3>
+      <div class="observar"><ul>
+        <li>O percentual de ações de retrospectiva implementadas (a régua de 2026 é 50%<sup>41</sup>): é o indicador mais honesto de que o ajuste virou real.</li>
+        <li>Replicação do dado de rotinização de mudança por outra fonte além da Gartner.</li>
+        <li>O balanço das megarreorganizações de 2026: quantas compararam publicamente o entregue com o prometido.</li>
+      </ul></div>
+      <div class="acao">
+        <div class="acao-title">O que fazer</div>
+        <div class="nivel">
+          <h4>Direção<span>quem desenha o sistema</span></h4>
+          <ul>
+            <li>Pare de prometer estabilidade que você não controla. Comunique em três colunas: o que sabemos, o que não sabemos, quando vamos saber. Ambiguidade tratada honestamente machuca menos que promessa quebrada.</li>
+            <li>Instale a revisão de estratégia no calendário executivo: 85% dos times gastam menos de 1 hora por mês nisso<sup>38</sup>; a agenda é o diagnóstico. E compare realizado contra planejado, por unidade: menos de 15% fazem<sup>37</sup>, então é vantagem competitiva barata.</li>
+            <li>Rotinize a mudança: cadência fixa de revisão, ritual conhecido, vocabulário estável. A inspiração dura uma reunião; a rotina muda o comportamento<sup>5</sup>.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Gerência<span>quem traduz estratégia em operação</span></h4>
+          <ul>
+            <li>Ciclos de 90 dias com a conversa de ajuste agendada desde o dia 1, com protocolo fixo e livre de culpa: começa por fatos, "o que aprendemos que queremos continuar?", "o que foi mais difícil do que precisava ser?", e termina em lições acionáveis com dono. Foi esse desenho que derrubou a defensividade no Team One da EagleBurgmann.</li>
+            <li>Pré-mortem por iniciativa relevante, antes de agir: ajustar antes do erro é o único ajuste sem culpa retrospectiva. Converte ansiedade difusa em riscos nomeados.</li>
+            <li>Proteja capacidade com aritmética visível: para cada projeto que entra, um sai. Se a lista só cresce, a mudança está sendo financiada com esgotamento.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Primeira liderança<span>quem lidera quem executa</span></h4>
+          <ul>
+            <li>Debrief de 18 minutos depois de cada entrega relevante: o que tentamos, o que os fatos dizem, o que fazemos diferente. É a prática com um dos maiores retornos documentados da literatura: 20 a 25% de desempenho<sup>39</sup>.</li>
+            <li>Feche o ciclo da retrospectiva: no máximo 3 ações por retro, e a primeira pergunta da retro seguinte é o que aconteceu com elas. 69% dos times não implementam o que combinaram<sup>41</sup>; fechar o ciclo já te põe na minoria que aprende.</li>
+            <li>Check-in de carga de mudança, não de horas ("o que foi mais difícil do que precisava ser?"), e nomeie o que não vai mudar: em ambiente saturado, âncoras explícitas valem tanto quanto novidades.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="trend">
+      <span class="trend-n">Insight 09 · O degrau que sumiu</span>
+      <h2>A IA está automatizando o trabalho onde se aprendia a liderar</h2>
+      <p class="sinal">Sinal moderado, consequência alta · Longitudinal (folha de pagamento) + projeções · Horizonte: 3 a 10 anos</p>
+      <div class="stats">
+        <div class="stat"><div class="num">-19%</div><div class="lbl">emprego de jovens de 22 a 25 anos nas ocupações mais expostas à IA, contra a tendência esperada<sup>31</sup></div></div>
+        <div class="stat"><div class="num">37%</div><div class="lbl">das empresas miram o nível de entrada ao substituir funções por IA<sup>6</sup></div></div>
+        <div class="stat"><div class="num">19%</div><div class="lbl">dos líderes em ascensão demonstram as habilidades de delegação que o cargo exige<sup>8</sup></div></div>
+      </div>
+      <p>Toda geração de líderes aprendeu errando em trabalho de entrada. Esse trabalho está sendo automatizado.</p>
+      <h3>O que os dados mostram</h3>
+      <p>O dado central não vem de survey, vem de folha de pagamento. Analisando registros da ADP, pesquisadores de Stanford encontraram o emprego de jovens de 22 a 25 anos, nas ocupações mais expostas à IA, cerca de 19% abaixo da tendência esperada, um gap que se ampliou desde a primeira medição e que não aparece em trabalhadores experientes<sup>31</sup>. O mecanismo importa: o efeito vem de menos contratação, não de demissão, e se concentra onde a IA substitui tarefas; onde ela complementa, o emprego jovem cresce<sup>31</sup>.</p>
+      <p>As intenções empresariais apontam na mesma direção: 43% das empresas planejam substituir funções por IA, mirando back office em 58% dos casos e nível de entrada em 37%<sup>6</sup>; o declínio de vagas de entrada aparece como tendência nomeada para 2026<sup>5</sup>. Ao mesmo tempo, a IA comprime a curva de aprendizado: novatos com IA produzem 34% a mais<sup>22</sup>, sem atravessar o caminho em que se aprendia a decidir. Produzir como veterano não é o mesmo que julgar como veterano.</p>
+      <p>O elo com liderança é direto. 80% das organizações já não confiam no próprio pipeline de liderança, a intenção de saída dos high-potentials subiu de 13% para 21% em quatro anos, e só 19% dos líderes em ascensão demonstram as habilidades de delegação que o cargo exige<sup>8</sup>. Secar o degrau de entrada agora é contratar uma crise de liderança com 10 anos de carência.</p>
+      <h3>O que eu vi em campo</h3>
+      <p>Honestidade primeiro: ainda não vejo esse efeito na base das organizações que atendo. Vejo o efeito no meio da escada, que é o mesmo mecanismo uma década depois: especialistas promovidos sem preparo e gestores que "lideram pelo título, não por escolha", na formulação de Tamima, de T&amp;D de uma instituição financeira brasileira, em março. Cinco contextos distintos este ano. A escada está sendo serrada nas duas pontas: o degrau de entrada, pela automação; o andar do meio, pelo corte.</p>
+      <h3>A contraevidência</h3>
+      <p>Três contrapontos sérios. A IBM triplicou a contratação de nível de entrada em 2026 depois de medir onde o bot falhava<sup>16</sup>, mostrando que a curva é reversível quando alguém mede. O WEF projeta saldo líquido positivo de 78 milhões de empregos até 2030<sup>30</sup>, então o fenômeno é de composição, não de colapso. E não há ainda dado brasileiro equivalente ao de Stanford; a extrapolação para o Brasil é hipótese, declarada como tal. Por isso o sinal é moderado. A consequência é que não é moderada: formação de líderes tem uma década de atraso embutida, e erro aqui não aparece no trimestre. Aparece em 2035.</p>
+      <div class="takeaway">A IA está absorvendo o trabalho em que as pessoas aprendiam a liderar.</div>
+      <h3>O que observar nos próximos 12 meses</h3>
+      <div class="observar"><ul>
+        <li>O gap de emprego jovem de Stanford: estabilizou, fechou ou continua abrindo.</li>
+        <li>Dados de contratação júnior no Brasil, que ainda não existem em série; quem medir primeiro terá o mapa.</li>
+        <li>Empresas criando trilhas deliberadas de "trabalho formativo": tarefas que a IA poderia fazer, reservadas para gente aprender.</li>
+      </ul></div>
+      <div class="acao">
+        <div class="acao-title">O que fazer</div>
+        <div class="nivel">
+          <h4>Direção<span>quem desenha o sistema</span></h4>
+          <ul>
+            <li>Trate formação de líderes como decisão de desenho, não de RH: defina cotas de trabalho formativo, tarefas que a IA poderia fazer mas não deve, porque é nelas que se aprende a julgar.</li>
+            <li>Crie a métrica de pipeline que 80% das empresas não têm<sup>8</sup>: quantas pessoas estarão prontas para liderar em 3 anos, e onde cada uma vai errar barato até lá.</li>
+            <li>Antes de automatizar uma função de entrada, uma pergunta de dez anos: quem faria o trabalho de onde saíram os seus atuais diretores?</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Gerência<span>quem traduz estratégia em operação</span></h4>
+          <ul>
+            <li>Delegue o raciocínio, não a tarefa: ao passar uma entrega, ensine o modelo de decisão junto. A pessoa que herda só o "o quê" devolve o problema; a que herda o "como eu penso" devolve autonomia.</li>
+            <li>Treine delegação primeiro. É a habilidade mais rara dos líderes em ascensão<sup>8</sup> e a única que multiplica todas as outras.</li>
+            <li>Dê aos novatos com IA o que a IA não dá: exposição a decisão real. Produtividade de veterano sem julgamento de veterano é risco vestido de eficiência.</li>
+          </ul>
+        </div>
+        <div class="nivel">
+          <h4>Primeira liderança<span>quem lidera quem executa</span></h4>
+          <ul>
+            <li>Aprendizado por exposição: o júnior entra na conversa difícil como observador e faz o debrief depois. Nenhuma IA replica essa aula.</li>
+            <li>Não resgate cedo demais. O líder que salva o turno cria times que nunca aprendem a salvá-lo.</li>
+            <li>Uma vez por ciclo, entregue a alguém do time algo um degrau acima do confortável, com rede combinada. Errar barato é privilégio que se desenha.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="wash">
+    <div class="wrap">
+      <h2>O que está superestimado</h2>
+      <p class="muted" style="margin-bottom:34px;max-width:62ch">Nem tudo que faz barulho é sinal. Em liderança, o ruído não é inofensivo: cada moda comprada é uma conversa real adiada. Seis ruídos de 2026, cada um com o teste que o derrubaria ou o salvaria. Um relatório que não diz o que o faria mudar de ideia não merece a sua confiança.</p>
+      <div class="ruido">
+        <div class="ruido-item">
+          <h3>"A IA demitiu essas pessoas"</h3>
+          <p><span class="rot">Por que parece sinal</span> · 54% das demissões do ano citam IA<sup>11</sup>, e os anúncios são reais.</p>
+          <p><span class="rot">Por que é ruído</span> · Menos de 1% dos cortes veio de ganho real de produtividade<sup>5</sup>, e 59% das empresas admitem que a explicação soa melhor que a verdade financeira<sup>17</sup>.</p>
+          <p><span class="rot">O que me faria mudar de ideia</span> · Ganhos de produtividade auditados precedendo os cortes, em vez de anunciados junto com eles.</p>
+        </div>
+        <div class="ruido-item">
+          <h3>Agentes de IA como subordinados digitais</h3>
+          <p><span class="rot">Por que parece sinal</span> · 41% dos líderes esperam que times treinem agentes em 5 anos<sup>1</sup>, e casos como o de uma empresa anunciando 3 agentes por funcionário demitido ganharam manchete<sup>11</sup>.</p>
+          <p><span class="rot">Por que é ruído</span> · Previsão concentrada em uma fonte com conflito de interesse, sem confirmação independente. No Brasil, 83% das empresas não passaram de testes simples com agentes, ou nem começaram<sup>3</sup>.</p>
+          <p><span class="rot">O que me faria mudar de ideia</span> · Duas fontes independentes medindo times reais gerenciando agentes em produção, com resultado.</p>
+        </div>
+        <div class="ruido-item">
+          <h3>Retorno ao escritório como solução de cultura</h3>
+          <p><span class="rot">Por que parece sinal</span> · As maiores empresas do mundo migraram para 5 dias presenciais em 2026, citando cultura e velocidade.</p>
+          <p><span class="rot">Por que é ruído</span> · O único experimento randomizado de elite do período mostrou o híbrido bem desenhado cortando pedidos de demissão em um terço, sem perda de performance<sup>29</sup>. E as empresas rígidas pagaram 13% mais rotatividade<sup>28</sup>.</p>
+          <p><span class="rot">O que me faria mudar de ideia</span> · Um estudo com controle mostrando ganho de performance atribuível ao mandato, e não à seleção de quem ficou.</p>
+        </div>
+        <div class="ruido-item">
+          <h3>"As habilidades nunca mudaram tão rápido"</h3>
+          <p><span class="rot">Por que parece sinal</span> · Todo palco corporativo de 2026 repete a frase.</p>
+          <p><span class="rot">Por que é ruído</span> · A estimativa do próprio WEF desacelerou de 44% para 39% de uma edição para a outra<sup>30</sup>. A saturação de mudança organizacional é real (insight 08); o superlativo sobre habilidades, não.</p>
+          <p><span class="rot">O que me faria mudar de ideia</span> · A série do WEF voltando a acelerar em 2027.</p>
+        </div>
+        <div class="ruido-item">
+          <h3>A queda dos afastamentos por saúde mental como melhora</h3>
+          <p><span class="rot">Por que parece sinal</span> · Depois do recorde de mais de 534 mil afastamentos em 2025 no Brasil, o primeiro semestre de 2026 caiu 13%<sup>34</sup>.</p>
+          <p><span class="rot">Por que é ruído</span> · A queda coincide com mercado frio e medo de demissão, e especialistas a atribuem em parte a subnotificação e estigma, não a melhora<sup>34</sup>. Num ano em que a NR-1 tornou o risco psicossocial autuável<sup>35</sup>, o incentivo para maquiar o indicador cresceu junto com a obrigação de medi-lo.</p>
+          <p><span class="rot">O que me faria mudar de ideia</span> · Queda simultânea em indicadores que não dependem de o funcionário se declarar: rotatividade por exaustão, sinistralidade de saúde, horas de licença curta.</p>
+        </div>
+        <div class="ruido-item">
+          <h3>Rótulos proprietários</h3>
+          <p><span class="rot">Por que parece sinal</span> · Superagency, frontier firm, stagility, human-AI power couple. Cada um vem com dados e um relatório bonito.</p>
+          <p><span class="rot">Por que é ruído</span> · São marcas, não fenômenos: nenhum aparece em duas fontes independentes com a mesma definição. Alguns fenômenos por baixo são reais e estão neste relatório, com nome comum e fonte múltipla.</p>
+          <p><span class="rot">O que me faria mudar de ideia</span> · Um desses rótulos sendo adotado e medido por pesquisadores sem relação comercial com quem o cunhou.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="pagebreak" style="margin-top:clamp(64px,10vh,104px)">
+      <h2>Quatro futuros para 2027</h2>
+      <p>Um relatório que só funciona num futuro é uma aposta, não um relatório. Dois cenários também não bastam: reduzem o futuro a cara ou coroa. O formato aqui é o da prática consolidada de planejamento de cenários: identificar as duas incertezas críticas, cruzá-las, e nomear os quatro futuros que o cruzamento produz. Com três disciplinas adicionadas pelo processo de revisão deste relatório: cada futuro tem indicadores antecipados observáveis, nenhum recebe probabilidade numérica fabricada, e a seção termina no que importa: os movimentos que não geram arrependimento em nenhum dos quatro.</p>
+      <h3>As duas incertezas críticas</h3>
+      <p><strong>Eixo 1, tecnológico:</strong> a capacidade dos agentes de IA salta de novo, ou estabiliza num platô de integração? É a incerteza que nenhuma empresa controla.</p>
+      <p><strong>Eixo 2, organizacional:</strong> as empresas redesenham trabalho e conversa, ou seguem cortando pela narrativa? É a incerteza que cada empresa controla inteiramente. Cruzar uma incerteza que você não controla com uma que você controla é o que torna o mapa útil: metade do seu futuro é escolha.</p>
+      <h3>Futuro 1 · A empresa recomposta <span style="font-family:Inter,sans-serif;font-size:13px;color:var(--ink-muted)">(salto + redesenho)</span></h3>
+      <p>Agentes confiáveis assumem execução em escala, e as empresas que redesenharam papéis capturam o ganho. O trabalho humano se concentra em julgamento, relação e tradução: os insights 01, 05 e 09 viram vantagem para quem protegeu a camada, as pontes laterais e os degraus. Indicador antecipado: agentes em produção sobrevivendo a 6 meses de uso real, com resultado auditado.</p>
+      <h3>Futuro 2 · A demolição acelerada <span style="font-family:Inter,sans-serif;font-size:13px;color:var(--ink-muted)">(salto + narrativa)</span></h3>
+      <p>A capacidade salta e as empresas cortam mais rápido do que redesenham. Ganho de curto prazo, e as contas dos insights 01, 06 e 09 chegando juntas: execução sem tradutores, confiança sem pontes, pipeline sem degraus. É o futuro em que a crise de liderança de 2035 é contratada. Indicador antecipado: cortes de camada sem plano publicado de herança das conversas.</p>
+      <h3>Futuro 3 · A vantagem silenciosa <span style="font-family:Inter,sans-serif;font-size:13px;color:var(--ink-muted)">(platô + redesenho)</span></h3>
+      <p>A tecnologia estabiliza e o diferencial migra todo para o organizacional. As empresas que trataram conversa como sistema colhem o que o Panorama já mostra: a barreira era humana<sup>3</sup>. Indicador antecipado: empresas medindo clareza e alinhamento com a mesma seriedade com que medem adoção de IA.</p>
+      <h3>Futuro 4 · O ano do boomerang <span style="font-family:Inter,sans-serif;font-size:13px;color:var(--ink-muted)">(platô + narrativa)</span></h3>
+      <p>A capacidade estabiliza, o álibi fica caro e as reversões públicas se multiplicam, na direção que a previsão de 50% de cortes revertidos já aponta<sup>16</sup>. Quem cortou pela narrativa recompra, mais caro, o que demitiu. Indicador antecipado: a curva de recontratações públicas e o custo reputacional delas.</p>
+      <h3>Os movimentos sem arrependimento</h3>
+      <p>Quatro movimentos que pagam em todos os quatro futuros, porque não dependem do eixo tecnológico:</p>
+      <div class="observar"><ul>
+        <li>Proteger e treinar a camada de tradução antes de qualquer corte (insight 01).</li>
+        <li>Medir alinhamento por alocação de tempo, dinheiro e talento, não por concordância (insight 07).</li>
+        <li>Pilotar IA com relógio e métrica, nunca com percepção, e celebrar o uso aberto (insight 04).</li>
+        <li>Desenhar onde as pessoas vão errar barato, do júnior ao diretor (insight 09).</li>
+      </ul></div>
+      <p>Uma assimetria merece registro, sem inventar probabilidade: se os indicadores de hoje persistirem (a previsão de reversão de metade dos cortes<sup>16</sup>, o orçamento de IA estagnado abaixo de 2% no Brasil<sup>3</sup>), o futuro 4 é o caminho de menor resistência dos próximos 12 meses. O mapa existe exatamente para escolher outro: o eixo organizacional é o que cada empresa controla.</p>
+      <p>Nos quatro futuros, a mesma constante: o retorno vem de redesenho de trabalho e de conversa, não de anúncio. O que muda entre eles é a velocidade e quem captura o valor. Não é a direção.</p>
+    </section>
+  </div>
+
+</main>
+
+<footer class="stage close">
+  <div class="wrap">
+    <h2>A pergunta que 2027 vai fazer</h2>
+    <p>Nove insights, um padrão. A execução das empresas depende de uma camada que não aparece no balanço: gente que traduz estratégia em prioridade, prioridade em conversa, conversa em ação. Em 2026, essa camada foi cortada em nome da eficiência, sobrecarregada em nome da mudança e substituída por volume de mensagem em nome da comunicação. Os dados deste relatório dizem, com raro consenso, que ela é o mecanismo pelo qual estratégia vira resultado.</p>
+    <p>As organizações que entenderam isso fazem algo parecido entre si: decidem, de propósito, onde as pessoas vão poder errar barato. Protegem quem traduz. Medem alinhamento pelo que acontece depois da reunião. E tratam cada conversa importante como o que ela é: a menor unidade da execução.</p>
+    <div class="takeaway">Se a IA está absorvendo o trabalho em que as pessoas aprendiam a liderar, onde os seus próximos líderes vão aprender?</div>
+    <p>Essa é a pergunta que 2027 vai fazer. Quem responder com desenho não vai precisar de sorte.</p>
+    <div class="assinatura">Ryo Penna<span>São Paulo, setembro de 2026 · ryopenna.com</span></div>
+  </div>
+</footer>
+
+<div class="notas">
+  <div class="wrap">
+    <h2>Referências</h2>
+    <p style="margin-top:14px">Numeração na ordem de primeira citação no texto. Levantamentos de imprensa e trackers estão identificados como tal.</p>
+    <ol>
+      <li id="r1"><span class="refid">1.</span> Microsoft. Work Trend Index 2025: The Frontier Firm is born (31.000 profissionais, 31 países); e Breaking Down the Infinite Workday, 2025. microsoft.com/worklab. Fonte com interesse comercial no tema; usada apenas para dados de volume.</li>
+      <li><span class="refid">2.</span> Gallup. The Great Detachment, 2024 (série longitudinal de clareza de expectativas, 2015 a 2024). gallup.com.</li>
+      <li><span class="refid">3.</span> Amcham Brasil e Humanizadas. Panorama 2026 (629 executivos brasileiros, margem de erro 5%).</li>
+      <li><span class="refid">4.</span> Deloitte. Global Human Capital Trends 2026: From tensions to tipping points. deloitte.com.</li>
+      <li><span class="refid">5.</span> Gartner. Future of Work Trends para CHROs 2026; e projeções sobre achatamento organizacional e demissões ligadas a IA, 2025-2026. gartner.com.</li>
+      <li><span class="refid">6.</span> Korn Ferry. Talent Acquisition Trends 2026: The Human-AI Power Couple (1.600+ líderes de talento). kornferry.com.</li>
+      <li><span class="refid">7.</span> Gallup. State of the Global Workplace 2026 (dados de 2025; engajamento global, gestores, custo de produtividade). gallup.com.</li>
+      <li><span class="refid">8.</span> DDI. Global Leadership Forecast 2025 (cerca de 11.000 líderes e 2.185 profissionais de RH, 50+ países). ddi.com/glf.</li>
+      <li><span class="refid">9.</span> Deloitte. Global Human Capital Trends 2025 (13.000+ respondentes, 90+ países; capítulo sobre o papel do gestor).</li>
+      <li><span class="refid">10.</span> Bloomberg, Why Companies Are Cutting Middle Managers in the AI Era, jun 2026; Newsweek, When AI Cuts Middle Management, 2026; Forbes, Why Cutting Middle Managers to Fund AI Is a Mistake, mai 2026.</li>
+      <li><span class="refid">11.</span> TechCrunch, The Running List: Major Tech Layoffs in 2026 Where Employers Cited AI, jul 2026 (levantamento de imprensa); CNBC, Amazon layoffs, jan e jul 2026; TechCrunch e TechRepublic sobre o caso ClickUp, mai 2026.</li>
+      <li><span class="refid">12.</span> AchieveIt. 2025 State of Strategy Execution Report. achieveit.com.</li>
+      <li><span class="refid">13.</span> Sull, D. MIT Sloan Management Review (pesquisa com 124 organizações sobre prioridades estratégicas). mitsloan.mit.edu.</li>
+      <li><span class="refid">14.</span> Meta-análise sobre silêncio, voz e burnout. Psychology &amp; Health, 2025 (84 estudos, N=34.975; correlação, não causalidade).</li>
+      <li><span class="refid">15.</span> Rogelberg, S. Glad We Met: The Art and Science of 1:1 Meetings, 2024; e HBR IdeaCast, jan 2024.</li>
+      <li><span class="refid">16.</span> CNBC, Employers who laid off workers for AI are reversing their decisions, jul 2026 (casos Klarna, IBM, Commonwealth Bank); Gartner, previsão de reversão de 50% até 2027; Washington Times, mar 2026.</li>
+      <li><span class="refid">17.</span> Levantamento divulgado por Economic News Brasil, jun 2026 (59% admitem que citar IA soa melhor que dificuldade financeira); IBTimes UK, tracker de 205 mil demissões ligadas a IA até ago 2026. Ambos levantamentos, não estatística oficial.</li>
+      <li><span class="refid">18.</span> METR. Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity, jul 2025 (RCT pré-registrado, 16 desenvolvedores, 246 tarefas). arxiv.org/abs/2507.09089.</li>
+      <li><span class="refid">19.</span> HBR, The Hidden Penalty of Using AI at Work, ago 2025; Universidade do Arizona, 2025 (5.000+ participantes); Atlassian, pesquisa sobre uso oculto de IA (66% usam, 57% escondem).</li>
+      <li><span class="refid">20.</span> Scientific Reports (Nature Portfolio), 2025 (3.500+ participantes; motivação intrínseca e tédio); HBR, mai 2025.</li>
+      <li><span class="refid">21.</span> Dell'Acqua, Sadun, Mollick, Lakhani et al. The Cybernetic Teammate, HBS/NBER working paper 33641, 2025 (experimento de campo pré-registrado, 776 profissionais da P&amp;G).</li>
+      <li><span class="refid">22.</span> Brynjolfsson, Li e Raymond. Generative AI at Work, NBER (5.179 atendentes; ganhos por senioridade); e NBER w33795, 2025 (66 empresas, 7.137 trabalhadores; tempo de email).</li>
+      <li><span class="refid">23.</span> McKinsey. Superagency in the Workplace, jan 2025; The State of Organizations 2026 (10.000+ líderes, 16 países).</li>
+      <li><span class="refid">24.</span> PwC. 29th Annual Global CEO Survey, 2026; e 28th, 2025 (4.701 CEOs).</li>
+      <li><span class="refid">25.</span> Edelman. 2026 Trust Barometer: From Grievance to Insularity (cerca de 34.000 respondentes, 28 países). edelman.com.</li>
+      <li><span class="refid">26.</span> Edelman. 2025 Trust Barometer (grievance, 61%).</li>
+      <li><span class="refid">27.</span> Founder Reports e Inc., estatísticas de job hugging, 2026; Eastern Connecticut State University, sobre quiet cracking, 2026. Levantamentos de imprensa.</li>
+      <li><span class="refid">28.</span> Yahoo Finance, RTO compliance, 2026 (disposição de sair: 51% para 7%); The Interview Guys, The Return-to-Office Mandate Backfire (13% mais rotatividade; 8 em 10 perderam talento). Levantamentos.</li>
+      <li><span class="refid">29.</span> Bloom, Han e Liang. Hybrid working from home improves retention without damaging performance. Nature, 2024 (RCT, 1.612 funcionários).</li>
+      <li><span class="refid">30.</span> World Economic Forum. The Future of Jobs Report 2025 (série de instabilidade de habilidades; projeção líquida de empregos).</li>
+      <li><span class="refid">31.</span> Brynjolfsson, Chandar e Chen. Canaries in the Coal Mine, Stanford Digital Economy Lab, 2025 (folha de pagamento ADP; emprego de 22 a 25 anos).</li>
+      <li><span class="refid">32.</span> Metaintro, Duolingo CEO walks back AI-first memo, mai 2026.</li>
+      <li><span class="refid">33.</span> Gallup. Dados EUA, meados de 2026 (engajamento 32%; 51% monitorando vagas; 28% opiniões contam; 29% comunicação da liderança). gallup.com.</li>
+      <li><span class="refid">34.</span> ANAMT, com dados oficiais do INSS, jan 2026 (534 mil afastamentos por transtornos mentais em 2025); Jornal Voz Ativa, 2026 (232 mil no 1º semestre de 2026, queda de 13%, com ressalvas de especialistas sobre subnotificação).</li>
+      <li><span class="refid">35.</span> Ministério do Trabalho e Emprego. NR-1, fiscalização de riscos psicossociais com autuação a partir de mai 2026 (cobertura: Contábeis, Migalhas).</li>
+      <li><span class="refid">36.</span> Revisão sistemática sobre implementação de estratégia (160 papers, 48 journals), Management Review Quarterly, 2025.</li>
+      <li><span class="refid">37.</span> Mankins, M. e Steele, R. Turning Great Strategy into Great Performance. Harvard Business Review, jul-ago 2005 (survey Marakon/EIU com 197 empresas acima de US$ 500 mi; "less than 15%" verificado no texto original).</li>
+      <li><span class="refid">38.</span> Kaplan, R. e Norton, D. The Office of Strategy Management. Harvard Business Review, out 2005; e HBS working paper 05-071.</li>
+      <li><span class="refid">39.</span> Tannenbaum, S. e Cerasoli, C. Do Team and Individual Debriefs Enhance Performance? A Meta-Analysis. Human Factors, 55(1), 2013 (46 estudos; ganho médio de ~20-25%; duração média de ~18 minutos).</li>
+      <li><span class="refid">40.</span> PMI. Pulse of the Profession 2015: Capturing the Value of Project Management (2.800+ líderes de projeto; 14% altamente eficazes em transferência de conhecimento; 1 em 5 com alta maturidade em benefits realization).</li>
+      <li><span class="refid">41.</span> Scrum Alliance, State of Scrum (81% fazem retrospectiva por sprint, via Parabol); Easy Agile, State of Team Alignment 2026 (419 profissionais; 69% implementam menos de 60% das ações de retro). Levantamentos de mercado.</li>
+      <li><span class="refid">42.</span> Milliken, F., Morrison, E. e Hewlin, P. An Exploratory Study of Employee Silence. Journal of Management Studies, 40(6), 2003 (estudo qualitativo, 40 entrevistas; 85% já calaram um problema relevante).</li>
+    </ol>
+    <p style="margin-top:22px">Campo: cerca de 15 organizações atendidas pelo autor em 2026, com todas as referências anonimizadas. Fundamento teórico adicional: acervo de 130 obras sobre liderança, comunicação, sistemas e mudança mantido pelo autor.</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JD05CR09T4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-JD05CR09T4');</script>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Qual Eneagrama Vive em Voce? | Ryo Penna</title>
+<meta name="description" content="Um jogo de cenarios reais que revela seu tipo do Eneagrama com profundidade de relatorio profissional. 21 cenarios, 7 minutos.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Qual Eneagrama Vive em Voce?">
+<meta property="og:description" content="Nao e um quiz. E um jogo de cenarios que revela quem voce realmente e quando ninguem esta olhando.">
+<meta property="og:url" content="https://ryopenna.com/enneagram-game">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ryopenna.com/enneagram-game">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Azeret+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#faf9f7;--bg2:#f5f4f1;--border:rgba(26,26,26,0.08);--border-light:rgba(26,26,26,0.04);--accent:#2dd4bf;--accent-glow:rgba(45,212,191,0.25);--accent-subtle:rgba(45,212,191,0.08);--ink:#1a1a1a;--ink2:rgba(26,26,26,0.55);--ink3:rgba(26,26,26,0.35);--radius:12px;--radius-btn:8px;--radius-badge:4px;--ease:cubic-bezier(.16,1,.3,1)}
+html,body{background:var(--bg);font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
+.root{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px 40px}
+.root.report-phase{justify-content:flex-start;padding-top:40px}
+.wrap{width:100%;max-width:580px}
+.lang-btn{position:fixed;top:16px;right:20px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-badge);padding:6px 12px;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;z-index:101;transition:all .3s var(--ease)}
+.lang-btn:hover{color:var(--ink);border-color:var(--ink3)}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);transition:width .5s var(--ease);z-index:100;box-shadow:0 0 12px var(--accent-glow)}
+.site-footer{margin-top:56px;text-align:center}
+.site-footer a{font-family:'Sora',sans-serif;font-size:13px;font-weight:600;letter-spacing:-0.03em;color:var(--ink3);text-decoration:none;transition:color .2s}
+.site-footer a:hover{color:var(--ink)}
+.intro-title{font-family:'Newsreader',serif;font-size:clamp(36px,8vw,54px);font-weight:500;line-height:1.08;letter-spacing:-0.03em;color:var(--ink);margin-bottom:28px;white-space:pre-line}
+.intro-line{font-size:17px;font-weight:300;line-height:1.8;color:var(--ink2)}
+.intro-meta{font-family:'Azeret Mono',monospace;font-size:11px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-top:20px;margin-bottom:40px}
+.btn-start{background:none;color:var(--ink);font-family:'Sora',sans-serif;font-size:15px;font-weight:600;letter-spacing:-0.02em;padding:0;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:gap .3s var(--ease)}
+.btn-start:hover{gap:14px}
+.btn-start-arrow{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease);box-shadow:0 0 16px var(--accent-glow)}
+.btn-start:hover .btn-start-arrow{transform:translateX(2px)}
+.q-counter{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:20px}
+.q-phase-label{font-family:'Azeret Mono',monospace;font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.q-situation-wrap{padding-left:20px;border-left:2px solid var(--border);margin-bottom:28px}
+.q-situation{font-family:'Newsreader',serif;font-size:18px;font-weight:400;line-height:1.7;color:var(--ink)}
+.q-prompt{font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:16px;letter-spacing:-0.03em}
+.options{display:flex;flex-direction:column;gap:10px}
+.option-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;cursor:pointer;text-align:left;transition:all .3s var(--ease);position:relative}
+.option-card:hover{border-color:var(--ink3);background:var(--bg2)}
+.option-card:active{transform:scale(.99)}
+.option-card.chosen{border-color:var(--accent);background:var(--accent-subtle)}
+.option-card.faded{opacity:.18;pointer-events:none;transform:scale(.98)}
+.option-card.locked{pointer-events:none}
+.opt-text{font-size:15px;font-weight:400;color:var(--ink);line-height:1.55}
+.opt-badge{position:absolute;top:10px;right:14px;font-family:'Azeret Mono',monospace;font-size:9px;font-weight:400;letter-spacing:1px;padding:2px 8px;border-radius:var(--radius-badge);background:var(--accent-subtle);color:var(--accent)}
+.slide-enter{animation:slideIn .4s var(--ease) forwards}
+@keyframes slideIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.collect-title{font-family:'Newsreader',serif;font-size:clamp(26px,5vw,34px);font-weight:500;line-height:1.2;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px}
+.collect-sub{font-size:15px;font-weight:300;line-height:1.6;color:var(--ink2);margin-bottom:36px}
+.collect-form{display:flex;flex-direction:column;gap:12px}
+.collect-input{padding:14px 16px;border:1px solid var(--border);border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--ink);background:#fff;outline:none;transition:border-color .3s var(--ease)}
+.collect-input::placeholder{color:var(--ink3)}
+.collect-input:focus{border-color:var(--ink3)}
+.collect-input.error{border-color:#e54d2e}
+.btn-continue{background:var(--ink);color:#fff;font-family:'Newsreader',serif;font-size:18px;font-weight:500;letter-spacing:-0.01em;padding:14px 28px;border:none;border-radius:var(--radius);cursor:pointer;margin-top:8px;transition:opacity .3s var(--ease)}
+.btn-continue:hover{opacity:.85}
+.btn-continue:disabled{opacity:.35;cursor:default}
+.section-label{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+.divider-line{width:100%;height:1px;background:var(--border);margin:40px 0}
+.res-hero-label{font-family:'Azeret Mono',monospace;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
+.res-hero-name{font-family:'Sora',sans-serif;font-size:clamp(40px,9vw,64px);font-weight:700;letter-spacing:-0.04em;line-height:1;margin-bottom:6px}
+.res-hero-alias{font-family:'Newsreader',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--ink2);margin-bottom:24px}
+.res-type-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:40px}
+.type-pill{font-family:'Azeret Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 10px;border-radius:20px;border:1.5px solid var(--ink3);color:var(--ink3);opacity:0.3;transition:all .3s}
+.type-pill.active{opacity:1;font-weight:600}
+.radar-wrap{display:flex;justify-content:center;margin:32px 0}
+.radar-canvas{max-width:100%}
+.res-section{margin-bottom:48px}
+.res-section-title{font-family:'Newsreader',serif;font-size:clamp(22px,4vw,30px);font-weight:500;line-height:1.25;letter-spacing:-0.02em;color:var(--ink);margin-bottom:16px}
+.res-desc{font-size:16px;font-weight:300;line-height:1.75;color:var(--ink2)}
+.res-desc strong{font-weight:500;color:var(--ink)}
+.bar-chart{display:flex;flex-direction:column;gap:10px;margin:20px 0}
+.bar-row{display:flex;align-items:center;gap:12px}
+.bar-label{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);width:80px;text-align:right;flex-shrink:0}
+.bar-track{flex:1;height:8px;background:var(--border-light);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .8s var(--ease)}
+.bar-val{font-family:'Azeret Mono',monospace;font-size:10px;color:var(--ink3);width:40px}
+.trait-list{list-style:none;padding:0}
+.trait-item{font-size:15px;font-weight:300;line-height:1.8;color:var(--ink2);padding-left:16px;position:relative}
+.trait-item::before{content:'';position:absolute;left:0;top:12px;width:4px;height:4px;border-radius:50%;background:var(--accent)}
+.dev-card{background:var(--bg2);border-radius:var(--radius);padding:20px 24px;margin-bottom:12px}
+.dev-title{font-family:'Sora',sans-serif;font-size:14px;font-weight:600;letter-spacing:-0.02em;margin-bottom:6px}
+.dev-text{font-size:14px;font-weight:300;line-height:1.7;color:var(--ink2)}
+.slider-wrap{margin-bottom:24px}
+.slider-label{font-family:'Sora',sans-serif;font-size:14px;font-weight:500;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.slider-level{font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:var(--radius-badge)}
+.slider-track{width:100%;height:6px;-webkit-appearance:none;appearance:none;background:var(--border-light);border-radius:3px;outline:none;cursor:pointer}
+.slider-track::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 8px var(--accent-glow)}
+.slider-track::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:none}
+.btn-share-linkedin{display:inline-flex;align-items:center;gap:10px;background:#0A66C2;color:#fff;border:none;border-radius:var(--radius-btn);padding:14px 24px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;letter-spacing:-0.02em;cursor:pointer;transition:all .3s var(--ease)}
+.btn-share-linkedin:hover{background:#004182;transform:scale(1.02)}
+.btn-download{display:inline-flex;align-items:center;gap:10px;background:none;border:1px solid var(--border);border-radius:var(--radius-btn);padding:10px 20px;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;transition:all .3s var(--ease)}
+.btn-download:hover{color:var(--ink);border-color:var(--ink3)}
+.btn-restart{background:none;border:none;font-family:'Azeret Mono',monospace;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);cursor:pointer;padding:0;transition:color .2s}
+.btn-restart:hover{color:var(--ink)}
+.actions-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:48px}
+.wing-badge{display:inline-block;font-family:'Azeret Mono',monospace;font-size:11px;font-weight:400;letter-spacing:1.5px;padding:4px 12px;border-radius:20px;margin-right:8px}
+.integration-meter{height:12px;background:var(--border-light);border-radius:6px;overflow:hidden;margin:16px 0}
+.integration-fill{height:100%;border-radius:6px;transition:width 1s var(--ease)}
+.center-row{display:flex;gap:16px;margin-bottom:12px}
+.center-card{flex:1;padding:16px;border-radius:var(--radius);border:1px solid var(--border);text-align:center}
+.center-name{font-family:'Azeret Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.center-level{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.02em}
+.center-mode{font-size:12px;font-weight:300;color:var(--ink2);margin-top:4px}
+@media print{.lang-btn,.progress-bar,.actions-wrap,.site-footer{display:none!important}.root{padding:20px}.wrap{max-width:100%}}
+@media(max-width:480px){.center-row{flex-direction:column}.bar-label{width:60px;font-size:9px}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const{useState,useCallback,useMemo,useEffect,useRef,createElement:h}=React;
+
+/* ============================================================
+   TYPE DATABASE — 9 Enneagram types with full report content
+   ============================================================ */
+const TYPE_COLORS = {1:'#7C3AED',2:'#E8622A',3:'#D4A017',4:'#6366F1',5:'#059669',6:'#2D7DD2',7:'#F59E0B',8:'#DC2626',9:'#14B8A6'};
+const TYPES = {
+  1:{en:{name:'Type 1',alias:'The Strict Perfectionist',motivation:'To be right, good, and ethical. To improve things.',worldview:'The world is imperfect. I must make things right.',coreFear:'Being corrupt, defective, or wrong.',gifts:['Discernment','Integrity','Precision','High standards'],vices:['Rigidity','Self-righteousness','Judgmental thinking','Resentment'],selfTalk:'I must do things correctly. I must be good.',actionPatterns:['Organizing the world to match your values','Working hard to avoid mistakes','Correcting others and yourself relentlessly'],thinkingPatterns:['Quickly assessing right vs. wrong','Inner critic that never stops evaluating','Difficulty tolerating ambiguity or gray areas'],feelingPatterns:['Suppressing anger into resentment','Feeling responsible for everything going wrong','Frustration when others dont share your standards'],blindSpots:['Your energy may be stronger than you realize and can feel intimidating','You may have a double standard on control — resisting it while exerting it','Your certainty can push others away from offering their perspective'],strengths:['Principled and fair','Self-disciplined and responsible','Clear sense of purpose','Gift for improvement and quality'],weaknesses:['Overly critical of self and others','Rigid and inflexible','Suppresses emotions behind duty','Can seem preachy or judgmental'],developmentExercises:['Practice saying "good enough" — not everything needs to be perfect','Notice when your inner critic is running the show and pause','Allow yourself pleasure without guilt — joy is not irresponsible','Ask others for their perspective before correcting']},pt:{name:'Tipo 1',alias:'O Perfeccionista Rigoroso',motivation:'Ser correto, bom e etico. Melhorar as coisas.',worldview:'O mundo e imperfeito. Eu preciso consertar.',coreFear:'Ser corrompido, defeituoso ou errado.',gifts:['Discernimento','Integridade','Precisao','Altos padroes'],vices:['Rigidez','Auto-retidao','Julgamento excessivo','Ressentimento'],selfTalk:'Eu preciso fazer as coisas corretamente. Eu preciso ser bom.',actionPatterns:['Organizar o mundo para corresponder aos seus valores','Trabalhar duro para evitar erros','Corrigir os outros e a si mesmo incessantemente'],thinkingPatterns:['Avaliar rapidamente certo vs. errado','Critico interno que nunca para de avaliar','Dificuldade em tolerar ambiguidade'],feelingPatterns:['Suprimir raiva em ressentimento','Sentir-se responsavel por tudo que da errado','Frustracao quando outros nao compartilham seus padroes'],blindSpots:['Sua energia pode ser mais forte do que voce percebe','Voce pode ter um duplo padrao sobre controle','Sua certeza pode afastar a perspectiva dos outros'],strengths:['Principiado e justo','Autodisciplinado e responsavel','Senso claro de proposito','Dom para melhoria e qualidade'],weaknesses:['Excessivamente critico consigo e com os outros','Rigido e inflexivel','Suprime emocoes atras do dever','Pode parecer pregador ou julgador'],developmentExercises:['Pratique dizer "bom o suficiente"','Perceba quando seu critico interno esta comandando e pause','Permita-se prazer sem culpa','Peca a perspectiva dos outros antes de corrigir']}},
+  2:{en:{name:'Type 2',alias:'The Considerate Helper',motivation:'To be loved and needed. To be indispensable to others.',worldview:'People need me. My value comes from giving.',coreFear:'Being unwanted, unloved, or dispensable.',gifts:['Empathy','Generosity','Warmth','Attunement to others'],vices:['Pride','Manipulation through giving','Over-involvement','Neglecting own needs'],selfTalk:'I am needed. I must help others to be loved.',actionPatterns:['Anticipating and meeting others needs before asked','Offering help as a way to connect','Over-extending yourself for recognition'],thinkingPatterns:['Focused on what others need from you','Difficulty identifying your own needs','Believing your worth depends on being helpful'],feelingPatterns:['Anger when appreciation is lacking','Deep hurt from feeling unacknowledged','Warmth and pride in being the one people turn to'],blindSpots:['Your giving may have strings attached that you dont see','You may lose yourself in others lives and call it love','Your helpfulness may prevent others from growing'],strengths:['Warm and generous','Emotionally intelligent','Creates deep connections','Natural caretaker and supporter'],weaknesses:['Can become possessive or clingy','Neglects own needs for others','May manipulate through helpfulness','Struggles to receive help'],developmentExercises:['Ask yourself "what do I need right now?" daily','Practice receiving without immediately giving back','Notice when your helping has an agenda','Set boundaries even when it feels selfish']},pt:{name:'Tipo 2',alias:'O Auxiliador Atencioso',motivation:'Ser amado e necessario. Ser indispensavel.',worldview:'As pessoas precisam de mim. Meu valor vem de dar.',coreFear:'Ser indesejado, nao amado ou dispensavel.',gifts:['Empatia','Generosidade','Calor humano','Sintonia com os outros'],vices:['Orgulho','Manipulacao atraves da doacao','Envolvimento excessivo','Negligenciar proprias necessidades'],selfTalk:'Sou necessario. Preciso ajudar para ser amado.',actionPatterns:['Antecipar e atender necessidades dos outros','Oferecer ajuda como forma de conexao','Estender-se demais por reconhecimento'],thinkingPatterns:['Focado no que os outros precisam de voce','Dificuldade em identificar proprias necessidades','Acreditar que seu valor depende de ser util'],feelingPatterns:['Raiva quando falta apreciacao','Magoa profunda por nao ser reconhecido','Orgulho em ser a pessoa a quem todos recorrem'],blindSpots:['Sua doacao pode ter condicoes que voce nao ve','Voce pode se perder na vida dos outros','Sua ajuda pode impedir os outros de crescer'],strengths:['Caloroso e generoso','Inteligencia emocional','Cria conexoes profundas','Cuidador e apoiador natural'],weaknesses:['Pode se tornar possessivo','Negligencia proprias necessidades','Pode manipular atraves da ajuda','Dificuldade em receber ajuda'],developmentExercises:['Pergunte-se "o que EU preciso agora?" diariamente','Pratique receber sem retribuir imediatamente','Perceba quando sua ajuda tem uma agenda','Estabeleca limites mesmo quando parece egoista']}},
+  3:{en:{name:'Type 3',alias:'The Competitive Achiever',motivation:'To be successful, admired, and effective.',worldview:'The world rewards winners. I must prove my worth through achievement.',coreFear:'Being worthless, unsuccessful, or exposed as a fraud.',gifts:['Drive','Adaptability','Efficiency','Inspiring leadership'],vices:['Vanity','Deception','Workaholism','Image-obsession'],selfTalk:'I must succeed. I am what I achieve.',actionPatterns:['Driving toward goals with relentless focus','Adapting your persona to fit what is valued','Taking shortcuts when results matter more than process'],thinkingPatterns:['Constantly assessing efficiency and ROI','Comparing yourself to others achievements','Difficulty distinguishing who you are from what you do'],feelingPatterns:['Disconnected from feelings — they slow you down','Shame when you fail or appear incompetent','A hidden emptiness beneath the polished surface'],blindSpots:['You may project confidence that masks deep insecurity','Your pace leaves others feeling steamrolled','You may not know who you are beyond your achievements'],strengths:['Highly productive and goal-oriented','Charismatic and motivating','Adaptable to any environment','Natural leader who gets things done'],weaknesses:['Can become overly competitive','May sacrifice authenticity for image','Prone to burnout and workaholism','Struggles with vulnerability'],developmentExercises:['Spend time doing nothing productive — just being','Ask trusted people how they experience you, not your work','Notice when you are performing vs. being authentic','Practice admitting failure without spinning it']},pt:{name:'Tipo 3',alias:'O Realizador Competitivo',motivation:'Ser bem-sucedido, admirado e eficaz.',worldview:'O mundo recompensa vencedores. Preciso provar meu valor.',coreFear:'Ser sem valor, fracassado ou exposto como fraude.',gifts:['Determinacao','Adaptabilidade','Eficiencia','Lideranca inspiradora'],vices:['Vaidade','Engano','Workaholic','Obsessao com imagem'],selfTalk:'Preciso ter sucesso. Eu sou o que conquisto.',actionPatterns:['Perseguir metas com foco implacavel','Adaptar sua persona ao que e valorizado','Atalhos quando resultados importam mais que processo'],thinkingPatterns:['Avaliar constantemente eficiencia e ROI','Comparar-se com conquistas dos outros','Dificuldade em separar quem voce e do que faz'],feelingPatterns:['Desconectado dos sentimentos','Vergonha ao falhar','Vazio escondido sob a superficie polida'],blindSpots:['Voce projeta confianca que mascara inseguranca','Seu ritmo deixa os outros atropelados','Voce pode nao saber quem e alem das conquistas'],strengths:['Altamente produtivo','Carismatico e motivador','Adaptavel a qualquer ambiente','Lider natural que faz acontecer'],weaknesses:['Excessivamente competitivo','Sacrifica autenticidade pela imagem','Propenso a burnout','Dificuldade com vulnerabilidade'],developmentExercises:['Passe tempo sem produzir nada — apenas sendo','Pergunte a pessoas de confianca como te experienciam','Perceba quando esta performando vs. sendo autentico','Pratique admitir fracasso sem "vender" a narrativa']}},
+  4:{en:{name:'Type 4',alias:'The Intense Creative',motivation:'To find meaning, depth, and authentic self-expression.',worldview:'Something essential is missing. I must find what makes me unique.',coreFear:'Having no identity or personal significance.',gifts:['Emotional depth','Creativity','Authenticity','Aesthetic sensibility'],vices:['Envy','Self-absorption','Melancholy','Drama'],selfTalk:'I am different. No one truly understands me.',actionPatterns:['Searching for meaning in everything','Expressing yourself through creative outlets','Withdrawing when feeling misunderstood'],thinkingPatterns:['Focused on what is missing in your life','Romanticizing the past or idealizing the future','Comparing yourself unfavorably to others'],feelingPatterns:['Intense emotional swings','Deep melancholy that feels like home','Envy of others who seem to have what you lack'],blindSpots:['Your focus on what is missing blinds you to what is present','Your intensity can overwhelm others','You may confuse suffering with depth'],strengths:['Deeply empathetic and compassionate','Highly creative and expressive','Brings beauty and meaning to the ordinary','Comfortable with deep emotions'],weaknesses:['Can be self-absorbed and moody','Prone to envy and comparison','May withdraw into fantasy','Struggles with emotional stability'],developmentExercises:['Practice gratitude for what IS present in your life','When you feel envious, ask what it reveals about your desires','Stay with ordinary moments without dramatizing them','Connect to others pain, not just your own']},pt:{name:'Tipo 4',alias:'O Criativo Intenso',motivation:'Encontrar significado, profundidade e expressao autentica.',worldview:'Algo essencial esta faltando. Preciso encontrar o que me torna unico.',coreFear:'Nao ter identidade ou significado pessoal.',gifts:['Profundidade emocional','Criatividade','Autenticidade','Sensibilidade estetica'],vices:['Inveja','Auto-absorcao','Melancolia','Drama'],selfTalk:'Sou diferente. Ninguem realmente me entende.',actionPatterns:['Buscar significado em tudo','Expressar-se atraves de saidas criativas','Retrair-se quando se sente incompreendido'],thinkingPatterns:['Focado no que falta na vida','Romantizar o passado ou idealizar o futuro','Comparar-se desfavoravelmente aos outros'],feelingPatterns:['Oscilacoes emocionais intensas','Melancolia profunda que parece familiar','Inveja de quem parece ter o que voce nao tem'],blindSpots:['Seu foco no que falta te cega para o que esta presente','Sua intensidade pode sobrecarregar os outros','Voce pode confundir sofrimento com profundidade'],strengths:['Profundamente empatico','Altamente criativo e expressivo','Traz beleza ao ordinario','Confortavel com emocoes profundas'],weaknesses:['Pode ser auto-absorvido e temperamental','Propenso a inveja e comparacao','Pode se retrair em fantasia','Dificuldade com estabilidade emocional'],developmentExercises:['Pratique gratidao pelo que ESTA presente','Quando sentir inveja, pergunte o que revela sobre seus desejos','Fique com momentos ordinarios sem dramatiza-los','Conecte-se a dor dos outros, nao so a sua']}},
+  5:{en:{name:'Type 5',alias:'The Quiet Specialist',motivation:'To understand the world and conserve energy.',worldview:'The world is intrusive. I need to protect my inner resources.',coreFear:'Being helpless, depleted, or overwhelmed.',gifts:['Analytical depth','Objectivity','Independence','Perceptiveness'],vices:['Avarice','Detachment','Isolation','Emotional withholding'],selfTalk:'I need to understand before I engage. I must conserve my resources.',actionPatterns:['Observing before acting','Retreating into your mind for safety','Minimizing needs to maintain independence'],thinkingPatterns:['Deep analytical processing','Compartmentalizing emotions from thoughts','Needing to understand everything before committing'],feelingPatterns:['Emotional numbness or delayed response','Fear of being overwhelmed by others needs','Private rich inner world that few see'],blindSpots:['Your withdrawal feels like rejection to others','You may overvalue thinking and undervalue feeling','Your self-sufficiency masks a deep need for connection'],strengths:['Intellectual pioneer','Objective and insightful','Self-sufficient and independent','Brings perceptive wisdom to problems'],weaknesses:['Can be emotionally detached','Prone to isolation','May hoard knowledge or resources','Struggles to share feelings'],developmentExercises:['Practice sharing a feeling with someone you trust daily','Notice when you retreat into your mind and choose to stay present','Allow yourself to need others without seeing it as weakness','Engage your body — movement helps reconnect head and heart']},pt:{name:'Tipo 5',alias:'O Especialista Quieto',motivation:'Entender o mundo e conservar energia.',worldview:'O mundo e intrusivo. Preciso proteger meus recursos internos.',coreFear:'Ser impotente, esgotado ou sobrecarregado.',gifts:['Profundidade analitica','Objetividade','Independencia','Perspicacia'],vices:['Avareza','Distanciamento','Isolamento','Retencao emocional'],selfTalk:'Preciso entender antes de me envolver. Devo conservar meus recursos.',actionPatterns:['Observar antes de agir','Refugiar-se na mente por seguranca','Minimizar necessidades para manter independencia'],thinkingPatterns:['Processamento analitico profundo','Compartimentar emocoes dos pensamentos','Precisar entender tudo antes de se comprometer'],feelingPatterns:['Entorpecimento emocional ou resposta atrasada','Medo de ser sobrecarregado pelas necessidades dos outros','Rico mundo interior que poucos veem'],blindSpots:['Seu retraimento parece rejeicao para os outros','Voce pode supervalorizar pensar e subvalorizar sentir','Sua autossuficiencia mascara necessidade de conexao'],strengths:['Pioneiro intelectual','Objetivo e perspicaz','Autossuficiente e independente','Sabedoria perceptiva para problemas'],weaknesses:['Pode ser emocionalmente distante','Propenso ao isolamento','Pode acumular conhecimento ou recursos','Dificuldade em compartilhar sentimentos'],developmentExercises:['Pratique compartilhar um sentimento com alguem de confianca','Perceba quando se refugia na mente e escolha ficar presente','Permita-se precisar dos outros sem ver como fraqueza','Engaje seu corpo — movimento reconecta cabeca e coracao']}},
+  6:{en:{name:'Type 6',alias:'The Loyal Sceptic',motivation:'To feel safe, supported, and certain.',worldview:'The world is dangerous. I must be prepared and find reliable allies.',coreFear:'Being without support, guidance, or security.',gifts:['Loyalty','Responsibility','Strategic thinking','Courage under pressure'],vices:['Anxiety','Suspicion','Indecisiveness','Reactivity'],selfTalk:'What could go wrong? Who can I trust? I must be prepared.',actionPatterns:['Scanning for risks and worst-case scenarios','Testing loyalty and reliability of others','Oscillating between compliance and rebellion'],thinkingPatterns:['Anticipating danger and preparing contingencies','Questioning authority while also seeking it','Projecting fears onto neutral situations'],feelingPatterns:['Chronic anxiety and hypervigilance','Deep loyalty to those who earn your trust','Fear that masquerades as anger or suspicion'],blindSpots:['Your anxiety may create the very problems you fear','You may project your own doubt onto others motives','Your need for certainty makes it hard to take decisive action'],strengths:['Fiercely loyal and committed','Excellent at risk assessment','Courageous when it counts','Builds strong bonds of trust'],weaknesses:['Prone to anxiety and worst-case thinking','Can be suspicious and accusatory','Struggles with authority','Indecisive when stressed'],developmentExercises:['Practice trusting your own judgment without external validation','Notice when you are projecting fear and ask "is this real?"','Take one small risk each day without over-analyzing it','Build your inner authority rather than seeking it outside']},pt:{name:'Tipo 6',alias:'O Cetico Leal',motivation:'Sentir-se seguro, apoiado e certo.',worldview:'O mundo e perigoso. Preciso estar preparado e encontrar aliados confiaveis.',coreFear:'Ficar sem suporte, orientacao ou seguranca.',gifts:['Lealdade','Responsabilidade','Pensamento estrategico','Coragem sob pressao'],vices:['Ansiedade','Suspeita','Indecisao','Reatividade'],selfTalk:'O que pode dar errado? Em quem posso confiar? Preciso estar preparado.',actionPatterns:['Escanear riscos e piores cenarios','Testar lealdade e confiabilidade dos outros','Oscilar entre conformidade e rebeliao'],thinkingPatterns:['Antecipar perigos e preparar contingencias','Questionar autoridade enquanto tambem a busca','Projetar medos em situacoes neutras'],feelingPatterns:['Ansiedade cronica e hipervigilancia','Lealdade profunda a quem ganha sua confianca','Medo que se disfraca de raiva ou suspeita'],blindSpots:['Sua ansiedade pode criar os problemas que voce teme','Voce pode projetar sua duvida nos motivos dos outros','Sua necessidade de certeza dificulta acao decisiva'],strengths:['Ferozmente leal e comprometido','Excelente em avaliacao de riscos','Corajoso quando importa','Constroi fortes lacos de confianca'],weaknesses:['Propenso a ansiedade','Pode ser desconfiado e acusatorio','Dificuldade com autoridade','Indeciso sob estresse'],developmentExercises:['Pratique confiar em seu proprio julgamento','Perceba quando esta projetando medo e pergunte "isso e real?"','Tome um pequeno risco por dia sem analisar demais','Construa sua autoridade interna']}},
+  7:{en:{name:'Type 7',alias:'The Enthusiastic Visionary',motivation:'To be happy, stimulated, and free from pain.',worldview:'Life should be an adventure. I must keep my options open.',coreFear:'Being trapped in pain, deprivation, or boredom.',gifts:['Optimism','Creativity','Versatility','Infectious energy'],vices:['Gluttony','Impulsiveness','Avoidance of pain','Superficiality'],selfTalk:'I need more. Theres always something better ahead.',actionPatterns:['Pursuing multiple projects and ideas simultaneously','Reframing negative experiences as positive','Escaping when things get boring or painful'],thinkingPatterns:['Future-oriented planning and ideation','Rationalizing away discomfort','Connecting disparate ideas into grand visions'],feelingPatterns:['Manic optimism that masks underlying anxiety','Difficulty sitting with sadness or pain','Quick to excitement, slow to depth'],blindSpots:['Your positivity may be a form of avoidance','Your pace exhausts those around you','You may not finish what you start because the next thing calls'],strengths:['Brings energy and enthusiasm to everything','Visionary thinker with big ideas','Resilient and resourceful','Creates joy and possibility for others'],weaknesses:['Can be scattered and uncommitted','Avoids necessary pain and conflict','May seem insensitive to others suffering','Struggles with follow-through'],developmentExercises:['Practice staying with one thing until its done','When you want to escape discomfort, stay 5 more minutes','Ask yourself what you are avoiding when you seek stimulation','Listen deeply to someone in pain without trying to fix it']},pt:{name:'Tipo 7',alias:'O Visionario Entusiasmado',motivation:'Ser feliz, estimulado e livre de dor.',worldview:'A vida deveria ser uma aventura. Preciso manter opcoes abertas.',coreFear:'Ficar preso em dor, privacao ou tedio.',gifts:['Otimismo','Criatividade','Versatilidade','Energia contagiante'],vices:['Gula','Impulsividade','Evitacao de dor','Superficialidade'],selfTalk:'Preciso de mais. Sempre ha algo melhor adiante.',actionPatterns:['Perseguir multiplos projetos simultaneamente','Reformular experiencias negativas como positivas','Escapar quando as coisas ficam entediantes'],thinkingPatterns:['Planejamento orientado ao futuro','Racionalizar desconforto','Conectar ideias dispares em grandes visoes'],feelingPatterns:['Otimismo que mascara ansiedade','Dificuldade em ficar com tristeza ou dor','Rapido para excitacao, lento para profundidade'],blindSpots:['Sua positividade pode ser evitacao','Seu ritmo esgota quem esta ao redor','Voce pode nao terminar o que comeca'],strengths:['Traz energia e entusiasmo a tudo','Pensador visionario','Resiliente e engenhoso','Cria alegria e possibilidade para os outros'],weaknesses:['Pode ser disperso e nao comprometido','Evita dor e conflito necessarios','Pode parecer insensivel ao sofrimento alheio','Dificuldade em dar seguimento'],developmentExercises:['Pratique ficar com uma coisa ate terminar','Quando quiser escapar do desconforto, fique mais 5 minutos','Pergunte-se o que esta evitando quando busca estimulacao','Ouca profundamente alguem em dor sem tentar consertar']}},
+  8:{en:{name:'Type 8',alias:'The Active Controller',motivation:'To be strong, in control, and protect the vulnerable.',worldview:'The world is tough. Only the strong survive. I must take charge.',coreFear:'Being controlled, harmed, or vulnerable.',gifts:['Strength','Decisiveness','Directness','Protection of others'],vices:['Lust for control','Excess','Intimidation','Denial of vulnerability'],selfTalk:'I must be in control. I must be strong.',actionPatterns:['Acting from gut instinct to make things happen','Managing the big picture and micromanaging','Pursuing justice and protecting the vulnerable'],thinkingPatterns:['Quick mental assessment of strong vs. weak','Mind moves toward your own goals more than others','Preferring big-picture strategy over details'],feelingPatterns:['Quick to express anger, slow to show sadness','While exterior is tough, you feel generously and deeply','Emotions like sadness and fear make you feel vulnerable'],blindSpots:['Your energy is stronger than you realize — others may feel intimidated','You may have a blind spot on control — refusing it while exerting it','Despite hiding vulnerability, you expose more than you realize'],strengths:['Natural leader with huge presence','Decisive and willing to take risks','Fiercely protective of those you love','Brings vitality and directness'],weaknesses:['Can seem aggressive and domineering','Difficulty showing vulnerability','May steamroll others perspectives','Excess and self-neglect patterns'],developmentExercises:['Practice vulnerability with someone safe — share a fear','Notice when you are controlling out of protection vs. anxiety','Ask others for their input before deciding','Take care of your physical health as a form of emotional care']},pt:{name:'Tipo 8',alias:'O Controlador Ativo',motivation:'Ser forte, estar no controle e proteger os vulneraveis.',worldview:'O mundo e duro e injusto. So os fortes sobrevivem.',coreFear:'Ser controlado, ferido ou vulneravel.',gifts:['Forca','Determinacao','Franqueza','Protecao dos outros'],vices:['Desejo de controle','Excesso','Intimidacao','Negacao da vulnerabilidade'],selfTalk:'Preciso estar no controle. Preciso ser forte.',actionPatterns:['Agir por instinto para fazer as coisas acontecerem','Gerenciar o panorama geral e microgerenciar','Perseguir justica e proteger os vulneraveis'],thinkingPatterns:['Avaliacao rapida de forte vs. fraco','Mente voltada para seus proprios objetivos','Preferir estrategia macro sobre detalhes'],feelingPatterns:['Rapido para expressar raiva, lento para mostrar tristeza','Exterior duro mas sentimentos generosos e profundos','Emocoes como tristeza e medo te fazem sentir vulneravel'],blindSpots:['Sua energia e mais forte do que voce percebe','Voce pode ter um ponto cego sobre controle','Apesar de esconder vulnerabilidade, voce expoe mais do que percebe'],strengths:['Lider natural com presenca enorme','Decisivo e disposto a correr riscos','Ferozmente protetor de quem ama','Traz vitalidade e franqueza'],weaknesses:['Pode parecer agressivo e dominador','Dificuldade em mostrar vulnerabilidade','Pode atropelar perspectivas dos outros','Padroes de excesso e auto-negligencia'],developmentExercises:['Pratique vulnerabilidade com alguem seguro','Perceba quando controla por protecao vs. ansiedade','Peca input dos outros antes de decidir','Cuide da saude fisica como forma de cuidado emocional']}},
+  9:{en:{name:'Type 9',alias:'The Adaptive Peacemaker',motivation:'To maintain inner and outer peace. To avoid conflict.',worldview:'Conflict is destructive. I must keep harmony.',coreFear:'Loss, separation, and conflict.',gifts:['Diplomacy','Patience','Mediation','Groundedness'],vices:['Sloth (self-forgetting)','Passive-aggression','Stubbornness','Numbing out'],selfTalk:'Its not worth fighting over. I can adapt.',actionPatterns:['Going along to get along','Mediating between conflicting parties','Procrastinating on decisions that might create conflict'],thinkingPatterns:['Merging with others opinions instead of forming your own','Difficulty prioritizing your own agenda','Seeing all sides which makes it hard to choose'],feelingPatterns:['Numbing out or falling asleep to your own anger','Comfortable and steady on the surface','Deep stubbornness that emerges when pushed'],blindSpots:['Your agreeableness may be conflict avoidance in disguise','Others may not know what you actually think or want','Your adaptability can become self-erasure'],strengths:['Creates harmony and inclusion','Patient and grounding presence','Excellent mediator and listener','Sees multiple perspectives naturally'],weaknesses:['Can be passive and indecisive','Prone to self-forgetting and numbing','May avoid necessary conflict','Struggles to assert own needs'],developmentExercises:['Practice expressing your opinion first in conversations','Notice when you merge with someone elses agenda','Say no to one thing each day that doesnt serve you','Connect to your anger — it tells you what matters']},pt:{name:'Tipo 9',alias:'O Pacificador Adaptavel',motivation:'Manter paz interior e exterior. Evitar conflito.',worldview:'Conflito e destrutivo. Preciso manter harmonia.',coreFear:'Perda, separacao e conflito.',gifts:['Diplomacia','Paciencia','Mediacao','Estabilidade'],vices:['Preguica (auto-esquecimento)','Passivo-agressividade','Teimosia','Entorpecimento'],selfTalk:'Nao vale a pena brigar. Eu me adapto.',actionPatterns:['Ir junto para manter a paz','Mediar entre partes em conflito','Procrastinar decisoes que podem gerar conflito'],thinkingPatterns:['Fundir-se com opinioes dos outros','Dificuldade em priorizar sua propria agenda','Ver todos os lados, tornando dificil escolher'],feelingPatterns:['Entorpecer ou adormecer para a propria raiva','Confortavel e estavel na superficie','Teimosia profunda que emerge quando pressionado'],blindSpots:['Sua concordancia pode ser evitacao de conflito','Os outros podem nao saber o que voce realmente pensa','Sua adaptabilidade pode se tornar auto-apagamento'],strengths:['Cria harmonia e inclusao','Presenca paciente e estabilizadora','Excelente mediador e ouvinte','Ve multiplas perspectivas naturalmente'],weaknesses:['Pode ser passivo e indeciso','Propenso a auto-esquecimento','Pode evitar conflito necessario','Dificuldade em afirmar proprias necessidades'],developmentExercises:['Pratique expressar sua opiniao primeiro nas conversas','Perceba quando se funde com a agenda de outra pessoa','Diga nao a uma coisa por dia que nao te serve','Conecte-se a sua raiva — ela diz o que importa']}}
+};
+
+/* Enneagram structural data */
+const CENTERS={1:'gut',2:'heart',3:'heart',4:'heart',5:'head',6:'head',7:'head',8:'gut',9:'gut'};
+const HORNEVIAN={1:'compliant',2:'compliant',3:'assertive',4:'withdrawn',5:'withdrawn',6:'compliant',7:'assertive',8:'assertive',9:'withdrawn'};
+const HARMONICS={1:'competency',2:'positive',3:'competency',4:'reactive',5:'competency',6:'reactive',7:'positive',8:'reactive',9:'positive'};
+const LINES={1:{release:7,stretch:4},2:{release:4,stretch:8},3:{release:6,stretch:9},4:{release:1,stretch:2},5:{release:8,stretch:7},6:{release:9,stretch:3},7:{release:5,stretch:1},8:{release:2,stretch:5},9:{release:3,stretch:6}};
+const WINGS={1:[9,2],2:[1,3],3:[2,4],4:[3,5],5:[4,6],6:[5,7],7:[6,8],8:[7,9],9:[8,1]};
+
+/* ============================================================
+   SCENARIOS — 9 core + 3 subtype + 3 center + 3 style + 2 integration
+   ============================================================ */
+const CORE_SCENARIOS={
+  en:[
+    {situation:"Your team is about to miss a deadline. The work is 80% done but not perfect. What do you do?",options:[
+      {types:[1],text:"Push to get it right even if it means being late — quality matters more"},
+      {types:[3],text:"Ship what you have, polish the rest later — momentum is everything"},
+      {types:[6],text:"Flag the risk early and propose a realistic revised timeline"},
+      {types:[9],text:"Check what everyone needs and find a compromise that keeps the peace"}
+    ]},
+    {situation:"A close friend is going through a crisis. They call you at midnight, clearly distressed.",options:[
+      {types:[2],text:"Drop everything. You're already grabbing your keys to go be with them"},
+      {types:[5],text:"Listen carefully and help them think through the situation logically"},
+      {types:[4],text:"Hold space for their emotions — you know what its like to feel deeply"},
+      {types:[8],text:"Take charge — ask what happened and start fixing the problem immediately"}
+    ]},
+    {situation:"You receive harsh criticism on a project you worked hard on. How do you react internally?",options:[
+      {types:[1],text:"Analyze the feedback meticulously — is it valid? What needs to be corrected?"},
+      {types:[3],text:"Feel a flash of shame, then quickly strategize how to recover your reputation"},
+      {types:[4],text:"Feel deeply wounded — the criticism strikes at your sense of identity"},
+      {types:[7],text:"Reframe it quickly — focus on the positives and move to the next thing"}
+    ]},
+    {situation:"You are leading a meeting and two team members have a heated disagreement.",options:[
+      {types:[8],text:"Step in decisively — make it clear that you'll resolve this right now"},
+      {types:[9],text:"Let both sides speak, then gently guide them toward common ground"},
+      {types:[6],text:"Name the risk this conflict creates and propose a structured resolution"},
+      {types:[2],text:"Check in on how each person is feeling — the relationship matters most"}
+    ]},
+    {situation:"You're offered a new opportunity that sounds exciting but requires giving up stability.",options:[
+      {types:[7],text:"Jump in — life is too short for safety. Adventure over security."},
+      {types:[5],text:"Research it deeply first. You need all the data before committing"},
+      {types:[6],text:"Weigh the risks. Whats the worst case? Who will support you if it fails?"},
+      {types:[3],text:"Evaluate it against your goals — does it advance your career trajectory?"}
+    ]},
+    {situation:"Someone at work takes credit for an idea that was clearly yours.",options:[
+      {types:[8],text:"Confront them directly — this is not okay and you will not let it slide"},
+      {types:[1],text:"Document the timeline and address it through proper channels — justice matters"},
+      {types:[9],text:"Let it go — its not worth the conflict, and the truth will emerge eventually"},
+      {types:[4],text:"Feel the sting deeply — being unseen is one of your worst experiences"}
+    ]},
+    {situation:"You have a free Saturday with no obligations. What draws you most?",options:[
+      {types:[5],text:"Deep dive into a fascinating subject — books, research, learning alone"},
+      {types:[7],text:"Plan something fun and spontaneous with people — a new restaurant, a trip"},
+      {types:[4],text:"Create something — write, paint, or explore your inner world through art"},
+      {types:[2],text:"Reach out to someone who could use your company or support"}
+    ]},
+    {situation:"A big organizational change is announced. Your immediate instinct is:",options:[
+      {types:[6],text:"Question it — what arent they telling us? Whats the hidden agenda?"},
+      {types:[3],text:"Adapt fast — figure out how to position yourself well in the new structure"},
+      {types:[1],text:"Evaluate if this is the RIGHT change — is it ethical, principled, well-thought-out?"},
+      {types:[7],text:"Get excited about the possibilities — change means new opportunities"}
+    ]},
+    {situation:"You realize youve been working too hard and neglecting yourself. What happens?",options:[
+      {types:[9],text:"You honestly didnt notice until someone pointed it out — you numbed out"},
+      {types:[2],text:"You knew, but other people needed you more — their needs came first"},
+      {types:[8],text:"You push through — you can rest when the mission is accomplished"},
+      {types:[5],text:"You withdraw to recharge — you need time alone to replenish your reserves"}
+    ]}
+  ],
+  pt:[
+    {situation:"Sua equipe esta prestes a perder um prazo. O trabalho esta 80% pronto mas nao perfeito. O que voce faz?",options:[
+      {types:[1],text:"Insistir em acertar mesmo atrasando — qualidade importa mais"},
+      {types:[3],text:"Entregar o que tem, polir depois — momentum e tudo"},
+      {types:[6],text:"Sinalizar o risco cedo e propor um prazo revisado realista"},
+      {types:[9],text:"Verificar o que cada um precisa e encontrar um meio-termo"}
+    ]},
+    {situation:"Um amigo proximo esta em crise. Liga para voce a meia-noite, claramente angustiado.",options:[
+      {types:[2],text:"Largar tudo. Voce ja esta pegando as chaves para ir ate la"},
+      {types:[5],text:"Ouvir com atencao e ajudar a pensar a situacao logicamente"},
+      {types:[4],text:"Acolher as emocoes — voce sabe o que e sentir profundamente"},
+      {types:[8],text:"Tomar a frente — perguntar o que aconteceu e comecar a resolver"}
+    ]},
+    {situation:"Voce recebe uma critica dura sobre um projeto em que se empenhou. Como reage internamente?",options:[
+      {types:[1],text:"Analisar o feedback meticulosamente — e valido? O que precisa ser corrigido?"},
+      {types:[3],text:"Flash de vergonha, depois rapidamente estrategizar como recuperar reputacao"},
+      {types:[4],text:"Sentir-se profundamente ferido — a critica atinge sua identidade"},
+      {types:[7],text:"Reformular rapido — focar nos positivos e seguir para a proxima coisa"}
+    ]},
+    {situation:"Voce esta liderando uma reuniao e dois colegas tem um desentendimento acalorado.",options:[
+      {types:[8],text:"Intervir decisivamente — deixar claro que voce vai resolver isso agora"},
+      {types:[9],text:"Deixar os dois falarem, depois guia-los gentilmente para um terreno comum"},
+      {types:[6],text:"Nomear o risco que esse conflito cria e propor uma resolucao estruturada"},
+      {types:[2],text:"Verificar como cada pessoa esta se sentindo — o relacionamento importa mais"}
+    ]},
+    {situation:"Te oferecem uma oportunidade empolgante que exige abrir mao de estabilidade.",options:[
+      {types:[7],text:"Entrar de cabeca — a vida e curta demais para seguranca. Aventura."},
+      {types:[5],text:"Pesquisar profundamente primeiro. Precisa de todos os dados antes de se comprometer"},
+      {types:[6],text:"Pesar os riscos. Qual o pior cenario? Quem te apoia se der errado?"},
+      {types:[3],text:"Avaliar contra seus objetivos — avanca sua trajetoria?"}
+    ]},
+    {situation:"Alguem no trabalho leva o credito por uma ideia que claramente era sua.",options:[
+      {types:[8],text:"Confrontar diretamente — isso nao esta ok e voce nao vai deixar passar"},
+      {types:[1],text:"Documentar a linha do tempo e resolver pelos canais corretos — justica importa"},
+      {types:[9],text:"Deixar pra la — nao vale o conflito, a verdade aparece eventualmente"},
+      {types:[4],text:"Sentir a dor profundamente — ser invisivel e uma das piores experiencias"}
+    ]},
+    {situation:"Voce tem um sabado livre sem obrigacoes. O que mais te atrai?",options:[
+      {types:[5],text:"Mergulhar em um assunto fascinante — livros, pesquisa, aprender sozinho"},
+      {types:[7],text:"Planejar algo divertido e espontaneo com pessoas — restaurante novo, viagem"},
+      {types:[4],text:"Criar algo — escrever, pintar ou explorar seu mundo interior pela arte"},
+      {types:[2],text:"Procurar alguem que poderia usar sua companhia ou apoio"}
+    ]},
+    {situation:"Uma grande mudanca organizacional e anunciada. Seu instinto imediato:",options:[
+      {types:[6],text:"Questionar — o que nao estao dizendo? Qual a agenda oculta?"},
+      {types:[3],text:"Adaptar rapido — descobrir como se posicionar bem na nova estrutura"},
+      {types:[1],text:"Avaliar se e a mudanca CERTA — e etica, principiada, bem pensada?"},
+      {types:[7],text:"Ficar empolgado com as possibilidades — mudanca significa oportunidades"}
+    ]},
+    {situation:"Voce percebe que trabalhou demais e se negligenciou. O que acontece?",options:[
+      {types:[9],text:"Honestamente nao percebeu ate alguem apontar — voce se anestesiou"},
+      {types:[2],text:"Voce sabia, mas outras pessoas precisavam mais — as necessidades delas vieram primeiro"},
+      {types:[8],text:"Voce segue em frente — pode descansar quando a missao estiver cumprida"},
+      {types:[5],text:"Se recolher para recarregar — precisa de tempo sozinho para repor reservas"}
+    ]}
+  ]
+};
+
+const SUBTYPE_SCENARIOS={
+  en:[
+    {situation:"At a large social gathering, you naturally gravitate toward:",options:[
+      {sub:'SO',text:"The group dynamic — reading the room, understanding who has influence, contributing to the collective energy"},
+      {sub:'SX',text:"One intense connection — finding that one person who sparks real chemistry and going deep"},
+      {sub:'SP',text:"Finding your comfort zone — securing good food, a quiet corner, and making sure you have what you need"}
+    ]},
+    {situation:"When choosing where to live, what matters most?",options:[
+      {sub:'SP',text:"Safety, comfort, and resources — a solid home base with everything you need within reach"},
+      {sub:'SO',text:"Community and belonging — being part of a vibrant neighborhood where you know people"},
+      {sub:'SX',text:"Intensity and passion — a place that feeds your soul, even if its impractical"}
+    ]},
+    {situation:"When you feel disconnected from your partner or closest person, you:",options:[
+      {sub:'SX',text:"Feel it intensely and need to reconnect immediately — nothing else matters until this is resolved"},
+      {sub:'SP',text:"Retreat into your routines and self-care — you can process alone before addressing it"},
+      {sub:'SO',text:"Turn to your broader social circle for perspective and support"}
+    ]}
+  ],
+  pt:[
+    {situation:"Em uma grande reuniao social, voce naturalmente gravita para:",options:[
+      {sub:'SO',text:"A dinamica do grupo — ler o ambiente, entender quem tem influencia, contribuir para a energia coletiva"},
+      {sub:'SX',text:"Uma conexao intensa — encontrar aquela pessoa que gera quimica real e ir fundo"},
+      {sub:'SP',text:"Encontrar sua zona de conforto — garantir boa comida, um canto tranquilo e ter o que precisa"}
+    ]},
+    {situation:"Ao escolher onde morar, o que mais importa?",options:[
+      {sub:'SP',text:"Seguranca, conforto e recursos — uma base solida com tudo ao alcance"},
+      {sub:'SO',text:"Comunidade e pertencimento — fazer parte de um bairro vibrante onde voce conhece pessoas"},
+      {sub:'SX',text:"Intensidade e paixao — um lugar que alimenta sua alma, mesmo que impratico"}
+    ]},
+    {situation:"Quando se sente desconectado do parceiro ou pessoa mais proxima, voce:",options:[
+      {sub:'SX',text:"Sente intensamente e precisa reconectar imediatamente — nada mais importa"},
+      {sub:'SP',text:"Se refugia em rotinas e autocuidado — pode processar sozinho antes de abordar"},
+      {sub:'SO',text:"Recorre ao circulo social mais amplo para perspectiva e apoio"}
+    ]}
+  ]
+};
+
+const CENTER_SCENARIOS={
+  en:[
+    {situation:"When making an important decision, your first instinct is to:",options:[
+      {center:'thinking',text:"Analyze the data, think through all angles, and make a rational assessment"},
+      {center:'feeling',text:"Check how you feel about it — your emotions are a reliable compass"},
+      {center:'action',text:"Trust your gut and act — you can adjust course as you go"}
+    ]},
+    {situation:"When someone shares a personal problem with you, you first:",options:[
+      {center:'thinking',text:"Help them see the situation objectively and explore solutions"},
+      {center:'feeling',text:"Empathize deeply and validate their emotions before anything else"},
+      {center:'action',text:"Start figuring out what can be done right now to fix it"}
+    ]},
+    {situation:"Under extreme stress, you tend to:",options:[
+      {center:'thinking',text:"Overthink — your mind races with scenarios, plans, and worst cases"},
+      {center:'feeling',text:"Get overwhelmed by emotions — anxiety, sadness, or anger floods in"},
+      {center:'action',text:"Go into overdrive — you move faster, do more, control more"}
+    ]}
+  ],
+  pt:[
+    {situation:"Ao tomar uma decisao importante, seu primeiro instinto e:",options:[
+      {center:'thinking',text:"Analisar os dados, pensar em todos os angulos e fazer uma avaliacao racional"},
+      {center:'feeling',text:"Verificar como se sente — suas emocoes sao uma bussola confiavel"},
+      {center:'action',text:"Confiar no instinto e agir — pode ajustar o curso no caminho"}
+    ]},
+    {situation:"Quando alguem compartilha um problema pessoal, voce primeiro:",options:[
+      {center:'thinking',text:"Ajuda a ver a situacao objetivamente e explorar solucoes"},
+      {center:'feeling',text:"Empatiza profundamente e valida as emocoes antes de qualquer coisa"},
+      {center:'action',text:"Comeca a descobrir o que pode ser feito agora para resolver"}
+    ]},
+    {situation:"Sob estresse extremo, voce tende a:",options:[
+      {center:'thinking',text:"Pensar demais — sua mente dispara com cenarios, planos e piores casos"},
+      {center:'feeling',text:"Ser inundado por emocoes — ansiedade, tristeza ou raiva"},
+      {center:'action',text:"Entrar em overdrive — mover mais rapido, fazer mais, controlar mais"}
+    ]}
+  ]
+};
+
+const STYLE_SCENARIOS={
+  en:[
+    {situation:"When you want something from a group, you typically:",options:[
+      {horn:'assertive',text:"State what you want directly and move toward it with confidence"},
+      {horn:'compliant',text:"Work within the rules and earn it through responsibility and effort"},
+      {horn:'withdrawn',text:"Step back and wait — if its meant for you, it will come"}
+    ]},
+    {situation:"When things dont go your way, your default response is:",options:[
+      {harm:'competency',text:"Stay composed and solve it with logic and skill — emotions wont help"},
+      {harm:'positive',text:"Find the silver lining and reframe the situation optimistically"},
+      {harm:'reactive',text:"Express how you feel about it — others need to understand the impact"}
+    ]},
+    {situation:"In a new team, people quickly notice that you:",options:[
+      {horn:'assertive',harm:'reactive',text:"Take charge and arent afraid to challenge the status quo"},
+      {horn:'compliant',harm:'competency',text:"Are reliable, prepared, and focused on doing things correctly"},
+      {horn:'withdrawn',harm:'positive',text:"Are easy to be around and bring a calming, adaptable presence"}
+    ]}
+  ],
+  pt:[
+    {situation:"Quando quer algo de um grupo, voce tipicamente:",options:[
+      {horn:'assertive',text:"Diz o que quer diretamente e move-se com confianca"},
+      {horn:'compliant',text:"Trabalha dentro das regras e conquista por responsabilidade e esforco"},
+      {horn:'withdrawn',text:"Recua e espera — se for para voce, vai acontecer"}
+    ]},
+    {situation:"Quando as coisas nao saem como quer, sua resposta padrao e:",options:[
+      {harm:'competency',text:"Manter a compostura e resolver com logica — emocoes nao ajudam"},
+      {harm:'positive',text:"Encontrar o lado bom e reformular a situacao com otimismo"},
+      {harm:'reactive',text:"Expressar como se sente — os outros precisam entender o impacto"}
+    ]},
+    {situation:"Em uma equipe nova, as pessoas rapidamente percebem que voce:",options:[
+      {horn:'assertive',harm:'reactive',text:"Toma a frente e nao tem medo de desafiar o status quo"},
+      {horn:'compliant',harm:'competency',text:"E confiavel, preparado e focado em fazer as coisas corretamente"},
+      {horn:'withdrawn',harm:'positive',text:"E facil de conviver e traz uma presenca calma e adaptavel"}
+    ]}
+  ]
+};
+
+const INTEGRATION_SCENARIOS={
+  en:[
+    {situation:"When you catch yourself in a reactive pattern (anger, anxiety, avoidance), you:",options:[
+      {level:4,text:"Barely notice it — you act on autopilot and only realize later what happened"},
+      {level:2,text:"Notice it as its happening but cant stop the train — awareness without control"},
+      {level:1,text:"Catch it early, pause, and consciously choose a different response"}
+    ]},
+    {situation:"When someone gives you feedback that challenges your self-image, you:",options:[
+      {level:4,text:"Reject it quickly — they clearly dont understand you"},
+      {level:3,text:"Feel defensive but try to consider it later when emotions settle"},
+      {level:1,text:"Get curious about it — even uncomfortable truths contain useful data"}
+    ]}
+  ],
+  pt:[
+    {situation:"Quando se pega em um padrao reativo (raiva, ansiedade, evitacao), voce:",options:[
+      {level:4,text:"Mal percebe — age no automatico e so percebe depois o que aconteceu"},
+      {level:2,text:"Percebe enquanto acontece mas nao consegue parar — consciencia sem controle"},
+      {level:1,text:"Pega cedo, pausa e conscientemente escolhe uma resposta diferente"}
+    ]},
+    {situation:"Quando alguem te da um feedback que desafia sua auto-imagem, voce:",options:[
+      {level:4,text:"Rejeita rapidamente — claramente nao te entendem"},
+      {level:3,text:"Sente defensividade mas tenta considerar depois quando as emocoes acalmam"},
+      {level:1,text:"Fica curioso — mesmo verdades desconfortaveis contem dados uteis"}
+    ]}
+  ]
+};
+
+const STRAIN_LABELS={
+  en:{happiness:'Happiness',vocational:'Vocational',interpersonal:'Interpersonal',environmental:'Environmental',psychological:'Psychological',physical:'Physical'},
+  pt:{happiness:'Felicidade',vocational:'Vocacional',interpersonal:'Interpessoal',environmental:'Ambiental',psychological:'Psicologico',physical:'Fisico'}
+};
+
+const UI_TEXT={
+  pt:{title:"Qual Eneagrama\nvive em voce?",line1:"Nao e um quiz de 10 perguntas.",line2:"E um jogo de cenarios reais que revela quem voce e quando ninguem esta olhando.",meta:"21 CENARIOS · 7 MINUTOS",start:"Comecar",langToggle:"EN",q1:"O que e mais natural para voce?",q2:"E a segunda opcao?",of:"de",phaseCore:"CENARIOS DE VIDA",phaseSub:"INSTINTOS",phaseCenter:"CENTROS",phaseStyle:"INTERACAO",phaseIntegration:"CONSCIENCIA",phaseStrain:"BEM-ESTAR",collectTitle:"Seu resultado esta pronto.",collectSub:"Para ver, preencha abaixo:",namePH:"Nome completo",emailPH:"Seu melhor e-mail",companyPH:"Empresa (opcional)",continueBtn:"Ver resultado",skipBtn:"Pular",reportTag:"SEU TIPO DO ENEAGRAMA",sectionMotivation:"MOTIVACAO",sectionWorldview:"VISAO DE MUNDO",sectionStrengths:"FORCAS",sectionWeaknesses:"DESAFIOS",sectionBlindSpots:"PONTOS CEGOS",sectionAction:"PADROES DE ACAO",sectionThinking:"PADROES DE PENSAMENTO",sectionFeeling:"PADROES DE SENTIMENTO",sectionWing:"ASA",sectionSubtype:"SUBTIPO",sectionCenters:"CENTROS DE EXPRESSAO",sectionHornevian:"ESTILO DE INTERACAO",sectionHarmonics:"ESTILO DE CONFLITO",sectionIntegration:"NIVEL DE INTEGRACAO",sectionStrain:"PERFIL DE ESTRESSE",sectionLines:"LINHAS",sectionDev:"EXERCICIOS DE DESENVOLVIMENTO",sectionProfile:"PERFIL COMPLETO",restart:"Refazer",share:"Compartilhar no LinkedIn",download:"Salvar como PDF",shareText:"Meu tipo do Eneagrama e {type} — {alias}. Qual e o seu?",strainQ:"Como voce se sente em cada area da vida agora?",strainLow:"Muito estresse",strainHigh:"Otimo",integrationLow:"BAIXO",integrationMod:"MODERADO",integrationHigh:"ALTO",hornAssertive:"Assertivo",hornCompliant:"Complacente",hornWithdrawn:"Retraido",harmCompetency:"Competencia",harmPositive:"Perspectiva Positiva",harmReactive:"Reativo",centerThinking:"Pensamento",centerFeeling:"Sentimento",centerAction:"Acao",lineRelease:"Linha de Liberacao",lineStretch:"Linha de Estresse",wingDesc:"Sua asa influencia como seu tipo principal se expressa. Voce tem tracos do Tipo {w}, que complementa seu estilo com {desc}.",releaseDesc:"Quando voce relaxa e se sente seguro, voce se move para os tracos positivos do Tipo {t}. Isso traz {qual}.",stretchDesc:"Sob estresse, voce pode se mover para os tracos mais desafiadores do Tipo {t}. Isso pode trazer {qual}.",integrationDesc:"Seu nivel de integracao reflete o quanto voce esta consciente dos seus padroes automaticos e capaz de escolher respostas diferentes."},
+  en:{title:"Which Enneagram\nlives in you?",line1:"This is not a 10-question quiz.",line2:"Its a game of real scenarios that reveals who you are when no one is watching.",meta:"21 SCENARIOS · 7 MINUTES",start:"Start",langToggle:"PT",q1:"What feels most natural to you?",q2:"And your second choice?",of:"of",phaseCore:"LIFE SCENARIOS",phaseSub:"INSTINCTS",phaseCenter:"CENTERS",phaseStyle:"INTERACTION",phaseIntegration:"AWARENESS",phaseStrain:"WELLBEING",collectTitle:"Your result is ready.",collectSub:"Fill in below to see it:",namePH:"Full name",emailPH:"Your best email",companyPH:"Company (optional)",continueBtn:"See result",skipBtn:"Skip",reportTag:"YOUR ENNEAGRAM TYPE",sectionMotivation:"MOTIVATION",sectionWorldview:"WORLDVIEW",sectionStrengths:"STRENGTHS",sectionWeaknesses:"CHALLENGES",sectionBlindSpots:"BLIND SPOTS",sectionAction:"ACTION PATTERNS",sectionThinking:"THINKING PATTERNS",sectionFeeling:"FEELING PATTERNS",sectionWing:"WING",sectionSubtype:"SUBTYPE",sectionCenters:"CENTERS OF EXPRESSION",sectionHornevian:"INTERACTION STYLE",sectionHarmonics:"CONFLICT STYLE",sectionIntegration:"INTEGRATION LEVEL",sectionStrain:"STRAIN PROFILE",sectionLines:"LINES",sectionDev:"DEVELOPMENT EXERCISES",sectionProfile:"FULL PROFILE",restart:"Restart",share:"Share on LinkedIn",download:"Save as PDF",shareText:"My Enneagram type is {type} — {alias}. What is yours?",strainQ:"How do you feel in each area of life right now?",strainLow:"Very stressed",strainHigh:"Great",integrationLow:"LOW",integrationMod:"MODERATE",integrationHigh:"HIGH",hornAssertive:"Assertive",hornCompliant:"Compliant",hornWithdrawn:"Withdrawn",harmCompetency:"Competency",harmPositive:"Positive Outlook",harmReactive:"Reactive",centerThinking:"Thinking",centerFeeling:"Feeling",centerAction:"Action",lineRelease:"Release Line",lineStretch:"Stretch Line",wingDesc:"Your wing influences how your main type is expressed. You carry traits of Type {w}, complementing your style with {desc}.",releaseDesc:"When you relax and feel safe, you move toward the positive traits of Type {t}. This brings {qual}.",stretchDesc:"Under stress, you may move toward the more challenging traits of Type {t}. This can bring {qual}.",integrationDesc:"Your integration level reflects how aware you are of your automatic patterns and able to choose different responses."}
+};
+
+const WING_QUALITIES={en:{1:'precision and ethics',2:'warmth and connection',3:'drive and polish',4:'depth and authenticity',5:'insight and detachment',6:'loyalty and caution',7:'enthusiasm and joy',8:'strength and directness',9:'peace and acceptance'},pt:{1:'precisao e etica',2:'calor e conexao',3:'determinacao e polimento',4:'profundidade e autenticidade',5:'insight e distanciamento',6:'lealdade e cautela',7:'entusiasmo e alegria',8:'forca e franqueza',9:'paz e aceitacao'}};
+const RELEASE_QUAL={en:{1:'discipline and integrity',2:'empathy and care',3:'ambition and adaptability',4:'sensitivity and meaning',5:'analytical depth',6:'groundedness and loyalty',7:'lightness and possibility',8:'courage and directness',9:'acceptance and calm'},pt:{1:'disciplina e integridade',2:'empatia e cuidado',3:'ambicao e adaptabilidade',4:'sensibilidade e significado',5:'profundidade analitica',6:'ancoragem e lealdade',7:'leveza e possibilidade',8:'coragem e franqueza',9:'aceitacao e calma'}};
+const STRETCH_QUAL={en:{1:'rigidity and resentment',2:'possessiveness',3:'image-consciousness',4:'melancholy and envy',5:'withdrawal and detachment',6:'anxiety and suspicion',7:'scattered energy',8:'aggression and control',9:'numbness and avoidance'},pt:{1:'rigidez e ressentimento',2:'possessividade',3:'preocupacao com imagem',4:'melancolia e inveja',5:'retraimento e distanciamento',6:'ansiedade e suspeita',7:'energia dispersa',8:'agressividade e controle',9:'entorpecimento e evitacao'}};
+const SUB_KEYWORDS={en:{SO:'Solidarity',SX:'Intensity',SP:'Security'},pt:{SO:'Solidariedade',SX:'Intensidade',SP:'Seguranca'}};
+const SUB_DESC={en:{SO:'You focus on belonging, social dynamics, and your role in groups. Your instinctual energy goes toward community and collective impact.',SX:'You focus on intensity, chemistry, and one-on-one connections. Your instinctual energy goes toward deep bonds and transformation.',SP:'You focus on safety, resources, and physical well-being. Your instinctual energy goes toward self-preservation and material security.'},pt:{SO:'Voce foca em pertencimento, dinamicas sociais e seu papel nos grupos. Sua energia instintiva vai para comunidade e impacto coletivo.',SX:'Voce foca em intensidade, quimica e conexoes um-a-um. Sua energia instintiva vai para lacos profundos e transformacao.',SP:'Voce foca em seguranca, recursos e bem-estar fisico. Sua energia instintiva vai para autopreservacao e seguranca material.'}};
+
+/* ============================================================
+   SEEDED SHUFFLE
+   ============================================================ */
+function seededShuffle(arr,seed){const a=[...arr];let s=seed;for(let i=a.length-1;i>0;i--){s=(s*16807)%2147483647;const j=s%((i)+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ============================================================
+   RADAR CHART (canvas)
+   ============================================================ */
+function drawRadar(canvas,scores,mainType,lang){
+  const ctx=canvas.getContext('2d');
+  const W=canvas.width,H=canvas.height;
+  const cx=W/2,cy=H/2,R=Math.min(W,H)/2-40;
+  ctx.clearRect(0,0,W,H);
+  const labels=Object.keys(scores);
+  const n=labels.length;
+  const max=Math.max(...Object.values(scores),1);
+  const angleStep=2*Math.PI/n;
+  const startAngle=-Math.PI/2;
+  // grid
+  for(let ring=1;ring<=4;ring++){
+    ctx.beginPath();
+    const r=R*ring/4;
+    for(let i=0;i<=n;i++){
+      const a=startAngle+i*angleStep;
+      const x=cx+r*Math.cos(a),y=cy+r*Math.sin(a);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle='rgba(26,26,26,0.06)';ctx.lineWidth=1;ctx.stroke();
+  }
+  // spokes + labels
+  labels.forEach((l,i)=>{
+    const a=startAngle+i*angleStep;
+    ctx.beginPath();ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+R*Math.cos(a),cy+R*Math.sin(a));
+    ctx.strokeStyle='rgba(26,26,26,0.06)';ctx.stroke();
+    const lx=cx+(R+24)*Math.cos(a),ly=cy+(R+24)*Math.sin(a);
+    ctx.font='500 11px Sora,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillStyle=parseInt(l)===mainType?TYPE_COLORS[mainType]:'rgba(26,26,26,0.35)';
+    ctx.fillText(l,lx,ly);
+  });
+  // data polygon
+  ctx.beginPath();
+  labels.forEach((l,i)=>{
+    const a=startAngle+i*angleStep;
+    const v=scores[l]/max*R;
+    const x=cx+v*Math.cos(a),y=cy+v*Math.sin(a);
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  });
+  ctx.closePath();
+  ctx.fillStyle='rgba(45,212,191,0.12)';ctx.fill();
+  ctx.strokeStyle='#2dd4bf';ctx.lineWidth=2;ctx.stroke();
+  // dots
+  labels.forEach((l,i)=>{
+    const a=startAngle+i*angleStep;
+    const v=scores[l]/max*R;
+    const x=cx+v*Math.cos(a),y=cy+v*Math.sin(a);
+    ctx.beginPath();ctx.arc(x,y,parseInt(l)===mainType?5:3,0,2*Math.PI);
+    ctx.fillStyle=parseInt(l)===mainType?TYPE_COLORS[mainType]:'#2dd4bf';ctx.fill();
+  });
+}
+
+/* ============================================================
+   APP COMPONENT
+   ============================================================ */
+function App(){
+  const[lang,setLang]=useState('pt');
+  const[phase,setPhase]=useState('welcome'); // welcome|game|strain|collect|report
+  const[qIndex,setQIndex]=useState(0);
+  const[pickStep,setPickStep]=useState(1); // 1=first pick, 2=second pick
+  const[firstPick,setFirstPick]=useState(null);
+  const[typeScores,setTypeScores]=useState({1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0});
+  const[subScores,setSubScores]=useState({SO:0,SX:0,SP:0});
+  const[centerScores,setCenterScores]=useState({thinking:0,feeling:0,action:0});
+  const[hornScores,setHornScores]=useState({assertive:0,compliant:0,withdrawn:0});
+  const[harmScores,setHarmScores]=useState({competency:0,positive:0,reactive:0});
+  const[integrationScore,setIntegrationScore]=useState(0);
+  const[integrationMax,setIntegrationMax]=useState(0);
+  const[strainScores,setStrainScores]=useState({happiness:50,vocational:50,interpersonal:50,environmental:50,psychological:50,physical:50});
+  const[formName,setFormName]=useState('');
+  const[formEmail,setFormEmail]=useState('');
+  const[formCompany,setFormCompany]=useState('');
+  const[formError,setFormError]=useState('');
+  const canvasRef=useRef(null);
+  const t=UI_TEXT[lang];
+
+  // Build question list
+  const allQuestions=useMemo(()=>{
+    const seed=Date.now()%10000;
+    const core=seededShuffle(CORE_SCENARIOS[lang],seed).map((s,i)=>({...s,phase:'core',num:i}));
+    core.forEach(q=>{q.options=seededShuffle(q.options,seed+q.num)});
+    const sub=SUBTYPE_SCENARIOS[lang].map((s,i)=>({...s,phase:'sub',num:i}));
+    sub.forEach(q=>{q.options=seededShuffle(q.options,seed+100+q.num)});
+    const cen=CENTER_SCENARIOS[lang].map((s,i)=>({...s,phase:'center',num:i}));
+    cen.forEach(q=>{q.options=seededShuffle(q.options,seed+200+q.num)});
+    const sty=STYLE_SCENARIOS[lang].map((s,i)=>({...s,phase:'style',num:i}));
+    sty.forEach(q=>{q.options=seededShuffle(q.options,seed+300+q.num)});
+    const intg=INTEGRATION_SCENARIOS[lang].map((s,i)=>({...s,phase:'integration',num:i}));
+    intg.forEach(q=>{q.options=seededShuffle(q.options,seed+400+q.num)});
+    return[...core,...sub,...cen,...sty,...intg];
+  },[lang]);
+
+  const totalQ=allQuestions.length;
+  const currentQ=allQuestions[qIndex];
+  const progress=phase==='game'?(qIndex/totalQ*80):phase==='strain'?85:phase==='collect'?95:phase==='report'?100:0;
+
+  const handlePick=useCallback((optIdx)=>{
+    const opt=currentQ.options[optIdx];
+    if(pickStep===1){
+      // Score first pick (3 pts)
+      applyScore(opt,3);
+      setFirstPick(optIdx);
+      setPickStep(2);
+    } else {
+      // Score second pick (1 pt)
+      applyScore(opt,1);
+      // Advance
+      setFirstPick(null);setPickStep(1);
+      if(qIndex+1<totalQ){setQIndex(qIndex+1)}
+      else{setPhase('strain')}
+    }
+  },[currentQ,pickStep,qIndex,totalQ]);
+
+  function applyScore(opt,pts){
+    if(opt.types){
+      setTypeScores(prev=>{const n={...prev};opt.types.forEach(t=>{n[t]=(n[t]||0)+pts});return n});
+    }
+    if(opt.sub){setSubScores(prev=>({...prev,[opt.sub]:prev[opt.sub]+pts}))}
+    if(opt.center){setCenterScores(prev=>({...prev,[opt.center]:prev[opt.center]+pts}))}
+    if(opt.horn){setHornScores(prev=>({...prev,[opt.horn]:prev[opt.horn]+pts}))}
+    if(opt.harm){setHarmScores(prev=>({...prev,[opt.harm]:prev[opt.harm]+pts}))}
+    if(opt.level!==undefined){
+      setIntegrationScore(prev=>prev+(5-opt.level));
+      setIntegrationMax(prev=>prev+4);
+    }
+  }
+
+  const phaseLabel=currentQ?{core:t.phaseCore,sub:t.phaseSub,center:t.phaseCenter,style:t.phaseStyle,integration:t.phaseIntegration}[currentQ.phase]:'';
+
+  // Compute results
+  const results=useMemo(()=>{
+    const sorted=Object.entries(typeScores).sort((a,b)=>b[1]-a[1]);
+    const mainType=parseInt(sorted[0][0]);
+    const wings=WINGS[mainType];
+    const wing=typeScores[wings[0]]>=typeScores[wings[1]]?wings[0]:wings[1];
+    const subSorted=Object.entries(subScores).sort((a,b)=>b[1]-a[1]);
+    const dominantSub=subSorted[0][0];
+    const centerSorted=Object.entries(centerScores).sort((a,b)=>b[1]-a[1]);
+    const hornSorted=Object.entries(hornScores).sort((a,b)=>b[1]-a[1]);
+    const harmSorted=Object.entries(harmScores).sort((a,b)=>b[1]-a[1]);
+    const intPct=integrationMax>0?Math.round(integrationScore/integrationMax*100):50;
+    const intLevel=intPct>=70?'high':intPct>=40?'moderate':'low';
+    const strainAvg=Math.round(Object.values(strainScores).reduce((a,b)=>a+b,0)/6);
+    const overallStrain=strainAvg<=33?'high':strainAvg<=66?'moderate':'low';
+    return{mainType,wing,sorted,dominantSub,subSorted,centerSorted,hornSorted,harmSorted,intPct,intLevel,strainAvg,overallStrain};
+  },[typeScores,subScores,centerScores,hornScores,harmScores,integrationScore,integrationMax,strainScores]);
+
+  // Draw radar when report loads
+  useEffect(()=>{
+    if(phase==='report'&&canvasRef.current){
+      const scores={};
+      for(let i=1;i<=9;i++)scores[i]=typeScores[i];
+      drawRadar(canvasRef.current,scores,results.mainType,lang);
+    }
+  },[phase,typeScores,results.mainType,lang]);
+
+  const typeData=TYPES[results.mainType]?.[lang]||TYPES[8][lang];
+  const mainColor=TYPE_COLORS[results.mainType]||'#2dd4bf';
+
+  function handleCollect(){
+    if(!formName.trim()||!formEmail.trim()){setFormError(lang==='pt'?'Preencha nome e email':'Fill in name and email');return}
+    if(!/\S+@\S+\.\S+/.test(formEmail)){setFormError(lang==='pt'?'Email invalido':'Invalid email');return}
+    // Submit to Google Apps Script (same pattern as prompt-assessment)
+    try{
+      const body=new URLSearchParams({name:formName,email:formEmail,company:formCompany,type:results.mainType+'w'+results.wing,subtype:results.dominantSub,lang,source:'enneagram-game'});
+      fetch('https://script.google.com/macros/s/AKfycbzNIi0pSrLT-X3kL1GGhR4KMqWKjJdOaIBYNkJmCpA/dev',{method:'POST',mode:'no-cors',body});
+    }catch(e){}
+    setPhase('report');window.scrollTo(0,0);
+  }
+
+  function handleSkip(){setPhase('report');window.scrollTo(0,0)}
+
+  function handleShare(){
+    const text=t.shareText.replace('{type}',typeData.name).replace('{alias}',typeData.alias);
+    const url='https://ryopenna.com/enneagram-game';
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url)+'&summary='+encodeURIComponent(text),'_blank');
+  }
+
+  function handleRestart(){
+    setPhase('welcome');setQIndex(0);setPickStep(1);setFirstPick(null);
+    setTypeScores({1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0});
+    setSubScores({SO:0,SX:0,SP:0});setCenterScores({thinking:0,feeling:0,action:0});
+    setHornScores({assertive:0,compliant:0,withdrawn:0});setHarmScores({competency:0,positive:0,reactive:0});
+    setIntegrationScore(0);setIntegrationMax(0);
+    setStrainScores({happiness:50,vocational:50,interpersonal:50,environmental:50,psychological:50,physical:50});
+    setFormName('');setFormEmail('');setFormCompany('');setFormError('');
+    window.scrollTo(0,0);
+  }
+
+  // Helper for strain level label
+  function strainLevel(v){
+    if(v<=25)return lang==='pt'?'MUITO ALTO':'VERY HIGH';
+    if(v<=50)return lang==='pt'?'ALTO':'HIGH';
+    if(v<=75)return lang==='pt'?'MODERADO':'MODERATE';
+    return lang==='pt'?'BAIXO':'LOW';
+  }
+  function strainColor(v){return v<=25?'#DC2626':v<=50?'#F59E0B':v<=75?'#2D7DD2':'#059669'}
+
+  // Render
+  const langBtn=h('button',{className:'lang-btn',onClick:()=>setLang(lang==='pt'?'en':'pt')},t.langToggle);
+  const progressBar=phase!=='welcome'?h('div',{className:'progress-bar',style:{width:progress+'%'}}):null;
+
+  // WELCOME
+  if(phase==='welcome'){
+    return h('div',{className:'root'},langBtn,
+      h('div',{className:'wrap slide-enter'},
+        h('h1',{className:'intro-title'},t.title),
+        h('p',{className:'intro-line'},t.line1),
+        h('p',{className:'intro-line'},t.line2),
+        h('p',{className:'intro-meta'},t.meta),
+        h('button',{className:'btn-start',onClick:()=>{setPhase('game');setQIndex(0)}},
+          t.start,
+          h('span',{className:'btn-start-arrow'},h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'none',stroke:'#fff',strokeWidth:2.5,strokeLinecap:'round',strokeLinejoin:'round'},h('path',{d:'M5 12h14M12 5l7 7-7 7'})))
+        )
+      ),
+      h('div',{className:'site-footer'},h('a',{href:'https://ryopenna.com'},'ryopenna.com'))
+    );
+  }
+
+  // GAME (scenarios)
+  if(phase==='game'){
+    return h('div',{className:'root'},langBtn,progressBar,
+      h('div',{className:'wrap slide-enter',key:qIndex+'-'+pickStep},
+        h('div',{className:'q-phase-label'},phaseLabel),
+        h('div',{className:'q-counter'},(qIndex+1)+' '+t.of+' '+totalQ),
+        h('div',{className:'q-situation-wrap'},h('p',{className:'q-situation'},currentQ.situation)),
+        h('p',{className:'q-prompt'},pickStep===1?t.q1:t.q2),
+        h('div',{className:'options'},
+          currentQ.options.map((opt,i)=>{
+            const isChosen=firstPick===i;
+            const isFaded=pickStep===2&&firstPick===i;
+            return h('button',{
+              key:i,
+              className:'option-card'+(isChosen?' chosen':'')+(isFaded?' faded':''),
+              onClick:()=>!isFaded&&handlePick(i),
+              disabled:isFaded
+            },
+              h('span',{className:'opt-text'},opt.text),
+              isChosen?h('span',{className:'opt-badge'},'1st'):null
+            );
+          })
+        )
+      ),
+      h('div',{className:'site-footer'},h('a',{href:'https://ryopenna.com'},'ryopenna.com'))
+    );
+  }
+
+  // STRAIN (sliders)
+  if(phase==='strain'){
+    return h('div',{className:'root'},langBtn,progressBar,
+      h('div',{className:'wrap slide-enter'},
+        h('div',{className:'q-phase-label'},t.phaseStrain),
+        h('h2',{className:'collect-title'},t.strainQ),
+        h('p',{className:'collect-sub',style:{marginBottom:24}},lang==='pt'?'Mova o slider para a esquerda (muito estresse) ou direita (otimo).':'Move the slider left (very stressed) or right (great).'),
+        ...Object.keys(STRAIN_LABELS[lang]).map(key=>
+          h('div',{className:'slider-wrap',key},
+            h('div',{className:'slider-label'},
+              h('span',null,STRAIN_LABELS[lang][key]),
+              h('span',{className:'slider-level',style:{background:strainColor(strainScores[key])+'18',color:strainColor(strainScores[key])}},strainLevel(strainScores[key]))
+            ),
+            h('input',{type:'range',className:'slider-track',min:0,max:100,value:strainScores[key],onChange:e=>setStrainScores(prev=>({...prev,[key]:parseInt(e.target.value)}))})
+          )
+        ),
+        h('button',{className:'btn-continue',style:{marginTop:24},onClick:()=>{setPhase('collect');window.scrollTo(0,0)}},t.continueBtn)
+      ),
+      h('div',{className:'site-footer'},h('a',{href:'https://ryopenna.com'},'ryopenna.com'))
+    );
+  }
+
+  // COLLECT
+  if(phase==='collect'){
+    return h('div',{className:'root'},langBtn,progressBar,
+      h('div',{className:'wrap slide-enter'},
+        h('h2',{className:'collect-title'},t.collectTitle),
+        h('p',{className:'collect-sub'},t.collectSub),
+        h('div',{className:'collect-form'},
+          h('input',{className:'collect-input'+(formError&&!formName.trim()?' error':''),placeholder:t.namePH,value:formName,onChange:e=>setFormName(e.target.value)}),
+          h('input',{className:'collect-input'+(formError&&!formEmail.trim()?' error':''),placeholder:t.emailPH,value:formEmail,onChange:e=>setFormEmail(e.target.value),type:'email'}),
+          h('input',{className:'collect-input',placeholder:t.companyPH,value:formCompany,onChange:e=>setFormCompany(e.target.value)}),
+          formError?h('p',{style:{color:'#e54d2e',fontSize:13,marginTop:4}},formError):null,
+          h('button',{className:'btn-continue',onClick:handleCollect},t.continueBtn),
+          h('button',{className:'btn-restart',style:{marginTop:12,alignSelf:'center'},onClick:handleSkip},t.skipBtn)
+        )
+      )
+    );
+  }
+
+  // REPORT
+  if(phase==='report'){
+    const horn=results.hornSorted[0][0];
+    const harm=results.harmSorted[0][0];
+    const hornLabel={assertive:t.hornAssertive,compliant:t.hornCompliant,withdrawn:t.hornWithdrawn}[horn];
+    const harmLabel={competency:t.harmCompetency,positive:t.harmPositive,reactive:t.harmReactive}[harm];
+    const intLabel={low:t.integrationLow,moderate:t.integrationMod,high:t.integrationHigh}[results.intLevel];
+    const wingData=TYPES[results.wing]?.[lang];
+    const releaseType=LINES[results.mainType].release;
+    const stretchType=LINES[results.mainType].stretch;
+
+    return h('div',{className:'root report-phase'},langBtn,progressBar,
+      h('div',{className:'wrap'},
+
+        // Hero
+        h('div',{className:'slide-enter'},
+          h('div',{className:'res-hero-label'},t.reportTag),
+          h('div',{className:'res-hero-name',style:{color:mainColor}},typeData.name),
+          h('div',{className:'res-hero-alias'},typeData.alias),
+          h('div',{className:'res-type-pills'},
+            [1,2,3,4,5,6,7,8,9].map(n=>h('span',{key:n,className:'type-pill'+(n===results.mainType?' active':''),style:n===results.mainType?{borderColor:mainColor,color:mainColor}:{}},n))
+          )
+        ),
+
+        // Radar
+        h('div',{className:'radar-wrap'},h('canvas',{ref:canvasRef,className:'radar-canvas',width:340,height:340})),
+
+        // Profile bars
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionProfile),
+          h('div',{className:'bar-chart'},
+            results.sorted.map(([num,score])=>{
+              const maxScore=results.sorted[0][1]||1;
+              const pct=Math.round(score/maxScore*100);
+              const isMain=parseInt(num)===results.mainType;
+              return h('div',{className:'bar-row',key:num},
+                h('span',{className:'bar-label',style:isMain?{color:mainColor,fontWeight:600}:{}},TYPES[parseInt(num)]?.[lang]?.alias?.split(' ').pop()||('Type '+num)),
+                h('div',{className:'bar-track'},h('div',{className:'bar-fill',style:{width:pct+'%',background:isMain?mainColor:'rgba(45,212,191,0.4)'}})),
+                h('span',{className:'bar-val'},score)
+              );
+            })
+          )
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Motivation & Worldview
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionMotivation),
+          h('p',{className:'res-desc'},typeData.motivation)
+        ),
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionWorldview),
+          h('p',{className:'res-desc'},h('strong',null,typeData.worldview)),
+          h('p',{className:'res-desc',style:{marginTop:8}},lang==='pt'?'Medo central: ':'Core fear: ',h('strong',null,typeData.coreFear)),
+          h('p',{className:'res-desc',style:{marginTop:8}},lang==='pt'?'Auto-dialogo: ':'Self-talk: ',h('em',null,typeData.selfTalk))
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Strengths
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionStrengths),
+          h('ul',{className:'trait-list'},typeData.strengths.map((s,i)=>h('li',{className:'trait-item',key:i},s)))
+        ),
+
+        // Gifts
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},lang==='pt'?'DONS':'GIFTS'),
+          h('div',{style:{display:'flex',gap:8,flexWrap:'wrap'}},typeData.gifts.map((g,i)=>h('span',{key:i,className:'wing-badge',style:{background:mainColor+'18',color:mainColor}},g)))
+        ),
+
+        // Challenges
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionWeaknesses),
+          h('ul',{className:'trait-list'},typeData.weaknesses.map((s,i)=>h('li',{className:'trait-item',key:i},s)))
+        ),
+
+        // Vices
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},lang==='pt'?'VICIOS':'VICES'),
+          h('div',{style:{display:'flex',gap:8,flexWrap:'wrap'}},typeData.vices.map((v,i)=>h('span',{key:i,className:'wing-badge',style:{background:'rgba(220,38,38,0.08)',color:'#DC2626'}},v)))
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Blind Spots
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionBlindSpots),
+          h('ul',{className:'trait-list'},typeData.blindSpots.map((s,i)=>h('li',{className:'trait-item',key:i},s)))
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Action / Thinking / Feeling Patterns
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionAction),
+          h('ul',{className:'trait-list'},typeData.actionPatterns.map((s,i)=>h('li',{className:'trait-item',key:i},s)))
+        ),
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionThinking),
+          h('ul',{className:'trait-list'},typeData.thinkingPatterns.map((s,i)=>h('li',{className:'trait-item',key:i},s)))
+        ),
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionFeeling),
+          h('ul',{className:'trait-list'},typeData.feelingPatterns.map((s,i)=>h('li',{className:'trait-item',key:i},s)))
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Wing
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionWing),
+          h('div',{style:{display:'flex',gap:8,marginBottom:12}},
+            h('span',{className:'wing-badge',style:{background:TYPE_COLORS[results.wing]+'18',color:TYPE_COLORS[results.wing]}},lang==='pt'?'Asa '+results.wing:'Wing '+results.wing)
+          ),
+          h('p',{className:'res-desc'},t.wingDesc.replace('{w}',results.wing).replace('{desc}',WING_QUALITIES[lang][results.wing]))
+        ),
+
+        // Subtype
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionSubtype),
+          h('div',{style:{display:'flex',gap:8,marginBottom:12}},
+            results.subSorted.map(([sub,score],i)=>h('span',{key:sub,className:'wing-badge',style:{background:i===0?mainColor+'18':'transparent',color:i===0?mainColor:'var(--ink3)',border:i>0?'1px solid var(--border)':'none',opacity:i===0?1:0.5}},sub+' — '+SUB_KEYWORDS[lang][sub]))
+          ),
+          h('p',{className:'res-desc'},SUB_DESC[lang][results.dominantSub])
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Centers of Expression
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionCenters),
+          h('div',{className:'center-row'},
+            results.centerSorted.map(([c,score],i)=>{
+              const maxC=results.centerSorted[0][1]||1;
+              const pct=Math.round(score/maxC*100);
+              const level=pct>=70?(lang==='pt'?'ALTO':'HIGH'):pct>=40?(lang==='pt'?'MEDIO':'MEDIUM'):(lang==='pt'?'BAIXO':'LOW');
+              const label={thinking:t.centerThinking,feeling:t.centerFeeling,action:t.centerAction}[c];
+              return h('div',{className:'center-card',key:c,style:i===0?{borderColor:mainColor}:{}},
+                h('div',{className:'center-name'},label),
+                h('div',{className:'center-level',style:i===0?{color:mainColor}:{}},level),
+                h('div',{className:'center-mode'},pct+'%')
+              );
+            })
+          )
+        ),
+
+        // Interaction & Conflict
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionHornevian),
+          h('div',{style:{display:'flex',gap:8,marginBottom:8}},
+            h('span',{className:'wing-badge',style:{background:mainColor+'18',color:mainColor}},hornLabel)
+          ),
+          h('div',{className:'bar-chart'},
+            results.hornSorted.map(([k,score])=>{
+              const maxH=results.hornSorted[0][1]||1;
+              const label={assertive:t.hornAssertive,compliant:t.hornCompliant,withdrawn:t.hornWithdrawn}[k];
+              return h('div',{className:'bar-row',key:k},
+                h('span',{className:'bar-label'},label),
+                h('div',{className:'bar-track'},h('div',{className:'bar-fill',style:{width:Math.round(score/maxH*100)+'%',background:mainColor}})),
+                h('span',{className:'bar-val'},score)
+              );
+            })
+          )
+        ),
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionHarmonics),
+          h('div',{style:{display:'flex',gap:8,marginBottom:8}},
+            h('span',{className:'wing-badge',style:{background:mainColor+'18',color:mainColor}},harmLabel)
+          ),
+          h('div',{className:'bar-chart'},
+            results.harmSorted.map(([k,score])=>{
+              const maxH=results.harmSorted[0][1]||1;
+              const label={competency:t.harmCompetency,positive:t.harmPositive,reactive:t.harmReactive}[k];
+              return h('div',{className:'bar-row',key:k},
+                h('span',{className:'bar-label'},label),
+                h('div',{className:'bar-track'},h('div',{className:'bar-fill',style:{width:Math.round(score/maxH*100)+'%',background:mainColor}})),
+                h('span',{className:'bar-val'},score)
+              );
+            })
+          )
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Integration Level
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionIntegration),
+          h('div',{style:{display:'flex',alignItems:'center',gap:12,marginBottom:8}},
+            h('span',{className:'wing-badge',style:{background:results.intLevel==='high'?'#05966918':results.intLevel==='moderate'?'#2D7DD218':'#DC262618',color:results.intLevel==='high'?'#059669':results.intLevel==='moderate'?'#2D7DD2':'#DC2626'}},intLabel)
+          ),
+          h('div',{className:'integration-meter'},h('div',{className:'integration-fill',style:{width:results.intPct+'%',background:results.intLevel==='high'?'#059669':results.intLevel==='moderate'?'#2D7DD2':'#DC2626'}})),
+          h('p',{className:'res-desc'},t.integrationDesc)
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Strain Profile
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionStrain),
+          h('div',{style:{display:'flex',gap:8,marginBottom:16}},
+            h('span',{className:'wing-badge',style:{background:strainColor(results.strainAvg)+'18',color:strainColor(results.strainAvg)}},lang==='pt'?'GERAL: ':'OVERALL: ',strainLevel(results.strainAvg))
+          ),
+          h('div',{className:'bar-chart'},
+            Object.entries(strainScores).map(([key,val])=>{
+              const inverted=100-val; // higher strain = lower wellbeing
+              return h('div',{className:'bar-row',key},
+                h('span',{className:'bar-label'},STRAIN_LABELS[lang][key]),
+                h('div',{className:'bar-track'},h('div',{className:'bar-fill',style:{width:inverted+'%',background:strainColor(val)}})),
+                h('span',{className:'bar-val',style:{color:strainColor(val)}},strainLevel(val))
+              );
+            })
+          )
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Lines
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionLines),
+          h('div',{className:'dev-card'},
+            h('div',{className:'dev-title',style:{color:'#059669'}},t.lineRelease+': '+TYPES[releaseType]?.[lang]?.alias),
+            h('p',{className:'dev-text'},t.releaseDesc.replace('{t}',releaseType).replace('{qual}',RELEASE_QUAL[lang][releaseType]))
+          ),
+          h('div',{className:'dev-card'},
+            h('div',{className:'dev-title',style:{color:'#DC2626'}},t.lineStretch+': '+TYPES[stretchType]?.[lang]?.alias),
+            h('p',{className:'dev-text'},t.stretchDesc.replace('{t}',stretchType).replace('{qual}',STRETCH_QUAL[lang][stretchType]))
+          )
+        ),
+
+        h('div',{className:'divider-line'}),
+
+        // Development Exercises
+        h('div',{className:'res-section'},
+          h('div',{className:'section-label'},t.sectionDev),
+          ...typeData.developmentExercises.map((ex,i)=>
+            h('div',{className:'dev-card',key:i},h('p',{className:'dev-text'},ex))
+          )
+        ),
+
+        // Actions
+        h('div',{className:'actions-wrap'},
+          h('button',{className:'btn-share-linkedin',onClick:handleShare},
+            h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'currentColor'},h('path',{d:'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'})),
+            t.share
+          ),
+          h('button',{className:'btn-download',onClick:()=>window.print()},t.download),
+          h('button',{className:'btn-restart',onClick:handleRestart},t.restart)
+        )
+      ),
+      h('div',{className:'site-footer'},h('a',{href:'https://ryopenna.com'},'ryopenna.com'))
+    );
+  }
+  return null;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

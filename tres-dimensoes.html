@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>As Três Dimensões da Liderança</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Inter:wght@400;500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --stage: #0d0d0f;
+    --stage-ink: #f2f0ec;
+    --stage-muted: rgba(242, 240, 236, .68);
+    --stage-faint: rgba(242, 240, 236, .38);
+    --stage-line: rgba(242, 240, 236, .14);
+    --teal: #2dd4bf;
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: auto; }
+  body {
+    background: var(--stage);
+    color: var(--stage-ink);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+  }
+  ::selection { background: rgba(45, 212, 191, .28); }
+
+  #scene {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .scroll-space { height: 650vh; }
+
+  /* Text overlays */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .panel {
+    position: absolute;
+    left: clamp(20px, 6vw, 96px);
+    bottom: clamp(56px, 14vh, 140px);
+    max-width: 34rem;
+    opacity: 0;
+    transform: translateY(14px);
+    will-change: opacity, transform;
+  }
+  .panel h1, .panel h2 {
+    font-family: Newsreader, Georgia, serif;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .panel h1 { font-size: clamp(2.1rem, 4.6vw, 3.6rem); }
+  .panel h2 { font-size: clamp(1.9rem, 3.8vw, 3rem); }
+  .panel em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .panel p {
+    margin-top: 14px;
+    font-size: clamp(15px, 1.3vw, 17.5px);
+    line-height: 1.65;
+    color: var(--stage-muted);
+    max-width: 30rem;
+  }
+
+  /* Scroll hint */
+  .hint {
+    position: absolute;
+    left: 50%;
+    bottom: 26px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    will-change: opacity;
+  }
+  .hint span {
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--stage-faint);
+  }
+  .hint .rule {
+    width: 1px;
+    height: 34px;
+    background: var(--stage-line);
+    overflow: hidden;
+    position: relative;
+  }
+  .hint .rule::after {
+    content: "";
+    position: absolute;
+    left: 0; top: -50%;
+    width: 1px; height: 50%;
+    background: var(--teal);
+    animation: hintdrop 2.2s var(--ease-out) infinite;
+  }
+  @keyframes hintdrop {
+    0% { top: -50%; }
+    70%, 100% { top: 110%; }
+  }
+
+  /* Floating tokens */
+  .tokens {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    will-change: opacity;
+  }
+  .tokens i {
+    position: absolute;
+    font-style: normal;
+    color: var(--stage-faint);
+    white-space: nowrap;
+    animation: drift 8s ease-in-out infinite alternate;
+  }
+  #tok-rational i {
+    font-family: "Roboto Mono", ui-monospace, monospace;
+    font-weight: 500;
+    letter-spacing: .06em;
+  }
+  #tok-emotional i {
+    font-family: Newsreader, Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  @keyframes drift {
+    from { transform: translateY(0); }
+    to { transform: translateY(-12px); }
+  }
+
+  @media (max-width: 700px) {
+    .panel {
+      left: 20px;
+      right: 20px;
+      bottom: 12vh;
+      max-width: none;
+    }
+    .panel p { max-width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tokens i { animation: none; }
+    .hint .rule::after { animation: none; top: 25%; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="scene"></canvas>
+
+<div class="tokens" id="tok-rational"></div>
+<div class="tokens" id="tok-emotional"></div>
+
+<div class="overlay">
+  <div class="panel" id="p-intro">
+    <h1>A cabeça de quem lidera parece <em>uma coisa só</em>.</h1>
+    <p>De longe, uma peça única. Role a página para olhar por dentro.</p>
+  </div>
+  <div class="panel" id="p-rational">
+    <h2>O <em>racional</em>.</h2>
+    <p>A dimensão dos números, dos dados e dos argumentos. É a parte que aparece nos relatórios.</p>
+  </div>
+  <div class="panel" id="p-emotional">
+    <h2>O <em>emocional</em>.</h2>
+    <p>A dimensão do que se sente antes de se dizer. É a parte que decide antes do argumento chegar.</p>
+  </div>
+  <div class="panel" id="p-cultural">
+    <h2>O <em>cultural</em>.</h2>
+    <p>A dimensão das outras cabeças. Ninguém pensa sozinho: toda cabeça é feita de outras.</p>
+  </div>
+  <div class="panel" id="p-final">
+    <h1>As três operam <em>ao mesmo tempo</em>.</h1>
+    <p>Liderar é conversar com as três. Ao mesmo tempo, na mesma frase.</p>
+  </div>
+  <div class="hint" id="hint">
+    <span>Role</span>
+    <div class="rule"></div>
+  </div>
+</div>
+
+<div class="scroll-space"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isSmall = Math.min(window.innerWidth, window.innerHeight) < 700;
+  var N = isSmall ? 8000 : 13500;
+
+  /* ------------------------------------------------------------------
+     Head shape: signed distance field of a mannequin head
+     (cranium + face + nose + neck, smooth-united), sampled on the shell
+  ------------------------------------------------------------------ */
+
+  function sdEllipsoid(px, py, pz, cx, cy, cz, rx, ry, rz) {
+    var x = (px - cx) / rx, y = (py - cy) / ry, z = (pz - cz) / rz;
+    var k = Math.sqrt(x * x + y * y + z * z);
+    return (k - 1) * Math.min(rx, Math.min(ry, rz));
+  }
+
+  function sdCapsuleY(px, py, pz, x0, y0, y1, z0, r) {
+    var y = Math.max(y0, Math.min(y1, py));
+    var dx = px - x0, dy = py - y, dz = pz - z0;
+    return Math.sqrt(dx * dx + dy * dy + dz * dz) - r;
+  }
+
+  function smin(a, b, k) {
+    var h = Math.max(0, Math.min(1, 0.5 + 0.5 * (b - a) / k));
+    return b * (1 - h) + a * h - k * h * (1 - h);
+  }
+
+  function headSDF(x, y, z) {
+    var d = sdEllipsoid(x, y, z, 0, 0.40, -0.05, 0.66, 0.60, 0.70);      /* cranium */
+    d = smin(d, sdEllipsoid(x, y, z, 0, -0.10, 0.22, 0.50, 0.55, 0.40), 0.24); /* face and jaw */
+    d = smin(d, sdEllipsoid(x, y, z, 0, -0.02, 0.62, 0.10, 0.20, 0.14), 0.08); /* nose */
+    d = smin(d, sdEllipsoid(x, y, z, 0, -0.55, 0.28, 0.18, 0.15, 0.17), 0.12); /* chin */
+    d = smin(d, sdCapsuleY(x, y, z, 0, -1.25, -0.40, 0.04, 0.30), 0.16);       /* neck */
+    d = smin(d, sdEllipsoid(x, y, z, 0, -1.50, 0, 0.70, 0.24, 0.42), 0.14);    /* bust base */
+    return d;
+  }
+
+  function gradSDF(x, y, z, out) {
+    var e = 0.004;
+    out[0] = headSDF(x + e, y, z) - headSDF(x - e, y, z);
+    out[1] = headSDF(x, y + e, z) - headSDF(x, y - e, z);
+    out[2] = headSDF(x, y, z + e) - headSDF(x, y, z - e);
+    var l = Math.sqrt(out[0] * out[0] + out[1] * out[1] + out[2] * out[2]) || 1;
+    out[0] /= l; out[1] /= l; out[2] /= l;
+  }
+
+  var rnd = new Float32Array(N);
+  var mask = new Uint8Array(N);
+  for (var r0 = 0; r0 < N; r0++) {
+    rnd[r0] = Math.random();
+    mask[r0] = Math.random() < 0.20 ? 1 : 0;
+  }
+
+  var HEADRAW = new Float32Array(N * 3);
+  (function sampleHead() {
+    var g = [0, 0, 0];
+    var count = 0, attempts = 0, maxAttempts = N * 400;
+    while (count < N && attempts < maxAttempts) {
+      attempts++;
+      var x = (Math.random() * 2 - 1) * 0.9;
+      var y = -1.8 + Math.random() * 2.9;
+      var z = -0.95 + Math.random() * 1.85;
+      var d = headSDF(x, y, z);
+      if (Math.abs(d) > 0.07) continue;
+      for (var it = 0; it < 3; it++) {
+        gradSDF(x, y, z, g);
+        d = headSDF(x, y, z);
+        x -= d * g[0]; y -= d * g[1]; z -= d * g[2];
+      }
+      HEADRAW[count * 3] = x;
+      HEADRAW[count * 3 + 1] = y;
+      HEADRAW[count * 3 + 2] = z;
+      count++;
+    }
+    /* fill any remainder by duplicating existing samples */
+    for (var i = count; i < N; i++) {
+      var j = (Math.random() * count) | 0;
+      HEADRAW[i * 3] = HEADRAW[j * 3];
+      HEADRAW[i * 3 + 1] = HEADRAW[j * 3 + 1];
+      HEADRAW[i * 3 + 2] = HEADRAW[j * 3 + 2];
+    }
+  })();
+
+  /* world transform: three-quarter turn so the profile reads, plus centering */
+  var YAW = -0.55, CYW = Math.cos(YAW), SYW = Math.sin(YAW), SHIFT_Y = 0.37;
+  function toWorld(x, y, z, out, o) {
+    out[o] = x * CYW + z * SYW;
+    out[o + 1] = y + SHIFT_Y;
+    out[o + 2] = -x * SYW + z * CYW;
+  }
+  var HEAD = new Float32Array(N * 3);
+  for (var hw = 0; hw < N; hw++) {
+    toWorld(HEADRAW[hw * 3], HEADRAW[hw * 3 + 1], HEADRAW[hw * 3 + 2], HEAD, hw * 3);
+  }
+
+  /* shell particles keep drawing the head while the interior forms the fractals */
+  var isShell = new Uint8Array(N);
+  for (var sh = 0; sh < N; sh++) isShell[sh] = Math.random() < 0.45 ? 1 : 0;
+
+  /* pull a point toward the head core until it sits strictly inside the shell */
+  var C0X = 0, C0Y = 0.18, C0Z = 0.05;
+  function clampInside(p, margin) {
+    for (var t = 0; t < 28; t++) {
+      if (headSDF(p[0], p[1], p[2]) < -margin) return;
+      p[0] = C0X + (p[0] - C0X) * 0.93;
+      p[1] = C0Y + (p[1] - C0Y) * 0.93;
+      p[2] = C0Z + (p[2] - C0Z) * 0.93;
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Scatter: outward burst from each particle's head position
+  ------------------------------------------------------------------ */
+
+  var SCATTER = new Float32Array(N * 3);
+  for (var i = 0; i < N; i++) {
+    var hx = HEAD[i * 3], hy = HEAD[i * 3 + 1], hz = HEAD[i * 3 + 2];
+    var l = Math.sqrt(hx * hx + hy * hy + hz * hz) || 1;
+    var dx = hx / l + (Math.random() - 0.5) * 0.9;
+    var dy = hy / l + (Math.random() - 0.5) * 0.9;
+    var dz = hz / l + (Math.random() - 0.5) * 0.9;
+    var dl = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1;
+    var r = 2.4 + Math.random() * 2.0;
+    SCATTER[i * 3] = (dx / dl) * r;
+    SCATTER[i * 3 + 1] = (dy / dl) * r;
+    SCATTER[i * 3 + 2] = (dz / dl) * r;
+  }
+
+  /* ------------------------------------------------------------------
+     Rational: Sierpinski tetrahedron (chaos game)
+  ------------------------------------------------------------------ */
+
+  var RATIONAL = new Float32Array(N * 3);
+  (function buildRational() {
+    var s = 0.58;
+    var V = [
+      [0, 1.05 * s, 0],
+      [0.94 * s, -0.55 * s, 0.545 * s],
+      [-0.94 * s, -0.55 * s, 0.545 * s],
+      [0, -0.55 * s, -1.09 * s]
+    ];
+    var x = 0, y = 0, z = 0;
+    for (var w = 0; w < 20; w++) {
+      var v = V[(Math.random() * 4) | 0];
+      x = (x + v[0]) / 2; y = (y + v[1]) / 2; z = (z + v[2]) / 2;
+    }
+    var p = [0, 0, 0];
+    for (var i = 0; i < N; i++) {
+      if (isShell[i]) {
+        RATIONAL[i * 3] = HEAD[i * 3];
+        RATIONAL[i * 3 + 1] = HEAD[i * 3 + 1];
+        RATIONAL[i * 3 + 2] = HEAD[i * 3 + 2];
+        continue;
+      }
+      var v2 = V[(Math.random() * 4) | 0];
+      x = (x + v2[0]) / 2; y = (y + v2[1]) / 2; z = (z + v2[2]) / 2;
+      p[0] = x + (Math.random() - 0.5) * 0.015;
+      p[1] = y + 0.30 + (Math.random() - 0.5) * 0.015;
+      p[2] = z + 0.02 + (Math.random() - 0.5) * 0.015;
+      clampInside(p, 0.05);
+      toWorld(p[0], p[1], p[2], RATIONAL, i * 3);
+    }
+  })();
+
+  /* ------------------------------------------------------------------
+     Emotional: organic swirl, five arms with petal modulation
+  ------------------------------------------------------------------ */
+
+  var EMOTIONAL = new Float32Array(N * 3);
+  (function buildEmotional() {
+    /* disc faces the camera: swirl drawn in the xy plane with shallow depth */
+    var p = [0, 0, 0];
+    for (var i = 0; i < N; i++) {
+      if (isShell[i]) {
+        EMOTIONAL[i * 3] = HEAD[i * 3];
+        EMOTIONAL[i * 3 + 1] = HEAD[i * 3 + 1];
+        EMOTIONAL[i * 3 + 2] = HEAD[i * 3 + 2];
+        continue;
+      }
+      var x, y, z;
+      var u = Math.random();
+      if (u < 0.12) {
+        /* soft luminous core */
+        var rr = Math.pow(Math.random(), 0.5) * 0.13;
+        var a = Math.random() * Math.PI * 2;
+        var b = Math.acos(2 * Math.random() - 1);
+        x = rr * Math.sin(b) * Math.cos(a);
+        y = rr * Math.sin(b) * Math.sin(a);
+        z = rr * Math.cos(b) * 0.5;
+      } else {
+        var arm = i % 5;
+        var t = Math.pow(Math.random(), 0.85);
+        var rad = 0.08 + t * 0.48;
+        var th = arm * (Math.PI * 2 / 5) + rad * 5.2 + (Math.random() - 0.5) * 0.28;
+        rad *= 1 + 0.15 * Math.sin(2.5 * th);
+        x = Math.cos(th) * rad;
+        y = Math.sin(th) * rad;
+        z = (Math.random() - 0.5) * 0.14;
+      }
+      /* undo the world yaw so the disc still faces the viewer after toWorld */
+      p[0] = x * CYW - z * SYW;
+      p[1] = y + 0.32;
+      p[2] = x * SYW + z * CYW;
+      clampInside(p, 0.05);
+      toWorld(p[0], p[1], p[2], EMOTIONAL, i * 3);
+    }
+  })();
+
+  /* ------------------------------------------------------------------
+     Cultural: a head built out of smaller heads
+     (anchors spread over the head surface via farthest point sampling)
+  ------------------------------------------------------------------ */
+
+  var CULTURAL = new Float32Array(N * 3);
+  (function buildCultural() {
+    /* small heads nested inside the big one */
+    var M = 6, miniScale = 0.15;
+    var cand = [], guard = 0;
+    while (cand.length < 420 && guard < 300000) {
+      guard++;
+      var cx = (Math.random() * 2 - 1) * 0.85;
+      var cy = -0.55 + Math.random() * 1.5;
+      var cz = -0.9 + Math.random() * 1.75;
+      if (headSDF(cx, cy, cz) < -0.20) cand.push([cx, cy, cz]);
+    }
+    var anchors = [];
+    anchors.push(cand[(Math.random() * cand.length) | 0]);
+    var best = new Float32Array(cand.length);
+    for (var i = 0; i < cand.length; i++) best[i] = Infinity;
+    while (anchors.length < M) {
+      var la = anchors[anchors.length - 1];
+      var far = 0, farD = -1;
+      for (var j = 0; j < cand.length; j++) {
+        var ax = cand[j][0] - la[0], ay = cand[j][1] - la[1], az = cand[j][2] - la[2];
+        var d2 = ax * ax + ay * ay + az * az;
+        if (d2 < best[j]) best[j] = d2;
+        if (best[j] > farD) { farD = best[j]; far = j; }
+      }
+      anchors.push(cand[far]);
+    }
+    var p = [0, 0, 0], miniIdx = 0;
+    for (var k = 0; k < N; k++) {
+      if (isShell[k]) {
+        CULTURAL[k * 3] = HEAD[k * 3];
+        CULTURAL[k * 3 + 1] = HEAD[k * 3 + 1];
+        CULTURAL[k * 3 + 2] = HEAD[k * 3 + 2];
+        continue;
+      }
+      var a2 = anchors[miniIdx++ % M];
+      p[0] = a2[0] + HEADRAW[k * 3] * miniScale;
+      p[1] = a2[1] + (HEADRAW[k * 3 + 1] + 0.37) * miniScale;
+      p[2] = a2[2] + HEADRAW[k * 3 + 2] * miniScale;
+      clampInside(p, 0.03);
+      toWorld(p[0], p[1], p[2], CULTURAL, k * 3);
+    }
+  })();
+
+  /* ------------------------------------------------------------------
+     Colors: warm stage ivory everywhere, teal as the single voltage
+     woven through roughly a fifth of the particles
+  ------------------------------------------------------------------ */
+
+  var IVORY = [0.95, 0.94, 0.925];
+  var TEAL = [0.176, 0.831, 0.749];
+
+  function buildColors(ivoryGain, tealGain, tealOn) {
+    var c = new Float32Array(N * 3);
+    for (var i = 0; i < N; i++) {
+      var v = 0.8 + 0.4 * ((i * 2654435761 % 1000) / 1000);
+      if (tealOn && mask[i]) {
+        c[i * 3] = TEAL[0] * tealGain * v;
+        c[i * 3 + 1] = TEAL[1] * tealGain * v;
+        c[i * 3 + 2] = TEAL[2] * tealGain * v;
+      } else {
+        c[i * 3] = IVORY[0] * ivoryGain * v;
+        c[i * 3 + 1] = IVORY[1] * ivoryGain * v;
+        c[i * 3 + 2] = IVORY[2] * ivoryGain * v;
+      }
+    }
+    return c;
+  }
+
+  var COL_HEAD = buildColors(0.70, 0, false);
+  var COL_SCATTER = buildColors(0.34, 0, false);
+  var COL_FINAL = buildColors(0.62, 0.80, true);
+
+  /* fractal phases: dim shell around a bright interior with the teal voltage */
+  var COL_FRACT = new Float32Array(N * 3);
+  for (var cf = 0; cf < N; cf++) {
+    var vv = 0.8 + 0.4 * ((cf * 2654435761 % 1000) / 1000);
+    var cr, cg, cb;
+    if (isShell[cf]) {
+      cr = IVORY[0] * 0.15; cg = IVORY[1] * 0.15; cb = IVORY[2] * 0.15;
+    } else if (mask[cf]) {
+      cr = TEAL[0] * 0.95; cg = TEAL[1] * 0.95; cb = TEAL[2] * 0.95;
+    } else {
+      cr = IVORY[0] * 0.78; cg = IVORY[1] * 0.78; cb = IVORY[2] * 0.78;
+    }
+    COL_FRACT[cf * 3] = cr * vv;
+    COL_FRACT[cf * 3 + 1] = cg * vv;
+    COL_FRACT[cf * 3 + 2] = cb * vv;
+  }
+
+  /* ------------------------------------------------------------------
+     Timeline: [progress, positions, colors, cameraZ]
+  ------------------------------------------------------------------ */
+
+  /* [progress, positions, colors, cameraZ, camera focus (0 full bust, 1 skull)] */
+  var KEYS = [
+    [0.000, HEAD, COL_HEAD, 4.6, 0],
+    [0.055, HEAD, COL_HEAD, 4.6, 0],
+    [0.150, SCATTER, COL_SCATTER, 5.4, 0],
+    [0.235, RATIONAL, COL_FRACT, 3.6, 1],
+    [0.315, RATIONAL, COL_FRACT, 3.6, 1],
+    [0.415, EMOTIONAL, COL_FRACT, 3.6, 1],
+    [0.500, EMOTIONAL, COL_FRACT, 3.6, 1],
+    [0.600, CULTURAL, COL_FRACT, 3.8, 1],
+    [0.710, CULTURAL, COL_FRACT, 3.8, 1],
+    [0.870, HEAD, COL_FINAL, 4.6, 0],
+    [1.001, HEAD, COL_FINAL, 4.6, 0]
+  ];
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  /* ------------------------------------------------------------------
+     Three.js scene
+  ------------------------------------------------------------------ */
+
+  var canvas = document.getElementById("scene");
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false, alpha: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x0d0d0f, 1);
+
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x0d0d0f, 0.055);
+
+  var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 60);
+  camera.position.set(0, 0, 4.5);
+
+  var geometry = new THREE.BufferGeometry();
+  var positions = new Float32Array(N * 3);
+  var colors = new Float32Array(N * 3);
+  positions.set(HEAD);
+  colors.set(COL_HEAD);
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+
+  var sprite = (function () {
+    var s = 64, cv = document.createElement("canvas");
+    cv.width = s; cv.height = s;
+    var ctx = cv.getContext("2d");
+    var g = ctx.createRadialGradient(s / 2, s / 2, 0, s / 2, s / 2, s / 2);
+    g.addColorStop(0, "rgba(255,255,255,1)");
+    g.addColorStop(0.35, "rgba(255,255,255,0.55)");
+    g.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, s, s);
+    var tx = new THREE.CanvasTexture(cv);
+    return tx;
+  })();
+
+  var material = new THREE.PointsMaterial({
+    size: 0.034,
+    map: sprite,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.85,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    sizeAttenuation: true
+  });
+
+  var points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  function placeScene() {
+    if (window.innerWidth > 900) {
+      points.position.x = 0.62;
+      points.position.y = 0.05;
+      points.scale.setScalar(1);
+    } else {
+      points.position.x = 0;
+      points.position.y = 0.55;
+      points.scale.setScalar(0.78);
+    }
+  }
+  placeScene();
+
+  /* ------------------------------------------------------------------
+     Scroll and pointer state
+  ------------------------------------------------------------------ */
+
+  /* debug: ?p=0.5 pins the timeline to a fixed progress */
+  var forcedP = parseFloat(new URLSearchParams(location.search).get("p"));
+  var hasForcedP = !isNaN(forcedP);
+  var targetP = hasForcedP ? forcedP : 0, smoothP = targetP;
+  function readScroll() {
+    if (hasForcedP) return;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    targetP = max > 0 ? Math.max(0, Math.min(1, window.scrollY / max)) : 0;
+  }
+  window.addEventListener("scroll", readScroll, { passive: true });
+  readScroll();
+
+  var mouseX = 0, mouseY = 0;
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !reduceMotion) {
+    window.addEventListener("pointermove", function (e) {
+      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+    }, { passive: true });
+  }
+
+  var lastW = 0, lastH = 0;
+  function syncViewport() {
+    var w = window.innerWidth, h = window.innerHeight;
+    if (w < 2 || h < 2) return;
+    if (w !== lastW || h !== lastH) {
+      lastW = w; lastH = h;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+      placeScene();
+      readScroll();
+    }
+  }
+  window.addEventListener("resize", syncViewport);
+
+  /* ------------------------------------------------------------------
+     Overlay text visibility
+  ------------------------------------------------------------------ */
+
+  var panels = [
+    { el: document.getElementById("p-intro"), a: -1, b: 0.045, f: 0.035 },
+    { el: document.getElementById("p-rational"), a: 0.235, b: 0.315, f: 0.035 },
+    { el: document.getElementById("p-emotional"), a: 0.415, b: 0.50, f: 0.035 },
+    { el: document.getElementById("p-cultural"), a: 0.60, b: 0.71, f: 0.035 },
+    { el: document.getElementById("p-final"), a: 0.875, b: 2, f: 0.035 }
+  ];
+  var hint = document.getElementById("hint");
+  var tokR = document.getElementById("tok-rational");
+  var tokE = document.getElementById("tok-emotional");
+
+  function smoothstep(e0, e1, x) {
+    var t = Math.max(0, Math.min(1, (x - e0) / (e1 - e0)));
+    return t * t * (3 - 2 * t);
+  }
+  function windowVis(p, a, b, f) {
+    return smoothstep(a - f, a, p) * (1 - smoothstep(b, b + f, p));
+  }
+
+  /* ------------------------------------------------------------------
+     Floating tokens
+  ------------------------------------------------------------------ */
+
+  function seedTokens(el, items, sizeMin, sizeMax) {
+    for (var i = 0; i < items.length; i++) {
+      var sp = document.createElement("i");
+      sp.textContent = items[i];
+      sp.style.left = (4 + Math.random() * 88) + "%";
+      sp.style.top = (6 + Math.random() * 82) + "%";
+      sp.style.fontSize = (sizeMin + Math.random() * (sizeMax - sizeMin)) + "px";
+      sp.style.opacity = (0.35 + Math.random() * 0.4).toFixed(2);
+      sp.style.animationDelay = (-Math.random() * 8) + "s";
+      sp.style.animationDuration = (6 + Math.random() * 5) + "s";
+      el.appendChild(sp);
+    }
+  }
+  seedTokens(tokR, [
+    "47%", "+18%", "NPS 62", "R$ 2,3M", "Q3", "0,82", "12x", "ROI 3,4",
+    "n = 629", "52%", "-7 p.p.", "EBITDA", "1.024", "99,2%", "p < 0,05",
+    "OKR 4/5", "+2,1σ", "T4"
+  ], 10, 14);
+  seedTokens(tokE, [
+    "medo", "orgulho", "confiança", "cansaço", "entusiasmo", "insegurança",
+    "pertencimento", "frustração", "alívio", "vontade", "ciúme", "gratidão",
+    "urgência", "vergonha"
+  ], 14, 22);
+
+  /* ------------------------------------------------------------------
+     Frame loop
+  ------------------------------------------------------------------ */
+
+  var STAG = 0.35; /* per-particle stagger share of each morph segment */
+  var clock = new THREE.Clock();
+
+  function frame() {
+    requestAnimationFrame(frame);
+    syncViewport();
+    var time = clock.getElapsedTime();
+
+    smoothP += (targetP - smoothP) * (reduceMotion ? 1 : 0.08);
+    var p = smoothP;
+
+    /* locate segment */
+    var s = 0;
+    while (s < KEYS.length - 2 && p >= KEYS[s + 1][0]) s++;
+    var k0 = KEYS[s], k1 = KEYS[s + 1];
+    var segT = (p - k0[0]) / (k1[0] - k0[0]);
+    segT = Math.max(0, Math.min(1, segT));
+
+    var A = k0[1], B = k1[1], CA = k0[2], CB = k1[2];
+    var eg = easeInOutCubic(segT);
+    camera.position.z = k0[3] + (k1[3] - k0[3]) * eg;
+    var camF = k0[4] + (k1[4] - k0[4]) * eg;
+    camera.position.x = camF * points.position.x;
+    camera.position.y = camF * (0.77 * points.scale.y + points.position.y);
+
+    var wob = (reduceMotion ? 0 : 0.007);
+    var i3, u, e, ph;
+    if (A === B) {
+      for (var i = 0; i < N; i++) {
+        i3 = i * 3;
+        ph = rnd[i] * 6.283;
+        positions[i3] = A[i3] + Math.sin(time * 0.9 + ph) * wob;
+        positions[i3 + 1] = A[i3 + 1] + Math.cos(time * 1.1 + ph * 1.3) * wob;
+        positions[i3 + 2] = A[i3 + 2] + Math.sin(time * 0.7 + ph * 0.6) * wob;
+        colors[i3] = CA[i3];
+        colors[i3 + 1] = CA[i3 + 1];
+        colors[i3 + 2] = CA[i3 + 2];
+      }
+    } else {
+      for (var j = 0; j < N; j++) {
+        i3 = j * 3;
+        u = (segT - rnd[j] * STAG) / (1 - STAG);
+        u = Math.max(0, Math.min(1, u));
+        e = easeInOutCubic(u);
+        ph = rnd[j] * 6.283;
+        positions[i3] = A[i3] + (B[i3] - A[i3]) * e + Math.sin(time * 0.9 + ph) * wob;
+        positions[i3 + 1] = A[i3 + 1] + (B[i3 + 1] - A[i3 + 1]) * e + Math.cos(time * 1.1 + ph * 1.3) * wob;
+        positions[i3 + 2] = A[i3 + 2] + (B[i3 + 2] - A[i3 + 2]) * e + Math.sin(time * 0.7 + ph * 0.6) * wob;
+        colors[i3] = CA[i3] + (CB[i3] - CA[i3]) * e;
+        colors[i3 + 1] = CA[i3 + 1] + (CB[i3 + 1] - CA[i3 + 1]) * e;
+        colors[i3 + 2] = CA[i3 + 2] + (CB[i3 + 2] - CA[i3 + 2]) * e;
+      }
+    }
+    geometry.attributes.position.needsUpdate = true;
+    geometry.attributes.color.needsUpdate = true;
+
+    /* slow presence rotation plus pointer parallax */
+    var idle = reduceMotion ? 0 : Math.sin(time * 0.1) * 0.16;
+    points.rotation.y += ((idle + mouseX * 0.10) - points.rotation.y) * 0.04;
+    points.rotation.x += ((mouseY * 0.05) - points.rotation.x) * 0.04;
+
+    /* overlay text */
+    for (var t = 0; t < panels.length; t++) {
+      var pn = panels[t];
+      var v = windowVis(p, pn.a, pn.b, pn.f);
+      pn.el.style.opacity = v.toFixed(3);
+      pn.el.style.transform = "translateY(" + (14 * (1 - v)).toFixed(1) + "px)";
+    }
+    hint.style.opacity = (1 - smoothstep(0.01, 0.05, p)).toFixed(3);
+    tokR.style.opacity = (windowVis(p, 0.215, 0.325, 0.04) * 0.9).toFixed(3);
+    tokE.style.opacity = (windowVis(p, 0.40, 0.51, 0.04) * 0.9).toFixed(3);
+
+    renderer.render(scene, camera);
+  }
+  frame();
+})();
+</script>
+</body>
+</html>

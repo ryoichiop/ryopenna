@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Equação das Conversas</title>
+<link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%;
+    height: 100%;
+    background: #0F1117;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #F5F0EB;
+  }
+  #stage-wrapper {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0F1117;
+    overflow: hidden;
+  }
+  #stage {
+    position: relative;
+    width: 3840px;
+    height: 2160px;
+    flex-shrink: 0;
+    background: #191C24;
+    overflow: hidden;
+    transform-origin: center center;
+  }
+  /* Single canvas per layer, positioned together */
+  #three-canvas, #hud-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3840px;
+    height: 2160px;
+    display: block;
+  }
+  #hud-canvas {
+    z-index: 2;
+    pointer-events: none;
+  }
+  #startBtn, #recordBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 30px 70px;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 3;
+  }
+  #startBtn {
+    transform: translate(-50%, -100px);
+    border: 2px solid #F5F0EB;
+    color: #F5F0EB;
+  }
+  #startBtn:hover {
+    background: #F5F0EB;
+    color: #191C24;
+  }
+  #recordBtn {
+    transform: translate(-50%, 100px);
+    border: 2px solid #2DD4BF;
+    color: #2DD4BF;
+  }
+  #recordBtn:hover {
+    background: #2DD4BF;
+    color: #191C24;
+  }
+  #startBtn.hidden, #recordBtn.hidden { display: none; }
+
+  #recordStatus {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    color: #F4845F;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  #recordStatus.visible { opacity: 1; }
+</style>
+</head>
+<body>
+<div id="stage-wrapper">
+  <div id="stage">
+    <canvas id="three-canvas" width="3840" height="2160"></canvas>
+    <canvas id="hud-canvas" width="3840" height="2160"></canvas>
+    <button id="startBtn">Iniciar</button>
+    <button id="recordBtn">Gravar e Iniciar (4K)</button>
+    <div id="recordStatus">● Gravando</div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// =============================================================
+// STAGE + SCALE TO VIEWPORT
+// =============================================================
+const STAGE_W = 3840;
+const STAGE_H = 2160;
+const stage = document.getElementById('stage');
+
+function fitStage() {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const scale = Math.min(vw / STAGE_W, vh / STAGE_H);
+  stage.style.transform = `scale(${scale})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+window.addEventListener('load', fitStage);
+
+// =============================================================
+// THREE.JS SETUP
+// =============================================================
+const threeCanvas = document.getElementById('three-canvas');
+const startBtn = document.getElementById('startBtn');
+const recordBtn = document.getElementById('recordBtn');
+const recordStatus = document.getElementById('recordStatus');
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x191C24);
+
+const camera = new THREE.PerspectiveCamera(42, STAGE_W / STAGE_H, 0.1, 1000);
+
+const CAMERA_Z_START = 18;
+const CAMERA_Z_END = 22;
+
+const SPHERE_X_OFFSET = 0;
+const SPHERE_Y_OFFSET = 1.8;
+
+camera.position.set(0, 0, CAMERA_Z_START);
+camera.lookAt(0, 0, 0);
+
+const renderer = new THREE.WebGLRenderer({
+  canvas: threeCanvas,
+  antialias: true,
+  alpha: false,
+  preserveDrawingBuffer: true
+});
+renderer.setPixelRatio(1);
+renderer.setSize(STAGE_W, STAGE_H, false);
+
+// =============================================================
+// HUD CANVAS (2D) — rendered every frame so MediaRecorder captures it
+// =============================================================
+const hudCanvas = document.getElementById('hud-canvas');
+const hudCtx = hudCanvas.getContext('2d');
+
+// HUD state (updated during animation)
+const hud = {
+  visible: false,
+  opacity: 0,
+  currentN: 1,
+  currentC: 0,
+  pulseScale: 1.0,
+  pulseTargetScale: 1.0,
+  pulseStartTime: 0,
+  pulseDuration: 400
+};
+
+// Typography tokens for HUD (NEW)
+// Formula: Inter (smaller, functional)
+// Labels: League Gothic (larger, display-style for context)
+// Values: League Gothic (remain large, main attention anchors)
+const HUD_FORMULA_FONT = "64px 'Inter'";
+const HUD_FORMULA_FONT_WEIGHT = 500;
+const HUD_LABEL_FONT_SIZE = 54;         // larger — display-style presence
+const HUD_VALUE_FONT_SIZE = 140;
+const HUD_FRACTION_LINE_WIDTH = 3;
+const HUD_LABEL_TRACKING = 0.14;
+const HUD_VALUE_TRACKING = 0.02;
+
+const COLOR_BG = '#191C24';
+const COLOR_CREAM = '#F5F0EB';
+const COLOR_CREAM_DIM = 'rgba(245, 240, 235, 0.92)';
+const COLOR_TEAL = '#2DD4BF';
+const COLOR_SALMON = '#F4845F';
+const COLOR_GRAY = '#6B7280';
+
+function formatNumber(num) { return num.toLocaleString('pt-BR'); }
+
+// Measure text with letter-spacing (Canvas 2D doesn't natively support it, so we emulate)
+function measureSpacedText(ctx, text, tracking) {
+  if (tracking === 0) return ctx.measureText(text).width;
+  const fontSize = parseInt(ctx.font.match(/\d+/)[0], 10);
+  const extra = fontSize * tracking * (text.length - 1);
+  return ctx.measureText(text).width + extra;
+}
+
+function drawSpacedText(ctx, text, x, y, tracking) {
+  if (tracking === 0) {
+    ctx.fillText(text, x, y);
+    return;
+  }
+  const fontSize = parseInt(ctx.font.match(/\d+/)[0], 10);
+  const spacing = fontSize * tracking;
+  let cursor = x;
+  for (const ch of text) {
+    ctx.fillText(ch, cursor, y);
+    cursor += ctx.measureText(ch).width + spacing;
+  }
+}
+
+// Draw the formula: C = (n × (n − 1)) / 2
+// Uses Inter font, with fraction bar
+function drawFormula(ctx, centerX, centerY, opacity) {
+  ctx.save();
+  ctx.globalAlpha = opacity * 0.75;
+  ctx.font = `${HUD_FORMULA_FONT_WEIGHT} ${HUD_FORMULA_FONT}`;
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'left';
+
+  // Layout: "C =" | numerator over denominator
+  const cEqText = 'C =';
+  const numText = 'n × (n − 1)';
+  const denomText = '2';
+
+  const cEqWidth = ctx.measureText(cEqText).width;
+  const numWidth = ctx.measureText(numText).width;
+  const denomWidth = ctx.measureText(denomText).width;
+  const fractionWidth = Math.max(numWidth, denomWidth);
+
+  const totalWidth = cEqWidth + 32 + fractionWidth;
+  const startX = centerX - totalWidth / 2;
+
+  // Draw "C ="
+  ctx.fillStyle = COLOR_CREAM;
+  ctx.fillText(cEqText, startX, centerY);
+
+  // Draw fraction (numerator above bar, denominator below)
+  const fractionX = startX + cEqWidth + 32;
+  const fracCenterX = fractionX + fractionWidth / 2;
+  const barY = centerY;
+  const barLength = fractionWidth + 16;
+  const vOffset = 56; // vertical offset from bar to numerator/denominator center
+
+  // Numerator — all cream (formula is support, values are focus)
+  ctx.textAlign = 'center';
+  const numY = centerY - vOffset;
+
+  // Draw "n × (n − 1)" all in cream
+  ctx.fillStyle = COLOR_CREAM;
+  ctx.fillText('n × (n − 1)', fracCenterX, numY);
+
+  // Fraction bar
+  ctx.strokeStyle = COLOR_CREAM;
+  ctx.lineWidth = HUD_FRACTION_LINE_WIDTH;
+  ctx.beginPath();
+  ctx.moveTo(fracCenterX - barLength / 2, barY);
+  ctx.lineTo(fracCenterX + barLength / 2, barY);
+  ctx.stroke();
+
+  // Denominator
+  ctx.fillStyle = COLOR_CREAM;
+  ctx.textAlign = 'center';
+  ctx.fillText(denomText, fracCenterX, centerY + vOffset);
+
+  ctx.restore();
+}
+
+// Draw a counter block (label + value stacked)
+function drawCounter(ctx, centerX, centerY, label, value, valueColor, opacity, pulseScale, labelColor) {
+  ctx.save();
+  ctx.globalAlpha = opacity;
+
+  // Label: League Gothic, all caps, colored to match the value (dimmed)
+  ctx.save();
+  ctx.globalAlpha = opacity * 0.7;
+  ctx.font = `400 ${HUD_LABEL_FONT_SIZE}px 'League Gothic'`;
+  ctx.fillStyle = labelColor || COLOR_GRAY;
+  ctx.textBaseline = 'alphabetic';
+  ctx.textAlign = 'center';
+
+  const labelSpaced = label.toUpperCase();
+  const labelWidth = measureSpacedText(ctx, labelSpaced, HUD_LABEL_TRACKING);
+  drawSpacedText(ctx, labelSpaced, centerX - labelWidth / 2, centerY - 60, HUD_LABEL_TRACKING);
+  ctx.restore();
+
+  // Value: League Gothic, large, colored
+  ctx.save();
+  ctx.translate(centerX, centerY + 80);
+  ctx.scale(pulseScale, pulseScale);
+  ctx.font = `400 ${HUD_VALUE_FONT_SIZE}px 'League Gothic'`;
+  ctx.fillStyle = valueColor;
+  ctx.textBaseline = 'alphabetic';
+  ctx.textAlign = 'center';
+  ctx.fillText(formatNumber(value), 0, 0);
+  ctx.restore();
+
+  ctx.restore();
+}
+
+// Main HUD render function — called every frame
+function renderHUD() {
+  hudCtx.clearRect(0, 0, STAGE_W, STAGE_H);
+  if (!hud.visible || hud.opacity <= 0) return;
+
+  // Compute pulse scale (used only for C value)
+  let pulseScale = 1.0;
+  if (hud.pulseStartTime > 0) {
+    const elapsed = performance.now() - hud.pulseStartTime;
+    if (elapsed < hud.pulseDuration) {
+      const t = elapsed / hud.pulseDuration;
+      // ease: ramp up to target, then back down
+      const up = Math.min(1, t * 2);
+      const down = Math.max(0, 1 - (t - 0.5) * 2);
+      const combined = t < 0.5 ? up : down;
+      pulseScale = 1 + (hud.pulseTargetScale - 1) * combined;
+    }
+  }
+
+  // Layout: HUD horizontal, centered, at bottom
+  // Three blocks: formula | pessoas | conversas
+  const blockY = STAGE_H - 340;  // ~250px from bottom
+  const blockGap = 500;           // horizontal gap between blocks
+
+  // Total width depends on block widths; use approximate centers
+  // We'll lay them out at stage center minus total / 2
+  // Approximate widths: formula ~900, pessoas ~350, conversas ~600 (varies with value)
+  // Simpler: distribute at thirds
+  const totalWidth = 2400;
+  const startX = (STAGE_W - totalWidth) / 2;
+
+  const formulaX = startX + 600;
+  const pessoasX = startX + 1400;
+  const conversasX = startX + 2100;
+
+  drawFormula(hudCtx, formulaX, blockY, hud.opacity);
+  drawCounter(hudCtx, pessoasX, blockY, 'pessoas (n)', hud.currentN, COLOR_TEAL, hud.opacity, 1.0, COLOR_TEAL);
+  drawCounter(hudCtx, conversasX, blockY, 'conversas possíveis (C)', hud.currentC, COLOR_SALMON, hud.opacity, pulseScale, COLOR_SALMON);
+}
+
+// =============================================================
+// STEPS & TIMING
+// =============================================================
+function buildSteps() {
+  const s = [];
+  for (let n = 1; n <= 100; n++) s.push({ n, act: 1 });
+  for (let n = 110; n <= 1000; n += 10) s.push({ n, act: 2 });
+  return s;
+}
+const steps = buildSteps();
+
+const TOTAL_MS = 30000;
+const MIN_LINE_DELAY_AFTER_POINT = 120;
+
+function buildDelays() {
+  const delays = new Float64Array(steps.length);
+
+  const openingPlan = [1800, 1600, 1400, 1300, 1200, 1200, 1200, 1200, 1100, 1000];
+  let openingTotal = openingPlan.reduce((a, b) => a + b, 0);
+  const openingScale = 15000 / openingTotal;
+  for (let i = 0; i < 10; i++) {
+    delays[i] = openingPlan[i] * openingScale;
+  }
+
+  const A1_REST_COUNT = 90;
+  const A1_REST_BUDGET = 9000;
+  const a1StartMs = 320;
+  const a1EndMs = 10;
+  const a1Ratio = Math.pow(a1EndMs / a1StartMs, 1 / (A1_REST_COUNT - 1));
+  let a1Raw = 0;
+  const a1Arr = new Float64Array(A1_REST_COUNT);
+  for (let i = 0; i < A1_REST_COUNT; i++) {
+    a1Arr[i] = a1StartMs * Math.pow(a1Ratio, i);
+    a1Raw += a1Arr[i];
+  }
+  const a1Scale = A1_REST_BUDGET / a1Raw;
+  for (let i = 0; i < A1_REST_COUNT; i++) {
+    delays[10 + i] = a1Arr[i] * a1Scale;
+  }
+
+  const A2_COUNT = 90;
+  const A2_BUDGET = 6000;
+  const a2StartMs = 200;
+  const a2EndMs = 30;
+  const a2Ratio = Math.pow(a2EndMs / a2StartMs, 1 / (A2_COUNT - 1));
+  let a2Raw = 0;
+  const a2Arr = new Float64Array(A2_COUNT);
+  for (let i = 0; i < A2_COUNT; i++) {
+    a2Arr[i] = a2StartMs * Math.pow(a2Ratio, i);
+    a2Raw += a2Arr[i];
+  }
+  const a2Scale = A2_BUDGET / a2Raw;
+  for (let i = 0; i < A2_COUNT; i++) {
+    delays[100 + i] = a2Arr[i] * a2Scale;
+  }
+
+  return delays;
+}
+const delays = buildDelays();
+
+// =============================================================
+// SPHERE POINTS
+// =============================================================
+const SPHERE_RADIUS = 5.0;
+const ACT1_MAX = 100;
+const FIRST_CIRCLE_COUNT = 10;
+const ACT2_EXTRA = 300;
+const SPHERE_SCALE_END = 1.3;
+
+function fibonacciSphere(samples, radius) {
+  const points = [];
+  const phi = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < samples; i++) {
+    const y = 1 - (i / (samples - 1)) * 2;
+    const radiusAtY = Math.sqrt(1 - y * y);
+    const theta = phi * i;
+    const x = Math.cos(theta) * radiusAtY;
+    const z = Math.sin(theta) * radiusAtY;
+    points.push(new THREE.Vector3(x * radius, y * radius, z * radius));
+  }
+  return points;
+}
+
+function buildAct1Points() {
+  const points = new Array(ACT1_MAX);
+  const maxRadius = SPHERE_RADIUS * 0.75;
+  const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < FIRST_CIRCLE_COUNT; i++) {
+    const r = maxRadius * Math.sqrt((i + 0.5) / FIRST_CIRCLE_COUNT);
+    const angle = i * goldenAngle;
+    points[i] = new THREE.Vector3(
+      Math.cos(angle) * r,
+      Math.sin(angle) * r,
+      0
+    );
+  }
+  const fibo = fibonacciSphere(ACT1_MAX, SPHERE_RADIUS);
+  fibo.sort((a, b) => Math.abs(a.y) - Math.abs(b.y));
+  for (let i = FIRST_CIRCLE_COUNT; i < ACT1_MAX; i++) {
+    points[i] = fibo[i];
+  }
+  return points;
+}
+
+const act1Points = buildAct1Points();
+
+function fibonacciSphereOffset(samples, radius, offset) {
+  const points = [];
+  const phi = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < samples; i++) {
+    const y = 1 - ((i + offset) / (samples - 1)) * 2;
+    const yClamped = Math.max(-0.999, Math.min(0.999, y));
+    const radiusAtY = Math.sqrt(1 - yClamped * yClamped);
+    const theta = phi * (i + offset * 1.7);
+    const x = Math.cos(theta) * radiusAtY;
+    const z = Math.sin(theta) * radiusAtY;
+    points.push(new THREE.Vector3(x * radius, yClamped * radius, z * radius));
+  }
+  return points;
+}
+const rawAct2 = fibonacciSphereOffset(ACT2_EXTRA, SPHERE_RADIUS, 0.5);
+rawAct2.sort((a, b) => Math.abs(a.y) - Math.abs(b.y));
+const act2Points = rawAct2;
+
+// =============================================================
+// SCENE
+// =============================================================
+const sphereGroup = new THREE.Group();
+sphereGroup.position.x = SPHERE_X_OFFSET;
+sphereGroup.position.y = SPHERE_Y_OFFSET;
+scene.add(sphereGroup);
+
+const POP_IN_DURATION = 220;
+
+const pointGeom = new THREE.SphereGeometry(0.09, 16, 16);
+const pointMat = new THREE.MeshBasicMaterial({ color: 0x2DD4BF });
+const pointMeshes = [];
+const pointAppearTimes = [];
+
+for (let i = 0; i < ACT1_MAX; i++) {
+  const m = new THREE.Mesh(pointGeom, pointMat.clone());
+  m.position.copy(act1Points[i]);
+  m.visible = false;
+  m.scale.set(0, 0, 0);
+  sphereGroup.add(m);
+  pointMeshes.push(m);
+  pointAppearTimes.push(null);
+}
+
+const smallPointGeom = new THREE.SphereGeometry(0.058, 12, 12);
+const smallPointMat = new THREE.MeshBasicMaterial({
+  color: 0x2DD4BF,
+  transparent: true,
+  opacity: 0.75
+});
+const smallPointMeshes = [];
+const smallPointAppearTimes = [];
+
+for (let i = 0; i < ACT2_EXTRA; i++) {
+  const m = new THREE.Mesh(smallPointGeom, smallPointMat.clone());
+  m.position.copy(act2Points[i]);
+  m.visible = false;
+  m.scale.set(0, 0, 0);
+  sphereGroup.add(m);
+  smallPointMeshes.push(m);
+  smallPointAppearTimes.push(null);
+}
+
+// =============================================================
+// LINES (with adaptive opacity)
+// =============================================================
+const MAX_LINES = 6500;
+const lineBuffer = new Float32Array(MAX_LINES * 6);
+let lineCount = 0;
+
+const LINE_OPACITY_SPARSE = 0.85;
+const LINE_OPACITY_DENSE = 0.35;
+
+function computeLineOpacity(count) {
+  if (count < 20) return LINE_OPACITY_SPARSE;
+  const t = Math.min(1, (count - 20) / 780);
+  const eased = 1 - Math.pow(1 - t, 2);
+  return LINE_OPACITY_SPARSE + (LINE_OPACITY_DENSE - LINE_OPACITY_SPARSE) * eased;
+}
+
+const lineMat = new THREE.LineBasicMaterial({
+  color: 0xF4845F,
+  transparent: true,
+  opacity: LINE_OPACITY_SPARSE,
+  linewidth: 2
+});
+const lineGeometry = new THREE.BufferGeometry();
+lineGeometry.setAttribute('position', new THREE.BufferAttribute(lineBuffer, 3));
+lineGeometry.setDrawRange(0, 0);
+const lineMesh = new THREE.LineSegments(lineGeometry, lineMat);
+sphereGroup.add(lineMesh);
+
+function addCompletedLine(fromPos, toPos) {
+  if (lineCount >= MAX_LINES) return;
+  const offset = lineCount * 6;
+  lineBuffer[offset] = fromPos.x;
+  lineBuffer[offset + 1] = fromPos.y;
+  lineBuffer[offset + 2] = fromPos.z;
+  lineBuffer[offset + 3] = toPos.x;
+  lineBuffer[offset + 4] = toPos.y;
+  lineBuffer[offset + 5] = toPos.z;
+  lineCount++;
+  lineGeometry.setDrawRange(0, lineCount * 2);
+  lineGeometry.attributes.position.needsUpdate = true;
+}
+
+const animatingLineMat = new THREE.LineBasicMaterial({
+  color: 0xF4845F,
+  transparent: true,
+  opacity: LINE_OPACITY_SPARSE,
+  linewidth: 2
+});
+let animatingLineSegments = null;
+let animatedLines = [];
+
+function updateAnimatingLines(now) {
+  if (animatingLineSegments) {
+    sphereGroup.remove(animatingLineSegments);
+    animatingLineSegments.geometry.dispose();
+    animatingLineSegments = null;
+  }
+
+  const positions = [];
+  for (let k = animatedLines.length - 1; k >= 0; k--) {
+    const line = animatedLines[k];
+    const elapsed = now - line.startTime;
+    if (elapsed < 0) continue;
+    const t = Math.min(1, elapsed / line.duration);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const from = line.fromPos;
+    const target = line.toPos;
+    const x = from.x + (target.x - from.x) * eased;
+    const y = from.y + (target.y - from.y) * eased;
+    const z = from.z + (target.z - from.z) * eased;
+    positions.push(from.x, from.y, from.z, x, y, z);
+    if (t >= 1) {
+      addCompletedLine(from, target);
+      animatedLines.splice(k, 1);
+    }
+  }
+  if (positions.length === 0) return;
+
+  const geom = new THREE.BufferGeometry();
+  geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  animatingLineSegments = new THREE.LineSegments(geom, animatingLineMat);
+  sphereGroup.add(animatingLineSegments);
+}
+
+// =============================================================
+// STATE
+// =============================================================
+let completedEdgesUpTo = 0;
+let act2VisibleCount = 0;
+let animationStartTime = 0;
+
+let counterPrevN = 0;
+let counterTargetN = 0;
+let counterTransitionStart = 0;
+let counterTransitionDur = 0;
+
+const ACT1_BUDGET_MS = 24000;
+const ACT2_BUDGET_MS = 6000;
+const ACT1_ROTATION_DEG = 20;
+const ACT2_ROTATION_DEG = 40;
+
+let rafActive = false;
+
+function animate() {
+  if (!rafActive) return;
+
+  const now = performance.now();
+  const elapsed = now - animationStartTime;
+
+  let totalRotation = 0;
+  if (elapsed <= ACT1_BUDGET_MS) {
+    const t = elapsed / ACT1_BUDGET_MS;
+    totalRotation = THREE.MathUtils.degToRad(ACT1_ROTATION_DEG) * t;
+  } else {
+    const act1Full = THREE.MathUtils.degToRad(ACT1_ROTATION_DEG);
+    const act2Elapsed = Math.min(ACT2_BUDGET_MS, elapsed - ACT1_BUDGET_MS);
+    const t = act2Elapsed / ACT2_BUDGET_MS;
+    const eased = t * t;
+    totalRotation = act1Full + THREE.MathUtils.degToRad(ACT2_ROTATION_DEG) * eased;
+  }
+  const centerOffset = THREE.MathUtils.degToRad((ACT1_ROTATION_DEG + ACT2_ROTATION_DEG) / 2);
+  sphereGroup.rotation.y = -centerOffset + totalRotation;
+
+  let zoomProgress = 0;
+  if (completedEdgesUpTo > 0) zoomProgress = (completedEdgesUpTo / ACT1_MAX) * 0.55;
+  if (act2VisibleCount > 0) zoomProgress += (act2VisibleCount / ACT2_EXTRA) * 0.45;
+  camera.position.z = CAMERA_Z_START + (CAMERA_Z_END - CAMERA_Z_START) * zoomProgress;
+
+  let sphereScale = 1.0;
+  if (act2VisibleCount > 0) {
+    const t = act2VisibleCount / ACT2_EXTRA;
+    sphereScale = 1.0 + (SPHERE_SCALE_END - 1.0) * t;
+  }
+  sphereGroup.scale.set(sphereScale, sphereScale, sphereScale);
+
+  for (let i = 0; i < pointMeshes.length; i++) {
+    if (!pointMeshes[i].visible) continue;
+    const appearAt = pointAppearTimes[i];
+    if (appearAt === null) continue;
+    const popElapsed = now - appearAt;
+    if (popElapsed < 0) continue;
+    let scale = 1;
+    if (popElapsed < POP_IN_DURATION) {
+      const t = popElapsed / POP_IN_DURATION;
+      scale = 1 - Math.pow(1 - t, 3);
+    }
+    const worldPos = new THREE.Vector3();
+    pointMeshes[i].getWorldPosition(worldPos);
+    const depthFactor = (worldPos.z + SPHERE_RADIUS) / (2 * SPHERE_RADIUS);
+    const depthScale = 0.7 + Math.max(0, Math.min(1, depthFactor)) * 0.6;
+    pointMeshes[i].scale.set(
+      scale * depthScale / sphereScale,
+      scale * depthScale / sphereScale,
+      scale * depthScale / sphereScale
+    );
+  }
+
+  for (let i = 0; i < smallPointMeshes.length; i++) {
+    if (!smallPointMeshes[i].visible) continue;
+    const appearAt = smallPointAppearTimes[i];
+    if (appearAt === null) continue;
+    const popElapsed = now - appearAt;
+    if (popElapsed < 0) continue;
+    let scale = 1;
+    if (popElapsed < POP_IN_DURATION) {
+      const t = popElapsed / POP_IN_DURATION;
+      scale = 1 - Math.pow(1 - t, 3);
+    }
+    smallPointMeshes[i].scale.set(
+      scale / sphereScale,
+      scale / sphereScale,
+      scale / sphereScale
+    );
+  }
+
+  // Counter interpolation
+  if (counterTransitionDur > 0) {
+    const transElapsed = now - counterTransitionStart;
+    const t = Math.min(1, transElapsed / counterTransitionDur);
+    const eased = 1 - Math.pow(1 - t, 2);
+    const displayN = Math.floor(counterPrevN + (counterTargetN - counterPrevN) * eased);
+    const displayC = displayN * (displayN - 1) / 2;
+    hud.currentN = displayN;
+    hud.currentC = displayC;
+  }
+
+  // Line opacity
+  const totalLinesVisible = lineCount + animatedLines.length;
+  const currentOpacity = computeLineOpacity(totalLinesVisible);
+  lineMat.opacity = currentOpacity;
+  animatingLineMat.opacity = currentOpacity;
+
+  updateAnimatingLines(now);
+
+  // Render WebGL
+  renderer.render(scene, camera);
+
+  // Render HUD on its own canvas
+  renderHUD();
+
+  requestAnimationFrame(animate);
+}
+
+// =============================================================
+// MAIN SEQUENCE
+// =============================================================
+function sleep(ms) { return new Promise(res => setTimeout(res, ms)); }
+
+let running = false;
+
+function mulberry32(seed) {
+  return function() {
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    let t = seed;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+async function runAnimation() {
+  running = true;
+  hud.visible = true;
+  // Smoothly fade in HUD over first ~800ms
+  const hudFadeStart = performance.now();
+  const hudFadeDuration = 1000;
+
+  completedEdgesUpTo = 0;
+  act2VisibleCount = 0;
+  animatedLines = [];
+  lineCount = 0;
+  lineGeometry.setDrawRange(0, 0);
+  counterPrevN = 0;
+  counterTargetN = 0;
+  counterTransitionDur = 0;
+  hud.currentN = 1;
+  hud.currentC = 0;
+  hud.pulseStartTime = 0;
+  for (let i = 0; i < pointMeshes.length; i++) {
+    pointMeshes[i].visible = false;
+    pointMeshes[i].scale.set(0, 0, 0);
+    pointAppearTimes[i] = null;
+  }
+  for (let i = 0; i < smallPointMeshes.length; i++) {
+    smallPointMeshes[i].visible = false;
+    smallPointMeshes[i].scale.set(0, 0, 0);
+    smallPointAppearTimes[i] = null;
+  }
+  camera.position.z = CAMERA_Z_START;
+  sphereGroup.scale.set(1, 1, 1);
+
+  const act2Rng = mulberry32(123);
+
+  animationStartTime = performance.now();
+  rafActive = true;
+  requestAnimationFrame(animate);
+
+  // Kick off HUD fade-in via interval
+  const fadeInterval = setInterval(() => {
+    const t = (performance.now() - hudFadeStart) / hudFadeDuration;
+    hud.opacity = Math.min(1, t);
+    if (t >= 1) clearInterval(fadeInterval);
+  }, 16);
+
+  for (let si = 0; si < steps.length; si++) {
+    const step = steps[si];
+    const n = step.n;
+    const C = n * (n - 1) / 2;
+
+    const stepDelay = delays[si];
+
+    if (step.act === 1) {
+      hud.currentN = n;
+      hud.currentC = C;
+      counterTargetN = n;
+      counterTransitionDur = 0;
+    } else {
+      counterPrevN = counterTargetN;
+      counterTargetN = n;
+      counterTransitionStart = performance.now();
+      counterTransitionDur = stepDelay;
+    }
+
+    if (step.act === 1) {
+      const newIdx = n - 1;
+      const now = performance.now();
+      pointMeshes[newIdx].visible = true;
+      pointAppearTimes[newIdx] = now;
+      const linesStartAt = now + MIN_LINE_DELAY_AFTER_POINT;
+
+      if (n > 1) {
+        const traceDur = Math.max(120, Math.min(800, stepDelay * 1.5));
+        for (let i = 0; i < newIdx; i++) {
+          animatedLines.push({
+            fromPos: act1Points[newIdx],
+            toPos: act1Points[i],
+            startTime: linesStartAt + (i / Math.max(1, newIdx)) * (traceDur * 0.08),
+            duration: traceDur
+          });
+        }
+      }
+      completedEdgesUpTo = n;
+    }
+
+    if (step.act === 2) {
+      const fraction = (n - 100) / 900;
+      const target = Math.floor(fraction * ACT2_EXTRA);
+      const batchCount = target - act2VisibleCount;
+      const now = performance.now();
+      const LINES_PER_NEW_POINT = 4;
+
+      for (let i = act2VisibleCount; i < target; i++) {
+        smallPointMeshes[i].visible = true;
+        const staggerFraction = (i - act2VisibleCount) / Math.max(1, batchCount);
+        const appearAt = now + staggerFraction * stepDelay * 0.5;
+        smallPointAppearTimes[i] = appearAt;
+
+        const linesStartAt = appearAt + MIN_LINE_DELAY_AFTER_POINT;
+        const traceDur = Math.max(250, Math.min(600, stepDelay * 0.8));
+        for (let j = 0; j < LINES_PER_NEW_POINT; j++) {
+          const targetIdx = Math.floor(act2Rng() * ACT1_MAX);
+          animatedLines.push({
+            fromPos: act2Points[i],
+            toPos: act1Points[targetIdx],
+            startTime: linesStartAt + j * 60,
+            duration: traceDur
+          });
+        }
+      }
+      act2VisibleCount = target;
+    }
+
+    await sleep(stepDelay);
+  }
+
+  await sleep(1800);
+
+  // Trigger pulse on C value
+  hud.pulseStartTime = performance.now();
+  hud.pulseTargetScale = 1.08;
+  hud.pulseDuration = 450;
+
+  await sleep(1500);
+
+  rafActive = false;
+  running = false;
+}
+
+startBtn.addEventListener('click', () => {
+  startBtn.classList.add('hidden');
+  recordBtn.classList.add('hidden');
+  runAnimation();
+});
+
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'Space' && !running) {
+    hud.currentN = 1;
+    hud.currentC = 0;
+    runAnimation();
+  }
+});
+
+// =============================================================
+// 4K RECORDING
+// Captures a composed stream of WebGL canvas + HUD canvas drawn on
+// a single compositing canvas. MediaRecorder grabs the composite,
+// so HUD text is included in the recording.
+// =============================================================
+function pickBestMime() {
+  const candidates = [
+    'video/webm;codecs=vp9',
+    'video/webm;codecs=vp8',
+    'video/webm'
+  ];
+  for (const m of candidates) {
+    if (MediaRecorder.isTypeSupported(m)) return m;
+  }
+  return 'video/webm';
+}
+
+async function recordAndPlay() {
+  startBtn.classList.add('hidden');
+  recordBtn.classList.add('hidden');
+  recordStatus.classList.add('visible');
+
+  // Create a compositing canvas at 4K
+  const compCanvas = document.createElement('canvas');
+  compCanvas.width = STAGE_W;
+  compCanvas.height = STAGE_H;
+  const compCtx = compCanvas.getContext('2d');
+
+  // Render loop for the composite canvas — draws three canvas + hud canvas
+  let compositingActive = true;
+  function compositeFrame() {
+    if (!compositingActive) return;
+    compCtx.drawImage(threeCanvas, 0, 0, STAGE_W, STAGE_H);
+    compCtx.drawImage(hudCanvas, 0, 0, STAGE_W, STAGE_H);
+    requestAnimationFrame(compositeFrame);
+  }
+  compositeFrame();
+
+  const stream = compCanvas.captureStream(60);
+  const mime = pickBestMime();
+  const recorder = new MediaRecorder(stream, {
+    mimeType: mime,
+    videoBitsPerSecond: 40000000
+  });
+
+  const chunks = [];
+  recorder.ondataavailable = (e) => {
+    if (e.data.size > 0) chunks.push(e.data);
+  };
+
+  const recordingComplete = new Promise((resolve) => {
+    recorder.onstop = () => {
+      const blob = new Blob(chunks, { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'equacao-4k.webm';
+      a.click();
+      URL.revokeObjectURL(url);
+      resolve();
+    };
+  });
+
+  recorder.start();
+
+  await runAnimation();
+  await sleep(800);
+
+  recorder.stop();
+  compositingActive = false;
+  await recordingComplete;
+
+  recordStatus.classList.remove('visible');
+}
+
+recordBtn.addEventListener('click', recordAndPlay);
+
+// Initial blank render
+renderer.render(scene, camera);
+renderHUD();
+</script>
+</body>
+</html>

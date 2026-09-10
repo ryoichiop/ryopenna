@@ -117,10 +117,10 @@ a{color:inherit;text-decoration:none}
 .nav .cta{padding:8px 18px;font-size:14.5px}
 
 /* ---------- hero: video de palco ao fundo, texto centrado ---------- */
-.hero-video{position:relative;overflow:hidden;min-height:min(66dvh,640px);display:flex;align-items:center;justify-content:center;text-align:center}
+.hero-video{position:relative;overflow:hidden;min-height:min(66dvh,520px);height:min(48vw,840px);display:flex;align-items:center;justify-content:center;text-align:center}
 .hero-video video,.hero-video .poster{
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  object-position:center top;
+  object-position:center 10%;
   filter:saturate(.8);
 }
 .hero-video::after{
