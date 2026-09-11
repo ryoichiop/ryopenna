@@ -1,3 +1,20 @@
+/* páginas de leitura: fundo branco, mesmo sistema de tokens do site */
+:root{
+  --ink:#ffffff;
+  --ink-2:#f4f3f0;
+  --bone:#15181b;
+  --bone-soft:rgba(21,24,27,.74);
+  --bone-faint:rgba(21,24,27,.52);
+  --line:rgba(21,24,27,.14);
+  --line-faint:rgba(21,24,27,.08);
+  --teal:#0e8a7c;
+  --teal-dim:rgba(14,138,124,.12);
+  --teal-text:#0e8a7c;
+}
+body::before{opacity:.025}
+.nav{background:rgba(255,255,255,.82)}
+main a{box-shadow:0 1px 0 0 rgba(14,138,124,.35)}
+
 /* leitura: coluna estreita sobre o tema do site */
 main{max-width:720px;margin:0 auto;padding:clamp(48px,8vh,80px) clamp(20px,4vw,22px) clamp(72px,12vh,110px)}
 main h1{
