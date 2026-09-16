@@ -65,7 +65,7 @@ main li{
   color:rgba(21,24,27,.87);
 }
 main h1{font-size:clamp(2.05rem,4.4vw,3rem)}
-main h2{margin:2.3em 0 .55em;clear:both}
+main h2{margin:2.3em 0 .55em;clear:both;font-weight:700}
 body{text-rendering:optimizeLegibility}
 @media (min-width:700px){
   main p{font-size:1.2rem;line-height:1.78}
