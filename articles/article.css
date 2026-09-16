@@ -84,9 +84,10 @@ body{text-rendering:optimizeLegibility}
 .article-cta{border-top:1px solid var(--line);margin-top:46px;padding-top:38px;text-align:center;clear:both}
 .article-cta .cta-kicker{font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--bone-soft);margin:0 auto 20px;max-width:34em}
 .article-cta .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-/* solid green LinkedIn button: filled before hover, darkens on hover */
-.article-cta .cta.solid{background:var(--teal-text);color:#ffffff;border-color:var(--teal-text)}
-.article-cta .cta.solid::before{display:none}
+/* LinkedIn button: brand blue, filled, with the LinkedIn glyph */
+.article-cta .cta.linkedin{background:#0A66C2;color:#ffffff;border-color:#0A66C2;display:inline-flex;align-items:center;gap:9px}
+.article-cta .cta.linkedin::before{display:none}
+.article-cta .cta.linkedin svg{width:18px;height:18px;fill:currentColor;flex:none}
 @media (hover:hover) and (pointer:fine){
-  .article-cta .cta.solid:hover{background:#0a6f63;border-color:#0a6f63;color:#ffffff}
+  .article-cta .cta.linkedin:hover{background:#004182;border-color:#004182;color:#ffffff}
 }
