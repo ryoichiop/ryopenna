@@ -83,14 +83,14 @@ body{text-rendering:optimizeLegibility}
   .bookcover{float:none;width:134px;margin:.5em auto 1.2em}
 }
 
-/* core ideas box at the end of each book section */
-.coreideas{clear:both;margin:2.1em 0 0;padding:20px 24px;background:var(--teal-dim);border:1px solid var(--line);border-left:3px solid var(--teal-text);border-radius:8px}
-.coreideas h4{font-family:var(--sans);font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--teal-text);margin:0 0 13px;font-weight:600}
+/* core ideas at the end of each book section: editorial, matches the site's hairline pattern */
+.coreideas{clear:both;margin:2.5em 0 .3em;padding-top:1.15em;border-top:1px solid var(--line)}
+.coreideas h4{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-faint);margin:0}
 .coreideas ul{margin:0;padding:0;list-style:none}
-.coreideas li{font-family:var(--serif);font-size:1.02rem;line-height:1.5;color:var(--bone);margin:0 0 .62em;padding-left:1.2em;position:relative}
-.coreideas li:last-child{margin-bottom:0}
-.coreideas li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;background:var(--teal-text);border-radius:50%}
-@media (min-width:700px){.coreideas li{font-size:1.1rem;line-height:1.5}}
+.coreideas li{font-family:var(--serif);font-size:1.05rem;line-height:1.5;color:var(--bone);padding:.75em 0;border-bottom:1px solid var(--line-faint)}
+.coreideas li:first-of-type{padding-top:.9em}
+.coreideas li:last-child{border-bottom:none;padding-bottom:0}
+@media (min-width:700px){.coreideas li{font-size:1.12rem}}
 
 /* connect CTA that ends every article */
 .article-cta{border-top:1px solid var(--line);margin-top:46px;padding-top:38px;text-align:center;clear:both}
