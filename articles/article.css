@@ -22,7 +22,7 @@ main h1{
   font-size:clamp(1.9rem,4.2vw,2.8rem);line-height:1.14;letter-spacing:-.015em;
   max-width:none;margin-bottom:12px;text-wrap:balance;
 }
-main .date{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-faint);margin-bottom:40px}
+main .date{font-family:var(--serif);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-faint);margin-bottom:40px}
 main p{margin:0 0 1.3em;font-size:1.05rem;line-height:1.85;color:var(--bone-soft)}
 main h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.2vw,1.7rem);line-height:1.25;color:var(--bone);margin:2em 0 .7em}
 main li{margin:0 0 .6em 1.2em;line-height:1.8;color:var(--bone-soft)}
@@ -37,14 +37,14 @@ main strong{color:var(--bone);font-weight:700;background:linear-gradient(transpa
 
 /* recomendações ao final */
 .also{border-top:1px solid var(--line);margin-top:64px;padding-top:30px}
-.also h3{font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-faint);margin:0 0 8px}
+.also h3{font-family:var(--serif);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--bone-faint);margin:0 0 8px}
 .also a{
   display:block;padding:15px 0;border-bottom:1px solid var(--line-faint);
   color:var(--bone);box-shadow:none;line-height:1.4;font-size:1.08rem;font-family:var(--serif);
   transition:color .25s ease;
 }
 .also a:hover{color:var(--teal-text);box-shadow:none}
-.also .src{display:block;font-size:13px;color:var(--bone-faint);margin-top:3px;font-family:var(--sans)}
+.also .src{display:block;font-size:13px;color:var(--bone-faint);margin-top:3px;font-family:var(--serif)}
 
 /* ---------- reading experience v2 ---------- */
 /* serif body for long-form comfort, larger type, tuned measure and contrast */
@@ -64,7 +64,7 @@ main li{
   line-height:1.72;
   color:rgba(21,24,27,.87);
 }
-main h1{font-size:clamp(2.05rem,4.4vw,3rem)}
+main h1{font-size:clamp(2.05rem,4.4vw,3rem);font-weight:700}
 main h2{margin:2.3em 0 .55em;clear:both;font-weight:700}
 body{text-rendering:optimizeLegibility}
 @media (min-width:700px){
@@ -85,7 +85,7 @@ body{text-rendering:optimizeLegibility}
 
 /* core ideas at the end of each book section: compact warm panel, teal eyebrow, teal bullets */
 .coreideas{clear:both;margin:2.1em 0 .3em;padding:15px 20px 16px;background:var(--ink-2);border:1px solid var(--line);border-radius:4px}
-.coreideas h4{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--teal-text);margin:0 0 .7em}
+.coreideas h4{font-family:var(--serif);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-text);margin:0 0 .7em}
 .coreideas ul{margin:0;padding:0;list-style:none}
 .coreideas li{font-family:var(--serif);font-size:1.02rem;line-height:1.45;color:var(--bone);margin:0 0 .5em;padding-left:1.15em;position:relative}
 .coreideas li:last-child{margin-bottom:0}
@@ -94,7 +94,7 @@ body{text-rendering:optimizeLegibility}
 
 /* connect CTA that ends every article */
 .article-cta{border-top:1px solid var(--line);margin-top:46px;padding-top:38px;text-align:center;clear:both}
-.article-cta .cta-kicker{font-family:var(--sans);font-size:15px;line-height:1.65;color:var(--bone-soft);margin:0 auto 20px;max-width:34em}
+.article-cta .cta-kicker{font-family:var(--serif);font-size:16px;line-height:1.65;color:var(--bone-soft);margin:0 auto 20px;max-width:34em}
 .article-cta .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 /* LinkedIn button: brand blue, filled, with the LinkedIn glyph */
 .article-cta .cta.linkedin{background:#0A66C2;color:#ffffff;border-color:#0A66C2;display:inline-flex;align-items:center;gap:9px}
