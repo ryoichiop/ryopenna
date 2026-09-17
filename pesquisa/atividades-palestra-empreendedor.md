@@ -10,11 +10,14 @@ nunca de cálculo, e cobre um dos três temas da palestra do Sicredi. Mapeamento
 o tema das perguntas tem a Venda de 60 Segundos; a clareza (abertura, ponte para
 "repete para mim") tem o Batuque; a resistência → colaboração já tem o cenário do
 sequestro como momento participativo. O tema que estava sem atividade era a
-escuta, o coração da tese. A terceira atividade é de escuta: O Cliente Bravo.
+escuta, o coração da tese. A terceira atividade é de escuta: O Superestimado.
+Requisitos adicionais (decisão de 17/09): testar reatividade e medir a capacidade
+de RETOMAR; conteúdo universal (nem todo mundo já teve reclamação real), sem
+depender do negócio da pessoa, mas conectável ao negócio logo depois.
 
 Ritmo proposto na keynote de 60 min: atividade na abertura (Batuque), história no
 bloco 1 (voo cancelado + sequestro participativo, sem atividade formal), atividade
-no bloco 2 (Venda de 60 Segundos), atividade no bloco 3 (O Cliente Bravo). A sala
+no bloco 2 (Venda de 60 Segundos), atividade no bloco 3 (O Superestimado). A sala
 alterna entre fazer e ouvir; nenhum bloco tem duas atividades.
 
 ---
@@ -86,35 +89,43 @@ E deixar o cliente terminar de falar.
 
 ---
 
-## Atividade 3 — O Cliente Bravo (bloco 3, 5 min)
+## Atividade 3 — O Superestimado (bloco 3, 5 min)
 
-**Tema:** escuta. Os dois modos de escutar, sentidos na pele: para defender e
-para aprender. É a travessia central da dissertação, virada em exercício de 2
-rodadas com a mesma reclamação.
+**Tema:** escuta. Testa a reatividade e mede o músculo que importa: a capacidade
+de perceber a própria defesa e retomar. Leva direto a escutar para defender ×
+escutar para aprender. Conteúdo universal: ninguém precisa ter tido reclamação
+real; todo mundo ama alguma coisa.
 
-**Mecânica (nova; duplas, duas rodadas com a mesma conversa):**
-1. Duplas novas. A é o cliente, B é o dono do negócio.
-2. A escolhe uma reclamação real, que já fez ou engoliu como consumidor: entrega
-   atrasada, pedido errado, cobrança indevida, serviço malfeito. Coisa de verdade.
-3. Rodada 1 (30 segundos): A reclama. B responde como quase todo dono responde:
-   se defende. Explica, justifica, mostra por que não foi culpa dele. A instrução
-   no telão: "defenda o seu negócio como se a sua honra dependesse disso".
-4. Corte seco. Rodada 2 (30 segundos): a MESMA reclamação, do zero. Agora B está
-   proibido de se defender e de explicar. Só pode fazer duas coisas: escutar e
-   perguntar. "O que aconteceu?" "O que resolveria isso para você?"
-5. Poll dos As: "em qual das duas rodadas você continuaria cliente? Rodada 1,
-   levanta a mão. Rodada 2?" A floresta de mãos da rodada 2 é o slide.
-6. Reveal: "vocês acabaram de sentir os dois únicos modos de escutar. Escutar
-   para defender e escutar para aprender. Mesma reclamação, mesmo dono, outra
-   conversa. E o detalhe: na rodada 2, B não concordou com nada, não deu desconto,
-   não abriu mão de nada. Só escutou."
+**Mecânica (nova; duplas, provocação + recuperação):**
+1. Duplas novas. A escolhe algo que ama e defende: o time, a cidade natal, a
+   série, o churrasco na brasa, o jeito certo de fazer café. Qualquer pessoa tem.
+2. A conta para B, com entusiasmo, por 20 segundos, por que aquilo é bom.
+3. Instrução secreta para os Bs (os As fecham os olhos; a sala já conhece o
+   ritual da instrução secreta, o que acelera e vira piada interna): "quando A
+   terminar, diga com convicção: 'sinceramente? Isso é muito superestimado. Não
+   entendo quem gosta disso'. E sustente a posição por 15 segundos."
+4. Rodada 1: a provocação roda. O salão vira um vespeiro em 10 segundos.
+5. Poll dos As: "quem sentiu o impulso de defender na hora? Quem começou a
+   argumentar antes de B terminar a frase? Quem sentiu no corpo: esquentou?"
+6. Rodada 2 (a recuperação): B repete a provocação. Agora A só pode responder
+   com UMA pergunta genuína. Exemplos no telão: "o que te fez enxergar assim?",
+   "o que você já viu que te decepcionou?". Proibido rebater.
+7. Reveal em duas camadas. Primeira: "isso que vocês sentiram na rodada 1 tem
+   nome: escutar para defender. Não é defeito, é o modo padrão do bicho humano
+   sob ataque. A rodada 2 é o outro modo: escutar para aprender." Segunda: "e
+   repara: o exercício não pediu para você não reagir. Pediu para você RETOMAR.
+   Liderança não é a arte da perfeição. É a arte da correção. O músculo é o meio
+   segundo entre sentir a picada e escolher a resposta."
+8. Revelar a instrução secreta dos Bs ("ele não pensa isso do seu time... ou
+   pensa") solta a tensão em riso e devolve a sala.
 
-**O gancho empreendedor:**
-"Essa conversa acontece no seu balcão toda semana. E quando ela não acontece no
-balcão, ela acontece em público: a avaliação no Google é o cliente bravo
-reclamando na frente de todo mundo, para sempre. A resposta que você escreve lá
-é a rodada 1 ou a rodada 2, e todo cliente futuro vai ler qual das duas você
-escolheu."
+**O gancho empreendedor (a ponte, depois do riso):**
+"Agora troca o seu time pelo seu preço. 'Tá caro' é alguém dizendo que o seu
+produto é superestimado. A avaliação de uma estrela no Google, o sócio que
+questiona sua decisão, o funcionário que critica o seu jeito: é a mesma picada,
+no mesmo corpo. A diferença entre a rodada 1 e a rodada 2 é o que o cliente lê
+na sua resposta pública, para sempre. E o que você treinou aqui não foi ficar
+calmo. Foi recuperar rápido."
 
 **A etiqueta de preço:**
 - 1 em cada 3 consumidores abandona uma marca que ama após UMA experiência ruim;
@@ -137,19 +148,19 @@ só depois da conversa. E responder toda avaliação em 24h no modo rodada 2.
    chega. Vazamento: retrabalho e pedido errado (canal 3b).
 2. **Perguntar para vender** (Venda de 60 Segundos): influência vem de pergunta,
    não de monólogo. Vazamento: a venda perdida (canal 3c).
-3. **Escutar o desconforto sem se defender** (O Cliente Bravo): é onde está o
+3. **Escutar o desconforto sem se defender** (O Superestimado): é onde está o
    ouro causal do relatório: desculpa 45% vs. 23% [CAUSAL], responder avaliação
    sem se defender [CAUSAL], e todos os vazamentos de gente saindo calada: o
    funcionário (51% saíram sem conversa), o cliente (1 em 3 abandona após uma
    experiência ruim), o devedor (54% queriam pagar e se esconderam da cobrança).
    É também a travessia da dissertação: escutar para defender → escutar para
-   aprender.
+   aprender. O músculo treinado é a recuperação, não a calma.
 
 | Atividade | Elemento | Vazamento | Número-âncora | Prática |
 |---|---|---|---|---|
 | Batuque | Falar com clareza | Pedido errado, retrabalho | +26 p.p. com confirmação | Repete para mim |
 | Venda de 60 Segundos | Perguntar para vender | Venda perdida | 64% de fala nos negócios perdidos | Duas perguntas antes da oferta |
-| O Cliente Bravo | Escutar sem se defender | Cliente, funcionário e devedor saindo calados | Desculpa 45% vs. 23% | Errou, ligue; responder toda avaliação |
+| O Superestimado | Escutar sem se defender | Cliente, funcionário e devedor saindo calados | Desculpa 45% vs. 23% | Errou, ligue; responder toda avaliação |
 
 As três juntas somam 15 minutos e sustentam a tese sem discurso: a sala erra a
 música, vende sem perguntar e sente a diferença entre se defender e escutar.
