@@ -5,10 +5,17 @@ gancho direto na realidade do dono de pequeno negócio e fechamento num número 
 relatório (`relatorio-custo-da-ma-conversa.md`), com classificação de evidência.
 Mecânica de palco validada na transcrição do Sicredi (15/09/2026) onde aplicável.
 
+Regra de desenho (decisão de 17/09): toda atividade é um exercício de CONVERSA,
+nunca de cálculo, e cobre um dos três temas da palestra do Sicredi. Mapeamento:
+o tema das perguntas tem a Venda de 60 Segundos; a clareza (abertura, ponte para
+"repete para mim") tem o Batuque; a resistência → colaboração já tem o cenário do
+sequestro como momento participativo. O tema que estava sem atividade era a
+escuta, o coração da tese. A terceira atividade é de escuta: O Cliente Bravo.
+
 Ritmo proposto na keynote de 60 min: atividade na abertura (Batuque), história no
-bloco 1 (voo cancelado, sem atividade), atividade no bloco 2 (Venda de 60
-Segundos), atividade no bloco 3 (Conta da Estrela). A sala alterna entre fazer e
-ouvir; nenhum bloco tem duas atividades.
+bloco 1 (voo cancelado + sequestro participativo, sem atividade formal), atividade
+no bloco 2 (Venda de 60 Segundos), atividade no bloco 3 (O Cliente Bravo). A sala
+alterna entre fazer e ouvir; nenhum bloco tem duas atividades.
 
 ---
 
@@ -79,60 +86,72 @@ E deixar o cliente terminar de falar.
 
 ---
 
-## Atividade 3 — A Conta da Estrela (bloco 3, 4 min)
+## Atividade 3 — O Cliente Bravo (bloco 3, 5 min)
 
-**Tema:** escuta pública. A avaliação no Google é a conversa mais cara que você
-está ignorando. É a atividade que cumpre a promessa do one-sheet: "a conta do
-próprio negócio em reais".
+**Tema:** escuta. Os dois modos de escutar, sentidos na pele: para defender e
+para aprender. É a travessia central da dissertação, virada em exercício de 2
+rodadas com a mesma reclamação.
 
-**Mecânica (nova; individual, celular na mão):**
-1. "Pega o celular. Abre a calculadora. Isso, agora pode."
-2. Passo 1: digita o faturamento do seu último mês. Ninguém vai ver.
-3. Passo 2: multiplica por 12.
-4. Passo 3: multiplica por 0,07.
-5. "O número na sua tela é o que UMA estrela no seu Google vale por ano, no meio
-   do intervalo que Harvard mediu com dados fiscais de verdade: 5 a 9% de receita
-   por estrela." [CAUSAL, Luca; pode cravar]
-6. Poll: "quem está vendo um número maior que um mês de aluguel? Maior que um
-   salário? Deixa a mão levantada." As mãos levantadas são o slide.
-7. A virada: "e esse efeito só existe para negócio independente. A franquia do
-   lado não depende da nota dela. Você depende."
+**Mecânica (nova; duplas, duas rodadas com a mesma conversa):**
+1. Duplas novas. A é o cliente, B é o dono do negócio.
+2. A escolhe uma reclamação real, que já fez ou engoliu como consumidor: entrega
+   atrasada, pedido errado, cobrança indevida, serviço malfeito. Coisa de verdade.
+3. Rodada 1 (30 segundos): A reclama. B responde como quase todo dono responde:
+   se defende. Explica, justifica, mostra por que não foi culpa dele. A instrução
+   no telão: "defenda o seu negócio como se a sua honra dependesse disso".
+4. Corte seco. Rodada 2 (30 segundos): a MESMA reclamação, do zero. Agora B está
+   proibido de se defender e de explicar. Só pode fazer duas coisas: escutar e
+   perguntar. "O que aconteceu?" "O que resolveria isso para você?"
+5. Poll dos As: "em qual das duas rodadas você continuaria cliente? Rodada 1,
+   levanta a mão. Rodada 2?" A floresta de mãos da rodada 2 é o slide.
+6. Reveal: "vocês acabaram de sentir os dois únicos modos de escutar. Escutar
+   para defender e escutar para aprender. Mesma reclamação, mesmo dono, outra
+   conversa. E o detalhe: na rodada 2, B não concordou com nada, não deu desconto,
+   não abriu mão de nada. Só escutou."
 
 **O gancho empreendedor:**
-"Esse número não é de Harvard. É do seu caixa. E a única coisa com efeito causal
-comprovado sobre a sua nota é de graça: responder toda avaliação, inclusive a
-injusta, sem se defender. Quando o cliente bravo vê que o dono lê e responde, ele
-pensa duas vezes antes de detonar." [CAUSAL, quase-experimento com dezenas de
-milhares de hotéis: responder eleva a nota e reduz avaliações negativas]
+"Essa conversa acontece no seu balcão toda semana. E quando ela não acontece no
+balcão, ela acontece em público: a avaliação no Google é o cliente bravo
+reclamando na frente de todo mundo, para sempre. A resposta que você escreve lá
+é a rodada 1 ou a rodada 2, e todo cliente futuro vai ler qual das duas você
+escolheu."
 
-**A etiqueta de preço (camada 2, para fechar o bloco):** errou com um cliente?
-Ligar e pedir desculpa específica fez 45% retirarem a avaliação negativa. Dar
-dinheiro sem conversar: 23%. Uma desculpa sincera vale mais que um vale-compras.
-[CAUSAL, RCT com mais de 10 mil transações]
+**A etiqueta de preço:**
+- 1 em cada 3 consumidores abandona uma marca que ama após UMA experiência ruim;
+  na América Latina, metade. [ESTIMATIVA, PwC, 15.000 consumidores]
+- Errou? Ligar e pedir desculpa específica fez 45% dos clientes retirarem a
+  avaliação negativa. Dar dinheiro sem conversar: 23%. Uma desculpa sincera vale
+  mais que um vale-compras. [CAUSAL, RCT com mais de 10 mil transações]
+- E responder toda avaliação, sem se defender, é o único gesto de graça com
+  efeito causal comprovado sobre a nota. [CAUSAL, quase-experimento com dezenas
+  de milhares de hotéis]
 
-**Prática que instala:** responder toda avaliação em 24h, sem se defender. E
-errou, ligue: desculpa antes de compensação.
-
-**Variante sem celular** (sala onde o contratante veta telefone na mão): "O Teste
-da Desculpa". Poll de mãos: "pensa na última vez que um cliente saiu bravo. Quem
-resolveu com desconto? Quem ligou para pedir desculpa?" A sala inteira levanta a
-mão no desconto. Reveal: 45% contra 23%. Todo mundo pagou caro pelo gesto que
-funciona menos.
+**Prática que instala:** errou, ligue: escuta, desculpa específica, compensação
+só depois da conversa. E responder toda avaliação em 24h no modo rodada 2.
 
 ---
 
-## Por que essas três (e a simetria que o deck deve mostrar)
+## Os três elementos (a lógica extraída da pesquisa)
 
-Cada atividade prova no corpo um dos três vazamentos que o empreendedor mais
-sente, e cada uma entrega uma prática de custo zero na hora:
+1. **Falar com clareza** (Batuque): a instrução que sai da sua cabeça não é a que
+   chega. Vazamento: retrabalho e pedido errado (canal 3b).
+2. **Perguntar para vender** (Venda de 60 Segundos): influência vem de pergunta,
+   não de monólogo. Vazamento: a venda perdida (canal 3c).
+3. **Escutar o desconforto sem se defender** (O Cliente Bravo): é onde está o
+   ouro causal do relatório: desculpa 45% vs. 23% [CAUSAL], responder avaliação
+   sem se defender [CAUSAL], e todos os vazamentos de gente saindo calada: o
+   funcionário (51% saíram sem conversa), o cliente (1 em 3 abandona após uma
+   experiência ruim), o devedor (54% queriam pagar e se esconderam da cobrança).
+   É também a travessia da dissertação: escutar para defender → escutar para
+   aprender.
 
-| Atividade | Vazamento | Número-âncora | Prática |
-|---|---|---|---|
-| Batuque | Pedido errado, retrabalho | +26 p.p. com confirmação | Repete para mim |
-| Venda de 60 Segundos | Venda perdida | 64% de fala nos negócios perdidos | Duas perguntas antes da oferta |
-| Conta da Estrela | Reputação e receita | 5 a 9% por estrela | Responder toda avaliação |
+| Atividade | Elemento | Vazamento | Número-âncora | Prática |
+|---|---|---|---|---|
+| Batuque | Falar com clareza | Pedido errado, retrabalho | +26 p.p. com confirmação | Repete para mim |
+| Venda de 60 Segundos | Perguntar para vender | Venda perdida | 64% de fala nos negócios perdidos | Duas perguntas antes da oferta |
+| O Cliente Bravo | Escutar sem se defender | Cliente, funcionário e devedor saindo calados | Desculpa 45% vs. 23% | Errou, ligue; responder toda avaliação |
 
-As três juntas somam 14 minutos e sustentam a tese sem discurso: a sala erra a
-música, vende sem perguntar e descobre o preço da própria estrela. Depois disso, a
-frase-âncora não precisa convencer ninguém. Conversa não é tema de treinamento. É
-linha do caixa.
+As três juntas somam 15 minutos e sustentam a tese sem discurso: a sala erra a
+música, vende sem perguntar e sente a diferença entre se defender e escutar.
+Depois disso, a frase-âncora não precisa convencer ninguém. Conversa não é tema
+de treinamento. É linha do caixa.
