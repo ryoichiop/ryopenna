@@ -10,16 +10,18 @@ nunca de cálculo, e cobre um dos três temas da palestra do Sicredi. Mapeamento
 o tema das perguntas tem a Venda de 60 Segundos; a clareza (abertura, ponte para
 "repete para mim") tem o Batuque; a resistência → colaboração já tem o cenário do
 sequestro como momento participativo. O tema que estava sem atividade era a
-escuta, o coração da tese. A terceira atividade é de escuta: Destruir e
-Construir (exercício documentado da própria Conversant; ver inventário da
-pesquisa no fim deste arquivo). Requisitos adicionais (decisão de 17/09): testar
-reatividade e medir a capacidade de RETOMAR; conteúdo universal (nem todo mundo
-já teve reclamação real), sem depender do negócio da pessoa, mas conectável ao
-negócio logo depois; e não reciclar a mecânica das outras duas atividades.
+escuta, o coração da tese. A terceira atividade é de escuta: A Conta Difícil,
+desenho do próprio Ryo (17/09) sobre o padrão documentado do "ouvinte
+distraído" (ver inventário da pesquisa no fim deste arquivo; Destruir e
+Construir, da Conversant, vira o aprofundamento no formato 90 min). Requisitos:
+testar presença e reatividade e viver a RETOMADA; conteúdo universal (nem todo
+mundo já teve reclamação real, mas todo mundo tem um sonho), sem depender do
+negócio da pessoa e conectável ao negócio logo depois; mecânica distinta das
+outras duas atividades.
 
 Ritmo proposto na keynote de 60 min: atividade na abertura (Batuque), história no
 bloco 1 (voo cancelado + sequestro participativo, sem atividade formal), atividade
-no bloco 2 (Venda de 60 Segundos), atividade no bloco 3 (Destruir e Construir). A
+no bloco 2 (Venda de 60 Segundos), atividade no bloco 3 (A Conta Difícil). A
 sala alterna entre fazer e ouvir; nenhum bloco tem duas atividades.
 
 ---
@@ -91,57 +93,68 @@ E deixar o cliente terminar de falar.
 
 ---
 
-## Atividade 3 — Destruir e Construir (bloco 3, 6 min)
+## Atividade 3 — A Conta Difícil (bloco 3, 6 min)
 
-**Origem pesquisada, não inventada.** Exercício documentado no material da
-Conversant (livro do Mickey Connolly; roteiro completo nas fontes do notebook
-Conversant Super Consultant). No original: duplas, orador apresenta uma
-possibilidade que o empolga; o ouvinte primeiro escuta para DESTRUIR (fight
-bioreaction, 2 min), o orador anota em 30 segundos os adjetivos de falar para
-essa escuta; depois o ouvinte escuta para CONSTRUIR ("que valor eu posso
-construir a partir disso?", 2 min) e as listas de adjetivos são comparadas:
-"qual lista acelera valor?". A tese do próprio material: fazer de propósito o
-que normalmente fazemos por impulso é o que torna a pessoa capaz de "catch and
-correct". É exatamente o músculo pedido: reatividade percebida + recuperação.
+**Desenho final do Ryo (17/09).** Duplas, e AMBAS recebem instrução secreta. O
+nome carrega o duplo sentido que fecha a palestra: a conta que B faz de cabeça
+é a conta que a escuta ausente custa.
 
-**Por que ela responde à spec:**
-- Universal: ninguém precisa ter tido reclamação; todo empreendedor tem uma
-  ideia que quer tocar. É sobre o que a pessoa AMA fazer, não sobre um conflito.
-- Mecânica invertida em relação às outras duas atividades: no Batuque e na Venda
-  quem age é quem fala; aqui quem age é quem ESCUTA, e quem fala sente na pele o
-  efeito da escuta do outro sobre a própria vontade de falar.
-- Testa reatividade e recuperação: o ouvinte liga e desliga a biorreação de
-  propósito; o orador sente a diferença no corpo.
-- Conecta com o negócio depois, sem depender do negócio durante.
+**Mecânica:**
+1. Duplas. Definem A e B.
+2. Os As fecham os olhos. O telão mostra a instrução secreta dos Bs: "Sua
+   missão: a partir de 300, subtraia 7. Do resultado, subtraia 7 de novo. E
+   continue, de cabeça, sem parar, até o tempo acabar. Disfarce: olhe para A,
+   acene, solte um 'uhum' de vez em quando." (Conta sem operação difícil, mas
+   difícil: ocupa a cabeça inteira.)
+3. Os Bs fecham os olhos. O telão mostra a instrução secreta dos As: "Conte
+   para B o seu MAIOR sonho de vida. O maior mesmo, não importa qual seja.
+   Você tem 60 segundos."
+4. Rodada: 60 segundos.
+5. Poll dos As: "de 0 a 10, mostra nos dedos: o quanto você se sentiu escutado?"
+   As mãos baixas são o slide.
+6. Poll dos Bs, para soltar o riso e revelar o truque: "em que número você
+   chegou?" E a punhalada gentil: "quem consegue repetir o sonho da sua dupla?"
+7. Reveal: "as pessoas estão o tempo todo contando para a gente o que mais
+   importa para elas. A pergunta nunca foi se elas estão falando. A pergunta é
+   se eu estou escutando. E repara: B não é má pessoa. B só estava fazendo uma
+   conta. Agora me diz: qual é a conta que VOCÊ está fazendo enquanto o seu
+   funcionário fala? O boleto, o fornecedor, a resposta que você já vai dar. O
+   corpo fica. A escuta vai embora."
+8. Rodada de reparação (60 segundos, obrigatória; ninguém termina com o maior
+   sonho da vida ignorado): "A, conta de novo. B, agora a sua única missão é
+   escutar." O contraste entre as duas rodadas, sentido na pele, é a travessia:
+   escutar para defender (ou para calcular) → escutar para aprender. A sala
+   esquenta de conversa; esse é o único momento em que estourar 10 segundos é
+   bom sinal.
 
-**Versão compactada para keynote (6 min, sem troca de papéis):**
-1. Duplas. A escolhe uma ideia que quer tocar de verdade: o próximo passo do
-   negócio, um produto novo, um sonho engavetado.
-2. Rodada 1 (60 segundos): A apresenta com empolgação. B escuta para destruir:
-   procura só as falhas, os furos, os "não vai dar certo". A instrução do
-   material original: não se preocupe com o que dizer; se você escutar
-   destrutivamente, as palavras destrutivas saem sozinhas.
-3. Colheita 1 (30 segundos): A anota ou guarda os adjetivos: como foi falar
-   para essa escuta?
-4. Rodada 2 (60 segundos): a MESMA ideia, do zero. B agora escuta para
-   construir, com uma única pergunta na cabeça: "que valor eu posso construir a
-   partir disso?"
-5. Colheita 2 + poll: a sala grita adjetivos das duas rodadas; o contraste das
-   duas listas no ar é o slide. Pergunta do material original: qual das duas
-   listas acelera valor?
-6. Reveal: "a ideia era a mesma. A pessoa era a mesma. O que mudou foi a escuta.
-   Escutar para defender e escutar para aprender não são traços de
-   personalidade: são modos, e dá para escolher. O músculo não é nunca reagir.
-   É perceber e retomar."
-7. Na versão 90 min: rodar o exercício completo do material (2 min + 2 min, com
-   troca de papéis e listas escritas).
+**Por que responde à spec:**
+- Universal: todo mundo tem um sonho; ninguém precisa ter tido reclamação.
+- Testa presença e reatividade por dentro: B sente a força que a conta faz
+  contra a escuta; A sente, na presença física do outro, a ausência dele.
+- A recuperação é vivida na rodada 2, não explicada.
+- Mecânica distinta das outras duas: instrução secreta DUPLA e simétrica; no
+  Batuque e na Venda só um lado carrega segredo.
+- E conecta com o negócio sem depender do negócio: a "conta" é a metáfora
+  literal do dia do dono.
 
 **O gancho empreendedor (a ponte):**
-"Agora pensa: qual dessas duas escutas o seu funcionário encontra quando traz
-uma ideia? Qual delas o seu cliente encontra quando reclama? Qual delas o seu
-sócio encontra quando discorda? A informação que salvaria o seu negócio já está
-dentro dele, na cabeça de quem atende o cliente todo dia. Ela só sobe se
-encontrar a escuta da rodada 2."
+"No seu negócio, você é o B desse exercício o dia inteiro. O funcionário conta,
+o cliente conta, o sócio conta, e você está fazendo conta. Presente de corpo,
+ausente de escuta. E o que uma pessoa escolhe te dizer já mostra o quão segura
+ela se sente perto de você. Se toda vez que ela fala você está em 265 menos 7,
+ela para de contar. E aí a informação que salvaria o seu negócio morre na
+cabeça de quem atende o seu cliente todo dia."
+
+**Nota de palco:** o "sonho de vida" gera material humano forte; se alguém se
+emocionar, acolher e usar ("olha o que acontece quando alguém escuta de
+verdade"). Nunca expor o conteúdo do sonho de ninguém no microfone sem oferta
+explícita da pessoa.
+
+**Alternativa de mesmo espírito para workshop 90 min:** Destruir e Construir
+(exercício documentado da Conversant, roteiro no inventário abaixo): o ouvinte
+escuta a mesma ideia duas vezes, primeiro para destruir, depois para construir,
+e o orador compara os adjetivos das duas experiências. Funciona como
+aprofundamento da Conta Difícil no formato longo.
 
 **Validação externa do mecanismo (registrada aqui; não citar números no palco
 por não estarem no relatório):** o desenho é o clássico de Carl Rogers (HBR,
@@ -230,21 +243,21 @@ só depois da conversa. E responder toda avaliação em 24h no modo rodada 2.
    chega. Vazamento: retrabalho e pedido errado (canal 3b).
 2. **Perguntar para vender** (Venda de 60 Segundos): influência vem de pergunta,
    não de monólogo. Vazamento: a venda perdida (canal 3c).
-3. **Escutar o desconforto sem se defender** (Destruir e Construir): é onde está o
-   ouro causal do relatório: desculpa 45% vs. 23% [CAUSAL], responder avaliação
-   sem se defender [CAUSAL], e todos os vazamentos de gente saindo calada: o
-   funcionário (51% saíram sem conversa), o cliente (1 em 3 abandona após uma
-   experiência ruim), o devedor (54% queriam pagar e se esconderam da cobrança).
-   É também a travessia da dissertação: escutar para defender → escutar para
-   aprender. O músculo treinado é a recuperação, não a calma.
+3. **Escutar de verdade quem está contando o que importa** (A Conta Difícil): é
+   onde está o ouro do relatório: 51% dos que pediram demissão saíram sem que
+   ninguém conversasse com eles [CORRELACIONAL], segurança psicológica derruba o
+   risco de saída de 12% para 3% [CORRELACIONAL], desculpa 45% vs. 23% [CAUSAL].
+   Todos os vazamentos de gente saindo calada: o funcionário, o cliente, o
+   devedor. É a travessia da dissertação: escutar para defender (ou para
+   calcular) → escutar para aprender. O músculo é presença + retomada.
 
 | Atividade | Elemento | Vazamento | Número-âncora | Prática |
 |---|---|---|---|---|
 | Batuque | Falar com clareza | Pedido errado, retrabalho | +26 p.p. com confirmação | Repete para mim |
 | Venda de 60 Segundos | Perguntar para vender | Venda perdida | 64% de fala nos negócios perdidos | Duas perguntas antes da oferta |
-| Destruir e Construir | Escutar sem se defender | Cliente, funcionário e devedor saindo calados | Desculpa 45% vs. 23% | Errou, ligue; responder toda avaliação |
+| A Conta Difícil | Escutar quem conta o que importa | Funcionário, cliente e devedor saindo calados | 51% saíram sem conversa; 12% → 3% | Conversa dos 15 minutos; pergunta da sexta-feira |
 
 As três juntas somam 15 minutos e sustentam a tese sem discurso: a sala erra a
-música, vende sem perguntar e sente a diferença entre se defender e escutar.
-Depois disso, a frase-âncora não precisa convencer ninguém. Conversa não é tema
-de treinamento. É linha do caixa.
+música, vende sem perguntar e descobre que estava fazendo conta enquanto alguém
+contava o maior sonho da vida. Depois disso, a frase-âncora não precisa
+convencer ninguém. Conversa não é tema de treinamento. É linha do caixa.
