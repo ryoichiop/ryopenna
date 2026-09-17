@@ -91,6 +91,7 @@ body{text-rendering:optimizeLegibility}
 .coreideas li:last-child{margin-bottom:0}
 .coreideas li::before{content:"";position:absolute;left:0;top:.58em;width:5px;height:5px;background:var(--teal-text);border-radius:50%}
 @media (min-width:700px){.coreideas li{font-size:1.06rem}}
+.coreideas + p{margin-top:2.6em}
 
 /* connect CTA that ends every article */
 .article-cta{border-top:1px solid var(--line);margin-top:46px;padding-top:38px;text-align:center;clear:both}
