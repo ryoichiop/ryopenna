@@ -10,15 +10,17 @@ nunca de cálculo, e cobre um dos três temas da palestra do Sicredi. Mapeamento
 o tema das perguntas tem a Venda de 60 Segundos; a clareza (abertura, ponte para
 "repete para mim") tem o Batuque; a resistência → colaboração já tem o cenário do
 sequestro como momento participativo. O tema que estava sem atividade era a
-escuta, o coração da tese. A terceira atividade é de escuta: O Superestimado.
-Requisitos adicionais (decisão de 17/09): testar reatividade e medir a capacidade
-de RETOMAR; conteúdo universal (nem todo mundo já teve reclamação real), sem
-depender do negócio da pessoa, mas conectável ao negócio logo depois.
+escuta, o coração da tese. A terceira atividade é de escuta: Destruir e
+Construir (exercício documentado da própria Conversant; ver inventário da
+pesquisa no fim deste arquivo). Requisitos adicionais (decisão de 17/09): testar
+reatividade e medir a capacidade de RETOMAR; conteúdo universal (nem todo mundo
+já teve reclamação real), sem depender do negócio da pessoa, mas conectável ao
+negócio logo depois; e não reciclar a mecânica das outras duas atividades.
 
 Ritmo proposto na keynote de 60 min: atividade na abertura (Batuque), história no
 bloco 1 (voo cancelado + sequestro participativo, sem atividade formal), atividade
-no bloco 2 (Venda de 60 Segundos), atividade no bloco 3 (O Superestimado). A sala
-alterna entre fazer e ouvir; nenhum bloco tem duas atividades.
+no bloco 2 (Venda de 60 Segundos), atividade no bloco 3 (Destruir e Construir). A
+sala alterna entre fazer e ouvir; nenhum bloco tem duas atividades.
 
 ---
 
@@ -89,43 +91,123 @@ E deixar o cliente terminar de falar.
 
 ---
 
-## Atividade 3 — O Superestimado (bloco 3, 5 min)
+## Atividade 3 — Destruir e Construir (bloco 3, 6 min)
 
-**Tema:** escuta. Testa a reatividade e mede o músculo que importa: a capacidade
-de perceber a própria defesa e retomar. Leva direto a escutar para defender ×
-escutar para aprender. Conteúdo universal: ninguém precisa ter tido reclamação
-real; todo mundo ama alguma coisa.
+**Origem pesquisada, não inventada.** Exercício documentado no material da
+Conversant (livro do Mickey Connolly; roteiro completo nas fontes do notebook
+Conversant Super Consultant). No original: duplas, orador apresenta uma
+possibilidade que o empolga; o ouvinte primeiro escuta para DESTRUIR (fight
+bioreaction, 2 min), o orador anota em 30 segundos os adjetivos de falar para
+essa escuta; depois o ouvinte escuta para CONSTRUIR ("que valor eu posso
+construir a partir disso?", 2 min) e as listas de adjetivos são comparadas:
+"qual lista acelera valor?". A tese do próprio material: fazer de propósito o
+que normalmente fazemos por impulso é o que torna a pessoa capaz de "catch and
+correct". É exatamente o músculo pedido: reatividade percebida + recuperação.
 
-**Mecânica (nova; duplas, provocação + recuperação):**
-1. Duplas novas. A escolhe algo que ama e defende: o time, a cidade natal, a
-   série, o churrasco na brasa, o jeito certo de fazer café. Qualquer pessoa tem.
-2. A conta para B, com entusiasmo, por 20 segundos, por que aquilo é bom.
-3. Instrução secreta para os Bs (os As fecham os olhos; a sala já conhece o
-   ritual da instrução secreta, o que acelera e vira piada interna): "quando A
-   terminar, diga com convicção: 'sinceramente? Isso é muito superestimado. Não
-   entendo quem gosta disso'. E sustente a posição por 15 segundos."
-4. Rodada 1: a provocação roda. O salão vira um vespeiro em 10 segundos.
-5. Poll dos As: "quem sentiu o impulso de defender na hora? Quem começou a
-   argumentar antes de B terminar a frase? Quem sentiu no corpo: esquentou?"
-6. Rodada 2 (a recuperação): B repete a provocação. Agora A só pode responder
-   com UMA pergunta genuína. Exemplos no telão: "o que te fez enxergar assim?",
-   "o que você já viu que te decepcionou?". Proibido rebater.
-7. Reveal em duas camadas. Primeira: "isso que vocês sentiram na rodada 1 tem
-   nome: escutar para defender. Não é defeito, é o modo padrão do bicho humano
-   sob ataque. A rodada 2 é o outro modo: escutar para aprender." Segunda: "e
-   repara: o exercício não pediu para você não reagir. Pediu para você RETOMAR.
-   Liderança não é a arte da perfeição. É a arte da correção. O músculo é o meio
-   segundo entre sentir a picada e escolher a resposta."
-8. Revelar a instrução secreta dos Bs ("ele não pensa isso do seu time... ou
-   pensa") solta a tensão em riso e devolve a sala.
+**Por que ela responde à spec:**
+- Universal: ninguém precisa ter tido reclamação; todo empreendedor tem uma
+  ideia que quer tocar. É sobre o que a pessoa AMA fazer, não sobre um conflito.
+- Mecânica invertida em relação às outras duas atividades: no Batuque e na Venda
+  quem age é quem fala; aqui quem age é quem ESCUTA, e quem fala sente na pele o
+  efeito da escuta do outro sobre a própria vontade de falar.
+- Testa reatividade e recuperação: o ouvinte liga e desliga a biorreação de
+  propósito; o orador sente a diferença no corpo.
+- Conecta com o negócio depois, sem depender do negócio durante.
 
-**O gancho empreendedor (a ponte, depois do riso):**
-"Agora troca o seu time pelo seu preço. 'Tá caro' é alguém dizendo que o seu
-produto é superestimado. A avaliação de uma estrela no Google, o sócio que
-questiona sua decisão, o funcionário que critica o seu jeito: é a mesma picada,
-no mesmo corpo. A diferença entre a rodada 1 e a rodada 2 é o que o cliente lê
-na sua resposta pública, para sempre. E o que você treinou aqui não foi ficar
-calmo. Foi recuperar rápido."
+**Versão compactada para keynote (6 min, sem troca de papéis):**
+1. Duplas. A escolhe uma ideia que quer tocar de verdade: o próximo passo do
+   negócio, um produto novo, um sonho engavetado.
+2. Rodada 1 (60 segundos): A apresenta com empolgação. B escuta para destruir:
+   procura só as falhas, os furos, os "não vai dar certo". A instrução do
+   material original: não se preocupe com o que dizer; se você escutar
+   destrutivamente, as palavras destrutivas saem sozinhas.
+3. Colheita 1 (30 segundos): A anota ou guarda os adjetivos: como foi falar
+   para essa escuta?
+4. Rodada 2 (60 segundos): a MESMA ideia, do zero. B agora escuta para
+   construir, com uma única pergunta na cabeça: "que valor eu posso construir a
+   partir disso?"
+5. Colheita 2 + poll: a sala grita adjetivos das duas rodadas; o contraste das
+   duas listas no ar é o slide. Pergunta do material original: qual das duas
+   listas acelera valor?
+6. Reveal: "a ideia era a mesma. A pessoa era a mesma. O que mudou foi a escuta.
+   Escutar para defender e escutar para aprender não são traços de
+   personalidade: são modos, e dá para escolher. O músculo não é nunca reagir.
+   É perceber e retomar."
+7. Na versão 90 min: rodar o exercício completo do material (2 min + 2 min, com
+   troca de papéis e listas escritas).
+
+**O gancho empreendedor (a ponte):**
+"Agora pensa: qual dessas duas escutas o seu funcionário encontra quando traz
+uma ideia? Qual delas o seu cliente encontra quando reclama? Qual delas o seu
+sócio encontra quando discorda? A informação que salvaria o seu negócio já está
+dentro dele, na cabeça de quem atende o cliente todo dia. Ela só sobe se
+encontrar a escuta da rodada 2."
+
+**Validação externa do mecanismo (registrada aqui; não citar números no palco
+por não estarem no relatório):** o desenho é o clássico de Carl Rogers (HBR,
+1952): reformular o ponto do outro até a satisfação dele reduz a defensividade
+e destrava a comunicação. E experimentos de laboratório de Itzchakov & Kluger
+mostram que escuta de alta qualidade reduz a defensividade e a ansiedade de quem
+fala e deixa as atitudes menos extremas. Candidatos a entrar no dossiê se o Ryo
+quiser citar em palco.
+
+---
+
+## Inventário da pesquisa de atividades (o que existe documentado)
+
+Fontes varridas em 17/09: notebook Conversant Super Consultant (material do
+Mickey Connolly), The Systems Thinking Playbook (Sweeney & Meadows, repertório
+completo em memória), literatura acadêmica de escuta e coleções de exercícios de
+treinamento corporativo na web.
+
+**Do material Conversant (roteiros completos nas fontes do notebook):**
+1. Destruir e Construir: a escolhida acima.
+2. Filtro da Mensagem de Voz: escutar o mesmo desabafo duas vezes, primeiro com
+   a pergunta reativa ("onde está a prova de que ela me ataca?"), depois com "o
+   que essa pessoa está tentando contribuir ou proteger?". Origem da história do
+   Mickey com o executivo e o voicemail. Precisa de áudio; melhor em workshop.
+3. Provar que Ouviu + Pedir Permissão: recitar o ponto de vista do outro até ele
+   confirmar que se sentiu ouvido, depois "posso compartilhar minha perspectiva?".
+   É a regra de Rogers em versão Conversant; boa como PRÁTICA de balcão, não como
+   atividade de palco.
+4. Não-Mas vs. Sim-E: duas voltas de grupo reagindo à mesma frase com "não, mas"
+   e depois "sim, e". Rápida e boa, mas é mais criatividade que escuta.
+5. Entrevista com T-Chart (fatos vs. explicações) e Mapear Conversa no Medidor:
+   exercícios de casa, não de palco.
+
+**Do Systems Thinking Playbook:**
+6. Paper Tear e Monologue/Dialogue: comunicação de mão única vs. diálogo. Bons,
+   mas cobrem o mesmo território do Batuque (clareza); redundantes aqui.
+7. 1-2-3 Go!: o facilitador conta "1, 2, 3" e bate palma ANTES de dizer "vai";
+   a sala inteira bate junto. Dois minutos, sala inteira, prova a reatividade
+   (seguimos a ação, não a instrução). Candidata a micro-momento bônus na
+   abertura, não a atividade principal.
+
+**Da web (exercícios documentados de treinamento de escuta):**
+8. A Mão da Voz Interna: em duplas, enquanto A fala de algo importante, B levanta
+   a mão toda vez que percebe a própria voz interna falando (preparando resposta,
+   julgando, lembrando de outra coisa). Depois A adivinha por que as mãos subiam.
+   Torna visível a máquina de réplica interna; alternativa forte se o Ryo quiser
+   algo ainda mais físico que Destruir e Construir.
+9. A Tradução do Desabafo: A desabafa por 60 segundos sobre algo que o irrita;
+   B devolve não um conselho, mas uma tradução: "o que você mais valoriza, pelo
+   que eu ouvi, é...". Mapeia direto no canal 3h do relatório (a informação que
+   não sobe) e na pergunta Conversant "o que ela está tentando proteger?".
+   Segunda colocada na recomendação.
+10. Regra de Rogers (HBR, 1952): num desacordo, só pode responder quem primeiro
+    reformular o ponto do outro até o outro dizer "é isso". O clássico da área.
+
+**Dado novo achado na pesquisa, candidato ao dossiê (verificado em cadeia de
+estudos):** médicos interrompem o paciente em média 11 segundos depois que ele
+começa a falar (Singh Ospina et al., 2018, J. Gen. Intern. Med., 112 consultas;
+estudos anteriores: 18 segundos em 1984, 23 em 1999). Gancho de palco possível
+para o bloco de escuta: "quanto tempo o seu cliente fala antes de você
+interromper?". NÃO usar antes de entrar no dossiê de verificação.
+
+**Nuance de literatura que protege a tese:** Weger (2010) mostrou que parafrasear
+MECANICAMENTE não fez o falante se sentir mais compreendido; o efeito só aparece
+com escuta genuína completa (Weger, 2014). Ou seja: técnica sem orientação real
+não funciona, que é exatamente a tese Conversant (escuta é modo, não truque).
 
 **A etiqueta de preço:**
 - 1 em cada 3 consumidores abandona uma marca que ama após UMA experiência ruim;
@@ -148,7 +230,7 @@ só depois da conversa. E responder toda avaliação em 24h no modo rodada 2.
    chega. Vazamento: retrabalho e pedido errado (canal 3b).
 2. **Perguntar para vender** (Venda de 60 Segundos): influência vem de pergunta,
    não de monólogo. Vazamento: a venda perdida (canal 3c).
-3. **Escutar o desconforto sem se defender** (O Superestimado): é onde está o
+3. **Escutar o desconforto sem se defender** (Destruir e Construir): é onde está o
    ouro causal do relatório: desculpa 45% vs. 23% [CAUSAL], responder avaliação
    sem se defender [CAUSAL], e todos os vazamentos de gente saindo calada: o
    funcionário (51% saíram sem conversa), o cliente (1 em 3 abandona após uma
@@ -160,7 +242,7 @@ só depois da conversa. E responder toda avaliação em 24h no modo rodada 2.
 |---|---|---|---|---|
 | Batuque | Falar com clareza | Pedido errado, retrabalho | +26 p.p. com confirmação | Repete para mim |
 | Venda de 60 Segundos | Perguntar para vender | Venda perdida | 64% de fala nos negócios perdidos | Duas perguntas antes da oferta |
-| O Superestimado | Escutar sem se defender | Cliente, funcionário e devedor saindo calados | Desculpa 45% vs. 23% | Errou, ligue; responder toda avaliação |
+| Destruir e Construir | Escutar sem se defender | Cliente, funcionário e devedor saindo calados | Desculpa 45% vs. 23% | Errou, ligue; responder toda avaliação |
 
 As três juntas somam 15 minutos e sustentam a tese sem discurso: a sala erra a
 música, vende sem perguntar e sente a diferença entre se defender e escutar.
